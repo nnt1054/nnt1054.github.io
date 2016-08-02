@@ -50,6 +50,7 @@ player = {
 	height: 10,
 	reload: 0,
 	reload_time: 10,
+	enemy_timer: 5,
 	dead: 0,
 	/**
 	 * Update the position depending on pressed keys
@@ -78,7 +79,11 @@ player = {
 
         if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y > wall.y && this.y+7 <= wall.y+this.height) {
             this.y = wall.y-this.height};
-		
+	
+	if (this.enemy_timer === 0) {
+		enemies.push(new makeEnemy());
+		this.enemy_timer = 5;
+		};	
 		
 		
 		if (keystate[SpaceBar]) {
@@ -86,12 +91,12 @@ player = {
 		    	if (bullets.length == 0){
 			        bullets.push(new bullet(this.x, this.y));
 		    		}
-		        enemies.push(new makeEnemy());
 		        this.reload = this.reload_time;
 		        };
 		    };
 		
-		if (this.reload > 0) {this.reload -= 1};
+	if (this.reload > 0) {this.reload -= 1};
+	if (this.enemy_timer > 0) {this.enemy_timer -= 1};
 		
 	},
 	/**
