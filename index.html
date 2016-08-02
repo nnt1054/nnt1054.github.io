@@ -121,7 +121,7 @@ bullet = function (xpos,ypos) {
 	oobounds: 0,
     
     update: function() {
-             this.y -= 20;
+             this.y -= 30;
              if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y+20 >= wall.y && this.y < wall.y) {this.collision = 1};
              for (i = enemies.length-1; i >= 0; i--) {
                 if (Math.sqrt(Math.pow(enemies[i].info.x - this.x, 2) + Math.pow(enemies[i].info.y - this.y, 2)) <= enemies[i].info.height) {
