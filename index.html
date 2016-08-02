@@ -136,16 +136,16 @@ bullets = [new bullet(player.x, player.y)];
 enemies = [new makeEnemy()];
     
 function updatelist(list) {
-    for (i = list.length-1; i > 0; i--) {
+    for (i = list.length-1; i >= 0; i--) {
         list[i].info.update();
     };
-    for (i = list.length-1; i > 0; i--) {        
+    for (i = list.length-1; i >= 0; i--) {        
         if (list[i].info.y < 0 || list[i].info.collision == 1 || list[i].info.oobounds == 1) {list.splice(i, 1)};
     };
 }
 
 function drawlist(list) {
-    for (i = list.length-1; i > -1; i--) {
+    for (i = list.length-1; i >= 0; i--) {
         list[i].info.draw();
     };
 }
