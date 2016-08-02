@@ -26,6 +26,7 @@ var
 WIDTH  = 400,
 HEIGHT = 600,
 pi = Math.PI,
+directioncounter = 0,
 UpArrow   = 38,
 DownArrow = 40,
 LeftArrow = 37,
@@ -76,8 +77,9 @@ player = {
 		if (keystate[SpaceBar]) {
 		    if (this.reload === 0) {
 		        bullets.push(new bullet(this.x, this.y));
+		        enemies.push(new makeEnemy());
 		        this.reload = this.reload_time;
-		        }
+		        };
 		    };
 		
 		if (this.reload > 0) {this.reload -= 1};
@@ -104,38 +106,74 @@ wall = {
 
 bullet = function (xpos,ypos) {
     this.info = {
-    x: xpos,
+    x: xpos + 5,
 	y: ypos,
 	width:  5,
 	height: 5,
 	collision: 0,
+	oobounds: 0,
     
     update: function() {
              this.y -= 20;
              if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y+20 >= wall.y && this.y < wall.y) {this.collision = 1};
+             for (i = enemies.length-1; i > 0; i--) {
+                if (Math.sqrt(Math.pow(enemies[i].info.x - this.x, 2) + Math.pow(enemies[i].info.y - this.y, 2)) <= enemies[i].info.height) {
+                    enemies[i].info.collision = 1;
+                    this.collision = 1;
+                    };
+                }
         },
     
     draw: function() {
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.width/2, 0, 2*pi);
+        ctx.fill();
         }
    };
 },
 
-bullets = [new bullet(player.x, player.y)],
-newbullets = bullets.splice(0);
+bullets = [new bullet(player.x, player.y)];
+enemies = [new makeEnemy()];
     
-function updatebullets() {
-    for (i = bullets.length-1; i > -1; i--) {
-        bullets[i].info.update();
-        if (bullets[i].info.y < 0 || bullets[i].info.collision) {bullets.splice(i, 1)};
+function updatelist(list) {
+    for (i = list.length-1; i > 0; i--) {
+        list[i].info.update();
     };
-}
-function drawbullets() {
-    for (i = bullets.length-1; i > -1; i--) {
-        bullets[i].info.draw();
+    for (i = list.length-1; i > 0; i--) {        
+        if (list[i].info.y < 0 || list[i].info.collision == 1 || list[i].info.oobounds == 1) {list.splice(i, 1)};
     };
 }
 
+function drawlist(list) {
+    for (i = list.length-1; i > -1; i--) {
+        list[i].info.draw();
+    };
+}
+
+function makeEnemy() {
+    this.info = {
+    x: Math.random() * 400,
+	y: 1,
+	width:  30,
+	height: 30,
+	collision: 0,
+	xvel: Math.random()*1-(1/2),
+	yvel: 3,
+	oobounds: 0,
+            
+    update: function() {
+            this.x += this.xvel;
+            this.y += this.yvel;
+            if (this.y > 600 + this.height) {this.oobounds = 1};
+        },
+    
+    draw: function() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.width/2, 0, 2*pi);
+        ctx.fill();
+        }
+   };
+}
 
 function main() {
 	// create, initiate and append game canvas
@@ -173,8 +211,10 @@ function init() {
  */
 function update() {
 	player.update();
-	updatebullets();
+	updatelist(bullets);
+	updatelist(enemies);
 	console.log(bullets.length);
+	//console.log(enemies.length);
 	wall.update();
 	
 }
@@ -186,10 +226,12 @@ function draw() {
 	ctx.save();
 	ctx.fillStyle = "#fff";
 	player.draw();
-	drawbullets();
+	drawlist(bullets);
+	drawlist(enemies);
 	wall.draw();
 	ctx.restore();
 }
+
 // start and run the game
 main();
 </script>
