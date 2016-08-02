@@ -83,7 +83,9 @@ player = {
 		
 		if (keystate[SpaceBar]) {
 		    if (this.reload === 0) {
-		        bullets.push(new bullet(this.x, this.y));
+		    	if (bullets.length == 0){
+			        bullets.push(new bullet(this.x, this.y));
+		    		}
 		        enemies.push(new makeEnemy());
 		        this.reload = this.reload_time;
 		        };
