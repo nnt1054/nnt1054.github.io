@@ -3,6 +3,22 @@
     <link rel="stylesheet" type="text/css" href="ntoledo.css"
     <head>
         <meta charset="UTF-8">
+<meta id="Viewport" name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+<script type="text/javascript">
+$(function(){
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+  var ww = ( $(window).width() < window.screen.width ) ? $(window).width() : window.screen.width; //get proper width
+  var mw = 480; // min width of site
+  var ratio =  ww / mw; //calculate ratio
+  if( ww < mw){ //smaller than minimum size
+   $('#Viewport').attr('content', 'initial-scale=' + ratio + ', maximum-scale=' + ratio + ', minimum-scale=' + ratio + ', user-scalable=yes, width=' + ww);
+  }else{ //regular size
+   $('#Viewport').attr('content', 'initial-scale=1.0, maximum-scale=2, minimum-scale=1.0, user-scalable=yes, width=' + ww);
+  }
+}
+});
+</script>
         <title>Neil N. Toledo</title>
     </head>
 <body>
@@ -29,6 +45,7 @@
     </div>
     
     <div id="content">
+        <h3><font color="red"> *** website still under construction *** </font></h2>
         <h1> hello! </h1>
         <p>Hey! My name is Neil Toledo, I'm 18 (almost 19) years old, and I'm blessed to be a 2nd Year Electrical Engineering and Computer Science (EECS) major (with a probable emphasis on computer science) at UC Berkeley.  While I'm currently living in Southside Berkeley, I'm originally from Chula Vista which resides in San Diego, 7.5 miles from the border.  Unlike many others, I only began my life of computer science in the beginning of Spring 2015, when I abruptly decided to switch out of my Industrial Engineering major.</p>
         
