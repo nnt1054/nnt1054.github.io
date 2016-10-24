@@ -123,10 +123,12 @@ body, html {
 }
 
 .navpic {
+    display: inline;
     height: 24px;
     width: 24px;
     bottom: 12px;
     padding-right: 2px;
+    vertical-align: middle;
 }
 
 .navItem {
