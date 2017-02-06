@@ -123,7 +123,7 @@ bullets = [new bullet(player.x, player.y)];
 enemies = [new makeEnemy()];
     
 function updatelist(list) {
-    for (i = 0; i < list.length; i++) {
+    for (i = 0; i < list.length; i--) {
         list[i].info.update();
     };
     for (i = list.length-1; i >= 0; i--) {        
