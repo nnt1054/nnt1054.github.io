@@ -228,17 +228,23 @@ function main() {
 function init() {
 	player.x = WIDTH/2;
 	player.y = (HEIGHT - player.height)/2;
+	enemies = [];
+	bullets = [];
+	score = 0;
 }
 /**
  * Update all game objects
  */
 function update() {
     if (player.dead){
+        if (keystate[82]) {
+            player.dead = 0;
+            init();
+        }
         } else {
 	player.update();
 	updatelist(bullets);
 	updatelist(enemies);
-	console.log(score);
         }
 	
 }
@@ -260,7 +266,7 @@ function draw() {
                 ctx.font = "25px Helvetica";
                 ctx.fillText("Game Over!", 130, 200);
                 ctx.font = "20px Helvetica";
-                ctx.fillText("refresh to play again", 110, 250);
+                ctx.fillText("press 'R' to play again", 105, 250);
                 };
 	wall.draw();
 	ctx.restore();
