@@ -53,12 +53,6 @@ player = {
 		if (keystate[RightArrow]) this.x += 7;
 		// keep the paddle inside of the canvas
 		this.x = Math.max(Math.min(this.x, WIDTH - this.height), 0);
-		
-				
-        if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y < wall.y+wall.height && this.y+7 >= wall.y) {
-            this.y = wall.y+wall.height };
-        if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y > wall.y && this.y+7 <= wall.y+this.height) {
-            this.y = wall.y-this.height};
 	
 	if (this.enemy_timer <= 0) {
 		enemies.push(new makeEnemy());
@@ -85,16 +79,6 @@ player = {
 		ctx.fillRect(this.x, this.y, this.width, this.height);
 	}
 },
-wall = {
-    x: WIDTH/2 - 25,
-    y: HEIGHT/2,
-    width: 50,
-    height: 10,
-    update: function() {},
-    draw: function() {
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        }
-},
 bullet = function (xpos,ypos) {
     this.info = {
     x: xpos + 5,
@@ -107,7 +91,6 @@ bullet = function (xpos,ypos) {
     
     update: function() {
              this.y -= this.velocity;
-             if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y+20 >= wall.y && this.y < wall.y) {this.collision = 1};
              for (i = enemies.length-1; i >= 0; i--) {
                 if (Math.sqrt(Math.pow(enemies[i].info.x - this.x, 2) + Math.pow(enemies[i].info.y - this.y, 2)) <= enemies[i].info.height) {
                     enemies[i].info.collision = 1;
@@ -268,7 +251,6 @@ function draw() {
                 ctx.font = "20px Helvetica";
                 ctx.fillText("press 'R' to play again", 105, 250);
                 };
-	wall.draw();
 	ctx.restore();
 }
 // start and run the game
