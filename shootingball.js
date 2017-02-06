@@ -11,6 +11,7 @@ DownArrow = 40,
 LeftArrow = 37,
 RightArrow = 39,
 SpaceBar = 32,
+score = 0,
 /**
  * Game elements
  */
@@ -29,7 +30,8 @@ player = {
 	height: 10,
 	reload: 0,
 	reload_time: 10,
-	enemy_timer: 5,
+	enemy_timer: 0,
+	enemy_reset: 30,
 	dead: 0,
 	/**
 	 * Update the position depending on pressed keys
@@ -58,9 +60,10 @@ player = {
         if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y > wall.y && this.y+7 <= wall.y+this.height) {
             this.y = wall.y-this.height};
 	
-	if (this.enemy_timer === 0) {
+	if (this.enemy_timer <= 0) {
 		enemies.push(new makeEnemy());
-		this.enemy_timer = 5;
+		enemies.push(new makeEnemy2());
+		this.enemy_timer = this.enemy_reset - (28 * (score/(score + 5)));
 		};	
 		
 		
@@ -98,16 +101,18 @@ bullet = function (xpos,ypos) {
 	y: ypos,
 	width:  5,
 	height: 5,
+	velocity: 30,
 	collision: 0,
 	oobounds: 0,
     
     update: function() {
-             this.y -= 30;
+             this.y -= this.velocity;
              if (this.x+this.width >= wall.x && this.x <= wall.x+wall.width && this.y+20 >= wall.y && this.y < wall.y) {this.collision = 1};
              for (i = enemies.length-1; i >= 0; i--) {
                 if (Math.sqrt(Math.pow(enemies[i].info.x - this.x, 2) + Math.pow(enemies[i].info.y - this.y, 2)) <= enemies[i].info.height) {
                     enemies[i].info.collision = 1;
                     this.collision = 1;
+                    score += 1;
                     };
                 }
         },
@@ -122,6 +127,14 @@ bullet = function (xpos,ypos) {
 bullets = [new bullet(player.x, player.y)];
 enemies = [new makeEnemy()];
     
+function randY() {
+    if (Math.random() < 0.5) {
+        return 1;
+    } else {
+        return HEIGHT;
+    }    
+}
+
 function updatelist(list) {
     for (j = 0; j < list.length; j++) {
         list[j].info.update();
@@ -150,6 +163,30 @@ function makeEnemy() {
             this.x += this.xvel;
             this.y += this.yvel;
             if (this.y > 600 + this.height) {this.oobounds = 1};
+        },
+    
+    draw: function() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.width/2, 0, 2*pi);
+        ctx.fill();
+        }
+   };
+}
+function makeEnemy2() {
+    this.info = {
+    x: Math.random() * 400,
+	y: HEIGHT,
+	width:  30,
+	height: 30,
+	collision: 0,
+	xvel: Math.random()*1-(1/2),
+	yvel: -3,
+	oobounds: 0,
+            
+    update: function() {
+            this.x += this.xvel;
+            this.y += this.yvel;
+            if (this.y < 1 + this.height) {this.oobounds = 1};
         },
     
     draw: function() {
@@ -201,9 +238,6 @@ function update() {
 	player.update();
 	updatelist(bullets);
 	updatelist(enemies);
-	console.log(bullets.length);
-	//console.log(enemies.length);
-	wall.update();
         }
 	
 }
@@ -217,6 +251,9 @@ function draw() {
 	player.draw();
 	drawlist(bullets);
 	drawlist(enemies);
+	ctx.fillStyle = "blue";
+	ctx.font = "25px Helvetica";
+	ctx.fillText("SCORE: " + score, 10, 30);
 	if (player.dead) {
 	            ctx.fillStyle = "red";
                 ctx.font = "25px Helvetica";
