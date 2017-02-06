@@ -123,8 +123,8 @@ bullets = [new bullet(player.x, player.y)];
 enemies = [new makeEnemy()];
     
 function updatelist(list) {
-    for (i = 0; i < list.length; i--) {
-        list[i].info.update();
+    for (j = 0; j < list.length; j++) {
+        list[j].info.update();
     };
     for (i = list.length-1; i >= 0; i--) {        
         if (list[i].info.y < 0 || list[i].info.collision == 1 || list[i].info.oobounds == 1) {list.splice(i, 1)};
