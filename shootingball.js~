@@ -76,7 +76,10 @@ player = {
 	 * Draw the player paddle to the canvas
 	 */
 	draw: function() {
+	    ctx.beginPath();
+	    ctx.fillStyle = "blue";
 		ctx.fillRect(this.x, this.y, this.width, this.height);
+		ctx.fill();
 	}
 },
 bullet = function (xpos,ypos) {
@@ -102,6 +105,7 @@ bullet = function (xpos,ypos) {
     
     draw: function() {
         ctx.beginPath();
+        ctx.fillStyle = "yellow";
         ctx.arc(this.x, this.y, this.width/2, 0, 2*pi);
         ctx.fill();
         }
@@ -150,6 +154,7 @@ function makeEnemy() {
     
     draw: function() {
         ctx.beginPath();
+        ctx.fillStyle = "gray";
         ctx.arc(this.x, this.y, this.width/2, 0, 2*pi);
         ctx.fill();
         }
@@ -174,6 +179,7 @@ function makeEnemy2() {
     
     draw: function() {
         ctx.beginPath();
+        ctx.fillStyle = "grey";
         ctx.arc(this.x, this.y, this.width/2, 0, 2*pi);
         ctx.fill();
         }
