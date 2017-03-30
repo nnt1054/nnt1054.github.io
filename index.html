@@ -1,60 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" type="text/css" href="ntoledo.css"
+    <link rel="stylesheet" type="text/css" href="main.css">
     <head>
         <meta charset="UTF-8">
-        <script type="text/javascript" lang="javascript" src="jquery-3.1.1.min.js"></script>
-
-<!-- Mobile Compatibility Code -->
-<meta id="Viewport" name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-
-<script type="text/javascript">
-$(function(){
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|Kindle|Silk/i.test(navigator.userAgent) ) {
-  var ww = ( $(window).width() < window.screen.width ) ? $(window).width() : window.screen.width; //get proper width
-  var mw = 480; // min width of site
-  var ratio =  ww / mw; //calculate ratio
-  if( ww < mw){ //smaller than minimum size
-   $('#Viewport').attr('content', 'initial-scale=' + ratio + ', maximum-scale=' + ratio + ', minimum-scale=' + ratio + ', user-scalable=yes, width=' + ww);
-  }else{ //regular size
-   $('#Viewport').attr('content', 'initial-scale=1.0, maximum-scale=2, minimum-scale=1.0, user-scalable=yes, width=' + ww);
-  }
-}
-});
-</script>
-<!-- Mobile Compatibility Code -->
-
+        <meta id="Viewport" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Neil N. Toledo</title>
     </head>
-<body>
-
-    <div id="header">
-        <ul href="#" id="header-contents">
-            <li><a href="index.html" id="initials"> nnt. </a></li>
-            <li><a href="index.html"><img id="home-icon" src="house-icon.png"></a></li>
-        </ul>
-    </div>
-    <img id="menu-icon" src="menu-icon.png">
-    <div id="navbox">
-        <ul id="nav">
-            <li><a href="index.html"><div class="navItem"><img src="assets/nav-home.png" class="navpic">Home</div></a></li>
-            <li><a href="index.html"><div class="navItem"><img src="assets/nav-about.png" class="navpic">About Me</div></a></li>
-            <li><a href="#"><div class="navItem"><img src="assets/nav-personal.png" class="navpic">Personal Projects</div></a></li>
-            <li><a href="shootingball.html"><div class="navItem"><img src="assets/nav-school.png" class="navpic">School Projects</div></a></li>
-            <li><a href="index.html"><div class="navItem"><img src="assets/nav-social.png" class="navpic">Social Media</div></a></li>
-            <li><a href="index.html"><div class="navItem"><img src="assets/nav-contact.png" class="navpic">Contact Me</div></a></li>
-        </ul>
-        <ul id="social-media">
-        </ul>
-    </div>
-
-    <div id="content">
-      <div> <p> haha hey lmao this website is still undergoing some major contruction, but please feel free to <br> check out my chrome extension
-        <a href="https://chrome.google.com/webstore/detail/2days-new-tab/mnfdbhnkhijiebcpcfobpfjdhfejjkem?authuser=1"> 2Day's New Tab Page</a>
-          and here's my current <a href="resume.pdf"> resume</a>. Thanks for having a <a href="shootingball.html"> look</a>! </p>
-      </div>
-    </div>
-
-</body>
-    <script type="text/javascript" lang="javascript" src="ntoledo.js"></script>
+    <body>
+        <div id="center-container">
+            <div>
+                <a href="#"><img id="about-pic" src="assets/about-pic.jpg"></a>
+            </div>
+            <div id="nav-container">
+                <h1> Neil Toledo</h1>
+                <p> Electrical Engineering </p>
+                <p> + Computer Science </p>
+                <p> Berkeley '19 </p>
+                <a href="assets/resume.pdf"> Resume </a>
+                <a href="https://github.com/nnt1054"> Github </a>
+                <a href="https://www.linkedin.com/in/neil-toledo-65a215137/"> LinkedIn </a>
+                <a href="https://chrome.google.com/webstore/detail/2days-new-tab/mnfdbhnkhijiebcpcfobpfjdhfejjkem?authuser=1"> Latest Project </a>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" lang="javascript" src="main.js"></script>
 </html>
