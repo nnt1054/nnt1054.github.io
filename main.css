@@ -56,14 +56,11 @@ video {
 }
 
 #center-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     box-shadow: -6px 6px 3px 3px rgba(0,0,0,0.7);
     border: thin solid black;
     border-radius: 5px;
     background: white;
+    margin-left: -10px;
     padding: 10px;
     display: flex;
     flex-direction: row;
