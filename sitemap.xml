@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://sparanoid.com/</loc>
+    <lastmod>2017-12-10</lastmod>
+  </url>
+
+  
+    
+      <url>
+        <loc>https://sparanoid.com/about/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/blog/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/404.html</loc>
+        
+      </url>
+    
+  
+    
+  
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/news/</loc>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/notes/</loc>
+        
+      </url>
+    
+  
+
+  
+    
+      <url>
+        <loc>https://sparanoid.com/steam-games-on-chromeos.html</loc>
+        
+          <lastmod>2017-10-31</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/notes-introducton.html</loc>
+        
+          <lastmod>2017-10-30</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/blog-introduction.html</loc>
+        
+          <lastmod>2017-10-30</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/upgrading-guide-v1.1.0.html</loc>
+        
+          <lastmod>2017-01-07</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/open-graph.html</loc>
+        
+          <lastmod>2017-01-06</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/jekyll-theme-compatibility.html</loc>
+        
+          <lastmod>2016-11-07</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/theme-curtana.html</loc>
+        
+          <lastmod>2016-06-01</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/deployment-methods.html</loc>
+        
+          <lastmod>2016-03-18</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/multiple-themes-support.html</loc>
+        
+          <lastmod>2015-08-18</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/welcome.html</loc>
+        
+          <lastmod>2014-06-13</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/getting-started.html</loc>
+        
+          <lastmod>2014-06-12</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/customizing-styles.html</loc>
+        
+          <lastmod>2014-06-11</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/configuration.html</loc>
+        
+          <lastmod>2014-06-11</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/themes.html</loc>
+        
+          <lastmod>2014-06-10</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/creating-themes.html</loc>
+        
+          <lastmod>2014-06-09</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/syntax-highlighting.html</loc>
+        
+          <lastmod>2014-06-06</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/markdown-features-test.html</loc>
+        
+          <lastmod>2014-06-06</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/markup-example.html</loc>
+        
+          <lastmod>2014-06-05</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/custom-html-markups.html</loc>
+        
+          <lastmod>2014-06-01</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/custom-color-scheme.html</loc>
+        
+          <lastmod>2014-05-01</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/custom-css.html</loc>
+        
+          <lastmod>2014-04-01</lastmod>
+        
+      </url>
+    
+  
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/external-link-post.html</loc>
+        
+          <lastmod>2014-02-01</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/custom-heading-image.html</loc>
+        
+          <lastmod>2014-02-01</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/custom-heading-background.html</loc>
+        
+          <lastmod>2014-02-01</lastmod>
+        
+      </url>
+    
+  
+    
+      <url>
+        <loc>https://sparanoid.com/github-pages-setup.html</loc>
+        
+          <lastmod>2014-01-01</lastmod>
+        
+      </url>
+    
+  
+
+</urlset>

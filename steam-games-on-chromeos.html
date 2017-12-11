@@ -138,7 +138,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Define a description for better SEO result -->
-<meta name="description" content="a semi technical blog for my studies">
+<meta name="description" content="Setting Up: I installed another chroot on my Samsung Chromebook Pro using: sudo sh ~/Downloads/crouton -t xfce4 -n xenial2 I wanted to make this a seperate chroot from my main CLI only one since I’ll probably end up deleting this...">
 
 <!-- Cheome Web App theme color -->
 <meta name="theme-color" content="#54FF9F">
@@ -262,10 +262,10 @@
 <link rel="stylesheet" href="/assets/themes/curtana/css/app.css?assets-inline">
 
 <!-- Canonical links, avoid duplicate content problems -->
-<link rel="canonical" href="https://sparanoid.com/">
+<link rel="canonical" href="https://sparanoid.com/steam-games-on-chromeos.html">
 
 <!-- DNS prefetching for static files -->
-<link rel="dns-prefetch" href="//sparanoid.s3-website-us-east-1.amazonaws.com">
+
 
 <!-- browser-sync, don't remove this -->
 <!-- BS_INSERT -->
@@ -274,11 +274,11 @@
 
 
 <!-- Open Graph and Twitter Cards support, more info: https://dev.twitter.com/docs/cards -->
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="cencobook">
-<meta property="og:title" content="Neil Toledo">
-<meta property="og:url" content="https://sparanoid.com/">
-<meta property="og:description" content="a semi technical blog for my studies">
+<meta property="og:title" content="Running Steam on a Chromebook">
+<meta property="og:url" content="https://sparanoid.com/steam-games-on-chromeos.html">
+<meta property="og:description" content="Setting Up: I installed another chroot on my Samsung Chromebook Pro using: sudo sh ~/Downloads/crouton -t xfce4 -n xenial2 I wanted to make this a seperate chroot from my main CLI only one since I’ll probably end up deleting this...">
 <meta property="og:image" content="https://sparanoid.com/logo.png">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -291,6 +291,13 @@
   <meta name="twitter:creator" content="@neiltheseel">
 
 
+
+  <meta property="article:published_time" content="2017-10-31T00:00:00-07:00">
+  <meta property="article:modified_time" content="1969-12-31T16:00:00-08:00">
+  <meta name="twitter:label1" value="Words">
+  <meta name="twitter:data1" value="239 words">
+  <meta name="twitter:label2" value="Reading time">
+  <meta name="twitter:data2" value="1 min">
 
 
 <!-- Post specified styles -->
@@ -354,7 +361,7 @@
 
       
       
-      <li class="current">
+      <li>
         <a href="/">
           
             CENCOBOOK
@@ -553,485 +560,76 @@
 
 
 
+<!-- Post-wide custom CSS -->
+
+  
+
 
 <!-- Article wrapper, limit width -->
 <article>
 
   <!-- Post title -->
-  <header>
+  <header style="     ">
 
-    <!--
-    <h1 class="image-title">
-      Neil Toledo
-      <img src="/assets/svg/amsf.svg">
+    <h1 class="
+  
+" title="Running Steam on a Chromebook" data-title="Running Steam on a Chromebook">
+      
+  
+    
+  
+    Running Steam on a Chromebook<span class="dot dot--post"> </span>
+  
+
+  
+
     </h1>
-    -->
 
-    <h1> <a style="color: #54ff9f;">CENCO</a> BOOK</h1>
+    
+      <small>
+        By <span rel="author">Neil Toledo</span>
+        on <time datetime="2017-10-31T00:00:00-07:00">Oct 31, 2017</time>
+      </small>
+    
 
-    <h2 class="sub-title">a simple study reference blog</h2>
+    
 
-    <small>written by an eecs uc berkeley undergrad</small>
   </header>
 
-  <div class="page-content">
-    <h2>Recent Notes</h2>
-    
-      <!-- List snippets -->
+  <!-- Post content -->
+  <div class="post-content">
+    <h2 id="setting-up">Setting Up:</h2>
 
+<p>I installed another chroot on my Samsung Chromebook Pro using:</p>
 
+<div class="language-md highlighter-rouge"><pre class="highlight"><code>sudo sh ~/Downloads/crouton -t xfce4 -n xenial2
+</code></pre>
+</div>
 
+<p>I wanted to make this a seperate chroot from my main CLI only one since I’ll probably end up deleting this one later.  Once the new xfce4 was installed I started it up and installed steam.</p>
 
+<div class="language-md highlighter-rouge"><pre class="highlight"><code>sudo startxfce4
+sudo apt-get install steam
+</code></pre>
+</div>
 
+<p>Once steam was installed, I bought Hollow Knight and Polybridge while it was still on sale and installed Hollow Knight.  There were no issues with the installation suprisingly.</p>
 
+<h2 id="performance">Performance:</h2>
 
+<p>After launching Hollow Knight, I made it to the loading screen perfectly fine.  There was however a very noticeable input lag, so I had to actually reduce the resolution from 2400x1600 all the way to 480p.  The input lag was no longer an issue for any resolutions under 720p.  At 480p, I was able to max the framerates at 60fps and was the most part playable.  However, the frames were too unstable and would stutter too often for comfort, especially for certain areas in the game.  Using the Chromebook Pro for faster paced games like Hollow Knight, it IS playable but only to a certain degree.</p>
 
+<p>I’ll be trying out Polybridge next time, but as far as I can tell, I’m almost certain the Chromebook Pro will be able to hold up for more slower paced games.</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dynamic link color based on post color scheme -->
-
-
-<!-- Dynamic background color based on post color scheme -->
-
-
-<section class="list">
-  <h1>
-    <!-- Item title -->
-    <a href="/notes-introducton.html">Notes Introduction</a>
-
-    <!-- External link indicator -->
-    
-  </h1>
-</section>
 
     
     
-    <h2>Recent Blog Posts</h2>
-    
-      <!-- List snippets -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dynamic link color based on post color scheme -->
-
-
-<!-- Dynamic background color based on post color scheme -->
-
-
-<section class="list">
-  <h1>
-    <!-- Item title -->
-    <a href="/steam-games-on-chromeos.html">Running Steam on a Chromebook</a>
-
-    <!-- External link indicator -->
-    
-  </h1>
-</section>
-
-    
-      <!-- List snippets -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dynamic link color based on post color scheme -->
-
-
-<!-- Dynamic background color based on post color scheme -->
-
-
-<section class="list">
-  <h1>
-    <!-- Item title -->
-    <a href="/blog-introduction.html">Blog Introduction</a>
-
-    <!-- External link indicator -->
-    
-  </h1>
-</section>
 
     
   </div>
+
 </article>
+
 
 </main>
 

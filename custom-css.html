@@ -138,10 +138,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Define a description for better SEO result -->
-<meta name="description" content="a semi technical blog for my studies">
+<meta name="description" content="This is an example how to change your post styling via CSS. You can simply add the css option to your post front-matter field: scheme-text: &quot;#000&quot; scheme-link: &quot;#a73300&quot; scheme-hover: &quot;#ff4e00&quot; scheme-code: &quot;#a73300&quot; css: | body { background-image: linear-g...">
 
 <!-- Cheome Web App theme color -->
-<meta name="theme-color" content="#54FF9F">
+<meta name="theme-color" content="#a73300">
 
 <!-- Feed URL -->
 <link rel="alternate" href="/feed.xml" type="application/atom+xml">
@@ -248,7 +248,7 @@
     
 
     
-      <link rel="mask-icon" href="/mask-icon.svg" color="#54FF9F">
+      <link rel="mask-icon" href="/mask-icon.svg" color="#a73300">
     
 
     
@@ -262,10 +262,10 @@
 <link rel="stylesheet" href="/assets/themes/curtana/css/app.css?assets-inline">
 
 <!-- Canonical links, avoid duplicate content problems -->
-<link rel="canonical" href="https://sparanoid.com/">
+<link rel="canonical" href="https://sparanoid.com/custom-css.html">
 
 <!-- DNS prefetching for static files -->
-<link rel="dns-prefetch" href="//sparanoid.s3-website-us-east-1.amazonaws.com">
+
 
 <!-- browser-sync, don't remove this -->
 <!-- BS_INSERT -->
@@ -274,11 +274,11 @@
 
 
 <!-- Open Graph and Twitter Cards support, more info: https://dev.twitter.com/docs/cards -->
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="cencobook">
-<meta property="og:title" content="Neil Toledo">
-<meta property="og:url" content="https://sparanoid.com/">
-<meta property="og:description" content="a semi technical blog for my studies">
+<meta property="og:title" content="Unique Post Styling via Custom CSS">
+<meta property="og:url" content="https://sparanoid.com/custom-css.html">
+<meta property="og:description" content="This is an example how to change your post styling via CSS. You can simply add the css option to your post front-matter field: scheme-text: &quot;#000&quot; scheme-link: &quot;#a73300&quot; scheme-hover: &quot;#ff4e00&quot; scheme-code: &quot;#a73300&quot; css: | body { background-image: linear-g...">
 <meta property="og:image" content="https://sparanoid.com/logo.png">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -291,6 +291,13 @@
   <meta name="twitter:creator" content="@neiltheseel">
 
 
+
+  <meta property="article:published_time" content="2014-04-01T00:00:00-07:00">
+  <meta property="article:modified_time" content="1969-12-31T16:00:00-08:00">
+  <meta name="twitter:label1" value="Words">
+  <meta name="twitter:data1" value="60 words">
+  <meta name="twitter:label2" value="Reading time">
+  <meta name="twitter:data2" value="Less than 1 min">
 
 
 <!-- Post specified styles -->
@@ -306,6 +313,8 @@
 
   body {
     
+    color: #000;
+    
 
     
 
@@ -313,9 +322,23 @@
   }
 
   
-
+  a,
+  button {
+    color: #000;
+  }
   
 
+  
+  ::selection {
+    color: #a73300;
+  }
+  
+
+  
+  .navigation li a:hover,
+  .navigation li a:focus {
+    color: #ff4e00;
+  }
   
 
   
@@ -323,7 +346,20 @@
     
 
   
+  .current a {
+    color: #a73300;
+  }
 
+  .content a {
+    color: #a73300;
+  }
+  
+
+  
+  .content code,
+  .content pre {
+    color: #a73300;
+  }
   
 
   /*
@@ -331,11 +367,34 @@
     Date: Mar 12, 2016, 12:09 AM
   */
   
-
+  .content hr::before,
+  .footnotes::before {
+    background: #000;
+    box-shadow: 24px 0 0 0 #000, -24px 0 0 0 #000;
+  }
   
 
   
+  .note,
+  .store,
+  .download {
+    border-left-color: #a73300;
+  }
+  
 
+  
+  .external .dot {
+    background: #a73300;
+  }
+  
+
+  
+  :target [rev=footnote],
+  :target [rel=footnote],
+  :target .reversefootnote,
+  :target .footnote {
+    color: #ff4e00;
+  }
   
 </style>
 
@@ -354,7 +413,7 @@
 
       
       
-      <li class="current">
+      <li>
         <a href="/">
           
             CENCOBOOK
@@ -553,485 +612,75 @@
 
 
 
+<!-- Post-wide custom CSS -->
+
+  
+    <style>
+      body {
+  background-image: linear-gradient(to bottom, #fff500, #ff8f00);
+}
+
+    </style>
+  
+
 
 <!-- Article wrapper, limit width -->
 <article>
 
   <!-- Post title -->
-  <header>
+  <header style="     ">
 
-    <!--
-    <h1 class="image-title">
-      Neil Toledo
-      <img src="/assets/svg/amsf.svg">
+    <h1 class="
+  
+" title="Unique Post Styling via Custom CSS" data-title="Unique Post Styling via Custom CSS">
+      
+  
+    
+  
+    Unique Post Styling via Custom CSS<span class="dot dot--post"> </span>
+  
+
+  
+
     </h1>
-    -->
 
-    <h1> <a style="color: #54ff9f;">CENCO</a> BOOK</h1>
+    
+      <small>
+        By <span rel="author">Neil Toledo</span>
+        on <time datetime="2014-04-01T00:00:00-07:00">Apr 1, 2014</time>
+      </small>
+    
 
-    <h2 class="sub-title">a simple study reference blog</h2>
+    
 
-    <small>written by an eecs uc berkeley undergrad</small>
   </header>
 
-  <div class="page-content">
-    <h2>Recent Notes</h2>
-    
-      <!-- List snippets -->
+  <!-- Post content -->
+  <div class="post-content">
+    <p>This is an example how to change your post styling via CSS. You can simply add the <code class="highlighter-rouge">css</code> option to your post <a href="http://jekyllrb.com/docs/frontmatter/">front-matter field</a>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>scheme-text: "#000"
+scheme-link: "#a73300"
+scheme-hover: "#ff4e00"
+scheme-code: "#a73300"
+css: |
+  body {
+    background-image: linear-gradient(to bottom, #fff500, #ff8f00);
+  }
+</code></pre>
+</div>
+
+<p>Please note that syntax highligting may look ugly with custom background color.</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dynamic link color based on post color scheme -->
-
-
-<!-- Dynamic background color based on post color scheme -->
-
-
-<section class="list">
-  <h1>
-    <!-- Item title -->
-    <a href="/notes-introducton.html">Notes Introduction</a>
-
-    <!-- External link indicator -->
-    
-  </h1>
-</section>
 
     
     
-    <h2>Recent Blog Posts</h2>
-    
-      <!-- List snippets -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dynamic link color based on post color scheme -->
-
-
-<!-- Dynamic background color based on post color scheme -->
-
-
-<section class="list">
-  <h1>
-    <!-- Item title -->
-    <a href="/steam-games-on-chromeos.html">Running Steam on a Chromebook</a>
-
-    <!-- External link indicator -->
-    
-  </h1>
-</section>
-
-    
-      <!-- List snippets -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Dynamic link color based on post color scheme -->
-
-
-<!-- Dynamic background color based on post color scheme -->
-
-
-<section class="list">
-  <h1>
-    <!-- Item title -->
-    <a href="/blog-introduction.html">Blog Introduction</a>
-
-    <!-- External link indicator -->
-    
-  </h1>
-</section>
 
     
   </div>
+
 </article>
+
 
 </main>
 
