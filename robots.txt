@@ -1,4 +1,4 @@
 User-agent: *
 
 
-Sitemap: https://sparanoid.com/sitemap.xml
+Sitemap: https://sparanoid.com/lab/amsf/sitemap.xml
