@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>cencobook</title><subtitle>a semi technical blog for my studies</subtitle><updated>2017-12-15T03:36:13-08:00</updated><id>https://sparanoid.com/</id><generator uri="https://sparanoid.com/lab/amsf/" version="1.1.8">Almace Scaffolding</generator><link rel="alternate" type="text/html" hreflang="en" href="https://sparanoid.com/" /><link rel="self" type="application/atom+xml" href="https://sparanoid.com/feed.xml" /><author><name>Neil Toledo</name><uri>https://sparanoid.com/</uri><email>ntoledo@berkeley.edu</email></author><entry><title>Recurrence Relation</title><id>https://sparanoid.com/recurrence-relations.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/recurrence-relations.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T03:35:58-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/"></content><summary></summary></entry><entry><title>Primality Testing</title><id>https://sparanoid.com/primality-testing.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/primality-testing.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T02:04:54-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>cencobook</title><subtitle>a semi technical blog for my studies</subtitle><updated>2017-12-15T10:56:41-08:00</updated><id>https://sparanoid.com/</id><generator uri="https://sparanoid.com/lab/amsf/" version="1.1.8">Almace Scaffolding</generator><link rel="alternate" type="text/html" hreflang="en" href="https://sparanoid.com/" /><link rel="self" type="application/atom+xml" href="https://sparanoid.com/feed.xml" /><author><name>Neil Toledo</name><uri>https://sparanoid.com/</uri><email>ntoledo@berkeley.edu</email></author><entry><title>Recurrence Relations</title><id>https://sparanoid.com/recurrence-relations.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/recurrence-relations.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;recurrence-relations&quot;&gt;Recurrence Relations&lt;/h2&gt;
+&lt;p&gt;Mathematically reducing the runtime of a function/algorithm/process through recursively solving subproblems of the original problem.&lt;/p&gt;
+
+&lt;h2 id=&quot;master-theorem&quot;&gt;Master Theorem&lt;/h2&gt;
+&lt;p&gt;Master Theorem:&lt;/p&gt;
+
+&lt;p class=&quot;note&quot;&gt;T(n) = aT(n/b) + O(n&lt;sup&gt;d&lt;/sup&gt;)&lt;/p&gt;
+
+&lt;p class=&quot;note&quot;&gt;T(n) E O(n&lt;sup&gt;d&lt;/sup&gt;)         if d &amp;gt; log_b(a)&lt;br /&gt;
+T(n) E O(n&lt;sup&gt;log_b(a)&lt;/sup&gt;)  if d &amp;lt; log_b(a)&lt;br /&gt;
+T(n) E O(n&lt;sup&gt;d&lt;/sup&gt;log(n)    if d = log_b(a)&lt;/p&gt;
+
+&lt;p&gt;If an equation does not fit the Master Theorem, you must expand the recurrence and find patterns yourself.&lt;/p&gt;
+
+&lt;h2 id=&quot;solving-recurrence-relations&quot;&gt;Solving Recurrence Relations&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Check if the problem fits the Master Theorem&lt;/li&gt;
+  &lt;li&gt;If not, unravel the relation until you’re able to find a pattern.&lt;/li&gt;
+  &lt;li&gt;Find a value for the variable, k, such that The input to T(n) is constant.  This is the base case.&lt;/li&gt;
+  &lt;li&gt;Plug in the value of k, and the solution is whichever remaining term is larger and dominates the run time.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;divide-and-conquering&quot;&gt;Divide and Conquering&lt;/h2&gt;
+&lt;p&gt;Extending from recurrence relations, a problem can be solved more efficiently by solving smaller parts of a larger problem and somehow combining the results.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Common problems require picking a “pivot” at which to divide elements of a problem at each step.&lt;/li&gt;
+  &lt;li&gt;Think about how to discard elements you no longer need at each step.&lt;/li&gt;
+&lt;/ul&gt;
+
+          
+          
+        
+      
+        </content><summary>Recurrence RelationsMathematically reducing the runtime of a function/algorithm/process through recursively solving subproblems of the original problem.</summary></entry><entry><title>Primality Testing</title><id>https://sparanoid.com/primality-testing.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/primality-testing.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;fermats-little-theorem&quot;&gt;Fermat’s Little Theorem&lt;/h2&gt;
 &lt;p&gt;Given a prime number, &lt;em&gt;p&lt;/em&gt;, for any integer &lt;em&gt;a&lt;/em&gt;:&lt;/p&gt;
@@ -19,11 +54,14 @@
           
         
       
-        </content><summary>Fermat’s Little TheoremGiven a prime number, p, for any integer a:</summary></entry><entry><title>Max Flow</title><id>https://sparanoid.com/max-flow.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/max-flow.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T02:42:18-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Fermat’s Little TheoremGiven a prime number, p, for any integer a:</summary></entry><entry><title>Max Flow</title><id>https://sparanoid.com/max-flow.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/max-flow.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;max-flow&quot;&gt;Max Flow&lt;/h2&gt;
 &lt;p&gt;Given a directed graph with edge capacity constraints, send as many units of “flow” from the source &lt;em&gt;s&lt;/em&gt; to the the sink &lt;em&gt;t&lt;/em&gt;.
 In order to find the max flow, keep sending units of flow through the shortest available path from s to t using BFS.&lt;/p&gt;
+
+&lt;h2 id=&quot;min-cut&quot;&gt;Min Cut&lt;/h2&gt;
+&lt;p&gt;The minimum cut is the dual of max cut.  The minimum cut of a graph is a partition of a graph into two disjoint subsets that are joined together by at least one edge.&lt;/p&gt;
 
 &lt;h2 id=&quot;using-max-flow-to-solve-problems&quot;&gt;Using Max Flow to Solve Problems&lt;/h2&gt;
 &lt;ul&gt;
@@ -36,7 +74,115 @@ In order to find the max flow, keep sending units of flow through the shortest a
           
         
       
-        </content><summary>Max FlowGiven a directed graph with edge capacity constraints, send as many units of “flow” from the source s to the the sink t.In order to find the max flow, keep sending units of flow through the shortest available path from s to t using BFS.</summary></entry><entry><title>LP Duality</title><id>https://sparanoid.com/duality.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/duality.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T02:28:11-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Max FlowGiven a directed graph with edge capacity constraints, send as many units of “flow” from the source s to the the sink t.In order to find the max flow, keep sending units of flow through the shortest available path from s to t using BFS.</summary></entry><entry><title>Linear Programming</title><id>https://sparanoid.com/linear-programming.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/linear-programming.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T10:32:39-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;linear-programming&quot;&gt;Linear Programming&lt;/h2&gt;
+&lt;p&gt;Linear programming is a method of framing an optimization problem using a set of linear constraints and an objecive function to optimize.  LP’s are then generally solved using the &lt;strong&gt;simplex algorithm&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;definitions&quot;&gt;Definitions&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Feasible Region: the points that don’t violate any constraints&lt;/li&gt;
+  &lt;li&gt;Infeasible LP: an LP in which the feasible region is empty&lt;/li&gt;
+  &lt;li&gt;Unbounded LP: an LP in which the constraints allow for the objective function to grow arbitrarily large or arbitrarily small.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;writing-linear-programs&quot;&gt;Writing Linear Programs&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;List the objective&lt;/li&gt;
+  &lt;li&gt;Decide what variables required&lt;/li&gt;
+  &lt;li&gt;Rewrite objective with defined variables&lt;/li&gt;
+  &lt;li&gt;Encode constraints from new objective&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Linear constraints can &lt;strong&gt;not&lt;/strong&gt; be inclusive and must be inclusive.&lt;/li&gt;
+  &lt;li&gt;Remember variables should represent quantities that can &lt;em&gt;vary&lt;/em&gt; when creating your constraints&lt;/li&gt;
+&lt;/ul&gt;
+
+          
+          
+        
+      
+        </content><summary>Linear ProgrammingLinear programming is a method of framing an optimization problem using a set of linear constraints and an objecive function to optimize.  LP’s are then generally solved using the simplex algorithm.</summary></entry><entry><title>Greedy Algorithms</title><id>https://sparanoid.com/greedy-algorithms.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/greedy-algorithms.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T09:37:04-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;greedy-algorithms&quot;&gt;Greedy Algorithms&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;greedy algorithm&lt;/strong&gt; is one that optimizes its solution by picking the best option step by step.  Examples include &lt;strong&gt;Kruskal’s&lt;/strong&gt; which continues to find the next &lt;em&gt;lighest&lt;/em&gt; edge and &lt;strong&gt;Huffman&lt;/strong&gt; that always merges the two &lt;em&gt;lowest&lt;/em&gt; frequencies.&lt;/p&gt;
+
+&lt;p&gt;Swap Argument:  The easiest way to prove the solution to a greedy algorithm is an optimal solution is through the swap argument.  The consists of “swapping” two elements in an ordering and proving that the new ordering isn’t optimal.  It follows that swapping any of the other items in the solution will always create a non-optimal solution, making the current one the optimal.&lt;/p&gt;
+
+&lt;h2 id=&quot;forming-greedy-algorithms&quot;&gt;Forming Greedy Algorithms&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;List down relevant factors to optimize&lt;/li&gt;
+  &lt;li&gt;Combine ideas into a single metric&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;general-ideas&quot;&gt;General Ideas&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;First to Completion is most of the time optimal&lt;/li&gt;
+  &lt;li&gt;Scheduling events at last available slots maximizes time to schedule other events&lt;/li&gt;
+&lt;/ul&gt;
+
+          
+          
+        
+      
+        </content><summary>Greedy AlgorithmsA greedy algorithm is one that optimizes its solution by picking the best option step by step.  Examples include Kruskal’s which continues to find the next lighest edge and Huffman that always merges the two lowest frequencies.</summary></entry><entry><title>Graph Traversals and Paths</title><id>https://sparanoid.com/graphs.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/graphs.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T10:54:50-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;definitions&quot;&gt;Definitions:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;SPT: Shortest Spanning Tree&lt;/li&gt;
+  &lt;li&gt;DAG: Directed Acyclic Graph&lt;/li&gt;
+  &lt;li&gt;SCC: Strongly Connected Component&lt;/li&gt;
+  &lt;li&gt;Topological Sort: An ordering of verticies such that for every edge(u,v), u comes before v in the ordering.
+    &lt;ul&gt;
+      &lt;li&gt;Can sort by decreasing post-visit numbers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bellman-Ford: computes shortest path from a source vertex and can handle negatively weighted edges.
+    &lt;ul&gt;
+      &lt;li&gt;Update every edge andif the distance to the destination can be shortened by taking the edge, the distance is updated to the new lower value&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;DFS: Depth First Search&lt;/li&gt;
+  &lt;li&gt;BFS: Breadth First Search&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;dijkstras-algorithm&quot;&gt;Dijkstra’s algorithm&lt;/h2&gt;
+&lt;p&gt;Dijkstra’s algorithm is used to find the shortest path between nodes in a graph.  Dijkstra’s works by calculating the tentative distances from the initial node for all nodes until we arrive at the target node.  For every node, we visit each of its neighbors and set the distance for them to the minimum between its current distance (if its distance has been set) and the sum between the current node’s distance and the edge weight between the two.&lt;/p&gt;
+
+          
+          
+        
+      
+        </content><summary>Definitions:  SPT: Shortest Spanning Tree  DAG: Directed Acyclic Graph  SCC: Strongly Connected Component  Topological Sort: An ordering of verticies such that for every edge(u,v), u comes before v in the ordering.          Can sort by decreasing post-visit numbers        Bellman-Ford: computes shortest path from a source vertex and can handle negatively weighted edges.          Update every edge andif the distance to the destination can be shortened by taking the edge, the distance is updated to the new lower value        DFS: Depth First Search  BFS: Breadth First Search</summary></entry><entry><title>Dynamic Programming</title><id>https://sparanoid.com/dyanmic-programming.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/dyanmic-programming.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T10:11:39-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;dynamic-programming&quot;&gt;Dynamic Programming&lt;/h2&gt;
+&lt;p&gt;As opposed to greedy algorithms, dynamic programming aims to solve problems in a more systematic and incremental manner by defining a subproblem, a recurrence relation, and base cases.&lt;/p&gt;
+
+&lt;h2 id=&quot;subproblems&quot;&gt;Subproblems&lt;/h2&gt;
+&lt;p&gt;Subproblems are meant to represent a single component of the entire problem, so it is key that these are defined well.  Subproblems are most used to define what the optimal solution is for only its given component of the problem.&lt;/p&gt;
+
+&lt;h2 id=&quot;recurrence-relation&quot;&gt;Recurrence Relation&lt;/h2&gt;
+&lt;p&gt;The recurrence relation shows exactly how each subproblem relates to each other, and how we’re able to deterimine the values for other subproblems.  For example, a subproblem, F(x) could equal F(x) = max(F(x-1), F(x-2))&lt;/p&gt;
+
+&lt;h2 id=&quot;base-case&quot;&gt;Base Case&lt;/h2&gt;
+&lt;p&gt;The base cases are the inputs to the subproblem that could be easily solved.&lt;/p&gt;
+
+&lt;h2 id=&quot;strategies-for-creating-dp-solutions&quot;&gt;Strategies for Creating DP Solutions&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;List down metrics/info needed to know at any point in time&lt;/li&gt;
+  &lt;li&gt;Subproblems must have a repetitive structure where the solution for one subproblem must provide information for another.&lt;/li&gt;
+  &lt;li&gt;Include one paramter for every degree of freedom in the problem&lt;/li&gt;
+  &lt;li&gt;Recurrence relation should consider all possible options that directly lead to it.&lt;/li&gt;
+  &lt;li&gt;Ensure there exists an acceptable base case such that not every case is a base case.  Define and precompute one if necessary.&lt;/li&gt;
+&lt;/ul&gt;
+
+          
+          
+        
+      
+        </content><summary>Dynamic ProgrammingAs opposed to greedy algorithms, dynamic programming aims to solve problems in a more systematic and incremental manner by defining a subproblem, a recurrence relation, and base cases.</summary></entry><entry><title>Duality and Zero Sum Games</title><id>https://sparanoid.com/duality.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/duality.html" /><published>2017-12-15T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;duality&quot;&gt;Duality&lt;/h2&gt;
 &lt;p&gt;Duality is the phenomenon where for any &lt;em&gt;primal&lt;/em&gt; LP, there exists a &lt;em&gt;dual&lt;/em&gt; LP that are both optimal for the same question.  The main idea is for any max LP, we can create a min LP that returns an upper bound for the primal question by introducing a set of non-negative multipliers.
@@ -50,59 +196,11 @@ In order to find the max flow, keep sending units of flow through the shortest a
   &lt;li&gt;Use primal objective to write new dual and nonnegativity constraints&lt;/li&gt;
 &lt;/ol&gt;
 
-          
-          
-        
-      
-        </content><summary>DualityDuality is the phenomenon where for any primal LP, there exists a dual LP that are both optimal for the same question.  The main idea is for any max LP, we can create a min LP that returns an upper bound for the primal question by introducing a set of non-negative multipliers.</summary></entry><entry><title>Approximation Algorithms</title><id>https://sparanoid.com/approximation-algorithms.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/approximation-algorithms.html" /><published>2017-12-14T00:00:00-08:00</published><updated>2017-12-14T22:08:47-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
-          
-            &lt;h2 id=&quot;approximation-ratio&quot;&gt;Approximation Ratio&lt;/h2&gt;
-&lt;p&gt;Given an instance I, and its approximation solution A(I), its approximation ratio is:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;For Max Problems:
-    &lt;ul&gt;
-      &lt;li&gt;min&lt;sub&gt;I&lt;/sub&gt;(&lt;sup&gt;A(I)&lt;/sup&gt; / &lt;sub&gt;OPT(I)&lt;/sub&gt;) &amp;lt;= 1&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;For Min Problems:
-    &lt;ul&gt;
-      &lt;li&gt;max&lt;sub&gt;I&lt;/sub&gt;(&lt;sup&gt;A(I)&lt;/sup&gt; / &lt;sub&gt;OPT(I)&lt;/sub&gt;) &amp;gt;= 1
-note: figure out how to format mathematical equations later&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;zero-sum-games&quot;&gt;Zero Sum Games:&lt;/h2&gt;
 
-&lt;h2 id=&quot;general-approximation-strategy&quot;&gt;General Approximation Strategy&lt;/h2&gt;
-&lt;p&gt;For minimization problems, try to:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Solve a different problem that can be used as a &lt;em&gt;relaxed&lt;/em&gt; lower bound for the optimal solution.&lt;/li&gt;
-  &lt;li&gt;Turn the infeasible solution into a feasible one by increasing its approximation ratio.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;The concept of duality can be applied and seen through zero sum games between a row and column player’s strategy.&lt;/p&gt;
 
-&lt;p&gt;The goal is to try and show that the Infeasible(Lower Bound) &amp;lt; OPT &amp;lt; k&lt;code&gt;&amp;ast;&lt;/code&gt;Infeasible(or Approximation) &amp;lt; k&lt;code&gt;&amp;ast;&lt;/code&gt;Lower Bound&lt;/p&gt;
-
-&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;For minimization problems, we want the approximation ratio to be as low as possible.&lt;/li&gt;
-  &lt;li&gt;Approximations are &lt;strong&gt;not&lt;/strong&gt; preserved through reductions since other problems have different approximation metrics.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;general-strategies-for-solving-problems&quot;&gt;General Strategies for Solving Problems&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;List out different strategies you can try&lt;/li&gt;
-  &lt;li&gt;If a + b = c, where c is the optimal solution, either a or b will be at least 0.5&lt;code&gt;&amp;ast;&lt;/code&gt;c&lt;/li&gt;
-  &lt;li&gt;For DAG and graph problems, try rearranging vertices in a straight line.&lt;/li&gt;
-&lt;/ul&gt;
-
-          
-          
-        
-      
-        </content><summary>Approximation RatioGiven an instance I, and its approximation solution A(I), its approximation ratio is:  For Max Problems:          minI(A(I) / OPT(I)) &amp;lt;= 1        For Min Problems:          maxI(A(I) / OPT(I)) &amp;gt;= 1note: figure out how to format mathematical equations later      </summary></entry><entry><title>Zero Sum Games</title><id>https://sparanoid.com/zero-sum-games.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/zero-sum-games.html" /><published>2017-12-13T00:00:00-08:00</published><updated>2017-12-14T21:46:46-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
-          
-            &lt;h2 id=&quot;goal&quot;&gt;Goal:&lt;/h2&gt;
-
-&lt;p&gt;Develop a strategy to maximize your own score while minimizing your opponents, using an immediate payoff matrix and assumming both players play optimally.&lt;/p&gt;
+&lt;p&gt;Goal: Develop a strategy to maximize your own score while minimizing your opponents, using an immediate payoff matrix and assumming both players play optimally.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -149,13 +247,57 @@ note: figure out how to format mathematical equations later&lt;/li&gt;
   &lt;li&gt;x&lt;sub&gt;0&lt;/sub&gt; + x&lt;sub&gt;1&lt;/sub&gt; = 1&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Note: The LP for the Row Player and the LP for the Column Player are &lt;em&gt;Dual&lt;/em&gt; to each other despite which player announces their strategy first.&lt;/p&gt;
+&lt;p&gt;The LP for the Row Player and the LP for the Column Player are &lt;em&gt;Dual&lt;/em&gt; to each other despite which player announces their strategy first.&lt;/p&gt;
 
           
           
         
       
-        </content><summary>Goal:</summary></entry><entry><title>Algorithm Complexity</title><id>https://sparanoid.com/reduction-and-complexity.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/reduction-and-complexity.html" /><published>2017-12-13T00:00:00-08:00</published><updated>2017-12-15T03:33:51-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>DualityDuality is the phenomenon where for any primal LP, there exists a dual LP that are both optimal for the same question.  The main idea is for any max LP, we can create a min LP that returns an upper bound for the primal question by introducing a set of non-negative multipliers.</summary></entry><entry><title>Approximation Algorithms</title><id>https://sparanoid.com/approximation-algorithms.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/approximation-algorithms.html" /><published>2017-12-14T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;approximation-ratio&quot;&gt;Approximation Ratio&lt;/h2&gt;
+&lt;p&gt;Given an instance I, and its approximation solution A(I), its approximation ratio is:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;For Max Problems:
+    &lt;ul&gt;
+      &lt;li&gt;min&lt;sub&gt;I&lt;/sub&gt;(&lt;sup&gt;A(I)&lt;/sup&gt; / &lt;sub&gt;OPT(I)&lt;/sub&gt;) &amp;lt;= 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;For Min Problems:
+    &lt;ul&gt;
+      &lt;li&gt;max&lt;sub&gt;I&lt;/sub&gt;(&lt;sup&gt;A(I)&lt;/sup&gt; / &lt;sub&gt;OPT(I)&lt;/sub&gt;) &amp;gt;= 1
+note: figure out how to format mathematical equations later&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;general-approximation-strategy&quot;&gt;General Approximation Strategy&lt;/h2&gt;
+&lt;p&gt;For minimization problems, try to:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Solve a different problem that can be used as a &lt;em&gt;relaxed&lt;/em&gt; lower bound for the optimal solution.&lt;/li&gt;
+  &lt;li&gt;Turn the infeasible solution into a feasible one by increasing its approximation ratio.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The goal is to try and show that the Infeasible(Lower Bound) &amp;lt; OPT &amp;lt; k&lt;code&gt;&amp;ast;&lt;/code&gt;Infeasible(or Approximation) &amp;lt; k&lt;code&gt;&amp;ast;&lt;/code&gt;Lower Bound&lt;/p&gt;
+
+&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;For minimization problems, we want the approximation ratio to be as low as possible.&lt;/li&gt;
+  &lt;li&gt;Approximations are &lt;strong&gt;not&lt;/strong&gt; preserved through reductions since other problems have different approximation metrics.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;general-strategies-for-solving-problems&quot;&gt;General Strategies for Solving Problems&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;List out different strategies you can try&lt;/li&gt;
+  &lt;li&gt;If a + b = c, where c is the optimal solution, either a or b will be at least 0.5&lt;code&gt;&amp;ast;&lt;/code&gt;c&lt;/li&gt;
+  &lt;li&gt;For DAG and graph problems, try rearranging vertices in a straight line.&lt;/li&gt;
+&lt;/ul&gt;
+
+          
+          
+        
+      
+        </content><summary>Approximation RatioGiven an instance I, and its approximation solution A(I), its approximation ratio is:  For Max Problems:          minI(A(I) / OPT(I)) &amp;lt;= 1        For Min Problems:          maxI(A(I) / OPT(I)) &amp;gt;= 1note: figure out how to format mathematical equations later      </summary></entry><entry><title>Algorithm Complexity</title><id>https://sparanoid.com/reduction-and-complexity.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/reduction-and-complexity.html" /><published>2017-12-13T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;reductions&quot;&gt;Reductions:&lt;/h2&gt;
 &lt;ul&gt;
@@ -228,7 +370,7 @@ note: figure out how to format mathematical equations later&lt;/li&gt;
           
         
       
-        </content><summary>Reductions:  A –&amp;gt; B means reducing an algorithm A to an algorithm B  Reducing an algorithm A to B creates an instance f(I) from the original instance, I, that can then be used with the algorithm B.  The solution S can then be used to get h(S) which is the solution for A.  If an algorithm A can be reduced to another algorithm B, that means B is at least as hard as A.</summary></entry><entry><title>Running Steam on a Chromebook</title><id>https://sparanoid.com/steam-games-on-chromeos.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/steam-games-on-chromeos.html" /><published>2017-10-31T00:00:00-07:00</published><updated>2017-10-31T04:12:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Reductions:  A –&amp;gt; B means reducing an algorithm A to an algorithm B  Reducing an algorithm A to B creates an instance f(I) from the original instance, I, that can then be used with the algorithm B.  The solution S can then be used to get h(S) which is the solution for A.  If an algorithm A can be reduced to another algorithm B, that means B is at least as hard as A.</summary></entry><entry><title>Running Steam on a Chromebook</title><id>https://sparanoid.com/steam-games-on-chromeos.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/steam-games-on-chromeos.html" /><published>2017-10-31T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;setting-up&quot;&gt;Setting Up:&lt;/h2&gt;
 
@@ -257,7 +399,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>Setting Up:</summary></entry><entry><title>Notes Introduction</title><id>https://sparanoid.com/notes-introducton.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/notes-introducton.html" /><published>2017-10-30T00:00:00-07:00</published><updated>2017-10-30T17:11:50-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Setting Up:</summary></entry><entry><title>Notes Introduction</title><id>https://sparanoid.com/notes-introducton.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/notes-introducton.html" /><published>2017-10-30T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;welcome&quot;&gt;Welcome!&lt;/h2&gt;
 
@@ -269,7 +411,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>Welcome!</summary></entry><entry><title>Blog Introduction</title><id>https://sparanoid.com/blog-introduction.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/blog-introduction.html" /><published>2017-10-30T00:00:00-07:00</published><updated>2017-10-30T17:45:08-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Welcome!</summary></entry><entry><title>Blog Introduction</title><id>https://sparanoid.com/blog-introduction.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/blog-introduction.html" /><published>2017-10-30T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;welcome&quot;&gt;Welcome!&lt;/h2&gt;
 
@@ -304,7 +446,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>There’re some significant changes in update v1.1.0, action required after you upgrade Almace Scaffolding.</summary></entry><entry><title>Open Graph</title><id>https://sparanoid.com/open-graph.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/open-graph.html" /><published>2017-01-06T00:00:00-08:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>There’re some significant changes in update v1.1.0, action required after you upgrade Almace Scaffolding.</summary></entry><entry><title>Open Graph</title><id>https://sparanoid.com/open-graph.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/open-graph.html" /><published>2017-01-06T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;Theme Curtana has full &lt;a href=&quot;http://ogp.me/&quot;&gt;Open Graph&lt;/a&gt; and &lt;a href=&quot;https://dev.twitter.com/docs/cards&quot;&gt;Twitter Cards&lt;/a&gt; support.&lt;/p&gt;
 
@@ -343,7 +485,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>With recent release of Jekyll, it gets the built-in ability to support themes, since we’ve already added theme support in 2015, the original config variables theme would be conflicted with the built-in one.</summary></entry><entry><title>Introducing Curtana</title><id>https://sparanoid.com/theme-curtana.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/theme-curtana.html" /><published>2016-06-01T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>With recent release of Jekyll, it gets the built-in ability to support themes, since we’ve already added theme support in 2015, the original config variables theme would be conflicted with the built-in one.</summary></entry><entry><title>Introducing Curtana</title><id>https://sparanoid.com/theme-curtana.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/theme-curtana.html" /><published>2016-06-01T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;Curtana is the default theme of &lt;a href=&quot;https://sparanoid.com/lab/amsf/&quot;&gt;AMSF&lt;/a&gt; (Almace Scaffolding).&lt;/p&gt;
 
@@ -365,7 +507,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>Curtana is the default theme of AMSF (Almace Scaffolding).</summary></entry><entry><title>Deployment Methods</title><id>https://sparanoid.com/deployment-methods.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/deployment-methods.html" /><published>2016-03-18T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Curtana is the default theme of AMSF (Almace Scaffolding).</summary></entry><entry><title>Deployment Methods</title><id>https://sparanoid.com/deployment-methods.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/deployment-methods.html" /><published>2016-03-18T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;Sites generated using Almace Scaffolding can be deployed in nearly any web hosting services. A few of the most common deployment techniques are described below. More deployment methods please refer to &lt;a href=&quot;https://jekyllrb.com/docs/deployment-methods/&quot;&gt;Jekyll - Deployment methods&lt;/a&gt;.&lt;/p&gt;
 
@@ -403,7 +545,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>From version 0.0.31, you can now use multiple themes in Almace Scaffolding. See Themes for more information.</summary></entry><entry><title>Welcome</title><id>https://sparanoid.com/welcome.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/welcome.html" /><published>2014-06-13T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>From version 0.0.31, you can now use multiple themes in Almace Scaffolding. See Themes for more information.</summary></entry><entry><title>Welcome</title><id>https://sparanoid.com/welcome.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/welcome.html" /><published>2014-06-13T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;AMSF, a.k.a. &lt;strong&gt;Almace Scaffolding&lt;/strong&gt;, is a super-fast Jekyll framework, supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.&lt;/p&gt;
 
@@ -438,7 +580,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>AMSF, a.k.a. Almace Scaffolding, is a super-fast Jekyll framework, supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.</summary></entry><entry><title>Getting Started</title><id>https://sparanoid.com/getting-started.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/getting-started.html" /><published>2014-06-12T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>AMSF, a.k.a. Almace Scaffolding, is a super-fast Jekyll framework, supports live reloading (Browsersync), Less, HTML minification, inlined stylesheets and more.</summary></entry><entry><title>Getting Started</title><id>https://sparanoid.com/getting-started.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/getting-started.html" /><published>2014-06-12T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;requirements&quot;&gt;Requirements&lt;/h2&gt;
 
@@ -504,7 +646,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>Requirements</summary></entry><entry><title>Customizing Styles</title><id>https://sparanoid.com/customizing-styles.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/customizing-styles.html" /><published>2014-06-11T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Requirements</summary></entry><entry><title>Customizing Styles</title><id>https://sparanoid.com/customizing-styles.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/customizing-styles.html" /><published>2014-06-11T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;You can customize the basic look and feel without touching the theme files by changing &lt;code class=&quot;highlighter-rouge&quot;&gt;user.js&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;user.less&lt;/code&gt;:&lt;/p&gt;
 
@@ -525,7 +667,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>You can customize the basic look and feel without touching the theme files by changing user.js and user.less:</summary></entry><entry><title>Configuration</title><id>https://sparanoid.com/configuration.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/configuration.html" /><published>2014-06-11T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>You can customize the basic look and feel without touching the theme files by changing user.js and user.less:</summary></entry><entry><title>Configuration</title><id>https://sparanoid.com/configuration.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/configuration.html" /><published>2014-06-11T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;configuration-settings&quot;&gt;Configuration Settings&lt;/h2&gt;
 
@@ -550,7 +692,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>Configuration Settings</summary></entry><entry><title>Themes</title><id>https://sparanoid.com/themes.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/themes.html" /><published>2014-06-10T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Configuration Settings</summary></entry><entry><title>Themes</title><id>https://sparanoid.com/themes.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/themes.html" /><published>2014-06-10T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -614,7 +756,7 @@ sudo apt-get install steam
           
         
       
-        </content><summary>Overview</summary></entry><entry><title>Creating Your Own Theme</title><id>https://sparanoid.com/creating-themes.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/creating-themes.html" /><published>2014-06-09T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Overview</summary></entry><entry><title>Creating Your Own Theme</title><id>https://sparanoid.com/creating-themes.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/creating-themes.html" /><published>2014-06-09T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
 
@@ -971,7 +1113,7 @@ Reading time: 3 hrs 20 mins
           
         
       
-        </content><summary>Overview</summary></entry><entry><title>Syntax Highlighting</title><id>https://sparanoid.com/syntax-highlighting.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/syntax-highlighting.html" /><published>2014-06-06T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Overview</summary></entry><entry><title>Syntax Highlighting</title><id>https://sparanoid.com/syntax-highlighting.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/syntax-highlighting.html" /><published>2014-06-06T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;Code highlighting demo, powered by Rouge. More info about code highlighting can be found at &lt;a href=&quot;http://jekyllrb.com/docs/templates/#code-snippet-highlighting&quot;&gt;Jekyll’s documentation&lt;/a&gt;.&lt;/p&gt;
 
@@ -1282,7 +1424,7 @@ and &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&
           
         
       
-        </content><summary>Code highlighting demo, powered by Rouge. More info about code highlighting can be found at Jekyll’s documentation.</summary></entry><entry><title>Markdown Features Test</title><id>https://sparanoid.com/markdown-features-test.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/markdown-features-test.html" /><published>2014-06-06T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Code highlighting demo, powered by Rouge. More info about code highlighting can be found at Jekyll’s documentation.</summary></entry><entry><title>Markdown Features Test</title><id>https://sparanoid.com/markdown-features-test.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/markdown-features-test.html" /><published>2014-06-06T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;indented-code-blocks&quot;&gt;Indented Code Blocks&lt;/h2&gt;
 
@@ -1418,7 +1560,7 @@ end
           
         
       
-        </content><summary>Indented Code Blocks</summary></entry><entry><title>Markup Example</title><id>https://sparanoid.com/markup-example.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/markup-example.html" /><published>2014-06-05T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Indented Code Blocks</summary></entry><entry><title>Markup Example</title><id>https://sparanoid.com/markup-example.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/markup-example.html" /><published>2014-06-05T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;Lorem lean startup ipsum &lt;strong&gt;product market fit customer development&lt;/strong&gt; acquihire technical cofounder. User engagement A/B testing shrink a market venture capital pitch deck. Social bookmarking group buying &lt;a href=&quot;#&quot;&gt;crowded market&lt;/a&gt; pivot onboarding freemium prototype ping pong. Early stage disruptive ecosystem community outreach dynamic location based strategic investor.&lt;/p&gt;
 
@@ -1655,7 +1797,7 @@ Careful Skippy, you really aren’t as convincing as you think you are.&lt;/p&gt
           
         
       
-        </content><summary>Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement A/B testing shrink a market venture capital pitch deck. Social bookmarking group buying crowded market pivot onboarding freemium prototype ping pong. Early stage disruptive ecosystem community outreach dynamic location based strategic investor.</summary></entry><entry><title>Custom HTML Markups</title><id>https://sparanoid.com/custom-html-markups.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-html-markups.html" /><published>2014-06-01T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>Lorem lean startup ipsum product market fit customer development acquihire technical cofounder. User engagement A/B testing shrink a market venture capital pitch deck. Social bookmarking group buying crowded market pivot onboarding freemium prototype ping pong. Early stage disruptive ecosystem community outreach dynamic location based strategic investor.</summary></entry><entry><title>Custom HTML Markups</title><id>https://sparanoid.com/custom-html-markups.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-html-markups.html" /><published>2014-06-01T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;note-store-and-download&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.note&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;.store&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;.download&lt;/code&gt;&lt;/h2&gt;
 
@@ -1783,7 +1925,7 @@ Love this plugin? please consider &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
           
         
       
-        </content><summary>.note, .store, and .download</summary></entry><entry><title>Custom Color Scheme</title><id>https://sparanoid.com/custom-color-scheme.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-color-scheme.html" /><published>2014-05-01T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>.note, .store, and .download</summary></entry><entry><title>Custom Color Scheme</title><id>https://sparanoid.com/custom-color-scheme.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-color-scheme.html" /><published>2014-05-01T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;This is an example how to change your post color scheme for specific posts. You can simply add the following variables to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -1808,7 +1950,7 @@ scheme-hero-bg: &quot;#0029ff&quot;
           
         
       
-        </content><summary>This is an example how to change your post color scheme for specific posts. You can simply add the following variables to your post front-matter field:</summary></entry><entry><title>Unique Post Styling via Custom CSS</title><id>https://sparanoid.com/custom-css.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-css.html" /><published>2014-04-01T00:00:00-07:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>This is an example how to change your post color scheme for specific posts. You can simply add the following variables to your post front-matter field:</summary></entry><entry><title>Unique Post Styling via Custom CSS</title><id>https://sparanoid.com/custom-css.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-css.html" /><published>2014-04-01T00:00:00-07:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;This is an example how to change your post styling via CSS. You can simply add the &lt;code class=&quot;highlighter-rouge&quot;&gt;css&lt;/code&gt; option to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -1829,7 +1971,7 @@ css: |
           
         
       
-        </content><summary>This is an example how to change your post styling via CSS. You can simply add the css option to your post front-matter field:</summary></entry><entry><title>External Link Post</title><id>https://sparanoid.com/external-link-post.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/external-link-post.html" /><published>2014-02-01T00:00:00-08:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>This is an example how to change your post styling via CSS. You can simply add the css option to your post front-matter field:</summary></entry><entry><title>External Link Post</title><id>https://sparanoid.com/external-link-post.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/external-link-post.html" /><published>2014-02-01T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;This is an example of Tumblr-like external link post. You can simply add the following setting to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -1843,7 +1985,7 @@ css: |
           &lt;p&gt;&lt;a href=&quot;https://sparanoid.com/&quot;&gt;&lt;small&gt;◉ Direct Link to Original Site&lt;/small&gt;&lt;/a&gt;&lt;/p&gt;
         
       
-        </content><summary>This is an example of Tumblr-like external link post. You can simply add the following setting to your post front-matter field:</summary></entry><entry><title>Custom Heading Image</title><id>https://sparanoid.com/custom-heading-image.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-heading-image.html" /><published>2014-02-01T00:00:00-08:00</published><updated>2017-10-19T15:35:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>This is an example of Tumblr-like external link post. You can simply add the following setting to your post front-matter field:</summary></entry><entry><title>Custom Heading Image</title><id>https://sparanoid.com/custom-heading-image.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-heading-image.html" /><published>2014-02-01T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;This is an example of custom post heading image. You can simply add the following setting to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -1880,7 +2022,7 @@ css: |
           
         
       
-        </content><summary>This is an example of custom post heading image. You can simply add the following setting to your post front-matter field:</summary></entry><entry><title>Custom Heading Background</title><id>https://sparanoid.com/custom-heading-background.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-heading-background.html" /><published>2014-02-01T00:00:00-08:00</published><updated>2017-10-30T16:58:06-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>This is an example of custom post heading image. You can simply add the following setting to your post front-matter field:</summary></entry><entry><title>Custom Heading Background</title><id>https://sparanoid.com/custom-heading-background.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/custom-heading-background.html" /><published>2014-02-01T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;p&gt;This is an example of custom heading background. You can simply add the following setting to your post &lt;a href=&quot;http://jekyllrb.com/docs/frontmatter/&quot;&gt;front-matter field&lt;/a&gt;:&lt;/p&gt;
 
@@ -1920,7 +2062,7 @@ css: |
           
         
       
-        </content><summary>This is an example of custom heading background. You can simply add the following setting to your post front-matter field:</summary></entry><entry><title>GitHub Pages Setup Guide</title><id>https://sparanoid.com/github-pages-setup.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/github-pages-setup.html" /><published>2014-01-01T00:00:00-08:00</published><updated>2017-10-30T16:58:06-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+        </content><summary>This is an example of custom heading background. You can simply add the following setting to your post front-matter field:</summary></entry><entry><title>GitHub Pages Setup Guide</title><id>https://sparanoid.com/github-pages-setup.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/github-pages-setup.html" /><published>2014-01-01T00:00:00-08:00</published><updated>2017-12-15T03:45:29-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
 
