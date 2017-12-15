@@ -1,1 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://sparanoid.com/</loc><lastmod>2017-12-14</lastmod></url><url><loc>https://sparanoid.com/about/</loc><lastmod>2017-01-18</lastmod></url><url><loc>https://sparanoid.com/blog/</loc><lastmod>2017-10-30</lastmod></url><url><loc>https://sparanoid.com/404.html</loc><lastmod>2017-02-21</lastmod></url><url><loc>https://sparanoid.com/</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/news/</loc><lastmod>2016-10-08</lastmod></url><url><loc>https://sparanoid.com/notes/</loc><lastmod>2017-10-30</lastmod></url><url><loc>https://sparanoid.com/approximation-algorithms.html</loc><lastmod>2017-12-14</lastmod></url><url><loc>https://sparanoid.com/zero-sum-games.html</loc><lastmod>2017-12-14</lastmod></url><url><loc>https://sparanoid.com/reduction-and-complexity.html</loc><lastmod>2017-12-14</lastmod></url><url><loc>https://sparanoid.com/steam-games-on-chromeos.html</loc><lastmod>2017-10-31</lastmod></url><url><loc>https://sparanoid.com/notes-introducton.html</loc><lastmod>2017-10-30</lastmod></url><url><loc>https://sparanoid.com/blog-introduction.html</loc><lastmod>2017-10-30</lastmod></url><url><loc>https://sparanoid.com/upgrading-guide-v1.1.0.html</loc><lastmod>2017-01-10</lastmod></url><url><loc>https://sparanoid.com/open-graph.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/jekyll-theme-compatibility.html</loc><lastmod>2017-01-05</lastmod></url><url><loc>https://sparanoid.com/theme-curtana.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/deployment-methods.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/multiple-themes-support.html</loc><lastmod>2017-01-20</lastmod></url><url><loc>https://sparanoid.com/welcome.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/getting-started.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/customizing-styles.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/configuration.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/themes.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/creating-themes.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/syntax-highlighting.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/markdown-features-test.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/markup-example.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/custom-html-markups.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/custom-color-scheme.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/custom-css.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/external-link-post.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/custom-heading-image.html</loc><lastmod>2017-10-19</lastmod></url><url><loc>https://sparanoid.com/custom-heading-background.html</loc><lastmod>2017-10-30</lastmod></url><url><loc>https://sparanoid.com/github-pages-setup.html</loc><lastmod>2017-10-30</lastmod></url></urlset>
+---
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+
+{% include amsf/core %}
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ "/" | absolute_url }}</loc>
+    <lastmod>{{ site.time | date: "%F" }}</lastmod>
+  </url>
+
+  {% for page in site.html_pages %}
+    {% if page.hidden != true %}
+      <url>
+        <loc>{{ page.url | absolute_url | replace: '/index.html', '/' }}</loc>
+        {% if page.last_modified_at %}
+          <lastmod>{{ page.last_modified_at | date: "%F" }}</lastmod>
+        {% endif %}
+      </url>
+    {% endif %}
+  {% endfor %}
+
+  {% for post in site.posts %}
+    {% if post.hidden != true %}
+      <url>
+        <loc>{{ post.url | absolute_url }}</loc>
+        {% if post.last_modified_at %}
+          <lastmod>{{ post.last_modified_at | date: "%F" }}</lastmod>
+        {% else %}
+          <lastmod>{{ post.date | date: "%F" }}</lastmod>
+        {% endif %}
+      </url>
+    {% endif %}
+  {% endfor %}
+
+</urlset>

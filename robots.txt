@@ -1,4 +1,8 @@
-User-agent: *
+---
+---
 
+{% for post in site.robots
+  %}{{ post | strip }}
+{% endfor %}
 
-Sitemap: https://sparanoid.com/sitemap.xml
+Sitemap: {{ "/sitemap.xml" | absolute_url }}
