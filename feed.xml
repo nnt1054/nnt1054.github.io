@@ -1,4 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>cencobook</title><subtitle>a semi technical blog for my studies</subtitle><updated>2017-12-10T20:27:09-08:00</updated><id>https://sparanoid.com/</id><generator uri="https://sparanoid.com/lab/amsf/" version="1.1.8">Almace Scaffolding</generator><link rel="alternate" type="text/html" hreflang="en" href="https://sparanoid.com/" /><link rel="self" type="application/atom+xml" href="https://sparanoid.com/feed.xml" /><author><name>Neil Toledo</name><uri>https://sparanoid.com/</uri><email>ntoledo@berkeley.edu</email></author><entry><title>Running Steam on a Chromebook</title><id>https://sparanoid.com/steam-games-on-chromeos.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/steam-games-on-chromeos.html" /><published>2017-10-31T00:00:00-07:00</published><updated>2017-10-31T04:12:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>cencobook</title><subtitle>a semi technical blog for my studies</subtitle><updated>2017-12-14T21:42:32-08:00</updated><id>https://sparanoid.com/</id><generator uri="https://sparanoid.com/lab/amsf/" version="1.1.8">Almace Scaffolding</generator><link rel="alternate" type="text/html" hreflang="en" href="https://sparanoid.com/" /><link rel="self" type="application/atom+xml" href="https://sparanoid.com/feed.xml" /><author><name>Neil Toledo</name><uri>https://sparanoid.com/</uri><email>ntoledo@berkeley.edu</email></author><entry><title>Approximation Algorithms</title><id>https://sparanoid.com/approximation-algorithms.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/approximation-algorithms.html" /><published>2017-12-14T00:00:00-08:00</published><updated>2017-12-14T21:41:47-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;approximation-ratio&quot;&gt;Approximation Ratio&lt;/h2&gt;
+&lt;p&gt;Given an instance I, and its approximation solution A(I), its approximation ratio is:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;For Max Problems:
+    &lt;ul&gt;
+      &lt;li&gt;min&lt;sub&gt;I&lt;/sub&gt;(&lt;sup&gt;A(I)&lt;/sup&gt; / &lt;sub&gt;OPT(I)&lt;/sub&gt;) &amp;lt;= 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;For Min Problems:
+    &lt;ul&gt;
+      &lt;li&gt;max&lt;sub&gt;I&lt;/sub&gt;(&lt;sup&gt;A(I)&lt;/sup&gt; / &lt;sub&gt;OPT(I)&lt;/sub&gt;) &amp;gt;= 1
+note: figure out how to format mathematical equations later&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;general-approximation-strategy&quot;&gt;General Approximation Strategy&lt;/h2&gt;
+&lt;p&gt;For minimization problems, try to:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Solve a different problem that can be used as a &lt;em&gt;relaxed&lt;/em&gt; lower bound for the optimal solution.&lt;/li&gt;
+  &lt;li&gt;Turn the infeasible solution into a feasible one by increasing its approximation ratio.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The goal is to try and show that the Infeasible(Lower Bound) &amp;lt; OPT &amp;lt; k&lt;code&gt;&amp;ast;&lt;/code&gt;Infeasible(or Approximation) &amp;lt; k&lt;code&gt;&amp;ast;&lt;/code&gt;Lower Bound&lt;/p&gt;
+
+&lt;h2 id=&quot;notes&quot;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;For minimization problems, we want the approximation ratio to be as low as possible.&lt;/li&gt;
+  &lt;li&gt;Approximations are &lt;strong&gt;not&lt;/strong&gt; preserved through reductions since other problems have different approximation metrics.&lt;/li&gt;
+&lt;/ul&gt;
+
+          
+          
+        
+      
+        </content><summary>Approximation RatioGiven an instance I, and its approximation solution A(I), its approximation ratio is:  For Max Problems:          minI(A(I) / OPT(I)) &amp;lt;= 1        For Min Problems:          maxI(A(I) / OPT(I)) &amp;gt;= 1note: figure out how to format mathematical equations later      </summary></entry><entry><title>Zero Sum Games</title><id>https://sparanoid.com/zero-sum-games.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/zero-sum-games.html" /><published>2017-12-13T00:00:00-08:00</published><updated>2017-12-13T18:17:47-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;goal&quot;&gt;Goal:&lt;/h2&gt;
+
+&lt;p&gt;Develop a strategy to maximize your own score while minimizing your opponents, using an immediate payoff matrix and assumming both players play optimally.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;th&gt;1&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;C&lt;/td&gt;
+      &lt;td&gt;D&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;solving-with-linear-programming&quot;&gt;Solving with Linear Programming:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Let x&lt;sub&gt;i&lt;/sub&gt; denote the probability that the row player plays strategy i and y&lt;sub&gt;j&lt;/sub&gt; denote the probability the the column player plays strategy j.&lt;/li&gt;
+  &lt;li&gt;If the column player uses strategy j&lt;sub&gt;0&lt;/sub&gt;, then the row player’s payoff will be Ax&lt;sub&gt;0&lt;/sub&gt; + Cx&lt;sub&gt;1&lt;/sub&gt;&lt;/li&gt;
+  &lt;li&gt;If the column player uses strategy j&lt;sub&gt;1&lt;/sub&gt;, then the row player’s payoff will be Bx&lt;sub&gt;0&lt;/sub&gt; + Dx&lt;sub&gt;1&lt;/sub&gt;&lt;/li&gt;
+  &lt;li&gt;So the column player’s optimal strategy becomes: min(Ax&lt;sub&gt;0&lt;/sub&gt; + Cx&lt;sub&gt;1&lt;/sub&gt;, Bx&lt;sub&gt;0&lt;/sub&gt; + Dx&lt;sub&gt;1&lt;/sub&gt;)&lt;/li&gt;
+  &lt;li&gt;As a result, the row player’s optimal strategy also becomes max(min(Ax&lt;sub&gt;0&lt;/sub&gt; + Cx&lt;sub&gt;1&lt;/sub&gt;, Bx&lt;sub&gt;0&lt;/sub&gt; + Dx&lt;sub&gt;1&lt;/sub&gt;))&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;linear-program-solution-for-row-player&quot;&gt;Linear Program Solution for Row Player:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;max P
+    &lt;ul&gt;
+      &lt;li&gt;p &amp;lt;= Ax&lt;sub&gt;0&lt;/sub&gt; + Cx&lt;sub&gt;1&lt;/sub&gt;&lt;/li&gt;
+      &lt;li&gt;p &amp;lt;= Bx&lt;sub&gt;0&lt;/sub&gt; + Dx&lt;sub&gt;1&lt;/sub&gt;&lt;/li&gt;
+      &lt;li&gt;x&lt;sub&gt;i&lt;/sub&gt; &amp;gt;= 0&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;x&lt;sub&gt;0&lt;/sub&gt; + x&lt;sub&gt;1&lt;/sub&gt; = 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: The LP for the Row Player and the LP for the Column Player are &lt;em&gt;Dual&lt;/em&gt; to each other despite which player announces their strategy first.&lt;/p&gt;
+
+          
+          
+        
+      
+        </content><summary>Goal:</summary></entry><entry><title>Algorithm Complexity</title><id>https://sparanoid.com/reduction-and-complexity.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/reduction-and-complexity.html" /><published>2017-12-13T00:00:00-08:00</published><updated>2017-12-14T20:51:11-08:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
+          
+            &lt;h2 id=&quot;reductions&quot;&gt;Reductions:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;A –&amp;gt; B means reducing an algorithm A to an algorithm B&lt;/li&gt;
+  &lt;li&gt;Reducing an algorithm A to B creates an instance &lt;em&gt;f&lt;/em&gt;(&lt;em&gt;I&lt;/em&gt;) from the original instance, &lt;em&gt;I&lt;/em&gt;, that can then be used with the algorithm B.  The solution &lt;em&gt;S&lt;/em&gt; can then be used to get &lt;em&gt;h&lt;/em&gt;(&lt;em&gt;S&lt;/em&gt;) which is the solution for A.&lt;/li&gt;
+  &lt;li&gt;If an algorithm A can be reduced to another algorithm B, that means B is &lt;strong&gt;at least&lt;/strong&gt; as hard as A.
+&lt;img src=&quot;/assets/img/reduction.png&quot; alt=&quot;reduction graph&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;definitions&quot;&gt;Definitions:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;P: The set of all problems that can be verified and solved in polynomial time.&lt;/li&gt;
+  &lt;li&gt;NP: The set of all problems that can be verified in polynomial time.&lt;/li&gt;
+  &lt;li&gt;NP-Hard: The set of all problems that are at least as hard as the hardest questions in NP
+    &lt;ul&gt;
+      &lt;li&gt;This means that a problem is NP-Hard iff every problem in NP can be reduced to it in polynomial time.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;NP-Complete: The subset of NP-Hard problems that can be verified in polynomial time.&lt;/li&gt;
+  &lt;li&gt;What does the &lt;em&gt;N&lt;/em&gt; in &lt;em&gt;NP&lt;/em&gt; mean? It means non-deterministic because these problems can only be solved in a non-deterministic polynomial time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-show-np-completeness&quot;&gt;How to show NP-Completeness:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;To show a problem is in NP:
+    &lt;ul&gt;
+      &lt;li&gt;Verify the problem can be solved in polynomial time&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;To show a problem is NP-Hard:
+    &lt;ul&gt;
+      &lt;li&gt;Reduce an NP-Hard or NP-Complete problem to the problem&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+          
+          
+        
+      
+        </content><summary>Reductions:  A –&amp;gt; B means reducing an algorithm A to an algorithm B  Reducing an algorithm A to B creates an instance f(I) from the original instance, I, that can then be used with the algorithm B.  The solution S can then be used to get h(S) which is the solution for A.  If an algorithm A can be reduced to another algorithm B, that means B is at least as hard as A.</summary></entry><entry><title>Running Steam on a Chromebook</title><id>https://sparanoid.com/steam-games-on-chromeos.html</id><link rel="alternate" type="text/html" href="https://sparanoid.com/steam-games-on-chromeos.html" /><published>2017-10-31T00:00:00-07:00</published><updated>2017-10-31T04:12:12-07:00</updated><author><name>Neil Toledo</name><uri>https://nnt1054.github.io</uri><email>ntoledo@berkeley.edu</email></author><content type="html" xml:base="https://sparanoid.com/">
           
             &lt;h2 id=&quot;setting-up&quot;&gt;Setting Up:&lt;/h2&gt;
 
