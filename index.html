@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" type="text/css" href="main.css">
     <head>
-        <meta charset="UTF-8">
-        <meta id="Viewport" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <title>Neil N. Toledo</title>
+      <title>Neil N. Toledo</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <script src="jquery-3.3.1.min.js"></script>
     </head>
     <body>
-        <video autoplay="true" loop>
-          <source src="assets/Yosemite.mp4" type="video/mp4">
-        </video>
-        <div class="dim-overlay">
-        </div>
-        <div id="game">
-        </div>
-        <div id="center-container">
-            <div>
-                <a href="#"><img id="about-pic" src="assets/about-pic.jpg"></a>
+      <div class='landing-page'>
+        <div>
+            <div class='title'>
+            <div class='hover-animation'>
+              <div class='grow-animation'>
+                <div class='rotate-animation'>
+                  <img class='profile-pic' src='me.jpg'>
+                </div>
+              </div>
             </div>
-            <div id="nav-container">
-                <h1> Neil Toledo</h1>
-                <p> Electrical Engineering </p>
-                <p> + Computer Science </p>
-                <p> Berkeley '19 </p>
-                <a href="assets/resume.pdf"> Resume </a>
-                <a href="https://github.com/nnt1054"> Github </a>
-                <a href="https://www.linkedin.com/in/neil-toledo-65a215137/"> LinkedIn </a>
-                <a href="https://chrome.google.com/webstore/detail/2days-new-tab/mnfdbhnkhijiebcpcfobpfjdhfejjkem?authuser=1"> Latest Project </a>
-            </div>
+            <h1> Neil Toledo </h1>
+          </div>
+          <div class='links'>
+            <a class='btn-link' page='page-1'>
+              <span> Hello! </span>
+            </a>
+            <a class='btn-link' page='page-2'>
+              <span> Projects </span>
+            </a>
+            <a class='btn-link' page='page-3'>
+              <span> Resume </span>
+            </a>
+            <!--<a class='btn-link' href=https://docs.google.com/document/d/e/2PACX-1vQwC3gfIKzHWrtRUWf5iFac9fWVpplZuIFNk_PClNy8-X5qrYOs7w-YQHvoVRpVUh4IZvprhIeTiSdQ/pub>-->
+            <!--  <span> Resume </span>-->
+            <!--</a>-->
+          </div>
         </div>
+      </div>
+      <div class='page page-1'>
+        HELLO THERE
+      </div>
+      <div class='page page-2'>
+        PAGE TWO
+      </div>
+      <div class='page page-3'>
+        PAGE THREE
+        <!--<iframe class='resume-doc' src="https://docs.google.com/document/d/e/2PACX-1vQwC3gfIKzHWrtRUWf5iFac9fWVpplZuIFNk_PClNy8-X5qrYOs7w-YQHvoVRpVUh4IZvprhIeTiSdQ/pub?embedded=true"></iframe>-->
+      </div>
+    <script src="animations.js"></script>
     </body>
-    <script type="text/javascript" lang="javascript" src="shootingball.js"></script>
 </html>
