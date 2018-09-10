@@ -19,6 +19,40 @@ body.scroll-enable {
   overflow: scroll;
 }
 
+.overlay-animation {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto;
+  justify-items: center;
+  align-items: center;
+  z-index: 2;
+  pointer-events:none;
+  opacity: 0;
+}
+
+.svg-container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.svg-container img {
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+  animation: blink 0.2s linear infinite;
+}
+
+.svg-container img:nth-child(1) { animation-delay: 0s }
+.svg-container img:nth-child(2) { animation-delay: 0.1s }
+
 .landing-page {
   position: absolute;
   height: 100%;
@@ -35,7 +69,7 @@ body.scroll-enable {
 }
 
 .landing-page.raise {
-  transform: translateY(-90%);
+  transform: translateY(-100%);
 }
 
 .page {
@@ -78,6 +112,13 @@ body.scroll-enable {
 }
 
 .profile-pic:hover {
+  position: fixed
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+
   transition: 0.1s 5s;
   transform: scale(4) translateY(12.5%);
 }
@@ -100,7 +141,7 @@ body.scroll-enable {
 .hover-animation {
   height: 138px;
   width: 138px;
-  animation: shake 10s linear infinite;
+  animation: shake 5s linear infinite;
 }
 
 .hover-animation:hover {
@@ -129,12 +170,13 @@ body.scroll-enable {
   justify-items: center;
   align-items: center;
   border: 2px solid black;
+  transition: 0.25s;
 }
 
 .btn-link:hover {
   background: white;
-  transition: 0.25s;
-	animation: float-small 1s linear infinite;
+  box-shadow: 5px 5px;
+  transform: translateY(-5px) translateX(-5px);
 }
 
 .btn-link > span {
@@ -221,10 +263,12 @@ body.scroll-enable {
 }
 
 @keyframes grow {
-  from {
+  0% {
     transform: scale(1);
-  } to {
-    transform: scale(1.2);
+  } 50% {
+    transform: scale(1.025);
+  } 100% {
+    transform: scale(1);
   }
 }
 
@@ -248,6 +292,10 @@ body.scroll-enable {
   } to {
     transform: translateY(0%);
   }
+}
+
+@keyframes blink {
+  from {opacity: 1} to {opacity: 0}
 }
 
 

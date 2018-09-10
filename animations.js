@@ -10,3 +10,15 @@ $('.page').on('click', function() {
   $(this).toggleClass('show');
   $('body,html').toggleClass('scroll-enable');
 })
+
+$(".profile-pic").hover(
+	function() {
+		if (screen.width >= screen.height) {
+			$(".overlay-animation").css("transition-delay", "5s");
+			$(".overlay-animation").css("opacity", "1");
+		}
+	}, function() {
+		$(".overlay-animation").css("transition-delay", "0s");
+		$(".overlay-animation").css("opacity", "0");
+	});
+
