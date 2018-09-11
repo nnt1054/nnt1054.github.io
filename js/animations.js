@@ -1,15 +1,20 @@
 $('.btn-link').on('click', function() {
-  $('.landing-page').toggleClass('raise');
+  $('.landing-page').addClass('raise');
   var page = $('.' + this.getAttribute('page'))
   page.toggleClass('show')
-  $('body,html').toggleClass('scroll-enable');
-  $('.home-arrow').toggleClass('show')
+  $('body,html').addClass('scroll-enable');
+  $('.home-arrow').addClass('show')
 });
 
 $('.home-arrow').on('click', function() {
-  $('.landing-page').toggleClass('raise');
-  $(this).toggleClass('show');
-  $('body,html').toggleClass('scroll-enable');
+  $('.landing-page').removeClass('raise');
+  $('.page').removeClass('show');
+  $('body,html').removeClass('scroll-enable');
+  $(this).removeClass('show')
+})
+
+$('.page').on('click', function() {
+  $('.monkas-container').removeClass('hover')
 })
 
 $(".profile-pic").hover(
