@@ -16,7 +16,7 @@ body {
 }
 
 body.scroll-enable {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .overlay-animation {
@@ -85,13 +85,12 @@ body.scroll-enable {
   pointer-events: none;
   transition: opacity 0.5s;
   visibility: none;
+  overflow: hidden;
 }
 
 .page.show {
-  transition: opacity 0.5s;
   opacity: 1;
   pointer-events: auto;
-  overflow: scroll;
 }
 
 .title {
@@ -189,10 +188,10 @@ body.scroll-enable {
   justify-items: center;
   align-items: center;
   border: 2px solid black;
-  transition: 0.25s;
   
   background: white;
   box-shadow: 5px 5px;
+  transition: 0.1s;
   transform: translateY(-5px) translateX(-5px);
 
   cursor: pointer;
@@ -217,6 +216,30 @@ body.scroll-enable {
 
 .page-3 {
   background: lightpink;
+}
+
+.monkas-container {
+  position: fixed;
+  height: 128px;
+  width: 128px;
+  left: -128px;
+  bottom: 0px;
+  z-index: 20;
+  transition: 0.1s linear;
+  transform: translateX(0px);
+}
+
+.monkas-container.show {
+  /*animation: pop-in-right 4s 1.5s;*/
+  transition: 2s 1.5s linear;
+  transform: translateX(116px);
+}
+
+@keyframes pop-in-right {
+  0% { transform: translateX(0px); }
+  15% { transform: translateX(128px); }
+  85% { transform: translateX(128px); }
+  100% { transform: translateX(0px); }
 }
 
 .resume-doc {

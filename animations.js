@@ -26,13 +26,32 @@ var audio = $("#nani-clip")[0];
 $(".profile-pic").hover(
 	function() {
 		if (screen.width >= screen.height) {
-			audio.play();
+			if (!audio.ended) {
+				audio.play();
+			}
 		}
 	}, function() {
 		audio.pause();
- 		audio.currentTime = 0;
-});
+		if (!audio.ended) {
+	 		audio.currentTime = 0;
+	 	} else {
+			$(".profile-pic").css("pointer-events", "none");
+	 	}
+	}
+);
+
+function enableAnimation() {
+	$(".profile-pic").css("pointer-events", "auto");
+}
 
 function audioClipLoaded() {
-	$(".profile-pic").css("pointer-events", "auto");
+	timeoutID = window.setTimeout(enableAnimation, 5000);
 };
+
+$(".resume-btn").hover(
+	function() {
+		$(".monkas-container").addClass('show');
+	}, function() {
+		$(".monkas-container").removeClass('show');
+	}
+);
