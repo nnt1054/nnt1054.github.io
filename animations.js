@@ -25,8 +25,14 @@ $(".profile-pic").hover(
 var audio = $("#nani-clip")[0];
 $(".profile-pic").hover(
 	function() {
-		audio.play();
+		if (screen.width >= screen.height) {
+			audio.play();
+		}
 	}, function() {
 		audio.pause();
  		audio.currentTime = 0;
 });
+
+function audioClipLoaded() {
+	$(".profile-pic").css("pointer-events", "auto");
+};

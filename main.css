@@ -121,6 +121,7 @@ body.scroll-enable {
   width: 128px;
   border: 2px solid black;
   transition: 0.1s;
+  pointer-events: none;
 }
 
 .profile-pic:hover {
@@ -233,6 +234,9 @@ body.scroll-enable {
 
   .profile-pic:hover {
     transform: scale(1);
+    animation: none;
+    animation-fill-mode: forwards;
+    content:url("me.jpg");
   }
 
 }
