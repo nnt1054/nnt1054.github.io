@@ -14,11 +14,19 @@ $('.page').on('click', function() {
 $(".profile-pic").hover(
 	function() {
 		if (screen.width >= screen.height) {
-			$(".overlay-animation").css("transition-delay", "5s");
+			$(".overlay-animation").css("transition-delay", "4s");
 			$(".overlay-animation").css("opacity", "1");
 		}
 	}, function() {
 		$(".overlay-animation").css("transition-delay", "0s");
 		$(".overlay-animation").css("opacity", "0");
-	});
+});
 
+var audio = $("#nani-clip")[0];
+$(".profile-pic").hover(
+	function() {
+		audio.play();
+	}, function() {
+		audio.pause();
+ 		audio.currentTime = 0;
+});
