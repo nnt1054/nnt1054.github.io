@@ -3,9 +3,10 @@ $('.btn-link').on('click', function() {
   var page = $('.' + this.getAttribute('page'))
   page.toggleClass('show')
   $('body,html').toggleClass('scroll-enable');
+  $('.home-arrow').toggleClass('show')
 });
 
-$('.page').on('click', function() {
+$('.home-arrow').on('click', function() {
   $('.landing-page').toggleClass('raise');
   $(this).toggleClass('show');
   $('body,html').toggleClass('scroll-enable');
@@ -46,7 +47,7 @@ function enableAnimation() {
 
 function audioClipLoaded() {
 	timeoutID = window.setTimeout(enableAnimation, 5000);
-};
+}
 
 $(".resume-btn").hover(
 	function() {
