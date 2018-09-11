@@ -101,6 +101,16 @@ body.scroll-enable {
   text-align: center;
   justify-items: center;
   align-items: center;
+  cursor: default;
+}
+
+.name {
+  text-shadow: lightgray 2px 2px;
+}
+
+.name:hover {
+  transform: translateY(2px) translateX(2px);
+  text-shadow: 0px 0px;
 }
 
 .profile-pic {
@@ -126,6 +136,10 @@ body.scroll-enable {
 .grow-animation {
   height: 138px;
   width: 138px;
+}
+
+.grow-animation:hover {
+  transform: scale(0.975);
 }
 
 .rotate-animation {
@@ -171,12 +185,17 @@ body.scroll-enable {
   align-items: center;
   border: 2px solid black;
   transition: 0.25s;
-}
-
-.btn-link:hover {
+  
   background: white;
   box-shadow: 5px 5px;
   transform: translateY(-5px) translateX(-5px);
+
+  cursor: pointer;
+}
+
+.btn-link:hover {
+  box-shadow: 2px 2px;
+  transform: translateY(-2px) translateX(-2px);
 }
 
 .btn-link > span {
