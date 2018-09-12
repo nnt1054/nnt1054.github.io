@@ -30,7 +30,7 @@ $('.btn-link').on('click', function() {
 
 $('.home-arrow').on('click', function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
-  $('.page').animate({ scrollTop: 0 }, "slow");
+  $('.page').animate({ scrollTop: 0 }, 1500);
 
   $('.landing-page').removeClass('raise');
   $('.page').removeClass('show');

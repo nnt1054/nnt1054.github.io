@@ -224,8 +224,24 @@ body.scroll-enable {
 .about-container {
   width: 75%;
   margin: 128px auto;
-
   font-size: 16pt;
+}
+
+.projects-container {
+  width: 75%;
+  margin: 128px auto;
+  font-size: 16pt;
+}
+
+.resume-container {
+  width: 75%;
+  margin: 128px auto;
+  font-size: 16pt;
+}
+
+.resume-doc {
+  height: 1104px;
+  width: 816px;
 }
 
 @media (max-width: 700px) {
@@ -233,19 +249,26 @@ body.scroll-enable {
     width: 90%;
     margin: 128px 12px;
   }
+  
+  .projects-container {
+    width: 90%;
+    margin: 128px 12px;
+  }
+  
+  .resume-container {
+    width: 90%;
+    margin: 128px 12px;
+  }
+  
 }
 
 
 .page-2 {
-  background: lightblue;
-}
-
-.projects-container {
 }
 
 .page-3 {
-  background: lightpink;
 }
+
 
 .monkas-container {
   position: fixed;
@@ -304,12 +327,6 @@ body.scroll-enable {
   15% { transform: translateX(128px); }
   85% { transform: translateX(128px); }
   100% { transform: translateX(0px); }
-}
-
-.resume-doc {
-  height: 1104px;
-  width: 816px;
-  margin: 150px;
 }
 
 @media (max-width: 700px) {
