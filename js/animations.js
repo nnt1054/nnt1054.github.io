@@ -1,10 +1,18 @@
 function enableAnimation() {
-	$(".profile-pic").css("pointer-events", "auto");
+	if (presses['page-1'] && presses['page-2'] && presses['page-3']) {
+		$(".profile-pic").css("pointer-events", "auto");
+	}
 }
 
 var clipLoaded = false;
 function audioClipLoaded() {
   clipLoaded = true;
+}
+
+var presses = {
+	'page-1': false,
+	'page-2': false,
+	'page-3': false,
 }
 
 $('.btn-link').on('click', function() {
@@ -13,9 +21,8 @@ $('.btn-link').on('click', function() {
   page.toggleClass('show')
   $('body,html').addClass('scroll-enable');
   $('.home-arrow').addClass('show');
-  if (clipLoaded) {
-    enableAnimation();
-  }
+  presses[this.getAttribute('page')] = true;
+  enableAnimation()
 });
 
 $('.home-arrow').on('click', function() {
