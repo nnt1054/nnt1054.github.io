@@ -1,9 +1,21 @@
+function enableAnimation() {
+	$(".profile-pic").css("pointer-events", "auto");
+}
+
+var clipLoaded = false;
+function audioClipLoaded() {
+  clipLoaded = true;
+}
+
 $('.btn-link').on('click', function() {
   $('.landing-page').addClass('raise');
   var page = $('.' + this.getAttribute('page'))
   page.toggleClass('show')
   $('body,html').addClass('scroll-enable');
-  $('.home-arrow').addClass('show')
+  $('.home-arrow').addClass('show');
+  if (clipLoaded) {
+    enableAnimation();
+  }
 });
 
 $('.home-arrow').on('click', function() {
@@ -45,14 +57,6 @@ $(".profile-pic").hover(
 	 	}
 	}
 );
-
-function enableAnimation() {
-	$(".profile-pic").css("pointer-events", "auto");
-}
-
-function audioClipLoaded() {
-	timeoutID = window.setTimeout(enableAnimation, 5000);
-}
 
 $(".resume-btn").hover(
 	function() {
