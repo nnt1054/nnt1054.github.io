@@ -18,19 +18,38 @@ var presses = {
 $('.btn-link').on('click', function() {
   $('.landing-page').addClass('raise');
   var page = $('.' + this.getAttribute('page'))
-  page.toggleClass('show')
+  page.toggleClass('show');
+  page.css("overflow", "scroll");
+
   $('body,html').addClass('scroll-enable');
   $('.home-arrow').addClass('show');
+
   presses[this.getAttribute('page')] = true;
   enableAnimation()
 });
 
 $('.home-arrow').on('click', function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  $('.page').animate({ scrollTop: 0 }, "slow");
+
   $('.landing-page').removeClass('raise');
   $('.page').removeClass('show');
   $('body,html').removeClass('scroll-enable');
   $(this).removeClass('show')
 })
+
+
+$(document).keyup(function(e) {
+  if (e.keyCode == 27) {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    $('.page').animate({ scrollTop: 0 }, "slow");
+    $('.landing-page').removeClass('raise');
+    $('.page').removeClass('show');
+    $('body,html').removeClass('scroll-enable');
+    
+    $('.home-arrow').removeClass('show')
+  }
+});
 
 $('.page').on('click', function() {
   $('.monkas-container').removeClass('hover')
