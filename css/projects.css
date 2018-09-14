@@ -50,7 +50,7 @@
 }
 
 .project-img-left:hover {
-  box-shadow: 2px 2px;
+  box-shadow: 2px 2px rgb(0,0,0,0.2);
   transform: translateY(-2px) translateX(-2px) rotate(-6deg);
 }
 
@@ -64,7 +64,7 @@
 }
 
 .project-img-right:hover {
-  box-shadow: 2px 2px;
+  box-shadow: 2px 2px rgb(0,0,0,0.2);
   transform: translateY(-2px) translateX(-2px) rotate(-6deg);
 }
 
