@@ -224,8 +224,8 @@ body.scroll-enable {
 .about-container {
   width: 75%;
   margin: 128px auto;
-  font-size: 16pt;
-  text-shadow: lightgray 2px 2px 5px;
+  font-size: 24pt;
+  text-shadow: rgb(0,0,0,0.2) 2px 2px 7px;
 }
 
 .projects-container {
@@ -249,6 +249,7 @@ body.scroll-enable {
   .about-container {
     width: 90%;
     margin: 128px 12px;
+    font-size: 18pt;
   }
   
   .projects-container {
