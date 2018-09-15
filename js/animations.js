@@ -55,34 +55,60 @@ $('.page').on('click', function() {
   $('.monkas-container').removeClass('hover')
 })
 
-$(".profile-pic").hover(
-	function() {
-		if (screen.width >= screen.height) {
-			$(".overlay-animation").css("transition-delay", "4s");
-			$(".overlay-animation").css("opacity", "1");
-		}
-	}, function() {
-		$(".overlay-animation").css("transition-delay", "0s");
-		$(".overlay-animation").css("opacity", "0");
-});
+// $(".profile-pic").hover(
+// 	function() {
+// 		if (screen.width >= screen.height) {
+// 			$(".overlay-animation").css("transition-delay", "4s");
+// 			$(".overlay-animation").css("opacity", "1");
+// 		}
+// 	}, function() {
+// 		$(".overlay-animation").css("transition-delay", "0s");
+// 		$(".overlay-animation").css("opacity", "0");
+// });
 
 var audio = $("#nani-clip")[0];
-$(".profile-pic").hover(
-	function() {
-		if (screen.width >= screen.height) {
-			if (!audio.ended) {
-				audio.play();
-			}
-		}
-	}, function() {
-		audio.pause();
-		if (!audio.ended) {
-	 		audio.currentTime = 0;
-	 	} else {
-			$(".profile-pic").css("pointer-events", "none");
-	 	}
+$(".btn-play").on('click', function() {
+	if (screen.width >= screen.height) {
+		$(this).css("display", "none")
+
+		$(".overlay-animation").css("transition-delay", "4s");
+		$(".overlay-animation").css("opacity", "1");
+
+ 		audio.currentTime = 0;
+		audio.play();
+
+		$('.profile-pic').addClass('play')
+		$('.hover-animation').addClass('play')
+		$('.rotate-animation').addClass('play')
+
+        setTimeout(function () {
+			$(".btn-play").css("display", "block")
+			$(".overlay-animation").css("transition-delay", "0s");
+			$(".overlay-animation").css("opacity", "0");
+			$('.profile-pic').removeClass('play')
+			$('.hover-animation').removeClass('play')
+			$('.rotate-animation').removeClass('play')
+        }, 6500);
 	}
-);
+})
+
+// var audio = $("#nani-clip")[0];
+// $(".profile-pic").hover(
+// 	function() {
+// 		if (screen.width >= screen.height) {
+// 			if (!audio.ended) {
+// 				audio.play();
+// 			}
+// 		}
+// 	}, function() {
+// 		audio.pause();
+// 		if (!audio.ended) {
+// 	 		audio.currentTime = 0;
+// 	 	} else {
+// 			$(".profile-pic").css("pointer-events", "none");
+// 	 	}
+// 	}
+// );
 
 $(".resume-btn").hover(
 	function() {

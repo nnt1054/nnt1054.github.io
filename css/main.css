@@ -129,7 +129,20 @@ body.scroll-enable {
   user-select: none;
 }
 
-.profile-pic:hover {
+/*.profile-pic:hover {
+  position: fixed
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+
+  animation: grow 0.1s 4s;
+  animation-fill-mode: forwards;
+  content:url("../assets/laser_eyes.png");
+}*/
+
+.profile-pic.play {
   position: fixed
   top: -9999px;
   bottom: -9999px;
@@ -141,6 +154,7 @@ body.scroll-enable {
   animation-fill-mode: forwards;
   content:url("../assets/laser_eyes.png");
 }
+
 
 .grow-animation {
   height: 138px;
@@ -166,6 +180,10 @@ body.scroll-enable {
   transform: rotate(15deg);
 }
 
+.rotate-animation.play {
+  transform: rotate(15deg);
+}
+
 .hover-animation {
   height: 138px;
   width: 138px;
@@ -174,6 +192,10 @@ body.scroll-enable {
 }
 
 .hover-animation:hover {
+  animation: shake 0.5s linear infinite;
+}
+
+.hover-animation.play {
   animation: shake 0.5s linear infinite;
 }
 
@@ -261,16 +283,12 @@ body.scroll-enable {
     width: 90%;
     margin: 128px 12px;
   }
-  
+
+  .btn-play {
+    display: none;
+  }
+
 }
-
-
-.page-2 {
-}
-
-.page-3 {
-}
-
 
 .monkas-container {
   position: fixed;
@@ -310,6 +328,23 @@ body.scroll-enable {
   transition: 1s;
   opacity: 1;
   pointer-events: auto;
+}
+
+.btn-play {
+  position: fixed;
+  margin: 0px;
+  right: 16px;
+  bottom: 12px;
+  z-index: 25;
+
+  font-size: 12pt;
+  transition: 0.1s;
+
+  cursor: pointer;
+}
+
+.btn-play:hover {
+  font-size: 18pt;
 }
 
 @keyframes arrow-hover {
