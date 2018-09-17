@@ -21,6 +21,7 @@ $('.btn-link').on('click', function() {
   page.toggleClass('show');
   page.css("overflow", "scroll");
 
+  $(".btn-play").css("display", "none")
   $('body,html').addClass('scroll-enable');
   $('.home-arrow').addClass('show');
 
@@ -31,6 +32,7 @@ $('.btn-link').on('click', function() {
 $('.home-arrow').on('click', function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   $('.page').animate({ scrollTop: 0 }, 1500);
+  $(".btn-play").css("display", "block")
 
   $('.landing-page').removeClass('raise');
   $('.page').removeClass('show');
@@ -46,7 +48,7 @@ $(document).keyup(function(e) {
     $('.landing-page').removeClass('raise');
     $('.page').removeClass('show');
     $('body,html').removeClass('scroll-enable');
-    
+  	$(".btn-play").css("display", "block")
     $('.home-arrow').removeClass('show')
   }
 });
@@ -69,7 +71,7 @@ $('.page').on('click', function() {
 var audio = $("#nani-clip")[0];
 $(".btn-play").on('click', function() {
 	if (screen.width >= screen.height) {
-		$(this).css("display", "none")
+		$(this).css("display", "none");
 
 		$(".overlay-animation").css("transition-delay", "4s");
 		$(".overlay-animation").css("opacity", "1");
@@ -77,17 +79,19 @@ $(".btn-play").on('click', function() {
  		audio.currentTime = 0;
 		audio.play();
 
-		$('.profile-pic').addClass('play')
-		$('.hover-animation').addClass('play')
-		$('.rotate-animation').addClass('play')
+		$('.profile-pic').addClass('play');
+		$('.hover-animation').addClass('play');
+		$('.rotate-animation').addClass('play');
+		$('.click-overlay').addClass('play')
 
         setTimeout(function () {
-			$(".btn-play").css("display", "block")
+			$(".btn-play").css("display", "block");
 			$(".overlay-animation").css("transition-delay", "0s");
 			$(".overlay-animation").css("opacity", "0");
-			$('.profile-pic').removeClass('play')
-			$('.hover-animation').removeClass('play')
-			$('.rotate-animation').removeClass('play')
+			$('.profile-pic').removeClass('play');
+			$('.hover-animation').removeClass('play');
+			$('.rotate-animation').removeClass('play');
+			$('.click-overlay').removeClass('play')
         }, 6500);
 	}
 })

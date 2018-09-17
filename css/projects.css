@@ -25,11 +25,17 @@
   margin: 0px;
   transition: 0.1s;
   text-shadow: lightgray 2px 2px;
+
+  font-size: 24pt;
 }
 
 .project-title > h4:hover {
   transform: translateY(2px) translateX(2px);
   text-shadow: lightgray 2px 2px 12px;
+}
+
+.project-title-right {
+  text-align: right;
 }
 
 .project-desc {
@@ -59,13 +65,13 @@
   margin-left: 24px;
   border: 2px solid black;
   box-shadow: 7px 7px rgb(0,0,0,1);
-  transform: translateY(-7px) translateX(-7px) rotate(-6deg);
+  transform: translateY(-7px) translateX(-7px) rotate(6deg);
   transition: 0.1s;
 }
 
 .project-img-right:hover {
   box-shadow: 2px 2px rgb(0,0,0,1);
-  transform: translateY(-2px) translateX(-2px) rotate(-6deg);
+  transform: translateY(-2px) translateX(-2px) rotate(6deg);
 }
 
 @media (max-width: 700px) {
@@ -94,5 +100,8 @@
   }
   .project-img-left:hover {
     transform: translateY(-2px) translateX(-2px);
+  }
+  .project-title-right {
+    text-align: left;
   }
 }
