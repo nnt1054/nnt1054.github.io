@@ -96,6 +96,16 @@ $(".btn-play").on('click', function() {
 	}
 })
 
+$(".click-overlay").on('click', function() {
+	audio.pause();
+	$(".btn-play").css("display", "block");
+	$(".overlay-animation").css("transition-delay", "0s");
+	$(".overlay-animation").css("opacity", "0");
+	$('.profile-pic').removeClass('play');
+	$('.hover-animation').removeClass('play');
+	$('.rotate-animation').removeClass('play');
+	$('.click-overlay').removeClass('play')
+})
 // var audio = $("#nani-clip")[0];
 // $(".profile-pic").hover(
 // 	function() {
