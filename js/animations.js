@@ -69,6 +69,7 @@ $('.page').on('click', function() {
 // });
 
 var audio = $("#nani-clip")[0];
+var timeVar;
 $(".btn-play").on('click', function() {
 	if (screen.width >= screen.height) {
 		$(this).css("display", "none");
@@ -84,7 +85,7 @@ $(".btn-play").on('click', function() {
 		$('.rotate-animation').addClass('play');
 		$('.click-overlay').addClass('play')
 
-        setTimeout(function () {
+        timeVar = setTimeout(function () {
 			$(".btn-play").css("display", "block");
 			$(".overlay-animation").css("transition-delay", "0s");
 			$(".overlay-animation").css("opacity", "0");
@@ -97,6 +98,7 @@ $(".btn-play").on('click', function() {
 })
 
 $(".click-overlay").on('click', function() {
+	clearTimeout(timeVar)
 	audio.pause();
 	$(".btn-play").css("display", "block");
 	$(".overlay-animation").css("transition-delay", "0s");
