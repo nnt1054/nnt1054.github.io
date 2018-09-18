@@ -25,8 +25,8 @@ $('.btn-link').on('click', function() {
   $('body,html').addClass('scroll-enable');
   $('.home-arrow').addClass('show');
 
-  presses[this.getAttribute('page')] = true;
-  enableAnimation()
+  // presses[this.getAttribute('page')] = true;
+  // enableAnimation()
 });
 
 $('.home-arrow').on('click', function() {
@@ -131,5 +131,22 @@ $(".resume-btn").hover(
 		$(".monkas-container").addClass('show');
 	}, function() {
 		$(".monkas-container").removeClass('show');
+	}
+);
+
+
+$('.project-img-left').hover(
+	function() {
+		$(this).attr('src', this.getAttribute('gif'))
+	}, function() {
+		$(this).attr('src', this.getAttribute('static'))
+	}
+);
+
+$('.project-img-right').hover(
+	function() {
+		$(this).attr('src', this.getAttribute('gif'))
+	}, function() {
+		$(this).attr('src', this.getAttribute('static'))
 	}
 );
