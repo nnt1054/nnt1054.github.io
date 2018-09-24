@@ -250,8 +250,7 @@ body.scroll-enable {
 .about-container {
   width: 75%;
   margin: 128px auto;
-  font-size: 24pt;
-  text-shadow: lightgray 2px 2px 12px;
+  font-size: 20pt;
 }
 
 .projects-container {
@@ -263,12 +262,51 @@ body.scroll-enable {
 .resume-container {
   width: 75%;
   margin: 128px auto;
-  font-size: 16pt;
+  font-size: 32pt;
+}
+
+.page-3 {
 }
 
 .resume-doc {
   height: 1104px;
   width: 816px;
+}
+
+.resume-links {
+  display: flex;
+  flex-direction: column;
+  font-size: 36pt;
+}
+
+.resume-links > a {
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.1s;
+  margin-right: auto;
+}
+
+.resume-links > a:hover {
+  transform: scale(1.025) translateX(12px);
+}
+
+.media-links {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.media-links > a {
+  padding: 3px;
+  margin-right: 12px;
+  text-decoration: none;
+  transition: 0.1s;
+  box-shadow: 0px 0px;
+  color: black;
+}
+
+.media-links > a:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 700px) {
@@ -295,6 +333,15 @@ body.scroll-enable {
   .btn-play.show {
     display: none;
   }
+
+  .resume-container {
+    font-size: 24pt;
+  }
+
+  .media-links {
+    flex-direction: column;
+  }
+
 }
 
 .monkas-container {

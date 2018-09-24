@@ -46,6 +46,16 @@
   text-shadow: lightgray 2px 2px 12px;
 }
 
+.project-desc > p {
+  margin: 0px;
+  margin-bottom: 6px;
+}
+
+.project-desc > a {
+  float: right;
+  margin-right: 0px;
+}
+
 .project-img-left {
   width: 95%;
   margin-left: 7px;
