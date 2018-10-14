@@ -1,34 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <link rel="stylesheet" type="text/css" href="main.css">
     <head>
-        <meta charset="UTF-8">
-        <meta id="Viewport" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <title>Neil N. Toledo</title>
+      <title>Example Website</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta name="google" value="notranslate">
+      <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <script src="jquery-3.3.1.min.js"></script>
     </head>
     <body>
-        <video autoplay="true" loop>
-          <source src="assets/Yosemite.mp4" type="video/mp4">
-        </video>
-        <div class="dim-overlay">
+      <div class='container'>
+
+        <div class='nav-bar'>
+          <div class='nav-title'>
+            <a> Neil Toledo </a> 
+          </div>
+          <div class='nav-menu'> 
+            <a class='nav-btn' href='#work'>work</a>
+            <a class='nav-btn' href='#contact'>contact</a>            
+          </div>
         </div>
-        <div id="game">
-        </div>
-        <div id="center-container">
-            <div>
-                <a href="#"><img id="about-pic" src="assets/about-pic.jpg"></a>
+
+        <section class='home'>
+          <div class='about-container'>
+            <p class='larger-text'> hey lmao, its ya boi <span class='name-text'>neil</span> </p>
+            <p class='smaller-text'>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </div>
+        </section>
+        <section class='work' id='work'>
+          <div class='work-container'>
+            <span class='work-title'>work :)</span>
+            <div class='project-container'>
+              <div class='project'>
+                <img src='project1.png' class='project-img'>
+                <span>example project</span>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+              <div class='project'>
+                <img src='project1.png' class='project-img'>
+                <span>example project</span>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+              <div class='project'>
+                <img src='project1.png' class='project-img'>
+                <span>example project</span>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
             </div>
-            <div id="nav-container">
-                <h1> Neil Toledo</h1>
-                <p> Electrical Engineering </p>
-                <p> + Computer Science </p>
-                <p> Berkeley '19 </p>
-                <a href="assets/resume.pdf"> Resume </a>
-                <a href="https://github.com/nnt1054"> Github </a>
-                <a href="https://www.linkedin.com/in/neil-toledo-65a215137/"> LinkedIn </a>
-                <a href="https://chrome.google.com/webstore/detail/2days-new-tab/mnfdbhnkhijiebcpcfobpfjdhfejjkem?authuser=1"> Latest Project </a>
+          </div>
+        </section>
+        <section class='contact' id='contact'>
+          <div class='contact-container'>
+            <span class='contact-title'>contacts :)</span>
+            <p class='contact-text'>
+              please reach out for work inquires also please just hire me <br> <br>
+              <span class='email'>ntoledo@berkeley.edu</span>
+            </p>
+            <div class='links'>
+              <a href='https://www.linkedin.com/in/neil-toledo/'> <img src='linkedin.png' class='link-img'> </a>
+              <a href='https://github.com/nnt1054'> <img src='github.png' class='link-img'> </a>
+              <a href='https://www.facebook.com/neil.toledo.7?ref=bookmarks'> <img src='facebook.png' class='link-img'> </a>
+              <a> <img src='resume.png' class='link-img'> </a>
             </div>
-        </div>
+          </div>
+        </section>
+
+      </div>
+    <script type="text/javascript" src="scroll.js"></script>
     </body>
-    <script type="text/javascript" lang="javascript" src="shootingball.js"></script>
 </html>
