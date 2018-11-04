@@ -63,7 +63,7 @@ body.scroll-enable {
   justify-items: center;
   align-items: center;
   transition: 0.5s;
-  animation: pull-down 0.5s;
+  /*animation: pull-down 0.5s;*/
   transform: translateY(0%);
   z-index: 1;
 

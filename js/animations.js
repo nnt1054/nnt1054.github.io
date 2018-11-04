@@ -1,21 +1,63 @@
-function enableAnimation() {
-	if (presses['page-1'] && presses['page-2'] && presses['page-3']) {
-		$(".profile-pic").css("pointer-events", "auto");
-	}
-}
+
+
+
+$( document ).ready(function() {
+  
+  var hash = $(location).attr('hash');
+  if (hash == '#about') {
+    setTimeout(function() {
+      $('.landing-page').addClass('raise');
+      var page = $('.page-1');
+      page.toggleClass('show');
+      page.css("overflow", "scroll");
+    
+      $(".btn-play").css("display", "none")
+      $('body,html').addClass('scroll-enable');
+      $('.home-arrow').addClass('show');
+    }, 250);
+  } else if (hash == '#projects') {
+    setTimeout(function() {
+      $('.landing-page').addClass('raise');
+      var page = $('.page-2');
+      page.toggleClass('show');
+      page.css("overflow", "scroll");
+    
+      $(".btn-play").css("display", "none")
+      $('body,html').addClass('scroll-enable');
+      $('.home-arrow').addClass('show');
+    }, 250);
+  } else if (hash == '#links') {
+    setTimeout(function() {
+      $('.landing-page').addClass('raise');
+      var page = $('.page-3');
+      page.toggleClass('show');
+      page.css("overflow", "scroll");
+    
+      $(".btn-play").css("display", "none")
+      $('body,html').addClass('scroll-enable');
+      $('.home-arrow').addClass('show');
+    }, 250);
+  } else {
+    $('.landing-page').css('animation', 'pull-down 0.5s');
+  // animation: pull-down 0.5s;
+  }
+
+  
+  
+  
+});
+
 
 var clipLoaded = false;
 function audioClipLoaded() {
   clipLoaded = true;
 }
 
-var presses = {
-	'page-1': false,
-	'page-2': false,
-	'page-3': false,
-}
+
+
 
 $('.btn-link').on('click', function() {
+  window.location.hash = '#' + this.getAttribute('name');
   $('.landing-page').addClass('raise');
   var page = $('.' + this.getAttribute('page'))
   page.toggleClass('show');
@@ -24,9 +66,6 @@ $('.btn-link').on('click', function() {
   $(".btn-play").css("display", "none")
   $('body,html').addClass('scroll-enable');
   $('.home-arrow').addClass('show');
-
-  // presses[this.getAttribute('page')] = true;
-  // enableAnimation()
 });
 
 $('.home-arrow').on('click', function() {
@@ -127,3 +166,16 @@ $('.project-img-right').hover(
 		$(this).attr('src', this.getAttribute('static'))
 	}
 );
+
+
+// function enableAnimation() {
+// 	if (presses['page-1'] && presses['page-2'] && presses['page-3']) {
+// 		$(".profile-pic").css("pointer-events", "auto");
+// 	}
+// }
+
+// var presses = {
+// 	'page-1': false,
+// 	'page-2': false,
+// 	'page-3': false,
+// }
