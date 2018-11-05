@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  overflow: hidden;
   font-family: 'Comfortaa';
 }
 
@@ -12,7 +13,6 @@ body {
   justify-items: center;
   align-items: center;
   /*animation: fadein 1s linear;*/
-  overflow: hidden;
 }
 
 /*body.scroll-enable {*/
