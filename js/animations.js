@@ -62,7 +62,7 @@ $('.btn-link').on('click', function() {
 // HOME ARROW
 var yArrow;
 $('.home-arrow').on('touchstart', function(e) {
-    yArrow = e.originalEvent.touches[0].clientY;
+    yArrow = e.touches[0].screenY;
 })
 
 $('.home-arrow').on('touchend', function(e) {
@@ -74,17 +74,21 @@ $('.home-arrow').on('touchend', function(e) {
     }, 250)
 })
 
+var stop = false;
 $('.home-arrow').on('touchmove', function(e) {
-    e.preventDefault();
-    var y = e.originalEvent.touches[0].clientY;
+    var y = e.touches[0].screenY;
     if(y > yArrow + 160) {
-      $('.home-arrow').trigger('touchend');
-      $('.home-arrow').click();
-      $('.home-arrow').css('opacity', 0);
-      setTimeout(function() {
-        $('.home-arrow').css('transform', '');
-        $('.home-arrow').css('opacity', '');
-      }, 250)
+      if (!stop) {
+        stop = true;
+        $('.home-arrow').trigger('touchend');
+        $('.home-arrow').click();
+        $('.home-arrow').css('opacity', 0);
+        setTimeout(function() {
+          stop = false;
+          $('.home-arrow').css('transform', '');
+          $('.home-arrow').css('opacity', '');
+        }, 250)
+      }
     } else if (y > yArrow) {
       var yval = (y - yArrow)/4;
       var opac = 1 - ((y - yArrow)/160)
@@ -94,8 +98,10 @@ $('.home-arrow').on('touchmove', function(e) {
 });
 
 $('.home-arrow').on('click', function() {
+  console.log('triggered');
   $("html, body").animate({ scrollTop: 0 }, "slow");
   $('.page').animate({ scrollTop: 0 }, 1500);
+  
 
   if (screen.width >= screen.height) {
   	$(".btn-play").css("display", "block");
@@ -110,21 +116,22 @@ $('.home-arrow').on('click', function() {
 
 $(document).keyup(function(e) {
   if (e.keyCode == 27) {
+    console.log('also triggered');
     $("html, body").animate({ scrollTop: 0 }, "slow");
     $('.page').animate({ scrollTop: 0 }, "slow");
     $('.landing-page').removeClass('raise');
     $('.page').removeClass('show');
     $('body,html').removeClass('scroll-enable');
-	if (screen.width >= screen.height) {
-	  $(".btn-play").css("display", "block");
-	}
+  	if (screen.width >= screen.height) {
+  	  $(".btn-play").css("display", "block");
+  	}
     $('.home-arrow').removeClass('show')
   }
 });
 
-$('.page').on('click', function() {
-  $('.monkas-container').removeClass('hover')
-})
+// $('.page').on('click', function() {
+//   $('.monkas-container').removeClass('hover')
+// })
 
 var audio = $("#nani-clip")[0];
 var timeVar;
