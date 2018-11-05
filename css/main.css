@@ -96,6 +96,7 @@ body.scroll-enable {
   transition: opacity 0.5s 0s;
   overflow: auto;
   pointer-events: auto;
+  z-index: 3;
 }
 
 .title {
