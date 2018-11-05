@@ -64,7 +64,7 @@ body.scroll-enable {
   grid-template-rows: auto;
   justify-items: center;
   align-items: center;
-  transition: 0.5s;
+  transition: 0.5s ease-out;
   /*animation: pull-down 0.5s;*/
   transform: translateY(0%);
   z-index: 1;
@@ -73,7 +73,7 @@ body.scroll-enable {
 }
 
 .landing-page.raise {
-  transform: translateY(-100%);
+  transform: translateY(-125%);
 }
 
 .landing-page-content {
