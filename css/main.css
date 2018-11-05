@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   font-family: 'Comfortaa';
   overscroll-behavior: none;
+  touch-events: none;
 }
 
 body {
@@ -67,7 +68,7 @@ body.scroll-enable {
   /*animation: pull-down 0.5s;*/
   transform: translateY(0%);
   z-index: 1;
-
+  touch-events: none;
   /*border-bottom: 2px solid black;*/
 }
 
@@ -91,6 +92,7 @@ body.scroll-enable {
   transition: opacity 0.5s 0.5s;
   visibility: none;
   overflow: hidden;
+  touch-events: pan-y;
 }
 
 .page.show {
