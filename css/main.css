@@ -2,7 +2,6 @@ html, body {
   height: 100%;
   font-family: 'Comfortaa';
   overscroll-behavior: none;
-  overflow: none;
 }
 
 body {
@@ -15,10 +14,11 @@ body {
   align-items: center;
   animation: fadein 1s linear;
   overscroll-behavior: none;
+  overflow: hidden;
 }
 
 body.scroll-enable {
-  overflow: none;
+  overflow: auto;
 }
 
 .overlay-animation {
@@ -69,6 +69,7 @@ body.scroll-enable {
   transform: translateY(0%);
   z-index: 1;
   touch-events: none;
+  overscroll-behavior: none;
   /*border-bottom: 2px solid black;*/
 }
 
@@ -91,8 +92,8 @@ body.scroll-enable {
   pointer-events: none;
   transition: opacity 0.5s 0.5s;
   visibility: none;
-  overflow: hidden;
   touch-events: pan-y;
+  overscroll-behavior: none;
 }
 
 .page.show {

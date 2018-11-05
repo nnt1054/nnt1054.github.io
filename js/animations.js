@@ -63,38 +63,38 @@ $('.btn-link').on('click', function() {
 });
 
 
-// HOME ARROW
-var yArrow;
-$('.home-arrow').on('touchstart', function(e) {
-    yArrow = e.originalEvent.touches[0].clientY;
-})
+// // HOME ARROW
+// var yArrow;
+// $('.home-arrow').on('touchstart', function(e) {
+//     yArrow = e.originalEvent.touches[0].clientY;
+// })
 
-$('.home-arrow').on('touchend', function(e) {
-    $('.home-arrow').css('transform', 'translateY(0)');
-    $('.home-arrow').css('opacity', 1);
-    setTimeout(function() {
-      $('.home-arrow').removeAttr('style');
-    }, 250)
-})
+// $('.home-arrow').on('touchend', function(e) {
+//     $('.home-arrow').css('transform', 'translateY(0)');
+//     $('.home-arrow').css('opacity', 1);
+//     setTimeout(function() {
+//       $('.home-arrow').removeAttr('style');
+//     }, 250)
+// })
 
-$('.home-arrow').on('touchmove', function(e) {
-    e.preventDefault();
-    var y = e.originalEvent.touches[0].clientY;
-    if(y > yArrow) {
-      var yval = (y - yArrow)/4;
-      var opac = 1 - ((y - yArrow)/160)
-      $('.home-arrow').css('transform','translateY(' + yval + 'px)');
-      $('.home-arrow').css('opacity', opac);
-    }
-    if(y > yArrow + 160) {
-      $('.home-arrow').trigger('touchend');
-      $('.home-arrow').click();
-      $('.home-arrow').css('opacity', 0);
-      setTimeout(function() {
-        $('.home-arrow').removeAttr('style');
-      }, 250)
-    }
-});
+// $('.home-arrow').on('touchmove', function(e) {
+//     e.preventDefault();
+//     var y = e.originalEvent.touches[0].clientY;
+//     if(y > yArrow) {
+//       var yval = (y - yArrow)/4;
+//       var opac = 1 - ((y - yArrow)/160)
+//       $('.home-arrow').css('transform','translateY(' + yval + 'px)');
+//       $('.home-arrow').css('opacity', opac);
+//     }
+//     if(y > yArrow + 160) {
+//       $('.home-arrow').trigger('touchend');
+//       $('.home-arrow').click();
+//       $('.home-arrow').css('opacity', 0);
+//       setTimeout(function() {
+//         $('.home-arrow').removeAttr('style');
+//       }, 250)
+//     }
+// });
 
 $('.home-arrow').on('click', function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
