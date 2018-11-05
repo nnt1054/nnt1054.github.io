@@ -8,7 +8,7 @@ $( document ).ready(function() {
       page.toggleClass('show');
 
       $(".btn-play").css("display", "none")
-      $('body,html').addClass('scroll-enable');
+      $('.container').addClass('scroll-enable');
       $('.home-arrow').addClass('show');
     }, 250);
   } else if (hash == '#projects') {
@@ -18,7 +18,7 @@ $( document ).ready(function() {
       page.toggleClass('show');
 
       $(".btn-play").css("display", "none")
-      $('body,html').addClass('scroll-enable');
+      $('.container').addClass('scroll-enable');
       $('.home-arrow').addClass('show');
     }, 250);
   } else if (hash == '#links') {
@@ -28,7 +28,7 @@ $( document ).ready(function() {
       page.toggleClass('show');
 
       $(".btn-play").css("display", "none")
-      $('body,html').addClass('scroll-enable');
+      $('.container').addClass('scroll-enable');
       $('.home-arrow').addClass('show');
     }, 250);
   } else {
@@ -54,7 +54,7 @@ $('.btn-link').on('click', function() {
   page.toggleClass('show');
 
   $(".btn-play").css("display", "none")
-  $('body,html').addClass('scroll-enable');
+  $('.container').addClass('scroll-enable');
   $('.home-arrow').addClass('show');
 });
 
@@ -76,6 +76,7 @@ $('.home-arrow').on('touchend', function(e) {
 
 var stop = false;
 $('.home-arrow').on('touchmove', function(e) {
+    e.preventDefault();
     var y = e.touches[0].screenY;
     if(y > yArrow + 160) {
       if (!stop) {
@@ -109,7 +110,7 @@ $('.home-arrow').on('click', function() {
 
   $('.landing-page').removeClass('raise');
   $('.page').removeClass('show');
-  $('body,html').removeClass('scroll-enable');
+  $('.container').removeClass('scroll-enable');
   $(this).removeClass('show')
 })
 
@@ -121,7 +122,7 @@ $(document).keyup(function(e) {
     $('.page').animate({ scrollTop: 0 }, "slow");
     $('.landing-page').removeClass('raise');
     $('.page').removeClass('show');
-    $('body,html').removeClass('scroll-enable');
+    $('.container').removeClass('scroll-enable');
   	if (screen.width >= screen.height) {
   	  $(".btn-play").css("display", "block");
   	}
