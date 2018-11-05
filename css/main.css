@@ -2,7 +2,6 @@ html, body {
   height: 100%;
   font-family: 'Comfortaa';
   overscroll-behavior: none;
-  touch-events: none;
 }
 
 body {
@@ -14,11 +13,11 @@ body {
   justify-items: center;
   align-items: center;
   animation: fadein 1s linear;
-  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 body.scroll-enable {
-  overflow: auto;
+  overflow: none;
 }
 
 .overlay-animation {
