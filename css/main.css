@@ -366,11 +366,10 @@ body.scroll-enable {
   height: 32px;
   width: 32px;
   right: 48px;
-  top: -128px;
-  padding: 30px 6px 3px 3px;
+  top: -192px;
+  padding: 128px 6px 3px 3px;
 
 
-  transition: 0.25s;
 
   z-index: 25;
   opacity: 0;
@@ -388,21 +387,31 @@ body.scroll-enable {
   transform: translateY(12px);
 }
 
+.home-arrow.down {
+  transition-delay: 0s;
+  transform: translateY(12px);
+  background: red;
+}
+
 .home-arrow.show {
   opacity: 1;
   pointer-events: auto;
   animation: drop-in 0.3s 0.6s forwards;
 }
 
+.home-arrow.disappear {
+  
+}
+
 @keyframes drop-in {
   0% {
-    top: -64px;
+    top: -160px;
   }
   75% {
-    top: -6px;
+    top: -96px;
   }
   100% {
-    top: -18px;
+    top: -112px;
   }
 }
 
