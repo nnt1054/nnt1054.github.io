@@ -6,8 +6,7 @@ $( document ).ready(function() {
       $('.landing-page').addClass('raise');
       var page = $('.page-1');
       page.toggleClass('show');
-      page.css("overflow", "scroll");
-    
+
       $(".btn-play").css("display", "none")
       $('body,html').addClass('scroll-enable');
       $('.home-arrow').addClass('show');
@@ -17,8 +16,7 @@ $( document ).ready(function() {
       $('.landing-page').addClass('raise');
       var page = $('.page-2');
       page.toggleClass('show');
-      page.css("overflow", "scroll");
-    
+
       $(".btn-play").css("display", "none")
       $('body,html').addClass('scroll-enable');
       $('.home-arrow').addClass('show');
@@ -28,8 +26,7 @@ $( document ).ready(function() {
       $('.landing-page').addClass('raise');
       var page = $('.page-3');
       page.toggleClass('show');
-      page.css("overflow", "scroll");
-    
+
       $(".btn-play").css("display", "none")
       $('body,html').addClass('scroll-enable');
       $('.home-arrow').addClass('show');
@@ -55,7 +52,6 @@ $('.btn-link').on('click', function() {
   $('.landing-page').addClass('raise');
   var page = $('.' + this.getAttribute('page'))
   page.toggleClass('show');
-  page.css("overflow", "scroll");
 
   $(".btn-play").css("display", "none")
   $('body,html').addClass('scroll-enable');

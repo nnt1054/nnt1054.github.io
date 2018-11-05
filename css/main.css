@@ -1,7 +1,6 @@
 html, body {
   height: 100%;
   font-family: 'Comfortaa';
-  overscroll-behavior: none;
 }
 
 body {
@@ -13,7 +12,6 @@ body {
   justify-items: center;
   align-items: center;
   animation: fadein 1s linear;
-  overscroll-behavior: none;
   overflow: hidden;
 }
 
@@ -68,8 +66,6 @@ body.scroll-enable {
   /*animation: pull-down 0.5s;*/
   transform: translateY(0%);
   z-index: 1;
-  touch-events: none;
-  overscroll-behavior: none;
   /*border-bottom: 2px solid black;*/
 }
 
@@ -92,13 +88,13 @@ body.scroll-enable {
   pointer-events: none;
   transition: opacity 0.5s 0.5s;
   visibility: none;
-  touch-events: pan-y;
-  overscroll-behavior: none;
+  overflow: hidden;
 }
 
 .page.show {
   opacity: 1;
   transition: opacity 0.5s 0s;
+  overflow: auto;
   pointer-events: auto;
 }
 
@@ -338,11 +334,12 @@ body.scroll-enable {
     display: none;
   }
 
-  .resume-container {
-    font-size: 24pt;
+  .resume-links {
+    font-size: 20pt;
   }
 
   .media-links {
+    font-size: 20pt;
     flex-direction: column;
   }
 
