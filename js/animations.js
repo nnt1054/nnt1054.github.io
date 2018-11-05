@@ -80,7 +80,7 @@ $('.home-arrow').on('touchend', function(e) {
 $('.home-arrow').on('touchmove', function(e) {
     e.preventDefault();
     var y = e.originalEvent.touches[0].clientY;
-    if(y > yArrow){
+    if(y > yArrow) {
       var yval = (y - yArrow)/4;
       var opac = 1 - ((y - yArrow)/160)
       $('.home-arrow').css('transform','translateY(' + yval + 'px)');

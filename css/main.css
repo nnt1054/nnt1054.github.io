@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   font-family: 'Comfortaa';
   overscroll-behavior: none;
+  overflow: none;
 }
 
 body {
