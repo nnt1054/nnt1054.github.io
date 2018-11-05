@@ -1,7 +1,3 @@
-$(function() {
-    document.addEventListener("touchmove", function(e){ e.preventDefault(); }, false);
-});
-
 $( document ).ready(function() {
   
   var hash = $(location).attr('hash');
