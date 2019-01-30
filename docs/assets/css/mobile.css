@@ -5,7 +5,7 @@
 	}
 
 	#home-btns > * {
-		margin: 4px auto;
+		margin: 8px auto;
 	}
 
 	#home-links {
@@ -36,6 +36,7 @@
 	  	transform: translateY(-5px) translateX(-5px);
 	}
 	.nav-container:hover > .nav-list > * {
+		visibility: hidden;
 		opacity: 0;
 		height: 0px;
 		box-shadow: 5px 0px;
@@ -46,15 +47,19 @@
 	}
 
 	/* Add Effects if 'show' Class is Added */
-	.nav-container.show > .nav-list > * {
-		opacity: 1;
-		height: 32px;
-		box-shadow: 5px 5px;
-		pointer-events: auto;
-	}
-
 	.nav-container.show {
 	  	box-shadow: 5px 5px;
 	  	transform: translateY(-5px) translateX(-5px) scale(1.025);
 	}
+	.nav-container.show > .nav-list > * {
+		visibility: visible;
+		opacity: 1;
+		height: 32px;
+		box-shadow: 5px 5px;
+		border: 2px solid black;
+	}
+	.nav-container.show > .nav-list > * > * {
+		visibility: visible;
+	}
+
 }

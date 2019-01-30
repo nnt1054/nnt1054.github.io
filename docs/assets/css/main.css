@@ -61,6 +61,11 @@ a {
   cursor: pointer;
 }
 
+.rect-btn > * {
+	pointer-events: none;
+	cursor: none;
+}
+
 .height32 {
 	height: 32px;
 }
@@ -87,32 +92,40 @@ a {
 	margin-left: 5px;
 }
 
-.nav-container:hover > .nav-list {
-	display: block;
-}
-
 .nav-list > * {
+	visibility: hidden;
 	opacity: 0;
 	height: 0px;
 	box-shadow: 5px 0px;
 	transition: 0.2s;
 	pointer-events: none;
+	border: none;
 }
 
-.nav-list > *:hover {
-	transform: translateY(-5px) translateX(5px);
-}
-
-.nav-container:hover > .nav-list > * {
-	opacity: 1;
-	height: 32px;
-	box-shadow: 5px 5px;
-	pointer-events: auto;
+.nav-list > * > * {
+	visibility: hidden;
 }
 
 .nav-container:hover {
   	box-shadow: 5px 5px;
   	transform: translateY(-5px) translateX(-5px) scale(1.025);
+}
+
+.nav-container:hover > .nav-list > * {
+	visibility: visible;
+	opacity: 1;
+	height: 32px;
+	box-shadow: 5px 5px;
+	border: 2px solid black;
+	pointer-events: auto;
+}
+
+.nav-container:hover > .nav-list > *  > * {
+	visibility: visible;
+}
+
+.nav-list > *:hover {
+	transform: translateY(-5px) translateX(5px);
 }
 
 .back-btn {
