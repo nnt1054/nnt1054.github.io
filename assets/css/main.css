@@ -96,6 +96,7 @@ a {
 	height: 0px;
 	box-shadow: 5px 0px;
 	transition: 0.2s;
+	pointer-events: none;
 }
 
 .nav-list > *:hover {
@@ -106,6 +107,7 @@ a {
 	opacity: 1;
 	height: 32px;
 	box-shadow: 5px 5px;
+	pointer-events: auto;
 }
 
 .nav-container:hover {

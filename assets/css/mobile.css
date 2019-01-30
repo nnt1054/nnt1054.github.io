@@ -28,4 +28,33 @@
 	.post-image {
 		width: 80vw;
 	}
+
+/*DROP DOWN STYLING*/
+	/* Remove Normal Hover Effects */
+	.nav-container:hover {
+	  	box-shadow: 5px 5px;
+	  	transform: translateY(-5px) translateX(-5px);
+	}
+	.nav-container:hover > .nav-list > * {
+		opacity: 0;
+		height: 0px;
+		box-shadow: 5px 0px;
+		transition: 0.2s;
+	}
+	.nav-list > *:hover {
+		transform: translateY(-5px) translateX(-5px);
+	}
+
+	/* Add Effects if 'show' Class is Added */
+	.nav-container.show > .nav-list > * {
+		opacity: 1;
+		height: 32px;
+		box-shadow: 5px 5px;
+		pointer-events: auto;
+	}
+
+	.nav-container.show {
+	  	box-shadow: 5px 5px;
+	  	transform: translateY(-5px) translateX(-5px) scale(1.025);
+	}
 }
