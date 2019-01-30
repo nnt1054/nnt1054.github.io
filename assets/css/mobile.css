@@ -1,0 +1,31 @@
+@media (max-width: 700px) {
+	#home-btns {
+		flex-direction: column;
+		padding-bottom: 8px;
+	}
+
+	#home-btns > * {
+		margin: 4px auto;
+	}
+
+	#home-links {
+		flex-direction: column;
+	}
+
+	#home-links > * {
+		padding: 2px;
+		margin: 0px auto;
+	}
+
+	p {
+		font-size: 12pt;
+	}
+
+	.back-btn {
+		left: 19px;
+	}
+
+	.post-image {
+		width: 80vw;
+	}
+}
