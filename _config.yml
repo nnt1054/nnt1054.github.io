@@ -1,0 +1,31 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Neil Toledo
+email: ntoledo@berkeley.edu
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://ntoledo.me" # the base hostname & protocol for your site
+github_username:  nnt1054
+
+# Serving
+detach              : false
+port                : 8000
+host                : 127.0.0.1
+baseurl             : "" # does not include hostname
+show_dir_listing    : false
+
+# Outputting
+permalink           : /blog/:categories/:title
+destination         : ./docs
+
+# Build settings
+markdown: kramdown

@@ -1,0 +1,29 @@
+---
+layout: default
+permalink: /
+---
+
+<div class="fullpage center-container">
+	<div class="column">
+		<img class="circle-img" src="assets/images/me.jpg">
+		<h1> Neil Toledo </h1>
+		<div id="home-btns" class="row">
+			<a class="rect-btn height32 center-container" href="/about"> <span>hello</span> </a>
+			<a class="rect-btn height32 center-container" href="/work"> <span>work</span> </a>
+			<div class="rect-btn height32 center-container nav-container" href="#">
+				<span>blog</span>
+				<div class="column nav-list">
+					{% for category in site.categories %}
+						{% assign x = '/blog/' | append: category[0] %}
+						<a class="rect-btn center-container" href={{ x }}> <span>{{ category[0] }}</span> </a>
+					{% endfor %}
+				</div>
+			</div>
+
+		</div>
+		<div id="home-links" class="row">
+			<span class="sm-link"> <a href="/assets/images/resume.pdf"> resume.pdf </a> </span>
+			<span class="sm-link"> <a href="mailto:ntoledo@berkeley.edu"> ntoledo@berkeley.edu </a> </span>
+		</div>
+	</div>
+</div>
