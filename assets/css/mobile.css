@@ -22,11 +22,15 @@
 	}
 
 	.back-btn {
-		left: 19px;
+		left: 12px;
+	}
+
+	.post {
+		width: 90vw;
 	}
 
 	.post-image {
-		width: 80vw;
+		width: 85vw;
 	}
 
 /*DROP DOWN STYLING*/
