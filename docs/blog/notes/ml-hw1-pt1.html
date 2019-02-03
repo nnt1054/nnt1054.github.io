@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Machine Learning HW01 Part 1</title>
+  <meta name="description" content="Data Paritioning:Partition a dataset into separate “training” and “validation” dataConcerns:  ensure both sets are simple random samples of the data  make su...">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Machine Learning HW01 Part 1</h1>
+    <p class="post-meta"><time datetime="2019-02-01T19:46:40-08:00" itemprop="datePublished">Feb 1, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Data Paritioning:<br />
+Partition a dataset into separate “training” and “validation” data
+Concerns:</p>
+<ul>
+  <li>ensure both sets are simple random samples of the data</li>
+  <li>make sure code is optimized for large data sets</li>
+  <li>only load/parse in “training” and “validation” partitions instead of entire data set</li>
+</ul>
+
+<p>Plans:</p>
+<ul>
+  <li>stream in data?</li>
+</ul>
+
+<p>Other Notes:</p>
+<ul>
+  <li>.mat files are “MATLAB formatted data”</li>
+</ul>
+
+<p>Questions for Office Hours:</p>
+<ul>
+  <li>Is it better to stream data from the data files?</li>
+</ul>
+
+<p>don’t use train_test_split btw
+no way to partially load in a .mat file, can choose which variable you want though
+np.random.shuffle vs np.random.permutation</p>
+
+<p>images represented as a row vector of pixel brightness
+<code class="highlighter-rouge">Classification Accuracy</code> to measure error rate
+train a <code class="highlighter-rouge">linear support vector machine</code> or SVM
+-use sklearn for the SVM model and accuracy metric function</p>
+
+<p>vary number of training examples from mnist (use indices after 10000)
+train over integers(0-255) or floats(0-1) for consistency</p>
+
+<ol>
+  <li>create sklearn.svm model
+can use <code class="highlighter-rouge">SVC(kernel=’linear’)</code> or <code class="highlighter-rouge">LinearSVC</code> for training
+train new SVM instances for each training set size btw</li>
+</ol>
+
+<p>LinearSVC(X, Y) where
+X: training data array w/ size [num_samples, n_features]
+Y: array of class labels w/ size [num_samples]
+-the samples at X[index] belongs to the class Y[index]</p>
+
+<p>getting: <code class="highlighter-rouge">Liblinear failed to converge, increase the number of iterations.</code>, meaning I should try some preprocessing before the training</p>
+
+<p>Data Preprocessing:</p>
+<ul>
+  <li>rescaling data</li>
+  <li>convert to binary</li>
+  <li>standardizing</li>
+  <li>scaling/decomposition/aggregation</li>
+</ul>
+
+<p>spam thing:
+each sample is a document
+each sample has a vector where each entry is how many times ith word appears in the documents
+spam_labels is whether or not a document is spam</p>
+
+<p>Hyperparameter Tuning:
+<code class="highlighter-rouge">hyperparamters</code> you can tune to influence the parameters
+ex: regularization parameter C in soft-margin SVM alg? (lol what)
+ok so its like<br />
+every kinda ML algorithm has one or more <code class="highlighter-rouge">hyperparamters</code>, and theyre different for each algorithm.  For example, k-nearest’s hyperparamter would be the number of k neighbors.<br />
+So right now, I gotta figure out what ML algorithm I’m using rn and what it’s hyperparameter it is.  Apparently I’m using ‘soft-margin SVM’, and the paramter I’m working with is the ‘regularization parameter C’</p>
+
+<p>im heckin blanking out on how to fit a line on some data points</p>
+
+<p>K-Fold Cross-Validation:<br />
+-useful for smaller datasets
+-split data into K disjoint (no shared elements) sets
+-for each of the k sets, train on the other k-1 sets and train with kth set</p>
+
+<p>too heckin slow for bigger numbers
+14 was the highest using the full data set
+25 was the highest using only have the data set
+	-probably under fitting the data though?</p>
+
+<p>i can write more thoughts and observations later</p>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
