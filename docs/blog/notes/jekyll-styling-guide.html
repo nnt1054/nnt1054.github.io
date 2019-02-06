@@ -22,7 +22,7 @@
   </header>
 
   <link rel="stylesheet" href="/assets/css/posts.css">
-  <a class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
 
   <div class="post-content" itemprop="articleBody">
     <p><code class="highlighter-rouge">Lorem ipsum</code> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -39,14 +39,14 @@
 <span class="n">print_hi</span><span class="p">(</span><span class="s">'Neil'</span><span class="p">)</span>
 <span class="c">#=&gt; prints 'Hi, Neil' to STDOUT.</span></code></pre></figure>
 
-<p>Create Links using <code class="highlighter-rouge">[link text][link variable]</code> in the post<br />
+<p>Create Links using <code class="highlighter-rouge">[link text][link variable]</code> in the post
 and including<code class="highlighter-rouge">[link_var]: http://url.com</code> at the bottom of the .md file.
 Here’s an example linking to <a href="http://ntoledo.me">my website</a> :)</p>
 
-<p>Adding two spaces after a line of text<br />
+<p>Adding two spaces after a line of text
 will continue the paragraph on the next line!</p>
 
-<p class="cssClass" style="color:red">Use <code class="highlighter-rouge">{: class="cssClass"}</code> and <code class="highlighter-rouge">{: style="color:red"}</code> to add CSS classes and html attributes to a paragraph in markdown</p>
+<p class="cssClass" style="color:red">Use <code class="highlighter-rouge"><span class="p">{</span><span class="err">:</span><span class="w"> </span><span class="err">class=</span><span class="nt">"cssClass"</span><span class="err">}</span></code> and <code class="highlighter-rouge"><span class="p">{</span><span class="err">:</span><span class="w"> </span><span class="err">style=</span><span class="nt">"color:red"</span><span class="err">}</span></code> to add CSS classes and html attributes to a paragraph in markdown</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span>
 <span class="err">├──</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
@@ -74,7 +74,7 @@ will continue the paragraph on the next line!</p>
 <p><br />
 to include images use: <code class="highlighter-rouge">![Mushu :)](/assets/images/mushu.jpg)</code></p>
 
-<p class="column"><img src="/assets/images/mushu.jpg" alt="Mushu :)" class="column" style="width: 512px; border: 1px solid black" /></p>
+<p class="column"><img src="/assets/images/mushu.jpg" alt="Mushu :)" class="column post-image" /></p>
 
 
   </div>

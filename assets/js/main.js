@@ -7,3 +7,12 @@ $('body').on('click touchend', function(event) {
 		$('.nav-container').removeClass('show');
 	}
 });
+
+$(document).keyup(function(e) {
+  if (e.keyCode == 27) {
+    back_btn = $('#back-id');
+    if (back_btn[0]) {
+      back_btn[0].click();
+    }
+  }
+});

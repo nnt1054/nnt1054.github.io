@@ -22,11 +22,11 @@ print_hi('Neil')
 #=> prints 'Hi, Neil' to STDOUT.
 {% endhighlight %}
 
-Create Links using `[link text][link variable]` in the post  
+Create Links using `[link text][link variable]` in the post
 and including`[link_var]: http://url.com` at the bottom of the .md file.
 Here's an example linking to [my website][ntoledo.me] :)
 
-Adding two spaces after a line of text  
+Adding two spaces after a line of text
 will continue the paragraph on the next line!
 
 Use `{: class="cssClass"}` and `{: style="color:red"}` to add CSS classes and html attributes to a paragraph in markdown
@@ -62,7 +62,7 @@ Use `{: class="cssClass"}` and `{: style="color:red"}` to add CSS classes and ht
 <br>
 to include images use: `![Mushu :)](/assets/images/mushu.jpg)`
 
-![Mushu :)](/assets/images/mushu.jpg){: class="column" style="width: 512px; border: 1px solid black"}
+![Mushu :)](/assets/images/mushu.jpg){: class="column post-image" }
 {: class="column"}
 
 [ntoledo.me]: http://ntoledo.me

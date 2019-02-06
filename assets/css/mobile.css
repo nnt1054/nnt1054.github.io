@@ -21,6 +21,11 @@
 		font-size: 12pt;
 	}
 
+  .highlight {
+    font-size: 10pt;
+    overflow-x: scroll;
+  }
+
 	.back-btn {
 		left: 12px;
 	}
@@ -30,7 +35,7 @@
 	}
 
 	.post-image {
-		width: 85vw;
+	  max-width: 85vw;
 	}
 
 /*DROP DOWN STYLING*/
