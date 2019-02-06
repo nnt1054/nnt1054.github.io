@@ -7,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Neil Toledo - Machine Learning HW01 Part 1</title>
-  <meta name="description" content="Data Paritioning:Partition a dataset into separate “training” and “validation” dataConcerns:  ensure both sets are simple random samples of the data  make su...">
+  <meta name="description" content="Data Paritioning:  it’s common to have to partition available labeled data into your own “training” and “validation” data sets  for samller data sets, you ca...">
 
+  <link rel="stylesheet" href="/assets/css/rouge.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 </head>
@@ -25,30 +26,17 @@
   <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Data Paritioning:<br />
-Partition a dataset into separate “training” and “validation” data
-Concerns:</p>
+    <h4 id="data-paritioning">Data Paritioning:</h4>
 <ul>
-  <li>ensure both sets are simple random samples of the data</li>
-  <li>make sure code is optimized for large data sets</li>
-  <li>only load/parse in “training” and “validation” partitions instead of entire data set</li>
+  <li>it’s common to have to partition available labeled data into your own “training” and “validation” data sets</li>
+  <li>for samller data sets, you can use <code class="highlighter-rouge">K-Fold Cross-Validation</code>, where you partition the training data into k disjoint sets, and then train a classifier k times using each of the k sets for validation, and the other k-1 sets for training.</li>
+  <li>to shuffle a data set, you can create a random permutation of indices, then rearrange the data set using the random permutation.</li>
 </ul>
 
-<p>Plans:</p>
-
-<ul>
-  <li>stream in data?</li>
-</ul>
-
-<p>Other Notes:</p>
-<ul>
-  <li>.mat files are “MATLAB formatted data”</li>
-</ul>
-
-<p>Questions for Office Hours:</p>
-<ul>
-  <li>Is it better to stream data from the data files?</li>
-</ul>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dataFile</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s">"data_file.mat"</span><span class="p">)</span>
+<span class="n">dataLength</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataFile</span><span class="p">[</span><span class="s">"training_data"</span><span class="p">])</span>
+<span class="n">rand_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dataLength</span><span class="p">))</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_data"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">],</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_labels"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">]</span></code></pre></figure>
 
 <p>don’t use train_test_split btw
 no way to partially load in a .mat file, can choose which variable you want though

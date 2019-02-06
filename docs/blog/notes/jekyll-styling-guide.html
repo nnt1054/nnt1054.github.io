@@ -9,6 +9,7 @@
   <title>Neil Toledo - Jekyll Markdown Stlying Guide</title>
   <meta name="description" content="This page is just a bunch of examples of how to style text and other things in the jekyll posts.  None of the this probably makes sense though since you can’...">
 
+  <link rel="stylesheet" href="/assets/css/rouge.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 </head>
@@ -65,28 +66,29 @@ will continue the paragraph on the next line!</p>
 
 <p class="cssClass" style="color:red">Use <code class="highlighter-rouge">{: class="cssClass"}</code> and <code class="highlighter-rouge">{: style="color:red"}</code> to add CSS classes and html attributes to a paragraph in markdown</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span>
-<span class="err">├──</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
-<span class="err">├──</span> <span class="n">_data</span>
-<span class="o">|</span>   <span class="err">└──</span> <span class="n">members</span><span class="o">.</span><span class="n">yml</span>
-<span class="err">├──</span> <span class="n">_drafts</span>
-<span class="o">|</span>   <span class="err">├──</span> <span class="n">begin</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">the</span><span class="o">-</span><span class="n">crazy</span><span class="o">-</span><span class="n">ideas</span><span class="o">.</span><span class="n">md</span>
-<span class="o">|</span>   <span class="err">└──</span> <span class="n">on</span><span class="o">-</span><span class="n">simplicity</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">technology</span><span class="o">.</span><span class="n">md</span>
-<span class="err">├──</span> <span class="n">_includes</span>
-<span class="o">|</span>   <span class="err">├──</span> <span class="n">footer</span><span class="o">.</span><span class="n">html</span>
-<span class="o">|</span>   <span class="err">└──</span> <span class="n">header</span><span class="o">.</span><span class="n">html</span>
-<span class="err">├──</span> <span class="n">_layouts</span>
-<span class="o">|</span>   <span class="err">├──</span> <span class="n">default</span><span class="o">.</span><span class="n">html</span>
-<span class="o">|</span>   <span class="err">└──</span> <span class="n">post</span><span class="o">.</span><span class="n">html</span>
-<span class="err">├──</span> <span class="n">_posts</span>
-<span class="o">|</span>   <span class="err">├──</span> <span class="mi">2007</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">29</span><span class="o">-</span><span class="n">why</span><span class="o">-</span><span class="n">every</span><span class="o">-</span><span class="n">programmer</span><span class="o">-</span><span class="n">should</span><span class="o">-</span><span class="n">play</span><span class="o">-</span><span class="n">nethack</span><span class="o">.</span><span class="n">md</span>
-<span class="o">|</span>   <span class="err">└──</span> <span class="mi">2009</span><span class="o">-</span><span class="mo">04</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">barcamp</span><span class="o">-</span><span class="n">boston</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">roundup</span><span class="o">.</span><span class="n">md</span>
-<span class="err">├──</span> <span class="n">_sass</span>
-<span class="o">|</span>   <span class="err">├──</span> <span class="n">_base</span><span class="o">.</span><span class="n">scss</span>
-<span class="o">|</span>   <span class="err">└──</span> <span class="n">_layout</span><span class="o">.</span><span class="n">scss</span>
-<span class="err">├──</span> <span class="n">_site</span>
-<span class="err">├──</span> <span class="o">.</span><span class="n">jekyll</span><span class="o">-</span><span class="n">metadata</span>
-<span class="err">└──</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="c"># can also be an 'index.md' with valid front matter</span></code></pre></figure>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── _config.yml
+├── _data
+|   └── members.yml
+├── _drafts
+|   ├── begin-with-the-crazy-ideas.md
+|   └── on-simplicity-in-technology.md
+├── _includes
+|   ├── footer.html
+|   └── header.html
+├── _layouts
+|   ├── default.html
+|   └── post.html
+├── _posts
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
+|   └── 2009-04-26-barcamp-boston-4-roundup.md
+├── _sass
+|   ├── _base.scss
+|   └── _layout.scss
+├── _site
+├── .jekyll-metadata
+└── index.html # can also be an 'index.md' with valid front matter
+</code></pre></div></div>
 
 <p><br />
 to include images use: <code class="highlighter-rouge">![Mushu :)](/assets/images/mushu.jpg)</code></p>

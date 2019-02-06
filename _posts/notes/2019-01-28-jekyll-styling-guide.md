@@ -47,7 +47,7 @@ print_hi('Neil')
 Use `{: class="cssClass"}` and `{: style="color:red"}` to add CSS classes and html attributes to a paragraph in markdown
 {: class="cssClass" style="color:red"}
 
-{% highlight python %}
+```
 .
 ├── _config.yml
 ├── _data
@@ -70,8 +70,7 @@ Use `{: class="cssClass"}` and `{: style="color:red"}` to add CSS classes and ht
 ├── _site
 ├── .jekyll-metadata
 └── index.html # can also be an 'index.md' with valid front matter
-{% endhighlight %}
-
+```
 
 
 <br>

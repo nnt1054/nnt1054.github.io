@@ -3,7 +3,7 @@ layout: post
 title:  "Article 01: Cultural Variation in Affect Valuation"
 date:   2019-01-28 19:46:40 -0800
 categories: notes
-tags: pysch156
+tags: psych156
 ---
 
 #### Affect Valuation Theory:

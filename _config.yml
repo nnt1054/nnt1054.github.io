@@ -29,3 +29,4 @@ destination         : ./docs
 
 # Build settings
 markdown: kramdown
+highlighter: rouge

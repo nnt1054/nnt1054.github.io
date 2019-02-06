@@ -16,8 +16,16 @@ layout: default
 	</div>
 
 	{% assign posts = site.categories[page.categoryName] %}
+	
+	{% assign allTags = '' | split: '' %}
 	{% for tag in site.tags %}
-		{% assign t = tag | first %}
+		{% assign tagName = tag | first %}
+		{% assign allTags = allTags | push: tagName %}
+	{% endfor %}
+
+	{% assign pageTags = page.tagList | default: allTags %}
+	{% for tag in pageTags %}
+		{% assign t = tag %}
 		{% assign numPosts = 0 %}
 
 		{% for post in posts %}
