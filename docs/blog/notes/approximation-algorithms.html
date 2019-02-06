@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Approximation Algorithms</title>
+  <meta name="description" content="Approximation RatioGiven an instance I, and its approximation solution A(I), its approximation ratio is:  For Max Problems:          minI(A(I) / OPT(I)) &lt;...">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Approximation Algorithms</h1>
+    <p class="post-meta"><time datetime="2017-12-14T00:00:00-08:00" itemprop="datePublished">Dec 14, 2017</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="approximation-ratio">Approximation Ratio</h4>
+<p>Given an instance I, and its approximation solution A(I), its approximation ratio is:</p>
+<ul>
+  <li>For Max Problems:
+    <ul>
+      <li>min<sub>I</sub>(<sup>A(I)</sup> / <sub>OPT(I)</sub>) &lt;= 1</li>
+    </ul>
+  </li>
+  <li>For Min Problems:
+    <ul>
+      <li>max<sub>I</sub>(<sup>A(I)</sup> / <sub>OPT(I)</sub>) &gt;= 1
+note: figure out how to format mathematical equations later</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="general-approximation-strategy">General Approximation Strategy</h4>
+<p>For minimization problems, try to:</p>
+<ol>
+  <li>Solve a different problem that can be used as a <em>relaxed</em> lower bound for the optimal solution.</li>
+  <li>Turn the infeasible solution into a feasible one by increasing its approximation ratio.</li>
+</ol>
+
+<p>The goal is to try and show that the Infeasible(Lower Bound) &lt; OPT &lt; k<code>&ast;</code>Infeasible(or Approximation) &lt; k<code>&ast;</code>Lower Bound</p>
+
+<h4 id="notes">Notes</h4>
+<ul>
+  <li>For minimization problems, we want the approximation ratio to be as low as possible.</li>
+  <li>Approximations are <strong>not</strong> preserved through reductions since other problems have different approximation metrics.</li>
+</ul>
+
+<h4 id="general-strategies-for-solving-problems">General Strategies for Solving Problems</h4>
+<ul>
+  <li>List out different strategies you can try</li>
+  <li>If a + b = c, where c is the optimal solution, either a or b will be at least 0.5<code>&ast;</code>c</li>
+  <li>For DAG and graph problems, try rearranging vertices in a straight line.</li>
+</ul>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>

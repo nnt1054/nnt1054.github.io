@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Neil Toledo - Jekyll Stlying Guide</title>
-  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nos...">
+  <title>Neil Toledo - Jekyll Markdown Stlying Guide</title>
+  <meta name="description" content="This page is just a bunch of examples of how to style text and other things in the jekyll posts.  None of the this probably makes sense though since you can’...">
 
   <link rel="stylesheet" href="/assets/css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
@@ -17,7 +17,7 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Jekyll Stlying Guide</h1>
+    <h1 class="post-title" itemprop="name headline">Jekyll Markdown Stlying Guide</h1>
     <p class="post-meta"><time datetime="2019-01-28T19:46:40-08:00" itemprop="datePublished">Jan 28, 2019</time></p>
   </header>
 
@@ -25,19 +25,31 @@
   <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
 
   <div class="post-content" itemprop="articleBody">
-    <p><code class="highlighter-rouge">Lorem ipsum</code> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>This page is just a bunch of examples of how to style text and other things in the jekyll posts.  None of the this probably makes sense though since you can’t see the actual markdown file lol :)</p>
+
+<p><code class="highlighter-rouge">Lorem ipsum</code> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<s> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </s>
-<p><b> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<p><s> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </s> <b> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </b></p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-  <span class="k">print</span><span class="p">(</span><span class="s">"Hi, "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s">'Neil'</span><span class="p">)</span>
-<span class="c">#=&gt; prints 'Hi, Neil' to STDOUT.</span></code></pre></figure>
+<h2 id="header-2-h1-is-reserved-for-post-titles">Header 2 (H1 is reserved for post titles)</h2>
+
+<h3 id="header-3">Header 3</h3>
+
+<h4 id="header-4">Header 4</h4>
+
+<p><b>Bold:</b> with some text on same line</p>
+
+<p>Bulleted Lists:</p>
+
+<ul>
+  <li>hello</li>
+  <li>world</li>
+  <li>:)</li>
+</ul>
 
 <p>Create Links using <code class="highlighter-rouge">[link text][link variable]</code> in the post
 and including<code class="highlighter-rouge">[link_var]: http://url.com</code> at the bottom of the .md file.
@@ -46,7 +58,12 @@ Here’s an example linking to <a href="http://ntoledo.me">my website</a> :)</p>
 <p>Adding two spaces after a line of text
 will continue the paragraph on the next line!</p>
 
-<p class="cssClass" style="color:red">Use <code class="highlighter-rouge"><span class="p">{</span><span class="err">:</span><span class="w"> </span><span class="err">class=</span><span class="nt">"cssClass"</span><span class="err">}</span></code> and <code class="highlighter-rouge"><span class="p">{</span><span class="err">:</span><span class="w"> </span><span class="err">style=</span><span class="nt">"color:red"</span><span class="err">}</span></code> to add CSS classes and html attributes to a paragraph in markdown</p>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Hi, "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s">'Neil'</span><span class="p">)</span>
+<span class="c">#=&gt; prints 'Hi, Neil' to STDOUT.</span></code></pre></figure>
+
+<p class="cssClass" style="color:red">Use <code class="highlighter-rouge">{: class="cssClass"}</code> and <code class="highlighter-rouge">{: style="color:red"}</code> to add CSS classes and html attributes to a paragraph in markdown</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">.</span>
 <span class="err">├──</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>

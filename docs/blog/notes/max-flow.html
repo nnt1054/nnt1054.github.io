@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Max Flow</title>
+  <meta name="description" content="Max FlowGiven a directed graph with edge capacity constraints, send as many units of “flow” from the source s to the the sink t.In order to find the max flow...">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Max Flow</h1>
+    <p class="post-meta"><time datetime="2017-12-15T00:00:00-08:00" itemprop="datePublished">Dec 15, 2017</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="max-flow">Max Flow</h4>
+<p>Given a directed graph with edge capacity constraints, send as many units of “flow” from the source <em>s</em> to the the sink <em>t</em>.
+In order to find the max flow, keep sending units of flow through the shortest available path from s to t using BFS.</p>
+
+<h4 id="using-max-flow-to-solve-problems">Using Max Flow to Solve Problems</h4>
+<ul>
+  <li>For “at most k” constraints, create edges leaving with capacity k.</li>
+  <li>If constraint <em>A</em> belongs to only one constraint <em>B</em>, add edge of capacity 1.</li>
+  <li>Add edge between constraints that satisfy each other.</li>
+</ul>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>

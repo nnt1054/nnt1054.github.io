@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Algorithm Complexity</title>
+  <meta name="description" content="Reductions:  A –&gt; B means reducing an algorithm A to an algorithm B  Reducing an algorithm A to B creates an instance f(I) from the original instance, I, ...">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Algorithm Complexity</h1>
+    <p class="post-meta"><time datetime="2017-12-13T00:00:00-08:00" itemprop="datePublished">Dec 13, 2017</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="reductions">Reductions:</h4>
+<ul>
+  <li>A –&gt; B means reducing an algorithm A to an algorithm B</li>
+  <li>Reducing an algorithm A to B creates an instance <em>f</em>(<em>I</em>) from the original instance, <em>I</em>, that can then be used with the algorithm B.  The solution <em>S</em> can then be used to get <em>h</em>(<em>S</em>) which is the solution for A.</li>
+  <li>If an algorithm A can be reduced to another algorithm B, that means B is <strong>at least</strong> as hard as A.
+<img src="/assets/images/reduction.png" alt="reduction graph" class="column post-image" /></li>
+</ul>
+
+<h4 id="definitions">Definitions:</h4>
+<ul>
+  <li>P: The set of all problems that can be verified and solved in polynomial time.</li>
+  <li>NP: The set of all problems that can be verified in polynomial time.</li>
+  <li>NP-Hard: The set of all problems that are at least as hard as the hardest questions in NP
+    <ul>
+      <li>This means that a problem is NP-Hard iff every problem in NP can be reduced to it in polynomial time.</li>
+    </ul>
+  </li>
+  <li>NP-Complete: The subset of NP-Hard problems that can be verified in polynomial time.</li>
+  <li>What does the <em>N</em> in <em>NP</em> mean? It means non-deterministic because these problems can only be solved in a non-deterministic polynomial time.</li>
+  <li>Verifiable: A solution to an algorithm can be verified as a correct solution to the problem in polynomial time.</li>
+</ul>
+
+<h4 id="how-to-show-np-completeness">How to show NP-Completeness:</h4>
+<ul>
+  <li>To show a problem is in NP:
+    <ul>
+      <li>Verify the problem can be solved in polynomial time</li>
+    </ul>
+  </li>
+  <li>To show a problem is NP-Hard:
+    <ul>
+      <li>Reduce an NP-Hard or NP-Complete problem to the problem</li>
+    </ul>
+  </li>
+  <li>To prove a problem is NP-Complete, show a solution can be verified in polynomial time.</li>
+</ul>
+
+<h4 id="list-of-common-np-hard-problems">List of Common NP-Hard Problems</h4>
+<ul>
+  <li>3-Dimensional Matching</li>
+  <li>3SAT</li>
+  <li>Rudrata Cycle/Path
+    <ul>
+      <li>Given a graph, find a cycle/path that visits every vertex once</li>
+    </ul>
+  </li>
+  <li>Maximum Independent Set
+    <ul>
+      <li>Add verticies with or without edges to adjust</li>
+    </ul>
+  </li>
+  <li>Longest Path</li>
+  <li>Knapsack</li>
+  <li>Balanced Cut</li>
+</ul>
+
+<h4 id="list-of-common-algorithms-for-verification">List of Common Algorithms for Verification</h4>
+<ul>
+  <li>Strongly Connected Components: O(V+E)</li>
+</ul>
+
+<h4 id="graph-definitions">Graph Definitions:</h4>
+<ul>
+  <li>Strongly Connected Graph: Every vertex is reachable from every other vertex.</li>
+  <li>Independent Set: There are no edges between any vertex of the set.</li>
+</ul>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>

@@ -28,7 +28,6 @@
     <p>Data Paritioning:<br />
 Partition a dataset into separate “training” and “validation” data
 Concerns:</p>
-
 <ul>
   <li>ensure both sets are simple random samples of the data</li>
   <li>make sure code is optimized for large data sets</li>
@@ -41,11 +40,15 @@ Concerns:</p>
   <li>stream in data?</li>
 </ul>
 
-<p>Other Notes:<br />
-- .mat files are “MATLAB formatted data”</p>
+<p>Other Notes:</p>
+<ul>
+  <li>.mat files are “MATLAB formatted data”</li>
+</ul>
 
-<p>Questions for Office Hours:
-- Is it better to stream data from the data files?</p>
+<p>Questions for Office Hours:</p>
+<ul>
+  <li>Is it better to stream data from the data files?</li>
+</ul>
 
 <p>don’t use train_test_split btw
 no way to partially load in a .mat file, can choose which variable you want though
@@ -72,11 +75,13 @@ Y: array of class labels w/ size [num_samples]
 
 <p>getting: <code class="highlighter-rouge">Liblinear failed to converge, increase the number of iterations.</code>, meaning I should try some preprocessing before the training</p>
 
-<p>Data Preprocessing:<br />
-- rescaling data
-- convert to binary
-- standardizing
-- scaling/decomposition/aggregation</p>
+<p>Data Preprocessing:</p>
+<ul>
+  <li>rescaling data</li>
+  <li>convert to binary</li>
+  <li>standardizing</li>
+  <li>scaling/decomposition/aggregation</li>
+</ul>
 
 <p>spam thing:
 each sample is a document

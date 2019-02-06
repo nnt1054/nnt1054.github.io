@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Zero Sum Games</title>
+  <meta name="description" content="Goal:">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Zero Sum Games</h1>
+    <p class="post-meta"><time datetime="2017-12-13T00:00:00-08:00" itemprop="datePublished">Dec 13, 2017</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="goal">Goal:</h4>
+
+<p>Develop a strategy to maximize your own score while minimizing your opponents, using an immediate payoff matrix and assumming both players play optimally.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>A</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>C</td>
+      <td>D</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="solving-with-linear-programming">Solving with Linear Programming:</h4>
+
+<ul>
+  <li>Let x<sub>i</sub> denote the probability that the row player plays strategy i and y<sub>j</sub> denote the probability the the column player plays strategy j.</li>
+  <li>If the column player uses strategy j<sub>0</sub>, then the row player’s payoff will be Ax<sub>0</sub> + Cx<sub>1</sub></li>
+  <li>If the column player uses strategy j<sub>1</sub>, then the row player’s payoff will be Bx<sub>0</sub> + Dx<sub>1</sub></li>
+  <li>So the column player’s optimal strategy becomes: min(Ax<sub>0</sub> + Cx<sub>1</sub>, Bx<sub>0</sub> + Dx<sub>1</sub>)</li>
+  <li>As a result, the row player’s optimal strategy also becomes max(min(Ax<sub>0</sub> + Cx<sub>1</sub>, Bx<sub>0</sub> + Dx<sub>1</sub>))</li>
+</ul>
+
+<h4 id="linear-program-solution-for-row-player">Linear Program Solution for Row Player:</h4>
+
+<ul>
+  <li>max P
+    <ul>
+      <li>p &lt;= Ax<sub>0</sub> + Cx<sub>1</sub></li>
+      <li>p &lt;= Bx<sub>0</sub> + Dx<sub>1</sub></li>
+      <li>x<sub>i</sub> &gt;= 0</li>
+    </ul>
+  </li>
+  <li>x<sub>0</sub> + x<sub>1</sub> = 1</li>
+</ul>
+
+<p>Note: The LP for the Row Player and the LP for the Column Player are <em>Dual</em> to each other despite which player announces their strategy first.</p>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
