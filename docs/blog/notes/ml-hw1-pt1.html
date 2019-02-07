@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Neil Toledo - Machine Learning HW01 Part 1</title>
+  <title>Neil Toledo - HW01 - Introduction to Machine Learning</title>
   <meta name="description" content="Data Paritioning:  it’s common to have to partition available labeled data into your own “training” and “validation” data sets  for samller data sets, you ca...">
 
   <link rel="stylesheet" href="/assets/css/rouge.css">
@@ -18,7 +18,7 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Machine Learning HW01 Part 1</h1>
+    <h1 class="post-title" itemprop="name headline">HW01 - Introduction to Machine Learning</h1>
     <p class="post-meta"><time datetime="2019-02-01T19:46:40-08:00" itemprop="datePublished">Feb 1, 2019</time></p>
   </header>
 
@@ -36,66 +36,63 @@
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dataFile</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s">"data_file.mat"</span><span class="p">)</span>
 <span class="n">dataLength</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataFile</span><span class="p">[</span><span class="s">"training_data"</span><span class="p">])</span>
 <span class="n">rand_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dataLength</span><span class="p">))</span>
-<span class="n">train</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_data"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">],</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_labels"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">]</span></code></pre></figure>
+<span class="n">samples</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_data"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">],</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_labels"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">]</span>
 
-<p>don’t use train_test_split btw
-no way to partially load in a .mat file, can choose which variable you want though
-np.random.shuffle vs np.random.permutation</p>
+<span class="c">#Partition Samples into Training and Validation</span>
+<span class="n">part</span> <span class="o">=</span> <span class="mi">500</span> <span class="c">#Number of Samples for Validation</span>
+<span class="n">validX</span><span class="p">,</span> <span class="n">validY</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:</span><span class="n">part</span><span class="p">],</span> <span class="n">labels</span><span class="p">[:</span><span class="n">part</span><span class="p">]</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">part</span><span class="p">:</span><span class="n">part</span><span class="o">+</span><span class="n">size</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="n">part</span><span class="p">:</span><span class="n">part</span><span class="o">+</span><span class="n">size</span><span class="p">]</span></code></pre></figure>
 
-<p>images represented as a row vector of pixel brightness
-<code class="highlighter-rouge">Classification Accuracy</code> to measure error rate
-train a <code class="highlighter-rouge">linear support vector machine</code> or SVM
--use sklearn for the SVM model and accuracy metric function</p>
-
-<p>vary number of training examples from mnist (use indices after 10000)
-train over integers(0-255) or floats(0-1) for consistency</p>
-
-<ol>
-  <li>create sklearn.svm model
-can use <code class="highlighter-rouge">SVC(kernel=’linear’)</code> or <code class="highlighter-rouge">LinearSVC</code> for training
-train new SVM instances for each training set size btw</li>
-</ol>
-
-<p>LinearSVC(X, Y) where
-X: training data array w/ size [num_samples, n_features]
-Y: array of class labels w/ size [num_samples]
--the samples at X[index] belongs to the class Y[index]</p>
-
-<p>getting: <code class="highlighter-rouge">Liblinear failed to converge, increase the number of iterations.</code>, meaning I should try some preprocessing before the training</p>
-
-<p>Data Preprocessing:</p>
 <ul>
-  <li>rescaling data</li>
-  <li>convert to binary</li>
-  <li>standardizing</li>
-  <li>scaling/decomposition/aggregation</li>
+  <li>in the future you can use sklearn’s train_test_split function btw xd</li>
 </ul>
 
-<p>spam thing:
-each sample is a document
-each sample has a vector where each entry is how many times ith word appears in the documents
-spam_labels is whether or not a document is spam</p>
+<h4 id="training-a-support-vector-machine-svm">Training a Support Vector Machine (SVM)</h4>
+<p>SVM’s are supervised learning models typically used for classification and regression analysis.  They’re “non-probabilistic binary linear classifiers”, and use labeled training data for supervised learning.<br />
+To create the model in python, we can use either sklearn’s <code class="highlighter-rouge">SVC(kernel=’linear’)</code> or <code class="highlighter-rouge">LinearSVC</code>.  To train the model, use svm.fit(X, Y) where:</p>
+<blockquote>
+  <p>X: training data array w/ size [num_samples, n_features]<br />
+Y: array of class labels w/ size [num_samples]<br />
+note: the samples at X[index] belongs to the class Y[index]</p>
+</blockquote>
 
-<p>Hyperparameter Tuning:
-<code class="highlighter-rouge">hyperparamters</code> you can tune to influence the parameters
-ex: regularization parameter C in soft-margin SVM alg? (lol what)
-ok so its like<br />
-every kinda ML algorithm has one or more <code class="highlighter-rouge">hyperparamters</code>, and theyre different for each algorithm.  For example, k-nearest’s hyperparamter would be the number of k neighbors.<br />
-So right now, I gotta figure out what ML algorithm I’m using rn and what it’s hyperparameter it is.  Apparently I’m using ‘soft-margin SVM’, and the paramter I’m working with is the ‘regularization parameter C’</p>
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="n">svm</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">'linear'</span><span class="p">)</span>
+    <span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">mnist_svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">validX</span><span class="p">)</span>
+    <span class="n">accuracy_score</span><span class="p">(</span><span class="n">validY</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span></code></pre></figure>
 
-<p>im heckin blanking out on how to fit a line on some data points</p>
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="c">#Training w/ K-Fold Validation</span>
+    <span class="n">results</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">5</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">part_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span><span class="o">//</span><span class="n">k</span>
+        <span class="n">part</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">part_size</span>
+        <span class="n">validX</span><span class="p">,</span> <span class="n">validY</span> <span class="o">=</span> <span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="n">part</span><span class="p">:</span><span class="n">part</span><span class="o">+</span><span class="n">part_size</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="n">part</span><span class="p">:</span><span class="n">part</span><span class="o">+</span><span class="n">part_size</span><span class="p">]]</span>
+        <span class="n">trainX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">samples</span><span class="p">[:</span><span class="n">part</span><span class="p">],</span> <span class="n">samples</span><span class="p">[</span><span class="n">part</span><span class="o">+</span><span class="n">part_size</span><span class="p">:]])</span>
+        <span class="n">trainY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">labels</span><span class="p">[:</span><span class="n">part</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="n">part</span><span class="o">+</span><span class="n">part_size</span><span class="p">:]])</span>
+        <span class="n">svm</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">'linear'</span><span class="p">)</span>
+        <span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">validX</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">validY</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spam_results</span><span class="p">)</span></code></pre></figure>
 
-<p>K-Fold Cross-Validation:<br />
--useful for smaller datasets
--split data into K disjoint (no shared elements) sets
--for each of the k sets, train on the other k-1 sets and train with kth set</p>
+<h4 id="hyperparameter-tuning">Hyperparameter Tuning</h4>
+<p><code class="highlighter-rouge">Hyperparamters</code> are higher level properties of training models that you can tune to influence the learning/training process.  For example, regularization parameter C in soft-margin SVM algorithm “tells the SVM optimization how much you want to avoid misclassifying each training example. For large values of C, the optimization will choose a smaller-margin hyperplane if that hyperplane does a better job of getting all the training points classified correctly. Conversely, a very small value of C will cause the optimizer to look for a larger-margin separating hyperplane, even if that hyperplane misclassifies more points. For very tiny values of C, you should get misclassified examples, often even if your training data is linearly separable. <a href="https://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel">(Source)</a>”<br />
+Other examples include the number of clusters and iterations in K-Means Clustering.</p>
 
-<p>too heckin slow for bigger numbers
-14 was the highest using the full data set
-25 was the highest using only have the data set
-	-probably under fitting the data though?</p>
+<h4 id="histogram-of-oriented-gradients-hog">Histogram of Oriented Gradients (HOG)</h4>
+<p>HOG is a feature descripter used for edge and object detection in computer vision/object detection.  The algorithm looks at individual regions of an image and calculates the gradient in the region.  The gradient vector of a region corresponds to the change of color/intensity within the region and the direction the change occurs.  The basic theory is that strong directional gradients represent the edges of an object, and can be used as a feature for classification/training.<br />
+The basic implementation observes center data points of a (usually 3x3 but can be larger depending on the situation) region, calculates the dX and dY values around the center, and uses trignometry to calculate the gradient vector from there.</p>
 
-<p>i can write more thoughts and observations later</p>
+<h4 id="scale-invariant-feature-transform-sift">Scale-Invariant Feature Transform (SIFT)</h4>
+<p>SIFT is a feature <i>detection</i> algorithm (not feature descriptor) used to detect specific features in an image.  The core idea is to be able to find/locate features in an image using features from training images, but under different orientations, scales, and positions.  Features extracted from training images are generally respresented as points, with relative positions to each other.
+The SIFT algorithm generally consists of the following steps:</p>
+<ol>
+  <li>Scale-Space Extrema Detection: Observing an image using different Gaussian filters, and finding <code class="highlighter-rouge">keypoints</code> of the image using max’s and min’s of the “Difference of Gaussians” (will look into and learn what exactly gaussians mean xd)</li>
+  <li>Keypoint Localization: Discarding unstable keypoints, which have ‘low contrast’ and are extremas to fitted edge lines from the keypoints.</li>
+  <li>Orientation Assignment: ‘Keypoints are assigned one or more orientations based on local image gradiant directions’</li>
+  <li>Keypoint Descriptor: ‘Create more descriptor vectors for each keypoint to make feature descriptors more highly distinctive.’  Describe and assign values to each keypoint in a more relative way to the actual feature.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Scale-invariant_feature_transform">(Source)</a></li>
+</ol>
 
   </div>
 

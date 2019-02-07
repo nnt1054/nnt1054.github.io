@@ -9,7 +9,7 @@ tags: cs170
 
 Develop a strategy to maximize your own score while minimizing your opponents, using an immediate payoff matrix and assumming both players play optimally.
 
-|   | 0      | 1      |
+>|   | 0      | 1      |
 |---|--------|--------|
 | 0 | A      | B      |
 | 1 | C      | D      |

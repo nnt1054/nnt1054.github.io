@@ -136,16 +136,16 @@ a {
 }
 
 #animation-trigger:hover > .hover-animation {
-	animation: side-step 0.75s normal forwards;
+	/*animation: side-step 0.5s normal forwards;*/
 }
 
 .hover-animation {
 	animation: float 2.5s linear infinite;
 }
 
-/*.hover-animation:hover {
+.hover-animation:hover {
   animation: shake 0.5s linear infinite;
-}*/
+}
 
 .grow-animation:hover {
   transition: 0.1s;

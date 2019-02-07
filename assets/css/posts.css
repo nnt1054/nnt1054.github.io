@@ -47,3 +47,11 @@
 	max-width: 70vw;
 	border: 1px solid black;
 }
+
+.post-content a {
+	color: blue;
+}
+
+.post-content a:hover {
+	text-decoration: underline;
+}

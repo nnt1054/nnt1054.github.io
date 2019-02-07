@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Neil Toledo - LP Duality</title>
+  <title>Neil Toledo - CS170 Misc. Notes</title>
   <meta name="description" content="DualityDuality is the phenomenon where for any primal LP, there exists a dual LP that are both optimal for the same question.  The main idea is for any max L...">
 
   <link rel="stylesheet" href="/assets/css/rouge.css">
@@ -18,7 +18,7 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">LP Duality</h1>
+    <h1 class="post-title" itemprop="name headline">CS170 Misc. Notes</h1>
     <p class="post-meta"><time datetime="2017-12-15T00:00:00-08:00" itemprop="datePublished">Dec 15, 2017</time></p>
   </header>
 
@@ -37,6 +37,39 @@
   <li>Factor out the original <em>x<sub>i</sub></em> variables</li>
   <li>Use primal objective to write new dual and nonnegativity constraints</li>
 </ol>
+
+<h4 id="max-flow">Max Flow</h4>
+<p>Given a directed graph with edge capacity constraints, send as many units of “flow” from the source <em>s</em> to the the sink <em>t</em>.
+In order to find the max flow, keep sending units of flow through the shortest available path from s to t using BFS.</p>
+
+<h4 id="using-max-flow-to-solve-problems">Using Max Flow to Solve Problems</h4>
+<ul>
+  <li>For “at most k” constraints, create edges leaving with capacity k.</li>
+  <li>If constraint <em>A</em> belongs to only one constraint <em>B</em>, add edge of capacity 1.</li>
+  <li>Add edge between constraints that satisfy each other.</li>
+</ul>
+
+<h4 id="fermats-little-theorem">Fermat’s Little Theorem</h4>
+<p>Given a prime number, <em>p</em>, for any integer <em>a</em>:</p>
+
+<blockquote>
+  <blockquote>
+    <p>a<sup>p</sup> = a (mod p)<br />
+a<sup>p-1</sup> = 1 (mod p)</p>
+  </blockquote>
+</blockquote>
+
+<h4 id="miller-rabin-primality-test">Miller-Rabin primality test</h4>
+<p>Given a number <em>p</em>, <em>p</em> is prime if and only if either:</p>
+
+<blockquote>
+  <blockquote>
+    <p>a<sup>d</sup> = 1 (mod p)<br />
+a<sup>2<sup>r</sup>*d</sup> = -1 (mod p)</p>
+  </blockquote>
+</blockquote>
+
+<p>is true for any <em>a</em>.</p>
 
   </div>
 

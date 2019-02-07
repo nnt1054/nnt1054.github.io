@@ -7,8 +7,8 @@ back: /
 tagList:
     - cs189
     - cs170
-    - jekyll
     - psych156
+    - jekyll
 
 ---
 
