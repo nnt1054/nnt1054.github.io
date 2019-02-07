@@ -1,0 +1,183 @@
+html, body {
+	margin: none;
+	padding: none;
+	font-family: 'Comfortaa';
+}
+.container {
+	width: 80vw;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+/* NAVIGATION BAR */
+.nav-bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 20vh;
+	width: 100%;
+	font-size: 32px;
+}
+
+.nav-title {
+	position: absolute;
+	left: 0px;
+	cursor: pointer;
+}
+
+.nav-menu {
+	position: absolute;
+	right: 0px;
+}
+
+.nav-menu > a {
+	padding-left: 6px;
+	padding-right: 6px;
+	color: black;
+	text-decoration: none;
+	border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+.nav-menu > a:hover {
+	border-bottom: 2px solid rgba(0, 0, 0, 1);
+}
+
+
+/* SECTIONS */
+section {
+	height: 100vh;
+}
+
+/* HOME */
+.home {
+	height: 80vh;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.about-container {
+	width: 50vw;
+	position: absolute;
+	padding-top: 64px;
+	left: 0px;
+}
+
+.larger-text {
+	font-size: 32pt;
+}
+
+.smaller-text {
+	font-size: 24pt;
+}
+
+.name-text {
+	color: red;
+}
+
+/* WORK */
+.work-container {
+	padding-top: 64px;
+}
+
+.work-title {
+	font-size: 32pt;
+}
+
+.project-container {
+	padding-top: 64px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.project {
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+}
+
+.project > span {
+	font-size: 24pt;
+	font-weight: bold;
+	width: 50%
+}
+
+.project > p {
+	font-size: 16pt;
+}
+
+.project-img {
+	width: 100%;
+	/*width: 256px;*/
+}
+
+/* CONTACT */
+.contact-container {
+	padding-top: 128px;
+}
+
+.contact-title {
+	font-size: 32pt; 
+}
+
+.contact-text {
+	font-size: 24pt;
+	width: 40vw;
+}
+
+.email {
+	font-size: 20pt;
+	font-weight: bold;
+}
+
+.links {
+	margin-top: 64px;
+	display: flex;
+	flex-direction: row;
+/*	justify-content: space-between;
+*/}
+
+.links > a {
+	padding-right: 32px;
+}
+.link-img {
+	height: 64px;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+	.nav-menu {
+		display: none;
+	}
+
+	.about-container {
+		width: 90vw;
+		padding-top: 0px;
+	}
+
+	.larger-text {
+		font-size: 24pt;
+	}
+	.smaller-text {
+		font-size: 22pt;
+	}
+
+	.project-container {
+		flex-direction: column;
+	}
+
+	.project {
+		width: 90vw;
+	}
+
+	#work {
+		height: auto;
+	}
+
+	.contact-text {
+		width: 90vw;
+	}
+
+}
