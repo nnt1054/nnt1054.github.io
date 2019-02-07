@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Website Animations</title>
+  <meta name="description" content="Context: I want to set up a structured way of playing different CSS animations invovling a series of keyframe sets and different HTML elements using Javascri...">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Website Animations</h1>
+    <p class="post-meta"><time datetime="2019-01-28T19:46:40-08:00" itemprop="datePublished">Jan 28, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/projects> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><b>Context:</b> I want to set up a structured way of playing different CSS animations invovling a series of keyframe sets and different HTML elements using Javascript.</p>
+
+<h4 id="stacking-different-css-animations-on-a-single-element">Stacking Different CSS Animations on a Single Element</h4>
+<p>First, I wanted to have overlapping keyframe sets on my home page icon picture as an ‘on hover’ effect. When idle, the image will have a subtle floating effect.<br />
+<b>The Issue:</b> CSS only allows objects to have only one ‘transform’ property, or one ‘animation’ property.</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/*This Doesn't Work!*/</span>
+<span class="nc">.animation-div</span> <span class="p">{</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">float</span> <span class="m">0.5s</span> <span class="n">linear</span> <span class="n">infinite</span><span class="p">;</span>
+  <span class="nl">animation</span><span class="p">:</span> <span class="n">side-step</span> <span class="m">0.5s</span> <span class="n">linear</span> <span class="n">infinite</span><span class="p">;</span>
+  <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">-10px</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@keyframes</span> <span class="n">float</span> <span class="p">{</span>
+	<span class="nt">0</span><span class="o">%</span> <span class="p">{</span><span class="nl">transform</span><span class="p">:</span> <span class="n">translateY</span><span class="p">(</span><span class="m">0px</span><span class="p">);}</span>
+	<span class="nt">50</span><span class="o">%</span> <span class="p">{</span><span class="nl">transform</span><span class="p">:</span> <span class="n">translateY</span><span class="p">(</span><span class="m">-6px</span><span class="p">);}</span>
+	<span class="nt">100</span><span class="o">%</span> <span class="p">{</span><span class="nl">transform</span><span class="p">:</span> <span class="n">translateY</span><span class="p">(</span><span class="m">0px</span><span class="p">);}</span>
+<span class="p">}</span>
+
+<span class="k">@keyframes</span> <span class="n">side-step</span> <span class="p">{</span>
+	<span class="nt">0</span><span class="o">%</span> <span class="p">{</span><span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">0px</span><span class="p">);}</span>
+	<span class="nt">50</span><span class="o">%</span> <span class="p">{</span><span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">-6px</span><span class="p">);}</span>
+	<span class="nt">100</span><span class="o">%</span> <span class="p">{</span><span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">0px</span><span class="p">);}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In the example above, only the <code class="highlighter-rouge">side-step</code> animation will play since it’s the last defined animation value set, and the transform styles in the keyframes will overwrite the styles from the <code class="highlighter-rouge">transform: translateX(-10px);</code> statement.</p>
+
+<p>In order to circumvent this issue, we can just layer and wrap the <code class="highlighter-rouge">.animation-div</code> class with extra div’s where each div will play a specific animation.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'float-container'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'side-step-container'</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">'.animation-div'</span><span class="nt">&gt;</span> DIV Content<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+  <span class="nc">.float-container</span> <span class="p">{</span>
+	<span class="nl">animation</span><span class="p">:</span> <span class="n">float</span> <span class="m">0.5s</span> <span class="n">linear</span> <span class="n">infinite</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.side-step</span> <span class="p">{</span>
+	<span class="nl">animation</span><span class="p">:</span> <span class="n">side-step</span> <span class="m">0.5s</span> <span class="n">linear</span> <span class="n">infinite</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nc">.animation-div</span> <span class="p">{</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="n">translateX</span><span class="p">(</span><span class="m">-10px</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span></code></pre></figure>
+
+<p>This really isn’t anything revolutionary, but I thought it was neat enough to include it here lmao</p>
+
+<h4 id="playing-animations-with-sounds">Playing Animations with Sounds</h4>
+<p>Uh, I’m planning to implement some other things, but I’m preoccupied with some other stuff for now so I’m gonna leave the front page alone with the instant transmission thing xd<br />
+So uh here’s the basic javascript for what I have for now:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">transmissionAudio</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Audio</span><span class="p">(</span><span class="s1">'/assets/images/instant_transmission.mp3'</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#index-img'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">transmissionAudio</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'.hover-animation'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"animation"</span><span class="p">,</span> <span class="s2">"side-step 0.3s normal forwards"</span><span class="p">);</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.hover-animation'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s2">"animation"</span><span class="p">,</span> <span class="s2">""</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">1500</span><span class="p">)</span>
+<span class="p">})</span></code></pre></figure>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>

@@ -135,6 +135,10 @@ a {
 	z-index: 1000;
 }
 
+#index-img {
+	cursor: pointer;
+}
+
 #animation-trigger:hover > .hover-animation {
 	/*animation: side-step 0.5s normal forwards;*/
 }
@@ -158,15 +162,9 @@ a {
 }
 
 @keyframes float {
-	0% {
-		transform: translatey(0px);
-	}
-	50% {
-		transform: translatey(-6px);
-	}
-	100% {
-		transform: translatey(0px);
-	}
+	0% {transform: translatey(0px);}
+	50% {transform: translatey(-6px);}
+	100% {transform: translatey(0px);}
 }
 
 @keyframes shake {

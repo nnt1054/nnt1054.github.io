@@ -36,7 +36,9 @@ Bulleted Lists:
 
 Create Links using `[link text][link variable]` in the post
 and including`[link_var]: http://url.com` at the bottom of the .md file.
-Here's an example linking to [my website][ntoledo.me] :)
+Here's an example linking to [my website][ntoledo.me] :)  
+Also works like this: `[link text](https://link.com)`  
+[ntoledo.me](https://ntoledo.me)
 
 Adding two spaces after a line of text
 will continue the paragraph on the next line!

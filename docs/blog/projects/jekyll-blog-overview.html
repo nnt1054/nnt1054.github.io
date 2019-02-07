@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Jekyll Blog Overview</title>
+  <meta name="description" content="BackgroundI wanted to make this site for three primary reasons:  Showcase personal projects/work along with my general work flow  Have a consolidated place t...">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Jekyll Blog Overview</h1>
+    <p class="post-meta"><time datetime="2019-01-28T19:46:40-08:00" itemprop="datePublished">Jan 28, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/projects> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="background">Background</h4>
+<p>I wanted to make this site for three primary reasons:</p>
+<ol>
+  <li>Showcase personal projects/work along with my general work flow</li>
+  <li>Have a consolidated place to maintain school and technical notes</li>
+  <li>Develop some sort of online personality/brand/presence for self expression and recruitment purposes :)</li>
+</ol>
+
+<p>Other reasons for making this site include practicing web design and development, gaining more experience with CSS animations and transitions, and learning another framework (jekyll).</p>
+
+<h4 id="userflow">Userflow</h4>
+<p class="column">Here’s a low quality H I G H spec of the site userflow :)
+<img src="/assets/images/blog-userflow.png" alt="Mushu :)" class="column post-image" /></p>
+
+<h4 id="application-structure">Application Structure</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── _config.yml
+├── CNAME
+├── README.md
+├── _includes
+|   └── head.html
+├── _layouts
+|   ├── category.html
+|   ├── default.html
+|   ├── page.html
+|   └── post.html
+├── _posts/
+|   ├── notes/
+|   |	├── tagName01/
+|   |	|	├── 2019-01-01-title01.md
+|   |	|	└── 2019-01-01-title02.md
+|   |	└── tagName02/
+|   ├── projects/
+|   |	├── tagName01/
+|   |	|	├── 2019-01-01-title01.md
+|   |	|	└── 2019-01-01-title02.md
+|   |	└── tagName02/
+├── assets/
+|   ├── css/
+|   ├── images/
+|   └── js/
+├── pages/
+|   ├── index.html
+|   ├── about.md
+|   ├── work.html
+|   ├── notes.md
+|   └── projects.md
+└── docs/
+</code></pre></div></div>
+<p>Some points to highlight:</p>
+<ul>
+  <li>The <code class="highlighter-rouge">pages</code> folder is reserved for webpages that aren’t associated with blog posts.  These include the index, about and work pages.  Since there won’t be too many overall post categories, I also included category post directory pages (<code class="highlighter-rouge">notes.md</code> and <code class="highlighter-rouge">projects.md</code>), which both extend the <code class="highlighter-rouge">category</code> template.</li>
+  <li>The docs/ folder is where the actual jekyll build is placed, so the site can be found by github pages.</li>
+  <li>The about.md page uses the same stylings as normal blog posts. (uses post.html template)</li>
+</ul>
+
+<h4 id="lazy-loading-images">Lazy Loading Images</h4>
+<p>I want to implement this later. Here’s a <a href="https://medium.freecodecamp.org/using-svg-as-placeholders-more-image-loading-techniques-bed1b810ab2c">reference</a> for when I do :)</p>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
