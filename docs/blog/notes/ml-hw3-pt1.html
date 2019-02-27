@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Decision Theory</title>
+  <meta name="description" content="Decision Theory (Risk Minimization)For a given feature, multiple sample points with the same value can belong to different classes.  For example, among peopl...">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Decision Theory</h1>
+    <p class="post-meta"><time datetime="2019-02-27T00:00:00-08:00" itemprop="datePublished">Feb 27, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async=""></script>
+
+<h4 id="decision-theory-risk-minimization">Decision Theory (Risk Minimization)</h4>
+<p>For a given feature, multiple sample points with the same value can belong to different classes.  For example, among people that eat 1200 Calories a day, there can exist people that have cancer and people that don’t have cancer.<br />
+Recall that:</p>
+<blockquote>
+  <p>P(X) = P(X|Y = 1) P(Y = 1) + P(X|Y = 0) P(Y = 0)</p>
+</blockquote>
+
+<p>We use Bayes theorem to determine the probability of an event given information:</p>
+<blockquote>
+  <p>P(Y = 1|X) = P(X|Y = 1)P(Y = 1) / P(X)</p>
+</blockquote>
+
+<p>A loss function <strong>L(x,y)</strong> specifies the magnitude of a penalty if classifier predicts z, where the true class is y.  For example, a function <strong>L(x,y)</strong> could output 1 for false positives, 5 for false negatvies, and 0 for when <strong>z == y</strong>.  A loss function is <strong>asymmetrical</strong> when not all false classifications aren’t weighed the same.  A <strong>0 - 1 loss function</strong> simply outputs 1 for all incorrect positions, 0 for correct.</p>
+
+<p>-bayes decision rule is using risk to pick the optimal classifier
+-also ‘bayes classifier’: r* that minimizes function R(r)</p>
+
+<h4 id="gaussian-function">Gaussian Function:</h4>
+<p>A Gaussian is a function of the form:    <script type="math/tex">f(x) = ae^{ {x - b}^2 \over {2c^2} }</script>
+where <strong>a</strong> is the height of the peak, <strong>b</strong> the position, and <strong>c</strong> the width of the curve.</p>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>

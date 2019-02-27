@@ -6,9 +6,8 @@ categoryName: notes
 back: /
 tagList:
     - cs189
-    - cs170
-    - psych156
     - jekyll
+    - misc
 
 ---
 

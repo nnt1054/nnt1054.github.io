@@ -17,14 +17,24 @@
 		margin: 0px auto;
 	}
 
-	p {
+	p, li {
 		font-size: 12pt;
 	}
 
-  .highlight {
-    font-size: 10pt;
-    overflow-x: scroll;
-  }
+	ul, blockquote {
+		margin-left: 0px;
+		padding-left: 18px;
+	}
+
+	.highlight {
+		margin: 0px;
+		font-size: 10pt;
+		overflow-x: scroll;
+	}
+
+	.highlight > pre {
+		margin-left: -24px;
+	}
 
 	.back-btn {
 		left: 12px;
