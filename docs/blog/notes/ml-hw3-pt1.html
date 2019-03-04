@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Neil Toledo - Decision Theory</title>
-  <meta name="description" content="Decision Theory (Risk Minimization)For a given feature, multiple sample points with the same value can belong to different classes.  For example, among peopl...">
+  <meta name="description" content="This page is still incompleteDecision Theory (Risk Minimization)For a given feature, multiple sample points with the same value can belong to different class...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -32,6 +32,8 @@
   <div class="post-content" itemprop="articleBody">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async=""></script>
 
+<h4 id="this-page-is-still-incomplete">This page is still incomplete</h4>
+
 <h4 id="decision-theory-risk-minimization">Decision Theory (Risk Minimization)</h4>
 <p>For a given feature, multiple sample points with the same value can belong to different classes.  For example, among people that eat 1200 Calories a day, there can exist people that have cancer and people that don’t have cancer.<br />
 Recall that:</p>
@@ -47,7 +49,36 @@ Recall that:</p>
 <p>A loss function <strong>L(x,y)</strong> specifies the magnitude of a penalty if classifier predicts z, where the true class is y.  For example, a function <strong>L(x,y)</strong> could output 1 for false positives, 5 for false negatvies, and 0 for when <strong>z == y</strong>.  A loss function is <strong>asymmetrical</strong> when not all false classifications aren’t weighed the same.  A <strong>0 - 1 loss function</strong> simply outputs 1 for all incorrect positions, 0 for correct.</p>
 
 <p>-bayes decision rule is using risk to pick the optimal classifier
--also ‘bayes classifier’: r* that minimizes function R(r)</p>
+-also ‘bayes classifier’: r* that minimizes function R(r)
+-If L is 0-1 loss:
+	R(r) = P(r(x) is wrong)</p>
+
+<h4 id="3-ways-to-build-classifiers">3 Ways to Build Classifiers</h4>
+<ol>
+  <li>Generative Models (e.g., LDA)
+    <ul>
+      <li>assume sample points come from probability distributions for each class</li>
+      <li>guess the form of the distributions</li>
+      <li>for each class C, fit distribution parameters to class C points, giving P(X | Y = c)</li>
+      <li>for each C, estimate P(Y = c)</li>
+      <li>Bayes’ Theorem gives P(Y | X)</li>
+      <li>If 0-1 loss, pikc class C that maximizes P(Y = C | X = x); or maximizes P(X = x | Y = c) P(Y = c)
+Pros: tells you probability guess is wrong; can diagnose outliers
+Cons: hard to estimate distributions accurately; real distributions rarely matches standard ones</li>
+    </ul>
+  </li>
+  <li>Discriminative models (e.g. logistic regression)
+    <ul>
+      <li>Model P(Y | X) directly
+Pros: tells you probability guess is wron;</li>
+    </ul>
+  </li>
+  <li>Find Decision Boundary (e.g. SVM)
+    <ul>
+      <li>Model r(x) directly (no posterior)</li>
+    </ul>
+  </li>
+</ol>
 
 <h4 id="gaussian-function">Gaussian Function:</h4>
 <p>A Gaussian is a function of the form:    <script type="math/tex">f(x) = ae^{ {x - b}^2 \over {2c^2} }</script>
