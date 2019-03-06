@@ -6,7 +6,7 @@ categories: notes
 tags:
 ---
 
-Iterating over a Map is fucking annoying
+Iterating over a Map is hecking annoying
 
 {% highlight c++ %}
 std::map<std::string, int>::iterator iter = myDict.begin();
