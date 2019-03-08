@@ -32,10 +32,6 @@
 		overflow-x: scroll;
 	}
 
-	.highlight > pre {
-		margin-left: -24px;
-	}
-
 	.back-btn {
 		left: 12px;
 	}

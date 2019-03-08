@@ -21,7 +21,7 @@ $(document).keyup(function(e) {
 var transmissionAudio = new Audio('/assets/images/instant_transmission.mp3');
 $('#index-img').on('click', function() {
   transmissionAudio.play();
-  $('.hover-animation').css("animation", "side-step 0.3s normal forwards");
+  $('.hover-animation').css("animation", "side-step 0.3s normal  0.15s forwards");
   setTimeout(function() {
     $('.hover-animation').css("animation", "");
   }, 1500)

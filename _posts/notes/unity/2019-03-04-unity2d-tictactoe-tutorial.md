@@ -27,20 +27,3 @@ Anchors:
 #### Main Takeaways
 * learned how to create script functions, reference gameObjects in the function, and attach the functions to a UI button
 * learned how to create a prefab, and create multiple gameObjects with different parameters/values.
-
-
-#### Level Generator
-* make levelGenerator gameObject
-* represent a map using pixel colors in image, or an array
-* make prefab for each tile type
-* make class that represents mapping from value to prefab (ie. ColorToPrefab)
-* [serial.serializable] makes class iteratable
-* Instantiate prefab using
-
-{% highlight csharp %}
-Instantiate(colorMapping.prefab, position, Quaternion.identity, transform);
-{% endhighlight %}
-
-#### Tilemap vs Prefab Tiles
-* What does monobehavior mean btw?
-* 

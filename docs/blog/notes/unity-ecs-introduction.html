@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Entity Component System</title>
+  <meta name="description" content="Entity Component System vs Standard ScriptingAs opposed to standard scripting, which operates around game objects and attaching components with monobehaviors...">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Entity Component System</h1>
+    <p class="post-meta"><time datetime="2019-03-04T00:00:00-08:00" itemprop="datePublished">Mar 4, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="entity-component-system-vs-standard-scripting">Entity Component System vs Standard Scripting</h4>
+<p>As opposed to standard scripting, which operates around game objects and attaching components with monobehaviors, ECS seperates data and behaviors into separate classes.  ECS involves using a ‘ComponentSystem’ which applies a behavior to a series of applicable MonoBehavior components which <em>only</em> stores the data related to its behavior.  Think of entities as just containers for data.  The behaviors are split into different ‘Systems’ (i.e. Render System, Health System, Spawning System), which filters the entities based off what entity attributes and applies its system specific behavior logic on corresponding entities.  The basic benefits of this is being able to parallelize behaviors and optimize performance.</p>
+
+<h4 id="implementing-job-system">Implementing Job System</h4>
+<ol>
+  <li>Define just the data you care about, and how you want to proces the data</li>
+  <li>Create a struct for specific Job that extends IJobParallelFor[…]</li>
+  <li>In gameManager, create an accessArray to reference the entities to apply behaviors</li>
+  <li>In update(), create a moveJob, and schedule the batch with the jobHandle
+    <ul>
+      <li>complete jobs when necessary to ensure things are in sync</li>
+      <li>add new objects to the job list by adding them to the accessArray</li>
+      <li>make sure to dispose of accessArrays to clear up memory</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="implementing-ecs">Implementing ECS</h4>
+<ul>
+  <li>use prefabs as a template to show what an object would look like; the prefab won’t include a renderer and won’t be used as a gameObject</li>
+  <li>prefab for an object will consist of scripts that define its component data (i.e. positionComponent, moveSpeedComponent)</li>
+  <li>systems consist of a filter + a job</li>
+  <li>ECS references prefab to create entities, but doesn’t instantiate the actual prefabs</li>
+</ul>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
