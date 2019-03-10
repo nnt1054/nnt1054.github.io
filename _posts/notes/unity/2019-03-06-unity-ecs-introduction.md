@@ -7,7 +7,7 @@ tags: unity
 ---
 
 #### Entity Component System vs Standard Scripting
-As opposed to standard scripting, which operates around game objects and attaching components with monobehaviors, ECS seperates data and behaviors into separate classes.  ECS involves using a 'ComponentSystem' which applies a behavior to a series of applicable MonoBehavior components which *only* stores the data related to its behavior.  Think of entities as just containers for data.  The behaviors are split into different 'Systems' (i.e. Render System, Health System, Spawning System), which filters the entities based off what entity attributes and applies its system specific behavior logic on corresponding entities.  The basic benefits of this is being able to parallelize behaviors and optimize performance.  
+As opposed to standard scripting, which operates around game objects and attaching components with monobehaviors, ECS seperates data and behaviors into separate classes.  ECS involves using a 'ComponentSystem' which applies a behavior to a series of applicable MonoBehavior components which *only* stores the data related to its behavior.  Think of entities as just containers for data.  The behaviors are split into different 'Systems' (i.e. Render System, Health System, Spawning System), which filters the entities based off what entity attributes and applies its system specific behavior logic on corresponding entities.  The basic benefits of this is being able to parallelize behaviors and optimize performance.
 
 #### Implementing Job System
 1. Define just the data you care about, and how you want to proces the data
@@ -23,3 +23,6 @@ As opposed to standard scripting, which operates around game objects and attachi
 * prefab for an object will consist of scripts that define its component data (i.e. positionComponent, moveSpeedComponent)
 * systems consist of a filter + a job
 * ECS references prefab to create entities, but doesn't instantiate the actual prefabs
+
+
+#### Haven't had a chance to play around with ECS yet, so this page will be updated in the future once I'm comfortable with the other parts of Unity.

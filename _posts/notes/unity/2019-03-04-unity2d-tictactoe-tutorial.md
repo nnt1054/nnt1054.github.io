@@ -6,8 +6,6 @@ categories: notes
 tags: unity
 ---
 
-#### This page is still incomplete
-
 UI Panel:
 * creates a Canvas > Panel
 * creates an EventSystem
@@ -27,3 +25,6 @@ Anchors:
 #### Main Takeaways
 * learned how to create script functions, reference gameObjects in the function, and attach the functions to a UI button
 * learned how to create a prefab, and create multiple gameObjects with different parameters/values.
+
+
+#### This page is still incomplete.

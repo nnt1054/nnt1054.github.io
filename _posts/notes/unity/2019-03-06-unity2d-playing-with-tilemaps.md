@@ -37,14 +37,13 @@ While I'm still self-studying game design theory, and how to design a good game.
 * spawns board tiles in a grid
 * parent to all the board tile objects
 
-##### BoardTileObject  
+##### BoardTileObject
 * Texture (based on type of tile)
 * Unit on Tile
-	* Is it better to have the Unit save its position, or the position save the unit? (for now we do the latter)  
+	* Is it better to have the Unit save its position, or the position save the unit? (for now we do the latter)
 * 2D Collider to register mouse over and mouse click events
 
 * Is it better to have one boardTileObject prefab and create separate sub-components to represent different types of tiles? (for now we will)
 
 
-
-##### PlaceholderText
+#### I was successfully able to create the game board.  Will add screenshots and a summary in the near future :)

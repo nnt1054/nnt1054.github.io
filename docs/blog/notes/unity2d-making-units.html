@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Adding Units to the GameBoard</title>
+  <meta name="description" content="This page is still incompleteIntroLast post I was able to make a GameBoardGrid using BoardTile prefabs.  Now I want to add units and be able to select and mo...">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Adding Units to the GameBoard</h1>
+    <p class="post-meta"><time datetime="2019-03-09T00:00:00-08:00" itemprop="datePublished">Mar 9, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="this-page-is-still-incomplete">This page is still incomplete</h4>
+
+<h4 id="intro">Intro</h4>
+<p>Last post I was able to make a GameBoardGrid using BoardTile prefabs.  Now I want to add units and be able to select and move them around.</p>
+
+<h4 id="game-objects">Game Objects</h4>
+<p>First, we want to understand the game objects we’ll be creating, and understanding their role and where to put certain functions.</p>
+
+<h5 id="gamemanager">GameManager</h5>
+<ul>
+  <li>handles the overarching game flow</li>
+</ul>
+
+<h5 id="unit">Unit</h5>
+<ul>
+  <li>the actual unit we’ll be moving</li>
+  <li>contains its own pathfinding algorithms, and movement stats</li>
+</ul>
+
+<h5 id="boardtile">BoardTile</h5>
+<ul>
+  <li>will be the parent to its containing unit</li>
+  <li>used for unit/position selections</li>
+  <li>will throw authority to the GameManager to handle tileClicks on itself</li>
+</ul>
+
+<h4 id="moving-a-unit">Moving a Unit</h4>
+<p>These are my initial ideas on implementation before actually implementing it.
+1. gameManager enters idle state
+2. click on tile –&gt; if idleState and containsUnit –&gt; pass reference of self and unit to gameManager
+3. gameManager enters selectState
+4. click on tile –&gt; if selectState and !containsUnit –&gt; move unit to tile</p>
+
+<h4 id="how-does-the-tictactoe-tutorial-handle-game-logic">How does the TicTacToe Tutorial handle Game Logic</h4>
+<ul>
+  <li>uses a GameController object</li>
+  <li>on Awake() imports the gridSpace references to be accessed locally</li>
+  <li>GameManager has getter functions for other objects to use to get relevant information
+    <ul>
+      <li>should I give units access to the GridGame board to move themselves?</li>
+      <li>this way each unit can apply their own movement stats and algorithms</li>
+      <li>unit’s can physically move themselves in the world space, and make themselves a child of their new tile</li>
+      <li>being a child of the tile is useful, so you can add getters and setters for unitContained and vary responses useful for fog of war functionality later on</li>
+    </ul>
+  </li>
+  <li>GridSpaces contain their own data of the “X” or “O”</li>
+  <li>GridSpaces use GameManager.getPlayerTurn to help decide game logic</li>
+  <li>GridSpaces also call the GameManager.EndTurn() function themselves</li>
+</ul>
+
+<p>BoardTile clicks() should always just report to the gameManager that a click event has occured. This indicates that a GameManager.handleTileClick() function would be useful.  It should check take in the clicked tile position as an argument and check the GameManager’s state, whether or not it’s waiting for a tile to be selected or to initiate a Unit’s action functions.</p>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
