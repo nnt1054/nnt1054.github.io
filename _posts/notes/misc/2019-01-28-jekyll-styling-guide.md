@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll Markdown Stlying Guide"
+title:  "Jekyll Markdown Styling Guide"
 date:   2019-01-28 19:46:40 -0800
 categories: notes
 tags: jekyll
@@ -22,7 +22,7 @@ This page is just a bunch of examples of how to style text and other things in t
 
 #### Header 4
 
-<b>Bold:</b> with some text on same line 
+<b>Bold:</b> with some text on same line
 
 > Indent 1
 >> Indent 2
@@ -36,8 +36,8 @@ Bulleted Lists:
 
 Create Links using `[link text][link variable]` in the post
 and including`[link_var]: http://url.com` at the bottom of the .md file.
-Here's an example linking to [my website][ntoledo.me] :)  
-Also works like this: `[link text](https://link.com)`  
+Here's an example linking to [my website][ntoledo.me] :)
+Also works like this: `[link text](https://link.com)`
 [ntoledo.me](https://ntoledo.me)
 
 Adding two spaces after a line of text

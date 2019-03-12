@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Unit Actions and Abilities</title>
+  <meta name="description" content="IntroIn my last post, I was able to spawn a Unit onto the GameBoard and move it around.  What’s significant is that I was able to make a rough outline of the...">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Unit Actions and Abilities</h1>
+    <p class="post-meta"><time datetime="2019-03-09T00:00:00-08:00" itemprop="datePublished">Mar 9, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="intro">Intro</h4>
+<p>In my last post, I was able to spawn a Unit onto the GameBoard and move it around.  What’s significant is that I was able to make a rough outline of the interactions between the GameManager, GameBoard, BoardTiles and the actual units.  Now my goal is to spawn a drop down menu of unit actions when a unit’s tile is clicked on.  The dropdown buttons in the menu will map to different functions in the UnitScript.</p>
+
+<p>My first initial concern is that currently the boardTile’s handle the movement logic of a unit.  Instead of passing the Unit reference to the boardTile, we want to pass a reference of the boardTile to the Unit instead and have them handle it instead.  This allows the units to have different pathfinding algorithms, for cases where some units can navigate over specific terrain or not.</p>
+
+<p>For implmentation, I need to check the available preset UI objects in Unity, for anything that holds multiple buttons.  Also, I’d like to change part of the implementation so far to allow unit’s to handle more of their own interactions, rather than the GameManager handling everything.  To accommodate this, I’m going to create a promptTileSelect function in the gameManager.  The function will be invoked by the actual Unit, and will return a boardTile object selected/clicked on.  In addition, we can have the Unit trigger the boardTile masks itself.</p>
+
+<p>Regarding the boardTile masks, for AoE type selections (where hovering over a tile should also trigger a tileMask on adjacent tiles), we can create a function in the boardTile script, where the center tile will highlight its adjacent tiles as an onMouseEnter effect (and disable it onMouseOut).</p>
+
+<h4 id="refactored-unit-movement-process">Refactored Unit Movement Process</h4>
+<ol>
+  <li>gameManager in idleState</li>
+  <li>boardTile is clicked on –&gt; triggers and displays containedUnit’s displayActions function
+    <ul>
+      <li>clicking outside of the menu will trigger hideActions (create invisible UI button that will occupy the entire screen)</li>
+    </ul>
+  </li>
+  <li>clicking the Move button will trigger the startSelectMove function in the Unit script</li>
+  <li>moveUnit function will pass control to the gameManager to wait for a boardTile click</li>
+  <li>boardTile will pass a button press to the gameManager, which will pass the boardTile back to the Unit</li>
+  <li>the unit finally invokes its moveTiles function and changes its boardTile parent and position.</li>
+</ol>
+
+<p>Thoughts as I’m writing this: is the gameManager the only place to include globalReferences?  It would be helpful if all the gameObjects could reference a selected/active Unit.  The code would be more straightfoward if every gameObject didn’t have to pull the gameManager’s gameObject, get it’s script, use a script function to find the active unit, get the Unit’s gameObject, then script, and then finally it’s relevant script variables.  Global functions in general would certainly be useful.</p>
+
+<p>Instead of having public variable references to the gameManager gameObject: you can actually change the variable type</p>
+
+<p>from:</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">public GameObject gameManager;</code></p>
+</blockquote>
+
+<p>to:</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">public gameManagerScript gameManager;</code></p>
+</blockquote>
+
+<p>Apparently, Unity will understand to grab the script object instead when type casting an object to its script.</p>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
