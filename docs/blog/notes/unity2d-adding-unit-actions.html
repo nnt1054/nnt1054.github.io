@@ -69,7 +69,16 @@
   <p><code class="highlighter-rouge">public gameManagerScript gameManager;</code></p>
 </blockquote>
 
-<p>Apparently, Unity will understand to grab the script object instead when type casting an object to its script.</p>
+<p>Apparently, Unity will understand to grab the script object instead when type casting an object to its script. (nvm not sure, will double check this later).  Since prefabs can’t set refernces to other GameObjects, I need the Unit prefab to search for the single GameManager object in it’s start function.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">GameManagerScript</span> <span class="n">gameManager</span><span class="p">;</span>
+<span class="k">void</span> <span class="nf">Start</span> <span class="p">()</span> <span class="p">{</span>
+	<span class="n">gameManager</span> <span class="p">=</span> <span class="n">GameObject</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="s">"GameManager"</span><span class="p">).</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">GameManagerScript</span><span class="p">&gt;();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Currently debating if I want to continue with naming script variables as “<GameObjectName>Script" rather than just "&lt;GameObjectName".  The former will be useful for accessing other components of an object, but I'm not sure if there will be any cases where that's necessary.</GameObjectName></p>
+
+<p>Prefabs should all use the code above to reference the gameManager.  Regular GameObjects should all have the reference set directly through the inspector.</p>
 
   </div>
 

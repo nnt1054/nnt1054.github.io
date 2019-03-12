@@ -38,4 +38,15 @@ to:
 
 > `public gameManagerScript gameManager;`
 
-Apparently, Unity will understand to grab the script object instead when type casting an object to its script.
+Apparently, Unity will understand to grab the script object instead when type casting an object to its script. (nvm not sure, will double check this later).  Since prefabs can't set refernces to other GameObjects, I need the Unit prefab to search for the single GameManager object in it's start function.
+{% highlight csharp %}
+public GameManagerScript gameManager;
+void Start () {
+	gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+}
+{% endhighlight %}
+
+Currently debating if I want to continue with naming script variables as "<GameObjectName>Script" rather than just "<GameObjectName".  The former will be useful for accessing other components of an object, but I'm not sure if there will be any cases where that's necessary.
+
+
+Prefabs should all use the code above to reference the gameManager.  Regular GameObjects should all have the reference set directly through the inspector.
