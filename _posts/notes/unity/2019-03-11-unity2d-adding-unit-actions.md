@@ -39,6 +39,7 @@ to:
 > `public gameManagerScript gameManager;`
 
 Apparently, Unity will understand to grab the script object instead when type casting an object to its script. (nvm not sure, will double check this later).  Since prefabs can't set refernces to other GameObjects, I need the Unit prefab to search for the single GameManager object in it's start function.
+
 {% highlight csharp %}
 public GameManagerScript gameManager;
 void Start () {
@@ -48,5 +49,34 @@ void Start () {
 
 Currently debating if I want to continue with naming script variables as "<GameObjectName>Script" rather than just "<GameObjectName".  The former will be useful for accessing other components of an object, but I'm not sure if there will be any cases where that's necessary.
 
-
 Prefabs should all use the code above to reference the gameManager.  Regular GameObjects should all have the reference set directly through the inspector.
+
+After making the code structure changes, now I want to make it so that clicking on a unit will bring up a drop down menu.  The dropdown menu will have buttons that map Unit actions such as: Move, Attack, Cancel for now.  To create the drop down menu, we can use the `GUILayout.BeginVertical` and add buttons for each action/function.
+
+{% highlight csharp %}
+void onGui() {
+    GUILayout.BeginVertical("box");
+    
+    GUILayout.Button("Button01");
+    GUILayout.Button("Button02");
+    GUILayout.Button("Button03");
+    
+    GUILayout.EndVertical();
+}
+{% endhighlight %}
+
+##### Still to do for Movement:
+1. Movement Animation
+2. Tile Masks based on range of movement
+3. Showing Movement Path Arrow on hover
+4. Create different tile types
+5. implement A* for pathfinding
+
+##### Still to do for Combat:
+1. figure out how to calculate combat damage
+2. write combat functions
+3. add type advantages and disadvantages
+
+##### Still to do for Special Abilities:
+1. figure out what this is xd
+2. adding general implementation for how to highlight tile AOE preview

@@ -76,9 +76,43 @@
 	<span class="n">gameManager</span> <span class="p">=</span> <span class="n">GameObject</span><span class="p">.</span><span class="nf">Find</span><span class="p">(</span><span class="s">"GameManager"</span><span class="p">).</span><span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">GameManagerScript</span><span class="p">&gt;();</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>Currently debating if I want to continue with naming script variables as “<GameObjectName>Script" rather than just "&lt;GameObjectName".  The former will be useful for accessing other components of an object, but I'm not sure if there will be any cases where that's necessary.</GameObjectName></p>
+<p>Currently debating if I want to continue with naming script variables as “<gameobjectname>Script" rather than just "&lt;GameObjectName".  The former will be useful for accessing other components of an object, but I'm not sure if there will be any cases where that's necessary.</gameobjectname></p>
 
 <p>Prefabs should all use the code above to reference the gameManager.  Regular GameObjects should all have the reference set directly through the inspector.</p>
+
+<p>After making the code structure changes, now I want to make it so that clicking on a unit will bring up a drop down menu.  The dropdown menu will have buttons that map Unit actions such as: Move, Attack, Cancel for now.  To create the drop down menu, we can use the <code class="highlighter-rouge">GUILayout.BeginVertical</code> and add buttons for each action/function.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">void</span> <span class="nf">onGui</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">GUILayout</span><span class="p">.</span><span class="nf">BeginVertical</span><span class="p">(</span><span class="s">"box"</span><span class="p">);</span>
+    
+    <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Button</span><span class="p">(</span><span class="s">"Button01"</span><span class="p">);</span>
+    <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Button</span><span class="p">(</span><span class="s">"Button02"</span><span class="p">);</span>
+    <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Button</span><span class="p">(</span><span class="s">"Button03"</span><span class="p">);</span>
+    
+    <span class="n">GUILayout</span><span class="p">.</span><span class="nf">EndVertical</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<h5 id="still-to-do-for-movement">Still to do for Movement:</h5>
+<ol>
+  <li>Movement Animation</li>
+  <li>Tile Masks based on range of movement</li>
+  <li>Showing Movement Path Arrow on hover</li>
+  <li>Create different tile types</li>
+  <li>implement A* for pathfinding</li>
+</ol>
+
+<h5 id="still-to-do-for-combat">Still to do for Combat:</h5>
+<ol>
+  <li>figure out how to calculate combat damage</li>
+  <li>write combat functions</li>
+  <li>add type advantages and disadvantages</li>
+</ol>
+
+<h5 id="still-to-do-for-special-abilities">Still to do for Special Abilities:</h5>
+<ol>
+  <li>figure out what this is xd</li>
+  <li>adding general implementation for how to highlight tile AOE preview</li>
+</ol>
 
   </div>
 
