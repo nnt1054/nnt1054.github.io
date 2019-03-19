@@ -80,3 +80,12 @@ void onGui() {
 ##### Still to do for Special Abilities:
 1. figure out what this is xd
 2. adding general implementation for how to highlight tile AOE preview
+
+
+Changes to do rn:
+* drop down to trigger on the new selected tile
+
+
+
+MISC NOTES:
+* All UI elements must be children of a GameObject that has a Canvas component attached
