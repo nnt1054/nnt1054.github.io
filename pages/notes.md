@@ -5,7 +5,6 @@ permalink: /blog/notes/
 categoryName: notes
 back: /
 tagList:
-    - cs189
     - jekyll
     - unity
     - psych156

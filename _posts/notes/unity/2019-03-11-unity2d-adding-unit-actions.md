@@ -81,11 +81,4 @@ void onGui() {
 1. figure out what this is xd
 2. adding general implementation for how to highlight tile AOE preview
 
-
-Changes to do rn:
-* drop down to trigger on the new selected tile
-
-
-
-MISC NOTES:
-* All UI elements must be children of a GameObject that has a Canvas component attached
+I'm postponing the completion of this post, since I don't feel like I planned out the game flow out well enough, as well as lacking knowledge of how to position game elements in Unity.

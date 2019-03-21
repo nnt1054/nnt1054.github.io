@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Neil Toledo - Tech Inteview Notes Part 1</title>
-  <meta name="description" content="Iterating over a Map is hecking annoying">
+  <title>Neil Toledo - Common Coding Samples</title>
+  <meta name="description" content="Greatest Common Denominatordef computeGCD(x, y):    while(y):        x, y = y, x % y    return x ">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -22,7 +22,7 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Tech Inteview Notes Part 1</h1>
+    <h1 class="post-title" itemprop="name headline">Common Coding Samples</h1>
     <p class="post-meta"><time datetime="2019-02-18T00:00:00-08:00" itemprop="datePublished">Feb 18, 2019</time></p>
   </header>
 
@@ -30,14 +30,55 @@
   <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Iterating over a Map is hecking annoying</p>
+    <h5 id="greatest-common-denominator">Greatest Common Denominator</h5>
 
-<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">myDict</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">iter</span> <span class="o">!=</span> <span class="n">myDict</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
-	<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myString</span> <span class="o">=</span> <span class="n">iter</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">myValue</span> <span class="o">=</span> <span class="n">iter</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
-	<span class="n">iter</span><span class="o">++</span>
-<span class="p">}</span><span class="o">=</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">computeGCD</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+   <span class="k">while</span><span class="p">(</span><span class="n">y</span><span class="p">):</span> 
+       <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">%</span> <span class="n">y</span> 
+   <span class="k">return</span> <span class="n">x</span> </code></pre></figure>
+
+<h5 id="fibbonaci-w-dynamic-programming">Fibbonaci w/ Dynamic Programming</h5>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># DP w/ memoization (starts from 0 to n rather than n to 0)</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+   <span class="n">fibValues</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">fibValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fibValues</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibValues</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+   <span class="k">return</span> <span class="n">fibValues</span><span class="p">[</span><span class="n">n</span><span class="p">]</span></code></pre></figure>
+
+<h5 id="breadth-first-search">Breadth First Search</h5>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">child</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">visited</span></code></pre></figure>
+
+<h5 id="depth-first-search">Depth First Search</h5>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">child</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">visited</span></code></pre></figure>
 
 
   </div>

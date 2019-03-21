@@ -32,17 +32,8 @@ I want emphasize the idea of having less types of units, but making sure they al
 * Infection Units
 * Fake Decoy Units
 
-#### Terran Style Units:
+I want to design units in a way where they enable a variety of fun VIABLE strategies.  I'm planning on making a more in-depth post about the flow of a game and overarching strategy concepts.  I want to design and balance the game similar to how Starcraft allows for a variety of build orders (fast forge expand, 6 pool, 4 gate, etc) and army compositions (skytoss, bio, etc).  For inspiration, I want to make it so the following game armies/strategies would be viable builds: 
 
-##### Marine
-- main basic unit; weak ranged damage; does more consistent damage in large groups
-
-##### Hellbat/Hellion
-- main AOE unit; deals damage in a cone shape
-
-
-
-I want to design units in a way where they enable a variety of fun VIABLE strategies.  I'm planning on making a more in-depth post about the flow of a game and overarching strategy concepts.  For inspiration, I want to make it so the following late game armies would be viable builds: 
 * MASS basic ranged units: overwhelming the opponent with numbers and utilizing positioning and kiting to trade efficiently  
 	* basic counter strategies would include more AOE units
 * 1-2 Boss Units w/ Healers: steam rolling through the enemy with large powerful units and using healers to keep them alive

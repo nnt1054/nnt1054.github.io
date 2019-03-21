@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Unity Tactics RPG Tutorial Notes</title>
+  <meta name="description" content="IntroI’m going and reading through theliquidfire’s tutorial on creating a tactics rpg, and compiling my main takeaways from it.  Here’s the tutorial.Pre-prod...">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Unity Tactics RPG Tutorial Notes</h1>
+    <p class="post-meta"><time datetime="2019-03-13T00:00:00-07:00" itemprop="datePublished">Mar 13, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="intro">Intro</h4>
+<p>I’m going and reading through theliquidfire’s tutorial on creating a tactics rpg, and compiling my main takeaways from it.  Here’s the <a href="http://theliquidfire.com/2015/05/04/tactics-rpg-series-intro/">tutorial</a>.</p>
+
+<h4 id="pre-production-tools">Pre-production Tools</h4>
+<p>I should consider creating pre-production tools for creating and editing levels.  Could also be a useful tool for including a level builder for users.  For the tutorial, we’re still creating a Tile Prefab, except it’s using a 3D cube for its appearance.</p>
+
+<h4 id="architecture">Architecture</h4>
+<p>TheLiquidFire (I’ll refer to the tutorial as tlf for the remainder of this page) uses a “MVVM” Model-View-ViewModel instead of a regular “MVC”.</p>
+
+<h4 id="input-controller">Input Controller</h4>
+<p>Rather than simply creating a game out of buttons, tlf creates an Input Controller.  The Input Controller script is what actually detects and announces input events.  The different state objects can create and remove event listeners, so that they’re only listening for relevant events as well as prevent other unintended actions.</p>
+
+<h4 id="state-machine">State Machine</h4>
+<p>The normal way of creating a state machine goes along these lines:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">enum</span> <span class="n">State</span>
+<span class="p">{</span>
+  <span class="n">Loading</span><span class="p">,</span>
+  <span class="n">Playing</span><span class="p">,</span>
+  <span class="n">GameOver</span>
+<span class="p">}</span>
+<span class="n">State</span> <span class="n">_state</span><span class="p">;</span>
+<span class="k">void</span> <span class="nf">CheckState</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="n">_state</span><span class="p">)</span>
+  <span class="p">{</span>
+  <span class="k">case</span> <span class="n">State</span><span class="p">.</span><span class="n">Loading</span><span class="p">:</span>
+    <span class="c1">// Loading Logic here
+</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">State</span><span class="p">.</span><span class="n">Playing</span><span class="p">:</span>
+    <span class="c1">// Playing Logic here
+</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">State</span><span class="p">.</span><span class="n">GameOver</span><span class="p">:</span>
+    <span class="c1">// GameOver Logic here
+</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>However, a better approach for accommadating different state logic would be to create state <strong>flags</strong> as an actual <strong>object</strong>.  With this method, different states can own their own variables and methods.  In the case of my first gameBoard iteration, this would make it so that only applicable states could save their “selected_object” and targets.  So rather than representing states simply as a dictionary of event handler functions, I can maybe abstract an “event” class, and have the “event” objects passed to whatever corresponding state object.  The state object can then determine whether or not its an applicable event and handle it accordingly.  This will allow me to process more keyboard strokes/events as opposed to just clicking on tiles and buttons in the future.</p>
+
+<h4 id="event-system">Event System</h4>
+<p>I didn’t read too in-depth in this portion, but just be wary about the memory usage of creating too many event listeners.</p>
+
+<h4 id="object-pooling">Object Pooling</h4>
+<p>The idea behind saving previous CPU cycles and reusing them to make things more efficient.  Usually used for updating large numbers of objects (such as bullet positions), but I’m not sure yet where that would fit in a TBS style game.</p>
+
+<h4 id="to-be-continued">To Be Continued!</h4>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
