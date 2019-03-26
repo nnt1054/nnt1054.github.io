@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Introduction to ReactJS</title>
+  <meta name="description" content="IntroFollowing the ReactJS tutorial from the official react website.  Won’t be listing the steps from the website here, just going to write down my thoughts ...">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Introduction to ReactJS</h1>
+    <p class="post-meta"><time datetime="2019-03-13T00:00:00-07:00" itemprop="datePublished">Mar 13, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/notes> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="intro">Intro</h4>
+<p>Following the ReactJS <a href="https://reactjs.org/tutorial/tutorial.html">tutorial</a> from the official react website.  Won’t be listing the steps from the website here, just going to write down my thoughts and notes.
+React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COMPONENTS.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
+  <span class="s1">'type'</span><span class="p">,</span>
+  <span class="p">{</span><span class="na">property1</span><span class="p">:</span> <span class="s1">'property1'</span><span class="p">,</span> <span class="na">property2</span><span class="p">:</span> <span class="s1">'property2'</span><span class="p">},</span>
+  <span class="p">[</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'child1'</span><span class="p">,</span> <span class="p">...),</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'child2'</span><span class="p">,</span> <span class="p">...),</span> <span class="p">...]</span>
+<span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Game</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">value</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="na">values</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+    <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="na">value</span><span class="p">:</span> <span class="nx">i</span><span class="p">,</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+  <span class="nx">exampleFunc</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span> <span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">
+</span>          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">click</span> <span class="nx">me</span><span class="o">&lt;</span><span class="sr">/button&gt;</span><span class="err">
+</span>          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">jumpTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">example</span> <span class="kd">function</span><span class="o">&lt;</span><span class="sr">/button&gt;  </span><span class="err">
+</span>      <span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">
+</span>      <span class="cm">/* insert html code here */</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Game</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"root"</span><span class="p">));</span></code></pre></figure>
+
+<p>Sidenote: <code class="highlighter-rouge">const</code> variables can’t be reassigned and are consistent within the block its declared in.  You can change properties of a const variable (like changing entries in a dictionary), but you can’t reassign the actual variable.</p>
+
+<h4 id="the-component-lifecycle">The Component Lifecycle</h4>
+<p>React components come with methods that are executed throughout their lifespan.  These methods can/are meant to be override to give the components functionality.  The catogories of lifecycle methods include ‘Mounting’, ‘Updating’, ‘Unmounting’, and ‘Error Handling’</p>
+
+<h5 id="mounting">Mounting</h5>
+<p>These methods are executed when an instance of a component is instantiated.</p>
+<ol>
+  <li>constructor()</li>
+  <li>static getDerivedStateFromProps()
+    <ul>
+      <li>called before the render method during the mount and during any updates</li>
+    </ul>
+  </li>
+  <li>render()</li>
+  <li>componentDidMount()
+    <ul>
+      <li>best place to create network requests and/or any subscriptions</li>
+      <li>calling setState() will still render before the browser screen is updated</li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="updating">Updating</h5>
+<p>These methods are called in order when re-rendering a component after a change to a prop or state.</p>
+<ol>
+  <li>static getDerivedFromProps()</li>
+  <li>shouldComponentUpdate()
+    <ul>
+      <li>primarily used for performance optimizations (can ignore for now)</li>
+    </ul>
+  </li>
+  <li>render()</li>
+  <li>getSnapshotBeforeUpdate()
+    <ul>
+      <li>executed before rendered output is commited to the DOM.  Commonly used for cases where scroll position in the DOM needs to be handled in a specific way.</li>
+    </ul>
+  </li>
+  <li>componentDidUpdate()
+    <ul>
+      <li>best place to insert new network requests based on updated component data.</li>
+      <li>should wrap network requests in a conditional statement to prevent any loops</li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="unmounting">Unmounting</h5>
+<ol>
+  <li>componentWillUnmount()
+    <ul>
+      <li>perform any necessary cleanup here</li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="error-handling">Error Handling</h5>
+<ol>
+  <li>static getDerivedStateFromError()</li>
+  <li>componentDidCath()</li>
+</ol>
+
+<h5 id="other-component-methodsproperties">Other Component Methods/Properties</h5>
+<ol>
+  <li>setState()</li>
+  <li>forceUpdate()
+    <ul>
+      <li>forces component to re-render regardless of changes</li>
+    </ul>
+  </li>
+  <li>props</li>
+  <li>state</li>
+</ol>
+
+<p>After going through the tutorial and skimming through the docs, the next step is to now figure out how to connect a backend and/or make components from API calls.<br />
+The most common way to make API calls is to use the native fetch API in JavaScript:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">API_URL</span> <span class="o">=</span> <span class="s1">'https://ntoledo.api/'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">Example</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="nx">API_URL</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">resp</span> <span class="o">=&gt;</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> 
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="na">value</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">value</span>
+        <span class="p">})</span>
+      <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* 
+  Sidenote: Arrow Functions
+  (parameters) =&gt; {statements} 
+  () =&gt; {statements}
+*/</span></code></pre></figure>
+
+<p>The fetch statement should be called in the higher order components and will propogate the data down to the actual components interested in the data.</p>
+
+<h5 id="render-props">Render Props</h5>
+<p>Render prop is a react pattern for sharing code between components.</p>
+<ul>
+  <li>The Wrapper component contains the utility variables and methods it wants to supply, and returns them in its render return value</li>
+  <li>The HOC will will create a Wrapper component in the HOC’s render function and use the HOC’s exposed methods/variables and reference/use them in the HTML the HOC actually wants to return in the render function.</li>
+</ul>
+
+<p>Here’s the best <a href="https://css-tricks.com/an-overview-of-render-props-in-react/#article-header-id-2">example</a> I could find.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"use me for copy and pasting :)"</span><span class="p">)</span>
+<span class="cm">/* hey lmao */</span></code></pre></figure>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
