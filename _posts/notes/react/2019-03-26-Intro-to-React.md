@@ -129,10 +129,17 @@ The fetch statement should be called in the higher order components and will pro
 ##### Render Props
 Render prop is a react pattern for sharing code between components.
 * The Wrapper component contains the utility variables and methods it wants to supply, and returns them in its render return value
-* The HOC will will create a Wrapper component in the HOC's render function and use the HOC's exposed methods/variables and reference/use them in the HTML the HOC actually wants to return in the render function.
+* The Higher Order Component (HOC) will will create a Wrapper component in the HOC's render function and use the Wrapper's exposed methods/variables and reference/use them in the HTML the HOC actually wants to return in the render function.
 
 Here's the best [example](https://css-tricks.com/an-overview-of-render-props-in-react/#article-header-id-2) I could find.
 
+#### Starting a React App
+Update npm and create a new react project:
+>`curl -L https://www.npmjs.com/install.sh | sh`  
+>`npm init react-app my-app`  
+Run the app and/or build for production:
+>`npm start`
+>`npm run build`
 
 
 {% highlight javascript %}

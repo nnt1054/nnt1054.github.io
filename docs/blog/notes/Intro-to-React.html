@@ -180,10 +180,20 @@ The most common way to make API calls is to use the native fetch API in JavaScri
 <p>Render prop is a react pattern for sharing code between components.</p>
 <ul>
   <li>The Wrapper component contains the utility variables and methods it wants to supply, and returns them in its render return value</li>
-  <li>The HOC will will create a Wrapper component in the HOC’s render function and use the HOC’s exposed methods/variables and reference/use them in the HTML the HOC actually wants to return in the render function.</li>
+  <li>The Higher Order Component (HOC) will will create a Wrapper component in the HOC’s render function and use the Wrapper’s exposed methods/variables and reference/use them in the HTML the HOC actually wants to return in the render function.</li>
 </ul>
 
 <p>Here’s the best <a href="https://css-tricks.com/an-overview-of-render-props-in-react/#article-header-id-2">example</a> I could find.</p>
+
+<h4 id="starting-a-react-app">Starting a React App</h4>
+<p>Update npm and create a new react project:</p>
+<blockquote>
+  <p><code class="highlighter-rouge">curl -L https://www.npmjs.com/install.sh | sh</code><br />
+<code class="highlighter-rouge">npm init react-app my-app</code><br />
+Run the app and/or build for production:
+<code class="highlighter-rouge">npm start</code>
+<code class="highlighter-rouge">npm run build</code></p>
+</blockquote>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"use me for copy and pasting :)"</span><span class="p">)</span>
 <span class="cm">/* hey lmao */</span></code></pre></figure>
