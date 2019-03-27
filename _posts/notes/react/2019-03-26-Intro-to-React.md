@@ -47,7 +47,7 @@ class Game extends React.Component {
       <div>
         <h1> {this.props.name} </h1>
           <button onClick={() => this.handleClick(this.state)}>click me</button>
-          <button onClick={() => this.jumpTo(this.state)}>example function</button>  
+          <button onClick={() => this.jumpTo(this.state)}>example function</button>
       </div>
       /* insert html code here */
     );
@@ -98,7 +98,7 @@ These methods are called in order when re-rendering a component after a change t
 3. props
 4. state
 
-After going through the tutorial and skimming through the docs, the next step is to now figure out how to connect a backend and/or make components from API calls.  
+After going through the tutorial and skimming through the docs, the next step is to now figure out how to connect a backend and/or make components from API calls.
 The most common way to make API calls is to use the native fetch API in JavaScript:
 
 {% highlight javascript %}
@@ -109,7 +109,7 @@ class Example extends React.Component {
   componentDidMount() {
     fetch(API_URL)
       .then(resp => resp.json())
-      .then(data => 
+      .then(data =>
         this.setState({
           value: data.value
         })
@@ -117,9 +117,9 @@ class Example extends React.Component {
   }
 }
 
-/* 
+/*
   Sidenote: Arrow Functions
-  (parameters) => {statements} 
+  (parameters) => {statements}
   () => {statements}
 */
 {% endhighlight %}
@@ -135,14 +135,13 @@ Here's the best [example](https://css-tricks.com/an-overview-of-render-props-in-
 
 #### Starting a React App
 Update npm and create a new react project:
->`curl -L https://www.npmjs.com/install.sh | sh`  
->`npm init react-app my-app`  
+
+> `curl -L https://www.npmjs.com/install.sh | sh`
+
+> `npm init react-app my-app`
+
 Run the app and/or build for production:
->`npm start`
->`npm run build`
 
+> `npm start`
 
-{% highlight javascript %}
-console.log("use me for copy and pasting :)")
-/* hey lmao */
-{% endhighlight %}
+> `npm run build`

@@ -25,7 +25,9 @@ This page is just a bunch of examples of how to style text and other things in t
 <b>Bold:</b> with some text on same line
 
 > Indent 1
+
 >> Indent 2
+
 >>> Indent 3
 
 Bulleted Lists:
@@ -48,6 +50,11 @@ def print_hi(name):
   print("Hi, " + str(name))
 print_hi('Neil')
 #=> prints 'Hi, Neil' to STDOUT.
+{% endhighlight %}
+
+{% highlight javascript %}
+console.log("use me for copy and pasting :)")
+/* hey lmao */
 {% endhighlight %}
 
 Use `{: class="cssClass"}` and `{: style="color:red"}` to add CSS classes and html attributes to a paragraph in markdown

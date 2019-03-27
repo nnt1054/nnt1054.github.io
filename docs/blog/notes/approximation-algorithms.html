@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Neil Toledo - Approximation Algorithms</title>
-  <meta name="description" content="Approximation RatioGiven an instance I, and its approximation solution A(I), its approximation ratio is:  For Max Problems:          minI(A(I) / OPT(I)) &lt;...">
+  <meta name="description" content="Approximation RatioGiven an instance I, and its approximation solution A(I), its approximation ratio is:* For Max Problems:  * minI(A(I) / OPT(I)) &lt;= 1* F...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -31,27 +31,17 @@
 
   <div class="post-content" itemprop="articleBody">
     <h4 id="approximation-ratio">Approximation Ratio</h4>
-<p>Given an instance I, and its approximation solution A(I), its approximation ratio is:</p>
-<ul>
-  <li>For Max Problems:
-    <ul>
-      <li>min<sub>I</sub>(<sup>A(I)</sup> / <sub>OPT(I)</sub>) &lt;= 1</li>
-    </ul>
-  </li>
-  <li>For Min Problems:
-    <ul>
-      <li>max<sub>I</sub>(<sup>A(I)</sup> / <sub>OPT(I)</sub>) &gt;= 1
-note: figure out how to format mathematical equations later</li>
-    </ul>
-  </li>
-</ul>
+<p>Given an instance I, and its approximation solution A(I), its approximation ratio is:
+* For Max Problems:
+  * min<sub>I</sub>(<sup>A(I)</sup> / <sub>OPT(I)</sub>) &lt;= 1
+* For Min Problems:
+  * max<sub>I</sub>(<sup>A(I)</sup> / <sub>OPT(I)</sub>) &gt;= 1
+note: figure out how to format mathematical equations later</p>
 
 <h4 id="general-approximation-strategy">General Approximation Strategy</h4>
-<p>For minimization problems, try to:</p>
-<ol>
-  <li>Solve a different problem that can be used as a <em>relaxed</em> lower bound for the optimal solution.</li>
-  <li>Turn the infeasible solution into a feasible one by increasing its approximation ratio.</li>
-</ol>
+<p>For minimization problems, try to:
+1. Solve a different problem that can be used as a <em>relaxed</em> lower bound for the optimal solution.
+2. Turn the infeasible solution into a feasible one by increasing its approximation ratio.</p>
 
 <p>The goal is to try and show that the Infeasible(Lower Bound) &lt; OPT &lt; k<code>&ast;</code>Infeasible(or Approximation) &lt; k<code>&ast;</code>Lower Bound</p>
 

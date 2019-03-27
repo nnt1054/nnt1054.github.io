@@ -50,8 +50,16 @@
 
 <blockquote>
   <p>Indent 1</p>
+</blockquote>
+
+<blockquote>
   <blockquote>
     <p>Indent 2</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
     <blockquote>
       <p>Indent 3</p>
     </blockquote>
@@ -80,9 +88,13 @@ will continue the paragraph on the next line!</p>
 <span class="n">print_hi</span><span class="p">(</span><span class="s">'Neil'</span><span class="p">)</span>
 <span class="c">#=&gt; prints 'Hi, Neil' to STDOUT.</span></code></pre></figure>
 
-<p class="cssClass" style="color:red">Use <code class="highlighter-rouge">{: class="cssClass"}</code> and <code class="highlighter-rouge">{: style="color:red"}</code> to add CSS classes and html attributes to a paragraph in markdown</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"use me for copy and pasting :)"</span><span class="p">)</span>
+<span class="cm">/* hey lmao */</span></code></pre></figure>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+<p class="cssClass" style="color:red">Use <code class="highlighter-rouge"><span class="p">{</span><span class="err">:</span><span class="w"> </span><span class="err">class=</span><span class="nt">"cssClass"</span><span class="err">}</span></code> and <code class="highlighter-rouge"><span class="p">{</span><span class="err">:</span><span class="w"> </span><span class="err">style=</span><span class="nt">"color:red"</span><span class="err">}</span></code> to add CSS classes and html attributes to a paragraph in markdown</p>
+
+<p><code class="highlighter-rouge">
+.
 ├── _config.yml
 ├── _data
 |   └── members.yml
@@ -104,7 +116,7 @@ will continue the paragraph on the next line!</p>
 ├── _site
 ├── .jekyll-metadata
 └── index.html # can also be an 'index.md' with valid front matter
-</code></pre></div></div>
+</code></p>
 
 <p><br />
 to include images use: <code class="highlighter-rouge">![Mushu :)](/assets/images/mushu.jpg)</code></p>
