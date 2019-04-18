@@ -24,5 +24,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <br><br><br><br>
 here's a picture of my dog for <span style="font-size: 10pt"> hopefully </span> reading this far.
 
-![Mushu :)](/assets/images/mushu.jpg){: class="column post-image"}
+[![Mushu :)](/assets/images/mushu.jpg){: class="column post-image"}](/assets/images/mushu.jpg)
 {: class="column"}

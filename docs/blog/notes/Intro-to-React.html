@@ -40,9 +40,9 @@ React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COM
   <span class="p">[</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'child1'</span><span class="p">,</span> <span class="p">...),</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'child2'</span><span class="p">,</span> <span class="p">...),</span> <span class="p">...]</span>
 <span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Game</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Game</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
       <span class="na">value</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
       <span class="na">values</span><span class="p">:</span> <span class="p">[]</span>
@@ -50,7 +50,7 @@ React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COM
   <span class="p">}</span>
 
   <span class="nx">handleClick</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
-    <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kr">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">values</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
       <span class="na">value</span><span class="p">:</span> <span class="nx">i</span><span class="p">,</span>
     <span class="p">})</span>
@@ -83,45 +83,26 @@ React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COM
 <p>React components come with methods that are executed throughout their lifespan.  These methods can/are meant to be override to give the components functionality.  The catogories of lifecycle methods include ‘Mounting’, ‘Updating’, ‘Unmounting’, and ‘Error Handling’</p>
 
 <h5 id="mounting">Mounting</h5>
-<p>These methods are executed when an instance of a component is instantiated.</p>
-<ol>
-  <li>constructor()</li>
-  <li>static getDerivedStateFromProps()
-    <ul>
-      <li>called before the render method during the mount and during any updates</li>
-    </ul>
-  </li>
-  <li>render()</li>
-  <li>componentDidMount()
-    <ul>
-      <li>best place to create network requests and/or any subscriptions</li>
-      <li>calling setState() will still render before the browser screen is updated</li>
-    </ul>
-  </li>
-</ol>
+<p>These methods are executed when an instance of a component is instantiated.
+1. constructor()
+2. static getDerivedStateFromProps()
+* called before the render method during the mount and during any updates
+3. render()
+4. componentDidMount()
+* best place to create network requests and/or any subscriptions
+* calling setState() will still render before the browser screen is updated</p>
 
 <h5 id="updating">Updating</h5>
-<p>These methods are called in order when re-rendering a component after a change to a prop or state.</p>
-<ol>
-  <li>static getDerivedFromProps()</li>
-  <li>shouldComponentUpdate()
-    <ul>
-      <li>primarily used for performance optimizations (can ignore for now)</li>
-    </ul>
-  </li>
-  <li>render()</li>
-  <li>getSnapshotBeforeUpdate()
-    <ul>
-      <li>executed before rendered output is commited to the DOM.  Commonly used for cases where scroll position in the DOM needs to be handled in a specific way.</li>
-    </ul>
-  </li>
-  <li>componentDidUpdate()
-    <ul>
-      <li>best place to insert new network requests based on updated component data.</li>
-      <li>should wrap network requests in a conditional statement to prevent any loops</li>
-    </ul>
-  </li>
-</ol>
+<p>These methods are called in order when re-rendering a component after a change to a prop or state.
+1. static getDerivedFromProps()
+2. shouldComponentUpdate()
+* primarily used for performance optimizations (can ignore for now)
+3. render()
+4. getSnapshotBeforeUpdate()
+* executed before rendered output is commited to the DOM.  Commonly used for cases where scroll position in the DOM needs to be handled in a specific way.
+5. componentDidUpdate()
+* best place to insert new network requests based on updated component data.
+* should wrap network requests in a conditional statement to prevent any loops</p>
 
 <h5 id="unmounting">Unmounting</h5>
 <ol>
@@ -153,9 +134,9 @@ React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COM
 <p>After going through the tutorial and skimming through the docs, the next step is to now figure out how to connect a backend and/or make components from API calls.
 The most common way to make API calls is to use the native fetch API in JavaScript:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">API_URL</span> <span class="o">=</span> <span class="s1">'https://ntoledo.api/'</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">API_URL</span> <span class="o">=</span> <span class="s1">'https://ntoledo.api/'</span><span class="p">;</span>
 
-<span class="kd">class</span> <span class="nx">Example</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+<span class="kr">class</span> <span class="nx">Example</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="p">...</span>
   <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">fetch</span><span class="p">(</span><span class="nx">API_URL</span><span class="p">)</span>
@@ -177,11 +158,9 @@ The most common way to make API calls is to use the native fetch API in JavaScri
 <p>The fetch statement should be called in the higher order components and will propogate the data down to the actual components interested in the data.</p>
 
 <h5 id="render-props">Render Props</h5>
-<p>Render prop is a react pattern for sharing code between components.</p>
-<ul>
-  <li>The Wrapper component contains the utility variables and methods it wants to supply, and returns them in its render return value</li>
-  <li>The Higher Order Component (HOC) will will create a Wrapper component in the HOC’s render function and use the Wrapper’s exposed methods/variables and reference/use them in the HTML the HOC actually wants to return in the render function.</li>
-</ul>
+<p>Render prop is a react pattern for sharing code between components.
+* The Wrapper component contains the utility variables and methods it wants to supply, and returns them in its render return value
+* The Higher Order Component (HOC) will will create a Wrapper component in the HOC’s render function and use the Wrapper’s exposed methods/variables and reference/use them in the HTML the HOC actually wants to return in the render function.</p>
 
 <p>Here’s the best <a href="https://css-tricks.com/an-overview-of-render-props-in-react/#article-header-id-2">example</a> I could find.</p>
 
@@ -205,6 +184,9 @@ The most common way to make API calls is to use the native fetch API in JavaScri
 <blockquote>
   <p><code class="highlighter-rouge">npm run build</code></p>
 </blockquote>
+
+<p>Using React.createElement to create a DOM element will render it to the DOM, but using
+React.createElement to create another React Component will not render the actual ‘Component’ element to the DOM, and instead render the output of its render function instead.</p>
 
   </div>
 

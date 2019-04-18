@@ -145,3 +145,8 @@ Run the app and/or build for production:
 > `npm start`
 
 > `npm run build`
+
+
+
+Using React.createElement to create a DOM element will render it to the DOM, but using
+React.createElement to create another React Component will not render the actual 'Component' element to the DOM, and instead render the output of its render function instead.
