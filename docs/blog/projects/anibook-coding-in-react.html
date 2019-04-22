@@ -98,8 +98,25 @@
 <ul>
   <li>use Component props to pass data downward</li>
   <li>define functions in the higher Component and pass the function to lower Components to pass data upward</li>
-  <li>there’s more I can include here but those two seemed the most important to me</li>
+  <li>use Functional Components for objects with that only take props and don’t need to maintain a state</li>
+  <li>use ES6/7 classes for any other components that need to maintain state or do more than just render DOM elements</li>
 </ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ES6/7 Class
+</span>
+<span class="kr">class</span> <span class="nx">MyComponent</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Functional =
+</span>
+<span class="kr">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">};</span>
+<span class="p">}</span></code></pre></figure>
 
   </div>
 

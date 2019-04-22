@@ -55,4 +55,22 @@ A main reason the scope of the project changed was due to the API I was using it
 #### Lessons Learned
 * use Component props to pass data downward
 * define functions in the higher Component and pass the function to lower Components to pass data upward
-* there's more I can include here but those two seemed the most important to me
+* use Functional Components for objects with that only take props and don't need to maintain a state
+* use ES6/7 classes for any other components that need to maintain state or do more than just render DOM elements
+
+{% highlight javascript %}
+// ES6/7 Class
+class MyComponent extends Component {
+  render() {
+    ...
+  }
+}
+
+// Functional =
+const MyComponent = (props) => {
+  return {
+    ...
+  };
+}
+
+{% endhighlight %}
