@@ -145,3 +145,15 @@ Run the app and/or build for production:
 > `npm start`
 
 > `npm run build`
+
+
+
+
+
+
+
+#### Add to different post later
+
+##### Parent Children Communication
+1. use props to propogate data downward
+2. pass functions as props to children to propogate signals upward
