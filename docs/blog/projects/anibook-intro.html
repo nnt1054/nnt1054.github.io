@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Neil Toledo - AniBook Initial Design/Research</title>
-  <meta name="description" content="IntroWant to make a React PWA that displays currently airing Anime data, and sends push notifications to alert the user of new episodes for shows they’ve hig...">
+  <meta name="description" content="IntroductionWant to make a React PWA that displays currently airing Anime data, and sends push notifications to alert the user of new episodes for shows they...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -30,7 +30,7 @@
   <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/projects> <span>&#8592Back</span> </a>
 
   <div class="post-content" itemprop="articleBody">
-    <h4 id="intro">Intro</h4>
+    <h4 id="introduction">Introduction</h4>
 <p>Want to make a React PWA that displays currently airing Anime data, and sends push notifications to alert the user of new episodes for shows they’ve highlighted.  The user will also be able to view and sort shows by seasons, rating, and other statistis provided by the API.</p>
 
 <h4 id="apis">API’s</h4>
@@ -48,13 +48,8 @@
   </li>
 </ol>
 
-<h4 id="exploring-typesattributes-of-a-pwa">Exploring Types/Attributes of a PWA</h4>
-
-<h5 id="service-workers">Service Workers</h5>
-<p>Services Workers function as a middleman between the browser and the network, and are in generally used for providing offline functionality, cacheing, and handling communication with the network.  They operate on a seperate thread from the main Javscript code and is non-blocking.  The benefit to the Service Workers is being able to listen for ‘fetch’ API calls, and checking the cache before making the request.  Probably more on this later, since I don’t feel I explained this well. Here’s the best <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers">article</a> I’ve found explaining it.</p>
-
-<h5 id="application-structure">Application Structure</h5>
-<p>Will come back to this later…</p>
+<h5 id="pwa-service-workers">PWA Service Workers</h5>
+<p>Since the goal is for this project to be a PWA, I thought it would be helpful to define fundamental features of a PWA to see if there’s anything I can make use of for this project.  Services Workers function as a middleman between the browser and the network, and are in generally used for providing offline functionality, cacheing, and handling communication with the network.  They operate on a seperate thread from the main Javscript code and is non-blocking.  The benefit to the Service Workers is being able to listen for ‘fetch’ API calls, and checking the cache before making the request.  Probably more on this later, since I don’t feel I explained this well. Here’s the best <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers">article</a> I’ve found explaining it.</p>
 
 
   </div>

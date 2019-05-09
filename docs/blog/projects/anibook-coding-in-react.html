@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neil Toledo - Anibook Building in React</title>
+  <meta name="description" content="IntroductionThis post is techincally a continuation of the previous post.  I’ll be mostly going through the lessons I learned rather than explaining how I ac...">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Anibook Building in React</h1>
+    <p class="post-meta"><time datetime="2019-03-26T00:00:00-07:00" itemprop="datePublished">Mar 26, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/projects> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <h4 id="introduction">Introduction</h4>
+<p>This post is techincally a continuation of the <a href="/blog/projects/anibook-overview">previous post</a>.  I’ll be mostly going through the lessons I learned rather than explaining how I actually implmented each part of the PWA.</p>
+
+<h4 id="reactdom">ReactDOM</h4>
+<p class="column"><a href="/assets/images/anibook_reactdom.png"><img src="/assets/images/anibook_reactdom.png" alt="ReactDom" class="column post-image" /></a></p>
+<p>I realized later on that some of the Components didn’t really need to be actual Component’s, but decided to leave as is for the organization.  I also decided to remove the ‘Popular’ page and to change the ‘GenreContainer’, to be a preset hard coded list of genres and remove its toggle button.  These changes were made to sort of simplify the code as well as reduce the amount of API calls, since I found the API I chose to be relatively slow.</p>
+
+<h4 id="component-states">Component States</h4>
+
+<h6 id="app-states">App States</h6>
+<ol>
+  <li>Genres
+    <ul>
+      <li>need to keep a dictionary of active and inactive genre filters</li>
+    </ul>
+  </li>
+  <li>Page
+    <ul>
+      <li>need to keep track and switch between different actual pages (ie: search, favorites, this season)</li>
+    </ul>
+  </li>
+  <li>FilterText
+    <ul>
+      <li>the data passed up from the search box</li>
+    </ul>
+  </li>
+  <li>Shows
+    <ul>
+      <li>the actual json data of anime shows</li>
+    </ul>
+  </li>
+  <li>Days
+    <ul>
+      <li>an ordered list of day strings to display shows starting with the current day</li>
+      <li>looking back on it, this could’ve been a prop rather than a state</li>
+    </ul>
+  </li>
+</ol>
+
+<h6 id="show-states">Show States</h6>
+<ol>
+  <li>Favorite
+    <ul>
+      <li>shows can keep track if they’ve been favorited or not since that data will be stored locally (using the localStorage API)</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="switching-pages">Switching Pages</h4>
+<p>Rather than just creating new React Components for each specific page, I decided it would be easier to just change how I filter the shows dataset, and change the title string of the page.  The filter functions will all be defined in the MainContent Component, which will use the page name passed to it as a prop with a dictionary to map to the correct filter function in <code class="highlighter-rouge">render()</code></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">let</span> <span class="nx">filterFunctions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'search'</span><span class="p">:</span> <span class="p">(</span><span class="nx">show</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterText</span><span class="p">(</span><span class="nx">show</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">filterText</span><span class="p">),</span>
+    <span class="s1">'favorites'</span><span class="p">:</span> <span class="p">(</span><span class="nx">show</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterFavorites</span><span class="p">(</span><span class="nx">show</span><span class="p">,</span> <span class="nx">favorites</span><span class="p">),</span>
+    <span class="s1">'season'</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterNothing</span><span class="p">,</span>
+    <span class="s1">'popular'</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterNothing</span><span class="p">,</span>
+    <span class="s1">'genre'</span><span class="p">:</span> <span class="p">(</span><span class="nx">show</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">filterGenres</span><span class="p">(</span><span class="nx">show</span><span class="p">,</span> <span class="nx">genres</span><span class="p">),</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The data will additionally always be passed through the genre filter if the user has toggled any of them on.</p>
+
+<h4 id="jikan-api">Jikan API</h4>
+<p>A main reason the scope of the project changed was due to the API I was using itself.  <a href="https://jikan.docs.apiary.io/">Jikan</a> responses were fairly slow, so to avoid multiple API calls, I decided to base the project around just getting the <a href="https://jikan.docs.apiary.io/#reference/0/schedule">schedule</a> resource that lists the currently airing shows by what day they’re released.  To access the API, I used the fetch command in the componentDidMount() function of the App component through another proxy URL (so I could test it locally).  In the future, I’d like to include a loading screen and use the PWA service worker to intercept the fetcg request and cache the data since usually the response data is unchanging.</p>
+
+<h4 id="lessons-learned">Lessons Learned</h4>
+<ul>
+  <li>use Component props to pass data downward</li>
+  <li>define functions in the higher Component and pass the function to lower Components to pass data upward</li>
+  <li>use Functional Components for objects with that only take props and don’t need to maintain a state</li>
+  <li>use ES6/7 classes for any other components that need to maintain state or do more than just render DOM elements</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ES6/7 Class
+</span>
+<span class="kd">class</span> <span class="nx">MyComponent</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Functional =
+</span>
+<span class="kd">const</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">};</span>
+<span class="p">}</span></code></pre></figure>
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
