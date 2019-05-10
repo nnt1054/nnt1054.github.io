@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Website Animations"
-date:   2019-01-28 19:46:40 -0800
+date:   2019-01-28
 categories: projects
 tags: personal_website
 ---

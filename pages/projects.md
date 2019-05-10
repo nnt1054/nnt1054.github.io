@@ -5,7 +5,10 @@ permalink: /blog/projects/
 categoryName: projects
 back: /
 tagList:
+    - infinite_uptime
     - anibook
+    - ulab
+    - 2days
     - personal_website
 ---
 
