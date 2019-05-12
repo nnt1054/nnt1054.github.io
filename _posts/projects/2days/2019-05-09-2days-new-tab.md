@@ -6,9 +6,7 @@ categories: projects
 tags: 2days
 ---
 
-
 #### Coming Soon!
-
 
 [![newtab_1](/assets/images/2day_pictures/newtab_1.png){: class="column post-image"}](/assets/images/2day_pictures/newtab_1.png)
 {: class="column"}
