@@ -9,6 +9,9 @@ tags: ulab
 #### Overview
 Full Stack Project for managing and maintaining ULAB club members as well as providing an online portal for members to view announcements and manage their research groups and projects. Created a database schema to support student profiles, student to department roles/relationships, student groups, and research projects. Designed a user interface with a cohesive flat design and an emphasis on user-friendly navigation using pure CSS. Created to promote club organization and to practice/develop a proficiency for more rapid prototyping and backend work.
 
+A link to the deployed prototype can be found [here!](https://ulab-dashboard.herokuapp.com/dashboard/)
+The web app currently uses Postgres and is deployed to Heroku.
+
 [![ulab_1](/assets/images/ulab_pictures/ulab_1.png){: class="column post-image"}](/assets/images/ulab_pictures/ulab_1.png)
 {: class="column"}
 
