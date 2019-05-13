@@ -26,3 +26,19 @@ $('#index-img').on('click', function() {
     $('.hover-animation').css("animation", "");
   }, 1500)
 })
+
+$('.project-img-left').hover(
+  function() {
+    $(this).attr('src', this.getAttribute('gif'))
+  }, function() {
+    $(this).attr('src', this.getAttribute('static'))
+  }
+);
+
+$('.project-img-right').hover(
+  function() {
+    $(this).attr('src', this.getAttribute('gif'))
+  }, function() {
+    $(this).attr('src', this.getAttribute('static'))
+  }
+);
