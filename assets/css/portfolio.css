@@ -183,7 +183,6 @@ header > * {
 
 
 
-
 p {
   font-size: 14pt;
 }
@@ -191,4 +190,9 @@ p {
 .hover-underline:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+footer {
+  width: 100vw;
+  background-color: ;
 }
