@@ -42,3 +42,26 @@ $('.project-img-right').hover(
     $(this).attr('src', this.getAttribute('static'))
   }
 );
+
+
+
+$("#scrum-btn").click(function() {
+    var offset = 20; //Offset of 20px
+    $('html, body').animate({
+        scrollTop: $("#scrum").offset().top + offset
+    }, 500);
+});
+
+$("#project-btn").click(function() {
+    var offset = 20; //Offset of 20px
+    $('html, body').animate({
+        scrollTop: $("#project").offset().top + offset
+    }, 500);
+});
+
+$("#contact-btn").click(function() {
+    var offset = 20; //Offset of 20px
+    $('html, body').animate({
+        scrollTop: $("#contact").offset().top + offset
+    }, 500);
+});
