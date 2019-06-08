@@ -43,6 +43,10 @@ header > * {
   margin: auto;
 }
 
+.navbar-link > span {
+  margin: auto;
+}
+
 .navbar-link:hover {
   /*text-decoration: underline;*/
 }

@@ -147,18 +147,8 @@ Run the app and/or build for production:
 > `npm run build`
 
 
-
-<<<<<<< HEAD
-
-
-
-
-#### Add to different post later
-
-##### Parent Children Communication
+#### Parent Children Communication
 1. use props to propogate data downward
 2. pass functions as props to children to propogate signals upward
-=======
 Using React.createElement to create a DOM element will render it to the DOM, but using
 React.createElement to create another React Component will not render the actual 'Component' element to the DOM, and instead render the output of its render function instead.
->>>>>>> 89808695f8d40a10ff55cd13654ebdae7bacd6ec

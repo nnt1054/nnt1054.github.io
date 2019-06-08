@@ -17,12 +17,14 @@ Other reasons for making this site include practicing web design and development
 
 #### Userflow
 Here's a low quality H I G H spec of the site userflow :)
-![Mushu :)](/assets/images/blog-userflow.png){: class="column post-image" }
+![userflow :)](/assets/images/blog-userflow.png){: class="column post-image" }
 {: class="column"}
 
 #### Application Structure
 
-```
+
+{% highlight python %}
+"""
 .
 ├── _config.yml
 ├── CNAME
@@ -56,7 +58,10 @@ Here's a low quality H I G H spec of the site userflow :)
 |   ├── notes.md
 |   └── projects.md
 └── docs/
-```
+"""
+{% endhighlight %}
+
+
 Some points to highlight:
 * The `pages` folder is reserved for webpages that aren't associated with blog posts.  These include the index, about and work pages.  Since there won't be too many overall post categories, I also included category post directory pages (`notes.md` and `projects.md`), which both extend the `category` template.
 * The docs/ folder is where the actual jekyll build is placed, so the site can be found by github pages.

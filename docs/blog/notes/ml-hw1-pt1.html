@@ -54,12 +54,10 @@
 
 <h4 id="training-a-support-vector-machine-svm">Training a Support Vector Machine (SVM)</h4>
 <p>SVM’s are supervised learning models typically used for classification and regression analysis.  They’re “non-probabilistic binary linear classifiers”, and use labeled training data for supervised learning.<br />
-To create the model in python, we can use either sklearn’s <code class="highlighter-rouge">SVC(kernel=’linear’)</code> or <code class="highlighter-rouge">LinearSVC</code>.  To train the model, use svm.fit(X, Y) where:</p>
-<blockquote>
-  <p>X: training data array w/ size [num_samples, n_features]<br />
+To create the model in python, we can use either sklearn’s <code class="highlighter-rouge">SVC(kernel=’linear’)</code> or <code class="highlighter-rouge">LinearSVC</code>.  To train the model, use svm.fit(X, Y) where:
+&gt;X: training data array w/ size [num_samples, n_features]<br />
 Y: array of class labels w/ size [num_samples]<br />
 note: the samples at X[index] belongs to the class Y[index]</p>
-</blockquote>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">svm</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">'linear'</span><span class="p">)</span>
 <span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
@@ -81,7 +79,7 @@ note: the samples at X[index] belongs to the class Y[index]</p>
 <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spam_results</span><span class="p">)</span></code></pre></figure>
 
 <h4 id="hyperparameter-tuning">Hyperparameter Tuning</h4>
-<p><code class="highlighter-rouge">Hyperparamters</code> are higher level properties of training models that you can tune to influence the learning/training process.  For example, regularization parameter C in soft-margin SVM algorithm “tells the SVM optimization how much you want to avoid misclassifying each training example. For large values of C, the optimization will choose a smaller-margin hyperplane if that hyperplane does a better job of getting all the training points classified correctly. Conversely, a very small value of C will cause the optimizer to look for a larger-margin separating hyperplane, even if that hyperplane misclassifies more points. For very tiny values of C, you should get misclassified examples, often even if your training data is linearly separable. <a href="https://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel">(Source)</a>”<br />
+<p><code class="highlighter-rouge">Hyperparamters</code> are higher level properties of training models that you can tune to influence the learning/training process.  For example, regularization parameter C in soft-margin SVM algorithm “tells the SVM optimization how much you want to avoid misclassifying each training example. For large values of C, the optimization will choose a smaller-margin hyperplane if that hyperplane does a better job of getting all the training points classified correctly. Conversely, a very small value of C will cause the optimizer to look for a larger-margin separating hyperplane, even if that hyperplane misclassifies more points. For very tiny values of C, you should get misclassified examples, often even if your training data is linearly separable. <a href="https://stats.stackexchange.com/questions/31066/what-is-the-influence-of-c-in-svms-with-linear-kernel">(Source)</a>”  
 Other examples include the number of clusters and iterations in K-Means Clustering.</p>
 
 <h4 id="histogram-of-oriented-gradients-hog">Histogram of Oriented Gradients (HOG)</h4>
@@ -90,14 +88,12 @@ The basic implementation observes center data points of a (usually 3x3 but can b
 
 <h4 id="scale-invariant-feature-transform-sift">Scale-Invariant Feature Transform (SIFT)</h4>
 <p>SIFT is a feature <i>detection</i> algorithm (not feature descriptor) used to detect specific features in an image.  The core idea is to be able to find/locate features in an image using features from training images, but under different orientations, scales, and positions.  Features extracted from training images are generally respresented as points, with relative positions to each other.
-The SIFT algorithm generally consists of the following steps:</p>
-<ol>
-  <li>Scale-Space Extrema Detection: Observing an image using different Gaussian filters, and finding <code class="highlighter-rouge">keypoints</code> of the image using max’s and min’s of the “Difference of Gaussians” (will look into and learn what exactly gaussians mean xd)</li>
-  <li>Keypoint Localization: Discarding unstable keypoints, which have ‘low contrast’ and are extremas to fitted edge lines from the keypoints.</li>
-  <li>Orientation Assignment: ‘Keypoints are assigned one or more orientations based on local image gradiant directions’</li>
-  <li>Keypoint Descriptor: ‘Create more descriptor vectors for each keypoint to make feature descriptors more highly distinctive.’  Describe and assign values to each keypoint in a more relative way to the actual feature.</li>
-  <li><a href="https://en.wikipedia.org/wiki/Scale-invariant_feature_transform">(Source)</a></li>
-</ol>
+The SIFT algorithm generally consists of the following steps:
+1. Scale-Space Extrema Detection: Observing an image using different Gaussian filters, and finding <code class="highlighter-rouge">keypoints</code> of the image using max’s and min’s of the “Difference of Gaussians” (will look into and learn what exactly gaussians mean xd)
+2. Keypoint Localization: Discarding unstable keypoints, which have ‘low contrast’ and are extremas to fitted edge lines from the keypoints.
+3. Orientation Assignment: ‘Keypoints are assigned one or more orientations based on local image gradiant directions’
+4. Keypoint Descriptor: ‘Create more descriptor vectors for each keypoint to make feature descriptors more highly distinctive.’  Describe and assign values to each keypoint in a more relative way to the actual feature.
+5. <a href="https://en.wikipedia.org/wiki/Scale-invariant_feature_transform">(Source)</a></p>
 
   </div>
 
