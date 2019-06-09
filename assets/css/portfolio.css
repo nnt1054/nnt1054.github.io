@@ -150,8 +150,8 @@ header > * {
 
 .scrum-list-items {
   padding-left: 20px;
-  height: 256px;
-  overflow-y: scroll;
+  max-height: 256px;
+  overflow-y: auto;
   /*background: red;*/
 }
 
@@ -171,9 +171,23 @@ header > * {
   box-shadow: 7px 7px rgb(0,0,0,1);
 }
 
-.project-entry > img {
-  border-bottom: 2px solid black;
+.project-entry > a > img {
+  object-fit: cover;
   width: 100%;
+  height: 25vw;
+  object-fit: cover;
+  border-bottom: 2px solid black;
+}
+
+.project-entry > a {
+}
+
+.anchor-left {
+  object-position: 0 0;
+}
+
+.anchor-right {
+  object-position: 100% 100%;
 }
 
 .project-entry > h3 {
@@ -186,6 +200,9 @@ header > * {
 
 
 
+a {
+  margin: 0px;
+}
 
 p {
   font-size: 14pt;
