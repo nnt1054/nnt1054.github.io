@@ -160,6 +160,10 @@ header > * {
   margin: 12px auto;
 }
 
+.scrum-list-items > ul > li {
+  margin: 0px;
+}
+
 .projects-container {
   justify-content: space-around;
 }
