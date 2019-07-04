@@ -77,4 +77,14 @@
 		visibility: visible;
 	}
 
+	.entry-content {
+		display: none;
+	}
+
+}
+
+@media (max-width: 1000px) {
+	.daily-scrum-entry {
+		width: 90vw;
+	}
 }

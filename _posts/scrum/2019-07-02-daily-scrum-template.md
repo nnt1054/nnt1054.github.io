@@ -4,6 +4,7 @@ title:  "Sprint #0 - Daily Scrum #00"
 date:   2019-06-09
 categories: scrum
 tags: template
+day: monday
 objectives:
  - Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
  - Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
