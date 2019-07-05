@@ -24,7 +24,7 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Sprint #1 - Daily Scrum #06</h1>
-    <p class="post-meta"><time datetime="2019-07-04T00:00:00-07:00" itemprop="datePublished">Jul 4, 2019</time></p>
+    <p class="post-meta"><time datetime="2019-06-15T00:00:00-07:00" itemprop="datePublished">Jun 15, 2019</time></p>
   </header>
 
   <link rel="stylesheet" href="/assets/css/posts.css">
@@ -35,45 +35,61 @@
 <a href="/blog/projects/cms-sprint-1">Sprint Summary</a></p>
 
 <h4 id="daily-objectives">Daily Objectives</h4>
-
-<ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
+<ol>
+  <li>Draw out more infrastructure diagrams lmao</li>
+  <li>Figure out what kind of business rules I can include</li>
+  <li>Figure out the actual data design and models</li>
+  <li>Get a node + express test application going</li>
+  <li>Figure out deployment</li>
+  <li>Figure out distribution or whatever it’s called</li>
+</ol>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
+<p>Lmao this is uh a bonus sprint day!<br />
+What did I accomplish from yesterday so that I don’t repeat things?</p>
+<ol>
+  <li>We’re definitely going with a Microservices architecture whether it’s the best decision or not</li>
+  <li>:)</li>
+</ol>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>First, I think for now we can ignore monitoring and logging.  I should definitely consider getting a minimum viable project going lol.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Next, Business Rules?  The question is, how will business rules affect the API’s at least?  They have software already arranged for handling business rules, so let’s start by looking at those.<br />
+OpenRules is an open source “Business Rules and Decision Management System (BRDMS).”   Maybe rather than “Business Rules” I just focus on a system for roles and permissions.</p>
+
+<p>Business Rules Roles and Permissions:<br />
+I want to figure out first if Roles and Permissions deserve to be their own microservice.  “Backend service does not do jwt validation - it just trusts the gateway to send only valid requests.”  This implies that the interface needs to go through a gateway that checks the permissions.<br />
+Can try to assume that every call to an internal service will originate from another service.</p>
+
+<p>Ok so we want to differentiate, the ‘Microservices’ from the ‘User Interfaces’.  The more I read about microservices architecture, the more I feel like this isn’t the right thing to do :)
+Use an API Gateway as a ‘single entry point to the rest of the microservices’.<br />
+Interprocess Communication (IPC) styles: One-to-one, One-to-many, synchronous, asynchronous, messaged-based, pub/sub, REST,</p>
+
+<p class="column"><img src="/assets/scrum/sprint1day6image1.png" alt="chart" class="column post-image" /></p>
+
+<p>“May I ask why would you bother build a distributed system when you are not going to distribute it at all ?” LOL I’m getting called out so hard<br />
+Ignoring this, want to remember I’ll be using a ‘SHARED DATABASE’ between different microservices.  I want to give the option of separating the databases.  For now the different databases would be for ‘content/schemas’, ‘users/roles/permissions’, ‘site repos/web hosting’.</p>
+
+<p>Wait, so how would web hosting work?  Also should I just have an API gateway for handling everything?  I’m completely defeating the purpose of a microservices architecture by trying to not even make it distributed.  I don’t want to completely abandon the idea though so let’s brainstorm what I can do.  It’s gonna be an open source project, so the ideal is to make it plug and play for the most part, but I also want to make sure it’s scalable for others if they want it as a microservice architecture.  So to reiterate, let’s assume the project is two services and an API gateway?  The API gateway process requests and sends them to the correct area.</p>
+
+<p class="column"><img src="/assets/scrum/sprint1day6image2.png" alt="chart" class="column post-image" /></p>
+
+<p>How can I host subdomains?  How can I dynamically create new subdomains?</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
+
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>hey</li>
 </ul>
 
 <h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>hey</li>
 </ul>
 
 <h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>hey</li>
 </ul>
 
   </div>

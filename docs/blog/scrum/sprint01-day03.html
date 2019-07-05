@@ -24,7 +24,7 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Sprint #1 - Daily Scrum #03</h1>
-    <p class="post-meta"><time datetime="2019-07-04T00:00:00-07:00" itemprop="datePublished">Jul 4, 2019</time></p>
+    <p class="post-meta"><time datetime="2019-06-12T00:00:00-07:00" itemprop="datePublished">Jun 12, 2019</time></p>
   </header>
 
   <link rel="stylesheet" href="/assets/css/posts.css">
@@ -36,44 +36,63 @@
 
 <h4 id="daily-objectives">Daily Objectives</h4>
 
-<ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Work To Do:</p>
+<ol>
+  <li>I can post the Daily Scrums at the end of the sprint, just make sure I document everything</li>
+  <li>Have the Front Page Wireframe at least done</li>
+</ol>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p class="column"><img src="/assets/scrum/sprint1day3image1.png" alt="Mushu :)" class="column post-image" /></p>
+
+<p>Ok time to stop with the UI/UX Design and start with the actual software architecture designing
+The wire frame is enough to communicate what the basic functions and resources the site will need/require.</p>
+
+<p>So NOW I can FINALLY start talking about the project architecture.  I can split up the project into roughly three different parts.</p>
+<ol>
+  <li>The BackEnd and ORM</li>
+  <li>The Admin Interface</li>
+  <li>The API Endpoints</li>
+</ol>
+
+<p>The project’s going to be built on node and express.js.  So I think before I finalize any decisions I should at least poke around and get a better understanding of the stack.  Key things to note will be how attaching a database will work out, if I need to use standard plugins and what not.  Another would be thinking about how to create and process endpoints with the AI.  The API needs to be able to send messages formatted for different ‘response types’ like REST and GraphQL. The last part is basically how you’d make a traditionally web application with an interface.</p>
+
+<p>I also want to make sure I know how to set up and create project configurations, settings and setup.</p>
+
+<p><a href="https://expressjs.com/en/guide/database-integration.html">https://expressjs.com/en/guide/database-integration.html</a> is what I want to reference for supporting different database intergrations.<br />
+<a href="https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e">https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e</a> check this out later too</p>
+
+<p>Currently trying to look through Strapi to see if I can get an idea of how they implemented the database plugin system.<br />
+OH, so Strapi utilizes Bookshelf.js, which is an ORM that’s compatible with PostgreSQL, MySQL, and SQLite3.  So it’s Bookshelf.js which handles the abstraction between the actual Strapi project and the backend.  Very cool very cool.  I still need to decide whether or not I want to make my own ORM or just use Bookshelf.js then.  Sidenote: Bookshelf is built upon Knew with a SQL query builder, which might have some significance but I’m not sure :)</p>
+
+<p>Ok cool so I guess we can assume we’ve ‘abstracted’ away whatever database technology the project will be using.  And assume some sort of similar database interface as presented in the Bookshelf.js node module.  Basically the standard ‘Models’ and ‘Relationships’ design.</p>
+
+<p>What’s the next design question I need to look into?  The admin panel is basically just a ‘full-stack’ project using Bookshelf as the ORM to interact with the backend.  So maybe now I should research how a proper API should be built with standard practices responses and supporting different forms.</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
+
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>
+    <p>completed an AdobeXD wireframe of the side navigation and header</p>
+  </li>
+  <li>
+    <p>decided on using Bookshelf.js for the project ORM</p>
+  </li>
 </ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
+<h4 id="thoughtsquestions-to-come-back-to">Thoughts/Questions to Come Back To</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Difference between authenticating users for the admin panel and authenticating requests for the API</li>
 </ul>
+
+<!-- #### Lessons Learned
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu. -->
 
 <h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Research how a proper API should be built with standard practices responses and supporting different forms.</li>
 </ul>
 
   </div>

@@ -24,7 +24,7 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Sprint #1 - Daily Scrum #01</h1>
-    <p class="post-meta"><time datetime="2019-07-04T00:00:00-07:00" itemprop="datePublished">Jul 4, 2019</time></p>
+    <p class="post-meta"><time datetime="2019-06-10T00:00:00-07:00" itemprop="datePublished">Jun 10, 2019</time></p>
   </header>
 
   <link rel="stylesheet" href="/assets/css/posts.css">
@@ -35,45 +35,129 @@
 <a href="/blog/projects/cms-sprint-1">Sprint Summary</a></p>
 
 <h4 id="daily-objectives">Daily Objectives</h4>
-
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Create a low-spec wireframe of the project</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>haha hey!
+Ok time to bust out this wireframe!  I can probably reference strapi IO for this kinda stuff.
+But ok so let’s define our Users and what they’ll be doing in the admin interface:</p>
+<ul>
+  <li>Project Owner</li>
+  <li>Client</li>
+</ul>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Let’s define our objects too and maybe some of their relationships:</p>
+
+<ul>
+  <li>Admin Users
+    <ul>
+      <li>Creating Content Types/Collections</li>
+      <li>Has all the permissions of a Client User</li>
+      <li>Manage Clients</li>
+      <li>Manage Projects</li>
+      <li>Manage Roles</li>
+    </ul>
+  </li>
+  <li>Client Users
+    <ul>
+      <li>Can be part of multiple projects</li>
+      <li>Can only add/create entries for existing Content Types/Collections</li>
+      <li>Can potentially make a Content Type</li>
+    </ul>
+  </li>
+  <li>Projects
+    <ul>
+      <li>Belongs to a client(s)</li>
+    </ul>
+  </li>
+  <li>Content Type/Collections
+    <ul>
+      <li>‘Content Types’ don’t need super specific formats since ‘Post’ entries in generally use different amounts of paragraph items and media mixed around, so make sure that’s a setting</li>
+    </ul>
+  </li>
+  <li>Content Entries
+    <ul>
+      <li>Entry of Content Type or part of a Collection</li>
+    </ul>
+  </li>
+  <li>Content Items
+    <ul>
+      <li>Header, paragraph, media, etc.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>While I’m doing this lets try out wordpress:</p>
+<ul>
+  <li>Media and file uploads all in one area</li>
+  <li>Wordpress only allows for one content type which are ‘Posts’</li>
+  <li>‘Posts’ belong to Categories, which can also contain Subcategories</li>
+  <li>‘Posts’ can also contain multiple tags</li>
+  <li>Now how do websites utilize wordpress as just a headless CMS?
+    <ul>
+      <li>Just realized wordpress is literally this project haha</li>
+      <li>“WordPress is a free and open-source content management system based on PHP &amp; MySQL”</li>
+      <li>I will try and download wordpress once I get home and poke around it</li>
+      <li>Differences between WP and my project is more flexibility for developers and simplicity for users?  Like I’m actually separating the services for the developers and the services for the users.  Also will support different databases.  I don’t know too much about the entire plugin ecosystem though.</li>
+    </ul>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">fetch</span><span class="p">(</span><span class="s1">'http://localhost:8888/wp-cms/wp-json/wp/v2/posts'</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span> <span class="o">=&gt;</span> <span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">posts</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="nx">posts</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">post</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">postDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createELement</span><span class="p">(</span><span class="s1">'div'</span><span class="p">);</span>
+		<span class="nx">postDiv</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">post</span><span class="p">.</span><span class="nx">title</span><span class="p">.</span><span class="nx">rendered</span><span class="p">;</span>
+		<span class="nx">postsContainer</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">postDiv</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Ok now what lol
+Define functions for each user:</p>
+
+<p>We can separate ‘PAGES’ and ‘COLLECTIONS’ where pages are editable content on one off types of pages and collections are content types designed to exist in multiples.
+For example, pages can be the content on an about page, or images featured on the home page.
+Collections can be groups of blog posts, or series of portfolio images.  Collections can still also be along the lines of ‘home-page-carousel’</p>
+
+<p>If logged in as an admin, a set of admin pages (for users, content types, etc.) will appear in the sidebar under an ‘ADMIN’ section.  In the project dropdown, an admin console option will appear if logged in as a superuser.</p>
+
+<p>What appears in the ‘ADMIN CONSOLE’ project section?  Creating a New Project, creating and adding new Users, editing Roles and permission for individual Users.</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
+
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>
+    <p>Gained a more comprehensive description of what content will appear on what pages and a general overview of the navigation</p>
+  </li>
+  <li>
+    <p>Made rough descriptions of user types and objects</p>
+  </li>
+  <li>
+    <p>Poked around through wordpress to gain a better understanding of other existing popular CMS alternatives</p>
+  </li>
 </ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
+<h4 id="thoughtsquestions-to-come-back-to">Thoughts/Questions to Come Back To</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>add a WYSIWYG editor to the backlog</li>
+  <li>think about how to do SEO(search engine optimization) stuff</li>
+  <li>not that the admin will make use of it, but just so we can support anything that the client projects might need for it</li>
+  <li>allow client sites to preload a list of static resources?</li>
+  <li>Is there a way to track network traffic?  Despite that being a function for the actual client site rather than the CMS.</li>
 </ul>
+
+<!-- #### Lessons Learned
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu. -->
 
 <h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Finish making low-spec wireframe</li>
+  <li>Find software for web-based wireframing and begin making a med-high wireframe draft</li>
 </ul>
 
   </div>

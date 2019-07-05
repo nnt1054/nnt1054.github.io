@@ -78,6 +78,7 @@ pre > code {
 .daily-scrum-entry {
   /*width: 25vw;*/
   width: 35vw;
+  max-width: 720px;
   margin-bottom: 32px;
   margin-right: 32px;
   border: 2px solid black;
