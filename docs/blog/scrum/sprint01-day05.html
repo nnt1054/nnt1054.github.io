@@ -49,6 +49,7 @@
 <p>Last day of the sprint! (haha jk -neil from the future but probably not the future you’re reading this from)</p>
 
 <p>What to do:</p>
+
 <ol>
   <li>Create test node + express application</li>
 </ol>
@@ -60,6 +61,7 @@ So far express is just handling all the routes and passing them into controllers
 <p>So I want to figure out what kind of architecture I need first and then figure out how it’s actually done using Node.js.</p>
 
 <p>MICROSERVICE:</p>
+
 <ol>
   <li>Principles:
     <ul>
@@ -87,12 +89,14 @@ So far express is just handling all the routes and passing them into controllers
 <p class="column"><img src="/assets/scrum/sprint1day5image1.png" alt="chart" class="column post-image" /></p>
 
 <p>SO, I’m going to create this as a microservices architecture! Why?</p>
+
 <ol>
   <li>Good learning experience smile</li>
   <li>This should be an ‘open-source’ project, so it’ll be easier for others to come in and make changes</li>
 </ol>
 
 <p>What are things I need to define right now?</p>
+
 <ol>
   <li>Services:
     <ul>
@@ -106,6 +110,7 @@ So far express is just handling all the routes and passing them into controllers
 <p>Let’s figure a bit more about the backend?  For now I’ll be using bookshelf, since creating a custom ORM solution will definitely take some time.  I’m still confused on how exactly the backend ties into having a RESTful API or GraphQL service, so I need to look into that.</p>
 
 <p>RESTful API:</p>
+
 <ul>
   <li>Representational state transfer; architectural style for distributed hypermedia systems</li>
   <li>Client-Server, Stateless, Cacheable, Uniform Interface, Layered System, Code on Demand</li>
@@ -124,6 +129,7 @@ So far express is just handling all the routes and passing them into controllers
 </ul>
 
 <p>GraphQL:</p>
+
 <ul>
   <li>First, what’s the difference between a GraphQL API and a GraphQL Server? Or a GraphQL API Server?  Or are they all the same thing?</li>
   <li>GraphQL is a query language for API’s, allows clients to get ask and receive for exactly only the data they need</li>
@@ -136,12 +142,14 @@ So far express is just handling all the routes and passing them into controllers
 
 <p>LMAO DO I INCLUDE A BUSINESS LOGIC LAYER? YEE LET’S GO FOR IT<br />
 What IS business logic first?  Business Logic is the logic you’re writing to your program to handle the business rules you’re given.  Example of business rules are when you’re transferring money, you need to ensure:</p>
+
 <ul>
   <li>The person has the authority to do so</li>
   <li>The transfer must be ATOMIC</li>
-  <li>The transfer must abide by reporting requirements in compliance with the government
-What kind of business logic could I even include here?  A plugin for handling client payments? Can I track how much traffic any API’s or Projects are getting?  Where would this happen.  I’d need another layer between the ORM and the API’s to handle the business logic.  And use the Admin panel to view and track the traffic as well as handle the permissions connected to payments for client users.  Lmao that sounds a bit wild.</li>
+  <li>The transfer must abide by reporting requirements in compliance with the government</li>
 </ul>
+
+<p>What kind of business logic could I even include here?  A plugin for handling client payments? Can I track how much traffic any API’s or Projects are getting?  Where would this happen.  I’d need another layer between the ORM and the API’s to handle the business logic.  And use the Admin panel to view and track the traffic as well as handle the permissions connected to payments for client users.  Lmao that sounds a bit wild.</p>
 
 <p>ETL pipeline stands for ‘Extract, Transfer, Load’<br />
 RPC stands for ‘Remote procedure call’ (example: gRPC, or Rest+JSON over HTTP)</p>

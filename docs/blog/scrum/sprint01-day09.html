@@ -45,6 +45,7 @@
 Data Design cont.</p>
 
 <p>Resources:</p>
+
 <ol>
   <li>Project</li>
   <li>ProjectPages
@@ -98,6 +99,7 @@ The content for a ‘ListType’ can also be a linked list of more EntryItems (b
 
 <p>Let’s also quickly go over the User/Role Management Service:<br />
 Generic options:</p>
+
 <ol>
   <li>Create Role Model and attach them to User Models
     <ul>
@@ -112,6 +114,7 @@ Generic options:</p>
 Oh, we can have role relationships between a user and each project.  Each project will own multiple roles.</p>
 
 <p>Authorization Models:</p>
+
 <ol>
   <li>Access Control List (ACL)</li>
   <li>Discretionary Access Control (DAC)</li>
@@ -126,22 +129,26 @@ Lmao I’ll probably go with RBAC for uh reasons</li>
 </ol>
 
 <p>Subject(Users)</p>
+
 <ul>
   <li>Contains list of Role’s</li>
   <li>If doesn’t contain a role for a project, assume no permissions</li>
 </ul>
 
 <p>Role</p>
+
 <ul>
   <li>…</li>
 </ul>
 
 <p>Permission</p>
+
 <ul>
   <li>List of operations granted on project/resource?</li>
 </ul>
 
 <p>Operation</p>
+
 <ul>
   <li>Read/Write on Resource</li>
   <li>Object/Action</li>
@@ -156,21 +163,17 @@ Pages, Collections, Entries, EntryItems, MediaUploads</p>
 
 <p>Let’s start with the Design Document now!  First the TOC/Outline</p>
 
-<p>“SDD usually contains the following information”</p>
-<ol>
-  <li>Data Design</li>
-  <li>Architecture Design</li>
-  <li>Interface Design</li>
-  <li>Procedural Design
-    <ul>
-      <li>Which is now commonly replaced by Object Oriented Programming and Design Patterns</li>
-      <li>Is there anything specific I should talk about here?</li>
-    </ul>
-  </li>
-</ol>
+<p>“SDD usually contains the following information”
+1. Data Design
+2. Architecture Design
+3. Interface Design
+4. Procedural Design
+	* Which is now commonly replaced by Object Oriented Programming and Design Patterns
+	* Is there anything specific I should talk about here?</p>
 
 <p>I think I want to briefly discuss how ‘authentication’ with the database will work?  I’ve decided to use the REST API to modify data on the database from the Admin WebUI.  This stays a little more true to the whole microservices paradigm, since the Admin WebUI will be accessing both the Content Management and User Roles Management services separately.<br />
 A big concern is where authentication will take place:</p>
+
 <ol>
   <li>The AdminUI will check first with the Role Management for permissions before making calls to the REST API to modify content.  The REST API will only allow requests from the AdminUI for modifying content.</li>
   <li>The AdminUI will make the call to the REST API, passing along the USER currently logged in, and the REST API will use the Role Management to verify permissions.
@@ -191,6 +194,7 @@ A big concern is where authentication will take place:</p>
 </ul>
 
 <p>Design Document Table of Contents/Overview:</p>
+
 <ol>
   <li>Data Design</li>
   <li>Architecture Design</li>

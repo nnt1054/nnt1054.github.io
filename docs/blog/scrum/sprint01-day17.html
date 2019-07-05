@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate" />
+
+  <title>Neil Toledo - Sprint #1 - Daily Scrum #17</title>
+  <meta name="description" content="Product: CMS APISprint Summary">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Sprint #1 - Daily Scrum #17</h1>
+    <p class="post-meta"><time datetime="2019-06-26T00:00:00-07:00" itemprop="datePublished">Jun 26, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/scrum> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><b>Product:</b> CMS API<br />
+<a href="/blog/projects/cms-sprint-1">Sprint Summary</a></p>
+
+<h4 id="daily-objectives">Daily Objectives</h4>
+<ul>
+  <li>Fill out Data Design Sections</li>
+  <li>Fill out Interface Design Section</li>
+  <li>Output PDF’s for Scrums and write Sprint Summary</li>
+  <li>Update website and resume</li>
+</ul>
+
+<h4 id="notes">Notes</h4>
+
+<p>I’ve basically written what I needed for the Data Design sections in Notes29, so I just need to copy that into the actual Software Design Document.<br />
+I still need to make the Lucid Charts for the User Roles section and Update the Architecture one to include a separate item for ‘Content Management’.  Also I think it’d be cool to include an example diagram for what link listing a PageEntry would look like.<br />
+For the Software Design Document specifically, I need to figure out the actual structure.  Since the database models/tables are gonna be very similar to the actual API resources, I’ll just talk about the API rather than the database, but with small references about how they’d be different.  For the User Roles section though, I can go ahead and talk about it in reference to the database.</p>
+
+<ol>
+  <li>Data Design
+    <ul>
+      <li>Introduction</li>
+      <li>API Design</li>
+      <li>User Roles Models</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Model URI’s<br />
+Base url: /app/v1/</p>
+
+<ul>
+  <li>/projects</li>
+  <li>/projects/{proj_id}</li>
+  <li>/projects/{proj_id}/pages</li>
+  <li>/projects/{proj_id}/collections</li>
+  <li>/projects/{proj_id}/pages/{page_id}</li>
+  <li>/projects/{proj_id}/collections/{collection_id}</li>
+  <li>/projects/{proj_id}/media</li>
+</ul>
+
+<p>Restricted URI’s</p>
+
+<ul>
+  <li>/projects</li>
+  <li>/pages</li>
+  <li>/collections</li>
+  <li>/media</li>
+</ul>
+
+<p>I need to flesh out what exactly the project schema is?  ProjectPage doesn’t need to have a schema since each pageEntry won’t have a set format.  Page entries need a name though and a type, entry item will list what kind of type it is with a string or number of what it is or whatever type it is.  Need to make a model for each entry type.<br />
+PageEntries have no knowledge of other sibling entries by the way, but CollectionEntries may have next or prev for querying purposes.</p>
+
+<h4 id="objectives-completed">Objectives Completed</h4>
+
+<ul>
+  <li>n/a</li>
+</ul>
+
+<!--#### Thoughts/Questions to Come Back To-->
+<!--* Link all the Sprints in the Overview Page-->
+
+<!-- #### Lessons Learned
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+
+#### Plans for Tomorrow
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu. -->
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>

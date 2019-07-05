@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" content="notranslate" />
+
+  <title>Neil Toledo - Sprint #1 - Daily Scrum #16</title>
+  <meta name="description" content="Product: CMS APISprint Summary">
+
+  <link rel="icon" href="/assets/images/me.jpg">
+  <link rel="shortcut icon" href="/assets/images/me.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/me.jpg">
+
+  <link rel="stylesheet" href="/assets/css/rouge.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+
+  <body>
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Sprint #1 - Daily Scrum #16</h1>
+    <p class="post-meta"><time datetime="2019-06-25T00:00:00-07:00" itemprop="datePublished">Jun 25, 2019</time></p>
+  </header>
+
+  <link rel="stylesheet" href="/assets/css/posts.css">
+  <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/scrum> <span>&#8592Back</span> </a>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><b>Product:</b> CMS API<br />
+<a href="/blog/projects/cms-sprint-1">Sprint Summary</a></p>
+
+<h4 id="daily-objectives">Daily Objectives</h4>
+<ul>
+  <li>Fill out Microservice Descriptions</li>
+  <li>Fill out Data Design Sections</li>
+  <li>Fill out Interface Design Section</li>
+  <li>Output PDF’s for Scrums and write Sprint Summary</li>
+  <li>Update website and resume</li>
+</ul>
+
+<h4 id="notes">Notes</h4>
+
+<p>Quick Refresher Questions:</p>
+
+<ol>
+  <li>How am I storing references to resources to create permissions for in the user and roles management service?<br />
+I can either keep a small updated reference in the user and roles management service of the resources in the content types or just keep a reference of their ID’s.</li>
+  <li>Where/When do I check for permissions?<br />
+Logged In User in the AdminUI will create the request and send it to the API Gateway.  The API Gateway checks to make sure the user is logged in, should the API Gateway will then use the User Roles to double check they have the permissions and then pass the request over to the REST API with the OK.</li>
+</ol>
+
+<p>I still need to make a Database Design Schema for the User, Roles, and Permissions table and explain somewhere how they’re referencing project resources.<br />
+Just to note somewhere, some other design documents seem to ramble a bit on their design so I feel a little more enabled to speak more freely on this document.</p>
+
+<p>Let’s talk about API Design again.
+Key Concepts: Resource Models</p>
+
+<ol>
+  <li>Singleton Resource</li>
+  <li>Collection of Resources</li>
+  <li>Sub-collections and Sub-resources</li>
+</ol>
+
+<p>Common formats:</p>
+
+<ol>
+  <li>JSON</li>
+  <li>YAML</li>
+  <li>XML</li>
+</ol>
+
+<p>HTTP Methods</p>
+
+<ol>
+  <li>POST - create new object</li>
+  <li>GET - read</li>
+  <li>PUT - update/replace</li>
+  <li>PATCH - partial update/modify</li>
+  <li>DELETE - delete item</li>
+</ol>
+
+<p>General Tips and Practices:</p>
+
+<ol>
+  <li>Use links as a sub resource to represent relationships with other resources</li>
+  <li>Consider creating a Metadata resource for use in drop down menus and the like</li>
+</ol>
+
+<p>Before referencing my previous notes, let’s go over what I feel like the Resources would be:</p>
+
+<ul>
+  <li>Collection of Projects</li>
+  <li>Project</li>
+  <li>Collection of Project Pages (for a Project)</li>
+  <li>Collection of ProjectCollections (for a Project)</li>
+  <li>Collection of Media Uploads</li>
+  <li>Project Page</li>
+  <li>Project Collection</li>
+  <li>Collection of Page/Collection Entries ()</li>
+  <li>There’s no need to create a resource endpoint for entry items</li>
+</ul>
+
+<p>Process for designing RESTful API’s</p>
+
+<ol>
+  <li>Identify Object Model
+    <ul>
+      <li>Done right above</li>
+    </ul>
+  </li>
+  <li>Create Model URIs
+    <ul>
+      <li>Can do that easily right above</li>
+    </ul>
+  </li>
+  <li>Determine Representations
+    <ul>
+      <li>JSON, YAML, XML</li>
+    </ul>
+  </li>
+  <li>Assign HTTP Methods
+    <ul>
+      <li>Describe what HTTP methods do for each resource and other parameters</li>
+    </ul>
+  </li>
+  <li>More Actions
+    <ul>
+      <li>Authenticating Session based requests: browser usually sends cookie session id with their request</li>
+    </ul>
+  </li>
+</ol>
+
+<p class="column">Authenticating Requests btw<br />
+<img src="/assets/scrum/sprint1day16image1.png" alt="chart" class="column post-image" /></p>
+
+<h4 id="objectives-completed">Objectives Completed</h4>
+
+<ul>
+  <li>n/a</li>
+</ul>
+
+<!--#### Thoughts/Questions to Come Back To-->
+<!--* Link all the Sprints in the Overview Page-->
+
+<!-- #### Lessons Learned
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+
+#### Plans for Tomorrow
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.
+* Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu. -->
+
+  </div>
+
+</article>
+  </body>
+
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <link rel="stylesheet" href="/assets/css/mobile.css">
+</html>
