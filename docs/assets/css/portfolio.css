@@ -197,8 +197,86 @@ header > * {
   margin-left: 16px;
 }
 
-@media (max-width: 700px) {
+.project-empty {
+  visibility: hidden;
 }
+
+@media (max-width: 700px) {
+  
+  body {
+    width: 100vw;
+  }
+
+  .page-container {
+    width: 90vw;  
+  }
+  
+  .navbar-links {
+    display: none;
+  }
+
+  .page-section {
+    flex-direction: column;
+    margin-top: 0px; 
+    margin-bottom: 32px; 
+  }
+  
+  .page-section > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .page-section > h1 {
+    margin-left: 0px;
+  }
+
+  .section-content {
+    width: 100%;
+    margin: auto;
+  }
+  
+  .product-container {
+    flex-direction: column;
+  }
+  
+  .product-content {
+    margin-top: 16px;  
+  }
+  
+  .product-scrum {
+    flex-direction: column;
+  }
+
+  .scrum-list {
+    width: 100%;
+  }
+
+  .scrum-list > h2 {
+    width: 100%;
+  }
+
+  .projects-container {
+    flex-direction: column;
+  }
+
+  .project-entry {
+    width: 100%;
+  }
+
+  .project-entry > a > img {
+    width: 100%;
+    height: 80vw;
+  }
+
+  .project-empty {
+    display: none;
+  }
+}
+
+
+
+
+
 
 
 
