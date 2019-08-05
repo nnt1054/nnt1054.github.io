@@ -8,6 +8,7 @@ tagList:
     - jekyll
     - react
     - unity
+    - cs189
     - psych156
     - misc
 ---
