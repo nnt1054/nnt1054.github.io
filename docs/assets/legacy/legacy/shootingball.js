@@ -195,6 +195,7 @@ function makeEnemy2() {
         }
    };
 }
+
 function main() {
 	// create, initiate and append game canvas
 	canvas = document.createElement("canvas");
