@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Sprint #2.5 - Creating an HTML5 Game Engine</title>
-  <meta name="description" content="Product: Tetris2P AISprint #1: July 20 - August 05Scrum Board: LinkDeliverable: Github RepoGoals:  Develop a custom game engine for javascript and HTML5 Canv...">
+  <meta name="description" content="Product: Tetris2P AISprint #1: July 20 - August 05Scrum Board: LinkDeliverable: mini5-engine Github RepoGoals:  Develop a custom game engine for javascript a...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -34,7 +34,7 @@
     <p><b>Product:</b> <a href="/blog/projects/tetris-overview">Tetris2P AI</a><br />
 <b>Sprint #1:</b> July 20 - August 05<br />
 <b>Scrum Board:</b> <a href="/portfolio#project">Link</a><br />
-<b>Deliverable:</b> <a href="https://github.com/nnt1054/mini5-engine">Github Repo</a><br />
+<b>Deliverable:</b> <a href="https://github.com/nnt1054/mini5-engine">mini5-engine Github Repo</a><br />
 <b>Goals:</b></p>
 
 <ol>
@@ -45,6 +45,11 @@
 
 <p><b>Method/Metrics:</b><br />
 The goal has been met once the project has been deployed to the npm public repository.</p>
+
+<p><b>Summary:</b><br />
+So the goals of this project was to make a game engine for javascript and HTML5 canvas.  The idea is to make the game completely contained within one html5 canvas, and to closely follow the programming architecture of Unity (with gameObjects and components) but with more flexibility.  The main features I made sure to implement were: self contained scenes, click (single, double, drag, hold) detection, key presses, position anchors, and elementary collision detection.</p>
+
+<p>Apart from the game engine, I learned how to create and publish node modules as well as how to use Grunt to minify my project files.  There’s much more work I can do to improve the engine before I invite the public to use it, but I’ve made the decision to continue with the Tetris AI project (the main goal of this entire thing) and figure out networking implementations.</p>
 
 <h4 id="daily-scrums">Daily Scrums</h4>
 
@@ -126,7 +131,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">designed and detailed required function and variables for the `scene` class</li>
+		  
+		  <li style="line-height: 24px">outlined gameObjects necessary for a tetris game for reference</li>
 		  
 		</ul>
 	</div>
@@ -141,7 +148,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">created engine.js, scene.js, and gameObject.js files/classes</li>
+		  
+		  <li style="line-height: 24px">created the first initial prototype of a scene containing a background and bouncing ball gameObject</li>
 		  
 		</ul>
 	</div>
@@ -156,7 +165,11 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">added keypress and click detection on the canvas along with timers and positions</li>
+		  
+		  <li style="line-height: 24px">started researching how to handle collision detection with AABB's</li>
+		  
+		  <li style="line-height: 24px">fixed issue with onkeyup events not registering when windows/tabs</li>
 		  
 		</ul>
 	</div>
@@ -171,7 +184,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">finished creating clickable objects/click detection</li>
+		  
+		  <li style="line-height: 24px">added an `allowClickDetection` function for developers to indicate an object is clickable</li>
 		  
 		</ul>
 	</div>
@@ -186,7 +201,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">jeff</li>
+		  <li style="line-height: 24px">created position anchors for gameObjects so they can describe their position relative to other objects rather than just the canvas</li>
+		  
+		  <li style="line-height: 24px">researched and outlined functions that a '2d physics engine' needs to do/provide</li>
 		  
 		</ul>
 	</div>
@@ -201,7 +218,7 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">jeff also</li>
+		  <li style="line-height: 24px">watched tutorial videos of how Unity provides physical object functionality and colliders for reference</li>
 		  
 		</ul>
 	</div>
@@ -231,7 +248,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">jeff did nothing wrong</li>
+		  <li style="line-height: 24px">added layers for scene objects to organize the order for drawing gameObjects onto the canvas</li>
+		  
+		  <li style="line-height: 24px">outlining how to resolve collisions after detecting them</li>
 		  
 		</ul>
 	</div>
@@ -246,7 +265,7 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">haha the jeff word</li>
+		  <li style="line-height: 24px">discussed how to detect direction of collisions and how to resolve them accordingly</li>
 		  
 		</ul>
 	</div>
@@ -261,7 +280,7 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">11 jeffs</li>
+		  <li style="line-height: 24px">outlined assumptions and necessary checks to detemine the direction of a collision</li>
 		  
 		</ul>
 	</div>
@@ -276,7 +295,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">wow 12</li>
+		  <li style="line-height: 24px">finished a rewriting a collision function and resolving collision for a mini platformer</li>
+		  
+		  <li style="line-height: 24px">created a mini state machine for sprite rendering in my platformer example</li>
 		  
 		</ul>
 	</div>
@@ -291,7 +312,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">now its 13</li>
+		  <li style="line-height: 24px">started researching how to create and deploy node modules</li>
+		  
+		  <li style="line-height: 24px">defined purpose and functions of npm, grunt and bower</li>
 		  
 		</ul>
 	</div>
@@ -306,7 +329,9 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">14 jeff 14</li>
+		  <li style="line-height: 24px">went through both npm and grunt tutorials</li>
+		  
+		  <li style="line-height: 24px">learned how to create and add production and developer dependencies to a node package</li>
 		  
 		</ul>
 	</div>
@@ -321,7 +346,7 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">we're almost there smile</li>
+		  <li style="line-height: 24px">researched difference between scope and unscoped packages</li>
 		  
 		</ul>
 	</div>
@@ -336,7 +361,7 @@ The goal has been met once the project has been deployed to the npm public repos
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">only two more aflkjasdlkfja</li>
+		  <li style="line-height: 24px">finally set up official github repo and deployed mini5-engine to npm! :)</li>
 		  
 		</ul>
 	</div>
@@ -350,9 +375,20 @@ The goal has been met once the project has been deployed to the npm public repos
 
 <h4 id="what-went-well">What went well?</h4>
 
+<p>For the first half of the sprint I did a good job of setting goals and staying focused enough throughout the day to complete them, or at least make significant progress towards them.  I think this was partly since there was a lot more visual and interactive testing, which made progress more gratifying and enjoyable.  In addition, there was more overhead software design to figure out which I guess I also enjoy.
+Also, heading to cafe’s to get more work done was very helpful, giving me the feeling of having an ‘office’ or a space specifically for productivity.  The only thing is that it limits me to doing work on my chromebook.  Which isn’t that bad since I can do 90% of what I need to on my chromebook :)</p>
+
 <h4 id="what-didnt-go-well">What didn’t go well?</h4>
 
+<p>Halfway through I started experiencing a bit of burnout I think?  This was mostly in regards to the publishing to the npm part.  This might have been since I was struggling processing too many new technologies at the same time (npm, bower, grunt), and figuring out how to make it suit my needs/vision.  Not trying to get technical here, but the game engine is mostly aimed towards ‘client side’ javascript, so deploying it as a node package was a little confusing.  Also, during the sprint I started playing <strong>minecraft</strong>, and I indulged in it a little too much and ruined my sleep and productivity schedule. :)<br />
+This sprint also took much longer than I expected, since I was tackling it on a day by day basis, rather than working with a schedule.</p>
+
 <h4 id="what-to-do-next-time">What to do next time?</h4>
+
+<p>Once again, I need to set a more reasonable sprint schedule with reasonable goals.  I included figuring out the functions of a game engine within the sprint, when I should’ve done that first so I could split the project into subgoals and add deadlines in.<br />
+I think my note taking process was fine and I should continue with it.  The only issues was that it takes too long to transfer all the daily scrums into jekyll posts (the notes are originally taken in google docs), so maybe I should make the jekyll posts on a daily basis before I sleep instead.<br />
+I’m gonna make my RPI work clock project before I start the next sprint so I can ‘clock into my productivity mode’ at home also.<br />
+I also want to start rating my days based on my performance and productivity.</p>
 
   </div>
 
