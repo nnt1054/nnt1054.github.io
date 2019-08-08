@@ -5,6 +5,7 @@ permalink: /blog/scrum/
 categoryName: scrum
 back: /
 tagList:
+ - tetris_ai
  - cms_api
  - template
 
