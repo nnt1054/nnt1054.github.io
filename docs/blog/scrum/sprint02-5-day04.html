@@ -35,44 +35,191 @@
 <a href="/blog/projects/tetris-ai-sprint-2-5">Sprint Summary</a></p>
 
 <h4 id="daily-objectives">Daily Objectives</h4>
-
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Set up clickable objects</li>
+  <li>Make an example or wrapper class for clickable gameObjects</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>“””
+onkeypress : invokes JavaScript code when a key is pressed
+onkeydown : invokes JavaScript code when a key is held down (but not yet released)
+onkeyup : invokes JavaScript code when a key is has been released after being pressed.
+“””</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Keydown event triggers continuously while its being held down
+Only removes a keystate from its active state on key up, but this doesn’t work when a user clicks off the canvas/screen</p>
+
+<p>So let’s come up with conditionals for assuming a key is being held down.  Currently, when a key is being held down:</p>
+
+<ol>
+  <li>We start a timer from the initial keydown event</li>
+  <li>The keydown event keeps firing periodically</li>
+</ol>
+
+<p>We want to be able to use the timer for input events, rather than the keydown event.  We want developers to be able to differentiate press and hold input for games.  In my case, I want to play around with the speed at which pieces move left and right and control the ‘slipperiness’.
+When a person clicks off the screen while a button is being held down, the keyup function doesn’t trigger, which is meant to stop the keydown event, but the keydown event will stop firing when you tab back in.  Essentially the only indicator that the user tabbed out during a long press is that the keydown event stops firing.  So, we need a way to somehow remember the last time the keydown event was triggered.  If the time period between them is too large, we can assume that the key is no longer being held down.  So we can add a counter for tracking that.
+When a keypress is detected, reset that counter to 0.  Before adding a delta to the timer, increment the counter.  If the counter becomes &gt; n, then we assume the keypress function has stopped firing and the button is no longer being held.  Then we just delete the entry.</p>
+
+<p>Ok! So that works now :) one tidbit though is that if you click back on the screen it starts a new keypress action?  Should I leave that part as is?  Yeah I think so?  When a user is holding down a key and tabs back in, it automatically assumes the action.  I’m gonna assume its fine for now, since it has nothing to do with the misreading key hold presses.</p>
+
+<p>Cool! Wait heck there’s a bug.  My previous code now makes this an issue.  The keydown event keeps firing periodically ONLY for the most recent keydown press, so the other keys aren’t able to refresh the update counter and they get deleted from the input list.  I definitely want to have the failsafe of the update counter.  But I can’t have it misfiring inputs.  What are possible solutions I can do?  Issues:</p>
+
+<ol>
+  <li>keypress only continuously fires for the most recent keypress event</li>
+  <li>engine won’t detect key release if you click outside of the window or change tabs</li>
+</ol>
+
+<p>The first bullet point depends on the second bullet point.  This is relevant in some cases where a player might want to move a character diagonally upwards, and holds down the up + right arrow keys.  Currently, the up movement will working, but the right movement will stop.  This case only comes up when there’s multiple keys being pressed down.  Maybe I should check if there are any other keys that are still being held down?  I could also just generalize it to only one integer?  YES this can work.  Instead of a dictionary, just make it an integer variable and maybe raise the failsafe value.</p>
+
+<p>Having just a single integer is working good.  I’m gonna change it so it only increments once per update loop, cause its buggy when too many keys are being pressed at once.</p>
+
+<p>What’s next now! :D<br />
+I should reiterate what I have now? I think I have this written down somewhere else already. Nvm guess I don’t</p>
+
+<p>Here’s a backlog/to do list:</p>
+<ol>
+  <li>Decide on/if we want to include premade components</li>
+  <li>Clickable elements</li>
+  <li>Moveable elements</li>
+  <li>Timer element</li>
+  <li>networking (client server code?)</li>
+</ol>
+
+<p>What features am I missing to implement my tetris game?  Shit its gonna be weird when I wanna deploy this for client/server.
+Should I discuss what steps I have to do for that?  I think the server just needs to run the update loop, while the clients run their update+draw loops.  Or mostly just preemptive draw loops.  I wonder if there’s an easy way of doing this without changing the game code.  Usually the server contains code that some client’s don’t know about.  But we can outline the main parts of a networked game:</p>
+
+<ol>
+  <li>draw functions (only client side)</li>
+  <li>Input functions (only client side)</li>
+  <li>client update functions
+    <ul>
+      <li>Similar to server update function except with limited information</li>
+      <li>Client update should be hard fixable using screenshot sent by server</li>
+    </ul>
+  </li>
+  <li>server update functions
+    <ul>
+      <li>Similar to client update but holds extra networking information</li>
+    </ul>
+  </li>
+</ol>
+
+<p>I think we should make some set components though?  What are some good example/necessary components for game dev?  I can check unity real quick lmao, sec:</p>
+<ol>
+  <li>physics2d area</li>
+  <li>sprite + sprite animations</li>
+  <li>clickable area</li>
+  <li>‘rect transform’
+    <ul>
+      <li>determines position of the element</li>
+      <li>can probably combine with a different component?</li>
+    </ul>
+  </li>
+  <li>audio component</li>
+</ol>
+
+<p>I’m not doing everything above I think?  But its good to keep them in the back of my mind.  I’m concerned whether or not I want to include a world space, making the canvas the ‘camera’.  Each scene would then have multiple cameras, that you can switch between.  How would I implement walking around a world space, with a minimap showing in the bottom corner?
+The minimap would be a ‘fixed UI’ gameElement, with reference to the scene, and a list of gameObjects to reference.  The minimap has access to pointers to other objects, and the details of how to render them on itself.  I think the world map itself should be a gameElement of the scene rather than the scene itself.  For now we can assume we render every existing object in the scene.</p>
+
+<p>I think we move the anchor point of the worldMapObject around in order to render it within the canvas.  This only needs to be implemented in the draw function.  Characters and other GameObjects can be drawn relative to the worldMap.  Also have physics associated with the worldMap.</p>
+
+<p>In regards to networking, I’m still concerned with how ‘lobbys’ and stuff work on a networking scale.  I think I just have to do more game networking research in general and server management.</p>
+
+<p>So let’s continue talking about components?  Its weird thinking about it since, the developer should already be programming the game object in an editor rather than a UI.</p>
+
+<p>I should draw this out?  The physics engine is only gonna be ONLY rectangles</p>
+
+<p class="column"><img src="/assets/scrum/sprint2-5day4image1.png" alt="physics loop" class="column post-image" /></p>
+
+<p class="column"><img src="/assets/scrum/sprint2-5day4image2.png" alt="physics loop2" class="column post-image" /></p>
+
+<p>Collision Detection</p>
+<ul>
+  <li>Axis Aligned Bounding Boxes</li>
+</ul>
+
+<p>Impulse Resolution<br />
+Simple Manifold Generation</p>
+
+<p>I’m only gonna be using AABB vs AABB detection (no circles!), to make things easier :)
+How do you optimize it?  General tactics include sorting or aligning objects to a grid and only checking the surrounding areas.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">aabb</span> <span class="o">=</span>
+<span class="p">{</span>
+<span class="na">min</span><span class="p">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span>
+<span class="na">max</span><span class="p">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">AABBvsAABB</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// Exit with no intersection if found separated along an axis</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">x</span> <span class="o">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">x</span> <span class="nx">or</span> <span class="nx">a</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">x</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">x</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">y</span> <span class="o">&lt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">y</span> <span class="nx">or</span> <span class="nx">a</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">y</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span>
+ 
+  <span class="c1">// No separating axis found, therefor there is at least one overlapping axis</span>
+  <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>For a single collision check.  Judging by this, I think we should run the update loops, and then collision detection loops (in the engine code), and then a resolve collisions thing?  Also once we detect a collision, we can add two entries to the collision dictionary.</p>
+
+<p>AABB Tree Collision Detection</p>
+
+<ul>
+  <li>Kinda of only works when you’re checking one moving object</li>
+  <li>Builds a tree as you create objects</li>
+  <li>Wraps pairs of objects in a pseudo box, so when an object doesn’t collide with the pseudo box, then it doesn’t collied with any of the objects within it.</li>
+  <li>Some random ideas:
+    <ul>
+      <li>Create list of static moving game objects</li>
+      <li>Game objects with deterministic movement, pad their pseudo box to fill all of their predicted movement</li>
+      <li>Create an AABB tree for each gameobject/player character that moves freely
+        <ul>
+          <li>Collision detect all player characters with each other</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Initial collision detection ideas sound pretty promising, but I’m still not sure how to incorporate it into the engine.</p>
+
+<p>It suffices to just record the position of the click, and then the clickable UI objects can check for themselves if they’ve been clicked.<br />
+What happens if a UI element being clicked triggers a scene change?  I’d need to cancel the update loop then?</p>
+
+<p>For a gameObject to switch the scene, they need to:</p>
+
+<ol>
+  <li>set the engine.currentScene value directly to the new scene.
+    <ul>
+      <li>pass arguments to the new scene</li>
+    </ul>
+  </li>
+  <li>set engine.prevScene
+    <ul>
+      <li>delete prevScene object to save memory probably on the next update loop</li>
+    </ul>
+  </li>
+</ol>
+
+<p>After the prevScene finishes its update loop, we can have it be deleted in the end() function.  On the next update loop, the new scene should be instantiated already and update normally.</p>
+
+<p>So for to do list order right now:</p>
+
+<ol>
+  <li>Set up clickable objects</li>
+  <li>Set up scene transitions</li>
+  <li>Set up aabb physics</li>
+  <li>Make Tetris?</li>
+  <li>Set up networking</li>
+  <li>Make a mini MMO?</li>
+  <li>Make the Tetris AI still</li>
+</ol>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
-<h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
   <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
 </ul>
 

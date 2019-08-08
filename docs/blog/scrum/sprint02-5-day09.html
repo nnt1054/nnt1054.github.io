@@ -37,43 +37,109 @@
 <h4 id="daily-objectives">Daily Objectives</h4>
 
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
   <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>What’s my deliverable?
+A useable game engine, with a library of template objects for example.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-<h4 id="objectives-completed">Objectives Completed</h4>
+<p>What’s the default behavior for the ColliderPhysics update loop?</p>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>apply gravity.</li>
 </ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
+<p>How does user input interact with the Collider Physics?<br />
+Example Case: user holds down right button to move a player object forward (to the right)</p>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Need to determine what happens in the update loop and what happens in the physics loop.</li>
+  <li>Let’s discuss what happens when there’s no user input:
+    <ul>
+      <li>Apply gravity
+        <ul>
+          <li>Gravity affects velocity</li>
+          <li>Velocity affects position</li>
+        </ul>
+      </li>
+      <li>Prevent Overlap</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Physics engine will only apply to super flat 2d?  Like a sidescroller.  Won’t be relevant to any other game?  Maybe we should let the player determine what happens at each update.  To clarify, the physics engine will only apply to a flat 2d space, but it can still be drawn to a different look.  In how many types of games would creating this physics space do anything?  Mostly just side scroller and platforms.  (side 2d perspective action games).  BUT, we still want to do some allocations for these games.  We can add a rigidbody check to the end?
+Maybe it’ll help if we write some sample code.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Player</span> <span class="kd">extends</span> <span class="nx">gameObject</span> <span class="p">{</span>
+	<span class="kd">constructor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createAABB</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">setAnchor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="nx">update</span><span class="p">(</span><span class="nx">delta</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="s2">"left"</span> <span class="k">in</span> <span class="nx">keystate</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">moveLeft</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="s2">"right"</span> <span class="k">in</span> <span class="nx">keystate</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">moveRight</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>		
+		<span class="nx">If</span> <span class="p">(</span><span class="s2">"space"</span> <span class="k">in</span> <span class="nx">keystate</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">jump</span><span class="p">();</span>
+		<span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So some issues I’m having is when should I check collisions?  Physics should be checked preemptively before setting new positions.  Triggers should be checked onCall.  If I wanted to check if I’ve been hit by an enemy:</p>
+<blockquote>
+  <p>We can have a checkCollisions(aabb) function call at the top of the update.  The function will check for collisions between that aabb and objects on respective layers.  When a collision is detected with another aabb, the caller aabb, can add itself to a collision list to the other aabb’s list.  checkCollisions will add newfound collisions to collisions already detected, and return that list.</p>
+</blockquote>
+
+<p>when/where do we check gravity and collisions?  How are most character controllers scripted?
+They have colliders for ‘isGrounded’ and ‘isTouchingCeiling’ which are checked at the BEGINNING.
+If you want a colliderTrigger to trigger, we let the objects move towards each so you can actually trigger them.  We don’t want colliderPhysics to trigger, so we want to PREVENT them from triggering.  This can be done either by casting and checking before moving in that direction OR detecting the collision and resolving it after moving.  WHICH ONE IS BETTER OR DO I DO BOTH?  Let’s create a default, physicsCastAndMove object? What does it do:</p>
+<blockquote>
+  <p>Tell an object to move in a direction, if the new position collides with another physics object, then handle the collision accordingly.  How do you handle bounce vs no bounce?  Are we still assuming that the developer will write their own code for gravity? YES. So the user can write their own ‘applyGravity’ function for each object.  The applyGravity or applyPhysics will be called at the end of the update function, and it’ll CastAndMove towards the appropriate direction</p>
+</blockquote>
+
+<p>Let’s code the CastAndMove the function:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">castAndMove</span><span class="p">(</span><span class="nx">direction</span><span class="p">,</span> <span class="nx">distance</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">setPos</span><span class="p">(</span><span class="k">new</span> <span class="nx">pos</span><span class="p">)</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">checkCollisions</span><span class="p">()</span>
+	<span class="nx">If</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">collisions</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// handle collision</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">setPos</span><span class="p">(</span><span class="nx">toGround</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>I wonder if there’s a fast way of checking collisions using linear algebra.  I’ll look into that later.<br />
+But anyways, I don’t think I need to include gravity functions in the game engine.  The developers can figure that out for themselves.  So final answer: the developer can check for valid positions if/when they wanna move their characters.  I’m just providing a template for the AABB, and my own example of how I’d implement gravity.</p>
+
+<p>For the LAST TIME, what do I need to write.</p>
+
+<ol>
+  <li>layers to a scene</li>
+  <li>checkCollisions function (for everything on a layer)</li>
+</ol>
+
+<p>I think that’s all I need actually.  Does the engine need to do anything with the layers?  What about drawing?  I think we can add drawing layers and collisions tags.  Each scene has an ordered list of layers, and have a dictionary of layer names mapped to lists of objects.  The engine looks at the order and dictionary and calls draw functions based on the layers.  The checkCollisions function will check an object with any/desired tagLists.  So each object will have a dictionary mapping ‘tag names’ to list of collisions.</p>
+
+<p>I’ve added drawing layers.  The developer can make their own AABB lists to check for collisions.
+When would the found collisions function be reset?  It’s supposed to be reset at every update loop.  Maybe I should just leave it out for now?]<br />
+I added the checkCollisions function.  So I guess I’ve done my job?
+What’s after that?  I should probably make some demo templates.  I should take a sprite sheet and render it.  I can use this <a href="http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/">link</a>.</p>
+
+<h4 id="objectives-completed">Objectives Completed</h4>
+
+<ul>
+  <li>jeff did nothing wrong</li>
 </ul>
 
 <h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
+
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Add sprite rendering</li>
+  <li>Create a demo platformer</li>
 </ul>
 
   </div>

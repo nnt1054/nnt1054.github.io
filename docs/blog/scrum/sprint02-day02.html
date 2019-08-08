@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Sprint #2 - Daily Scrum #02</title>
-  <meta name="description" content="Product: CMS APISprint Summary">
+  <meta name="description" content="Product: Tetris2P AISprint Summary">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -31,49 +31,137 @@
   <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/scrum> <span>&#8592Back</span> </a>
 
   <div class="post-content" itemprop="articleBody">
-    <p><b>Product:</b> CMS API<br />
-<a href="/blog/projects/cms-sprint-1">Sprint Summary</a></p>
+    <p><b>Product:</b> Tetris2P AI<br />
+<a href="/blog/projects/tetris-ai-sprint-2">Sprint Summary</a></p>
 
 <h4 id="daily-objectives">Daily Objectives</h4>
 
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Figure out the data structures</li>
+  <li>Start fleshing out the game logic and game loops in pseudo code</li>
+  <li>Start implementation and coding</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>So to start off, we’re creating a 10x25(?) grid<br />
+I need to take note of initial orientations of each piece</p>
+<ul>
+  <li>Each piece starts in their ‘flattest’ orientation</li>
+  <li>Only appears on the 20th row initially</li>
+</ul>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Each piece rotates in a 4x4 square<br />
+Each piece will have a ‘reference’ point at the bottom left most square of the 4x4 square<br />
+The orientations of each piece will be described in reference to that reference point</p>
+<ul>
+  <li>Ex: Orientation 1 of the orange L piece will use up (2,3), (2,2), (2,1) and (3,1) spaces</li>
+</ul>
+
+<p>The ‘reference’ point doesn’t have to be confined within the 10x25 since the orientation of a piece doesn’t always fill the (1,1) square<br />
+KICKS: when a tetris piece tries to rotate, but a square(s) would overlap with where it would rotate into, a kick occurs</p>
+<ul>
+  <li>The piece is just shifted either upwards or sideways until its in a legal position</li>
+  <li>However need to figure out how to prevent abuse
+    <ul>
+      <li>OH the game can transition between using drop speed and lock delay</li>
+      <li>Once there’s is a static piece underneath the piece, switch to the lock delay, instead of drop speed (make sense since shouldn’t be able to drop anymore).  After each rotation check if there’s still a static piece underneath the piece, if not then reset to the lock delay and switch back to drop speed</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Lock Delay: time before a piece touching the ground waits before locking in its position</p>
+<ul>
+  <li>
+    <s> I don’t think this is something I need to implement cause it just needs to move downward again to lock? </s>
+  </li>
+  <li>Nvm just realized this is necessary since the drop speed is different from the lock delay</li>
+  <li>Are there any situations where a piece can no longer rotate?
+    <ul>
+      <li>Floor and Wall Kicks can only move max 2 spaces in any direction; if every kick is invalid, then the piece won’t be able to rotate</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Things I need to figure out, for implementation:</p>
+<ul>
+  <li>How to have multiple loops running?</li>
+  <li>I’m concerned about code optimizations and efficiency</li>
+  <li>I made an html5 game a long time ago when i started learning javascript
+    <ul>
+      <li>Ran into major optimization issues cause I did some makeshift collision detection between every single bullet and every single enemy :)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Side note we’re assuming Object Oriented Programming<br />
+Things to consider for optimization:</p>
+<ul>
+  <li>Sprite sheet? Probably unnecessary for initial tetris game, but might do add ons later for aesthetic purposes
+    <ul>
+      <li>Actually at one point sprites are more optimized than canvas ctx objects apparently</li>
+    </ul>
+  </li>
+  <li>Use integers apparently</li>
+  <li>OOP or ECS
+    <ul>
+      <li>I took notes on this but for unity instead</li>
+      <li>I can look at other examples, but tbh I shouldn’t over engineer this lmao</li>
+    </ul>
+  </li>
+  <li>This is still a bit down the road but should look up lobby making and stuff
+    <ul>
+      <li>I think i have reference image for that from yesterday’s thing though so its fine for now</li>
+    </ul>
+  </li>
+</ul>
+
+<p>I think for now I should look at coding examples first? And then figure out the OOP Objects based off that and this tetris game.<br />
+I think it’d actually just be better to build a standalone single player gamer first to get down all the mechanics, so I will do just that<br />
+Should I consider incorporating React into this game?</p>
+<ul>
+  <li>React is a framework for updating content on a web page when new information is updated.  We have socket.io though and an actual game loop so I think it’s unnecessary.
+I want make the entire game without using a template probably?</li>
+  <li>I can go back and using my old html5 game canvas code, BUT I need to learn how to implement timers and periodic events and fps sort of stuff</li>
+  <li>requestAnimationFrame()</li>
+  <li>This <a href="https://isaacsukin.com/news/2015/01/detailed-explanation-javascript-game-loops-and-timing">website</a> is BERRY useful
+Need to think more about controls, move on key down, but not again until key up</li>
+  <li>Later want to do fast moving left and right
+Notes from this link: <a href="https://isaacsukin.com/news/2015/01/detailed-explanation-javascript-game-loops-and-timing">website</a></li>
+  <li>‘Lockstep’ ensures all players are playing at the same pace
+    <ul>
+      <li>Drop a player if there’s lagging too much</li>
+    </ul>
+  </li>
+  <li>Velocity and other time based variable need to be scaled based off of the ‘delta’ variable, which represents the amount of time that has passed between rendering frames
+    <ul>
+      <li>delta = timestamp - lastFrameTimeMs where lastFrameTimeMs is the timestamp for the last</li>
+      <li>Only run update() when delta &gt; timestep
+        <ul>
+          <li>Timestep is a fixed value</li>
+          <li>Reduce value of delta by timestep after update()</li>
+          <li>var timestep = 1000 / 60;</li>
+        </ul>
+      </li>
+      <li>After a certain number of update loop steps:
+        <ul>
+          <li>Discard un-rendered frames, and hard update to server state</li>
+        </ul>
+      </li>
+      <li>Increase timestep if update loop takes too long</li>
+    </ul>
+  </li>
+</ul>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
-<h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>
+    <p>Figured out and detailed most of the Tetris mechanics</p>
+  </li>
+  <li>
+    <p>Gained a better understanding of javascript game loops and maintaining consistent fps and timing</p>
+  </li>
 </ul>
 
   </div>

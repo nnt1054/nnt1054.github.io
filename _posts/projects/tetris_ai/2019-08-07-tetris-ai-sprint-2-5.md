@@ -1,24 +1,25 @@
 ---
 layout: post
-title:  "Sprint #2 - Creating the Tetris Game"
+title:  "Sprint #2.5 - Creating an HTML5 Game Engine"
 date:   2019-06-09
 categories: projects
 tags: tetris_ai
-sprintID: 2
+sprintID: 2.5
 
 ---
 
 <b>Product:</b> [Tetris2P AI](/blog/projects/tetris-overview)  
-<b>Sprint #1:</b> June 10 - <s>June 14</s> June 28  
+<b>Sprint #1:</b> July 20 - August 05  
 <b>Scrum Board:</b> [Link](/portfolio#project)  
-<!-- <b>Deliverable:</b> [Software Design Document](https://docs.google.com/document/d/15So3mJYzwRt1NcaGKYQ02hbT8H5q1-BIRR6tCzCnggM/edit?usp=sharing) -->
+<b>Deliverable:</b> [Github Repo](https://github.com/nnt1054/mini5-engine)  
 <b>Goals:</b>
 
-1. Develop a Tetris2P Game Client
-2. Add Multiplayer and Deploy the Game Online
+1. Develop a custom game engine for javascript and HTML5 Canvas - COMPLETED
+2. Deploy the game engine as a node_module - COMPLETED
+3. Write an API/Usage Documentation - IN PROGRESS
 
 <b>Method/Metrics:</b>  
-The goal has been met once the game client is deployed for the public to play.
+The goal has been met once the project has been deployed to the npm public repository.
 
 #### Daily Scrums
 
@@ -42,3 +43,11 @@ The goal has been met once the game client is deployed for the public to play.
 	{% endif %}
   {% endfor %}
 </div>
+
+### Sprint Review
+
+#### What went well?
+
+#### What didn't go well?
+
+#### What to do next time?

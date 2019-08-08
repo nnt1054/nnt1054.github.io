@@ -37,43 +37,151 @@
 <h4 id="daily-objectives">Daily Objectives</h4>
 
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Learn more about and implement basic colliders for the physics engine</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Let’s set up daily goals today:  I’m at a cafe right now, and it might close soon lmao
+Where did I leave off from yesterday?  I finished adding in the position anchors, adding canvas position and world position variables.  When I want to do collision detection, I want to make sure I’m using the canvas positions instead of anchor positions.  I’m putting off the right and scroll wheel clicks for now.  When I want to make the ‘physics’ engine how do I want to test it and stuff?</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>A minimum viable example would be placing a player square on a floor, and then getting hit when it touches an enemy object.  Before that, I can have the bouncing ball touch and settle on a different objects.</p>
+
+<p>Should I introduce a physics layer?  How would I describe what that is?  It’s more of a list of objects in a physics space, and applying certain rules to the physics space?  I think a good place to do a bit of research is check how you’d make a bouncing ball in unity2d.</p>
+
+<p>Looking up tutorials on how to make physics objects in Unity2D.</p>
+
+<p>Notes from: <a href="https://youtu.be/23HEMKfMKKk">video</a>:</p>
+
+<p>Required Components:</p>
+<ul>
+  <li>Transform Rect
+    <ul>
+      <li>Position of object</li>
+    </ul>
+  </li>
+  <li>Sprite Renderer
+    <ul>
+      <li>The ‘draw’ function</li>
+    </ul>
+  </li>
+  <li>Circle Collider 2D
+    <ul>
+      <li>Physics material (defines friction and bounciness; aka: physics properties?)
+        <ul>
+          <li>Defines physics properties</li>
+        </ul>
+      </li>
+      <li>Allows component to ‘participate’ in physics events but can’t ‘initiate’ them
+        <ul>
+          <li>Doesn’t react to physics forces or gravity</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Rigidbody 2D
+    <ul>
+      <li>Allows object to be affected by physical forces</li>
+      <li>Forces include gravity</li>
+      <li>Allows object to participate in physical events, like collision and triggers</li>
+      <li>Unnecessary for static nonmoving items\</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Colliders interact with other colliders!  Having a collider lets you check for collisions with other colliders.<br />
+A rigid body adds ‘physics’ forces and updates to an object.<br />
+So colliders determine what happens on collision, but rigid bodies determine what happens on each update loop.</p>
+
+<p>next video: <a href="https://youtu.be/nyVfYhaomVQ">video</a></p>
+
+<ul>
+  <li>Can create a ‘layer collision matrix’ to determine what collider objects can collide with what
+    <ul>
+      <li>Objects are in a ‘layer’, and the ‘layer collision matrix’ determines if objects in a ‘layer’ should collide with objects in a different layer</li>
+    </ul>
+  </li>
+  <li>Rigidbody2d.cast(direction, results, distance, contactFilter)
+    <ul>
+      <li>Should pad the distance for protection? So you can’t pass inside another collider?  Cast is used to check if you’d collide with another collider.</li>
+    </ul>
+  </li>
+  <li>Can use triggers or layer masks?</li>
+  <li>They’re using the groundNormal to detect if a player is standing on something.</li>
+  <li>When a player hits head along an object, change the y value to 0
+    <ul>
+      <li>If a player hits a wall, change the x value to 0</li>
+      <li>This is so you can stop movement only in the relevant direction</li>
+      <li>Also change velocity to accommodate for loss of axis direction</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Misc videos: <a href="https://youtu.be/UbPiCgCkHTE">brackeys</a></p>
+<ul>
+  <li>Create ground check and ceiling check, to check if standing or under a ceiling</li>
+  <li>Rigidbody objects DON’T OVERLAP as per the physics engine</li>
+  <li>Collider objects CAN OVERLAP, and trigger collision functions</li>
+  <li>Layers have a rendering order, maybe I should introduce a similar concept.
+    <ul>
+      <li>Have to add objects to a layer in order to have their draw function called! :D</li>
+    </ul>
+  </li>
+  <li>Collider also prevents other objects from passing though?</li>
+</ul>
+
+<p><a href="https://answers.unity.com/questions/42558/whats-the-difference-between-a-rigid-body-and-a-co.html">https://answers.unity.com/questions/42558/whats-the-difference-between-a-rigid-body-and-a-co.html
+</a></p>
+
+<ul>
+  <li>A Collider is the “physical form” of objects. There are several types of colliders, such as box shaped, sphere shaped, capsule shaped or even custom (mesh) shaped (and then some!).</li>
+  <li>A Colliders’ responsibility is to aid collision detection in any way. It can be used for triggers, for physics or other uses.</li>
+  <li>A Rigidbody is a representation of a rigid body in space. It is used by the physics engine to perform collision response and movement of objects.</li>
+  <li>A Rigidbody makes use of a Collider to define its shape.</li>
+</ul>
+
+<p>Having a boxCollider with the ‘isTrigger’ checkmarked, will have OnTriggerEnter, Stay, Exit.  If you have the ‘isTrigger’ set to true, the collider will no longer behave as a physics object.  sIC cOoL, mAkeS sEnSE.</p>
+
+<p>So what’s on the to do now that I’ve figured it out at 3:08 am.</p>
+<ul>
+  <li>Create a dictionary of Layers; with a Layer Collision Matrix
+    <ul>
+      <li>The developer adds AABB objects to the layer</li>
+    </ul>
+  </li>
+</ul>
+
+<p>I have to decide whether or not to check for collisions before or after the update loop.  Should I just add collision to an event list?  Or should I actually have them trigger ‘onCollisionEnter’ and ‘onCollisionExit’ functions when they’re detected?</p>
+
+<p>Now I have to figure out whether I want to add rigidbodies or not.  Rigidbodies just add simulated ‘gravity’ and ‘friction’ to an object.<br />
+What are the types of things again?</p>
+
+<ol>
+  <li>ColliderTriggers</li>
+  <li>ColliderPhysics</li>
+  <li>RigidBodies</li>
+</ol>
+
+<p>RigidBodies and ColliderPhysics both cannot overlap, except gravity only applies to RigidBodies.  ColliderPhysics object is mostly used for objects such as the ground or floating platforms.  I think I should combine the two objects for my project, and the developer can write in their own physics update stuff.  The basic rule is that ‘RigidBodies’ cannot overlap.  If an object tries to overlap with another object, the movement is prevented.  Gravity and forces can be simulated in the ‘update’ function of a game object.  Should the developer be aware of these kind of things?<br />
+Note-ing down: the physics should be correct before the draw portion of the update loop.  Maybe I should implement a cast function, for the developer to use.  The cast function is used to check if moving an object into a certain position would be legal.  So the developer would use the cast function to check if movement is legal.  If not, adjust the new position or run a collision function.  Since only one object is being checked at one time, I don’t think there’ll be any synchronization issues?   AKA, two objects moving towards each other: first object moves into second object and runs collider function, and then second object runs into first object and runs a second collider function.  Hmm, I guess that could be an issue.  We can have the first object let the second object know a collider was already detected.  This is getting weird because are we assuming any collisions are already detected before the update loop, or will collisions be detected during the updated loop.<br />
+Let’s redo the example.  Player A checks if moving towards a monster will collide.  Cast function returns yes, so Player A executes pseudo-on-collision function.  On the same update loop, monster tries to move towards player, and detects the collision.  In this case there’s work arounds, like the monster not checking for collisions.  BUT, I think the Player A can add itself to the monster’s ‘handledCollisions’ list, for an update loop.</p>
+
+<p>Casting Movements is a way to check for collisions before a movement.
+BUT, for ColliderTriggers, I should figure out if I want them checked before the update loop or during the update loop.<br />
+Example:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="k">this</span><span class="p">.</span><span class="nx">floorCollider</span><span class="p">.</span><span class="nx">checkCollisions</span><span class="p">(</span> <span class="p">[</span> <span class="nx">list</span> <span class="k">of</span> <span class="nx">objects</span> <span class="nx">to</span> <span class="nx">check</span> <span class="kd">with</span> <span class="nx">or</span> <span class="nx">layer</span> <span class="p">]</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">grounded</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="nx">This</span><span class="p">.</span><span class="nx">grounded</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>checkCollisions return statement can be a list of collided objects + collision orientations.</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
-<h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>jeff also</li>
 </ul>
 
   </div>

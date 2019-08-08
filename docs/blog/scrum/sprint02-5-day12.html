@@ -35,45 +35,88 @@
 <a href="/blog/projects/tetris-ai-sprint-2-5">Sprint Summary</a></p>
 
 <h4 id="daily-objectives">Daily Objectives</h4>
-
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Finish rewriting the new collision resolution function</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>I think a ‘bottomOnly’ collision needs to ensure both left and right sides are both included or excluded</p>
+<ul>
+  <li>Same with rightOnly collision needing topandbottom?</li>
+</ul>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Nevermind, I think I need to add some sort of partial resolution instead of just hard setting the position.  How should I implement this so its efficient?  First I need to get the expected x and y displacement.  I don’t want to keep iterating until I find a proper position resolution, since that would be too much work for just a resting object.  Maybe we should return how the x and y distance of the overlap with the collision, or add a checking function for it.  Take the bigger displacement value and scale back the x and y displacement of the player object so the displacement would be 0.  Let’s iterate/draw out the edge cases.  I think what’s actually more important is what direction the collision happens first.  What determines which direction the collision happens first?</p>
+
+<p>Ideas:</p>
+
+<ol>
+  <li>Move x and y displacements separately?</li>
+  <li>check distance of axis displacements
+    <ul>
+      <li>If displacement is greater than width or height, then its one directional collision</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Tentative Final Answer:</p>
+
+<ol>
+  <li>If you’re able to remove a collision by only removing displacement on one axis, then the collision is along that direction.</li>
+  <li>If you’re able to do (1) on both axis, then take the axis with largest displacement</li>
+</ol>
+
+<p>btw, you can implement sweeping aabb collisions later on if you want, but for now I want to deem it unnecessary overhead calculations. I wanna make it a completely separate function later anyway, but I’d like to actually start my tetris game as soon as possible. :)</p>
+
+<p>What’s the process for implementation:</p>
+<ol>
+  <li>move position, check for collisions</li>
+  <li>pick larger displacement value and check if collision still exists without it
+    <ul>
+      <li>if collision disappears, then assume collision in that direction</li>
+      <li>If collision is still there, then assume collision in perpendicular direction</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Currently facing a bug where setting the AABB’s max height to the ground’s min height causes a bug, but setting it to the ground’s min height minus one will work properly.  I fixed the issue but changing the collision function to less than or equal to’s rather than less than’s (and greater than’s).</p>
+
+<p>Cool it’s working now :)
+Cool I also got a mini state machine for drawing different colors onto the canvas :)</p>
+
+<p>What’s next?</p>
+
+<ol>
+  <li>Start the hecking tetris game</li>
+  <li>Do some sprite animations</li>
+  <li>Start exporting as npm module</li>
+</ol>
+
+<p>Let’s do the exporting as npm module part first<br />
+For that I think I should make a new git repo?  Also let’s make sure I still have npm and node installed.</p>
+<ul>
+  <li>npm version 6.9.0 :sunglasses_emoji:</li>
+  <li>node version 12.3.1</li>
+</ul>
+
+<p><a href="https://docs.npmjs.com/creating-node-js-modules">https://docs.npmjs.com/creating-node-js-modules</a>
+What’s the goal here?  I want th developer to be able to install the package using npm install, but also be able to download the package and using for client side code.  There’s really only three (potentially four) important files that needs to be minified down to one file:</p>
+
+<ol>
+  <li>Engine.module.js (tentative name)</li>
+  <li>Scene.js</li>
+  <li>GameObject.js</li>
+  <li>AABB.js</li>
+  <li>Mainloop.js library (need to link)</li>
+</ol>
+
+<p>What should I be looking up?  Exporting javascript classes as node module?  I can have a minified javascript file to include in client side html that exports the classes.<br />
+I still need to recreate the project as an npm thing? I didn’t get to accomplish much today, but I guess the goal by friday is to have this public on github :)</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
-<h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>wow 12</li>
 </ul>
 
   </div>

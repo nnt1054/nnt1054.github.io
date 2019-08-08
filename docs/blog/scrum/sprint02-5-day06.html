@@ -37,43 +37,102 @@
 <h4 id="daily-objectives">Daily Objectives</h4>
 
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Create a 2D Physics Engine</li>
+  <li>Add Position Anchors for gameObjects</li>
+  <li>Add Scroll and Right Click Support</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>How do I prevent clicks on overlapping elements?  I can have objects set a target variable if they’ve been clicked.  However, only the first object clicked gets first dibs on the click?  OH, I can have themselves set themselves as the active target on the mousedown event!  That way, the last item checked be the active target.  What happens if a parent object wants to find out if a child object was clicked?  I think we can ignore that case, and force the developer to execute parent functions onclick from the child button’s own update function.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Bug! For some reason, the scene click target never gets overwritten?  The scene.clickTarget does get overwritten by the last item.  Not setting the clickTarget to null was apparently the issue.  OH, it’s cause other objects are setting it to null before the clicked object is able to do it haha.  Cool cool, so that worked, but I should add a better way to check drag and hold?  I think mousedown and clickTarget serve the same purpose?<br />
+I added a variable in the engine to keep track of the mousePos()!</p>
+
+<p>Still to do:</p>
+
+<ol>
+  <li>
+    <s> Implement z-index?  Or not.  The only issue with this is that it’s only relevant for the scene’s direct children.  Maybe it’s better to not implement. </s>
+  </li>
+  <li>Position Anchors!</li>
+  <li>Differentiate clicks!</li>
+  <li>Physics!</li>
+</ol>
+
+<p>I think position anchors should be based off of AABB’s?<br />
+I need to make AABBs an actual class/object with actual getter and setter methods.  If I’m making clicks and physics AABB based, I don’t want developers losing their references to their click objects and such.</p>
+
+<p>Side note for the physics part:  maybe each object can have a list of objects they need to detect, so they don’t have to collision check with other unrelated objects.</p>
+
+<p>Let’s make the aabb object now and position anchors.  Ok, I made the class with getters and setters for min and max, and it seems to be working fine so far :thumbs_up:<br />
+Now for object position and anchors.  What’s the intended usage for this?  So in general, each object can own multiple AABB’s.  The question is do we want objects to have a general x and y position?  Or should we have the information only up to AABB.  I think its a easier to grasp concept if all ‘position’ related information were related to AABB’s.</p>
+
+<p>I’m debating whether or not we include the ‘anchor’ references within the actual AABB objects.  So what’s the main issue?  If the aabb’s x and y position are relative to a moving parents, how do we figure out how/where to draw in regards to the canvas?  I don’t want each gameObjects to have to follow anchor references all the way back to the canvas every single time.  In order for child and grandchild objects to be drawn, their draw methods must be called from their parent’s draw function.  The parent can just pass down their absolute canvas position positions, and the child objects can draw based off those.  Off that logic there isn’t too much reason to keep the anchor reference in the aabb.  BUT, what about objects checking/detecting onclick objects?  I think each AABB needs to keep a world position along with its relative position.  mouseClicks definitely need to be checked with the world position, and so does drawing to the canvas.  The next question is how to implement that?  When we set anchor references, we can have the parents keep track of their children instead.  Wait no, we can have each aabb, keep relative position, absolute position, and parent aabb.<br />
+On update, each child update: child.absPos = child.relPos + parent.absPos<br />
+absPos or canvasPos, either works.</p>
+
+<p>Is it not better though to have the parent just update their children?  In general, if a child pos moves, the only related objects are the child.  But if the parent moves, then both the parent and its children move.  There’s no telling for sure if an anchored child objects, will even run its update loop to edit its position.  FINAL ANSWER: the parents keep a reference of their anchored objects.  I’m struggling with nomenclature and variable names.  Do I define anchored objects as children? A N C H O R E E S = objects being anchored</p>
+
+<p>how do I want to call the anchor function?<br />
+child.setAnchor(parent)</p>
+
+<p>Before I go home from this cafe I wanna anchor the bouncing ball to the the draggable object :)
+Let’s add a lastPosition field for the AABB, since it’s healthy for moving objects apparently.  Am I keeping track of the parent position of canvas position.  I think it’s supposed to be canvas position.  We needed a getter method for canvas position, but we want to actually keep track of parent’s canvas position.  We never actually need to set canvas position is a variable based on two other variables.</p>
+
+<p>Cool, the anchor points are working now :^)<br />
+Next:</p>
+
+<ol>
+  <li>Differentiate Clicks - Putting this on the backburner</li>
+  <li>Physics2D Engine</li>
+  <li>Sprite Rendering</li>
+  <li>Networking</li>
+</ol>
+
+<p>Let’s talk more about the ‘Physics2D Engine’.  The engine is basically a way to detect collisions between rigid body objects.  The biggest difference between games is how you resolve collisions between objects, and what objects can collide with.<br />
+Examples:</p>
+<ul>
+  <li>Player colliding with floors or walls: player’s position is halted and stopped at collision area</li>
+  <li>Sword hit box against an enemy: enemy takes damage, collision is allowed.</li>
+</ul>
+
+<p>Information regarding collisions:</p>
+
+<ol>
+  <li>If a collision happens
+    <ul>
+      <li>Ex: hitboxes</li>
+    </ul>
+  </li>
+  <li>Direction of a collision
+    <ul>
+      <li>only four directions with AABB</li>
+    </ul>
+    <ul>
+      <li>Consider combined collisions
+    * Also resolve what happens when AABB inside another AABB</li>
+    </ul>
+  </li>
+</ol>
+
+<p>What does the developer have to do?</p>
+<ul>
+  <li>Write resolver functions for collisions</li>
+</ul>
+
+<p>Premade collision functions?</p>
+<ul>
+  <li>spreventOverlap/pushOut</li>
+  <li>bounce/reflect? (flipping velocities and stuff)</li>
+</ul>
+
+<p>Let’s add the other click stuff now before anything else.  Btw, I changed the target for the mouseup function to be the document, instead of the canvas.  It was awkward moving the mouse outside of the canvas, and still having the drag in place.</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
-<h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>jeff</li>
 </ul>
 
   </div>

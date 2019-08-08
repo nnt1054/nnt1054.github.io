@@ -37,43 +37,62 @@
 <h4 id="daily-objectives">Daily Objectives</h4>
 
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Can’t sleep till I’ve published some version of the mini-game module so I can finish up the sprint</li>
+  <li>Start looking into the Tetris AI again</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Where did I leave off?  Slow progress last few days.  Oh, I realized it was difficult getting sudo permissions within crouton to execute a lot of npm commands, so I need to recreate the project on my desktop.  Need to add mainloop to the dependencies.  Where I left off was figuring out how to make node modules that use other node modules in their dependency list.  Am I supposed to require the mainloop object from the node modules?  Does this mean the node module isn’t meant to be used within its own project? Oh, I also need to learn how to use uh node modules installed locally</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Ok so I need to use grunt now I think for uglify.<br />
+A Gruntfile is comprised of the following parts:</p>
+<ul>
+  <li>The “wrapper” function</li>
+  <li>Project and task configuration</li>
+  <li>Loading Grunt plugins and tasks</li>
+  <li>Custom tasks</li>
+</ul>
+
+<p>poggers, I got uglify kinda working now :)<br />
+So I figured out how to add grunt tasks and use uglify.  BUT, I’m having an issue with exporting javascript class objects, saying:<br />
+<code class="highlighter-rouge">Unexpected token: name &lt;&lt;gameObject&gt;&gt;, expected: punk &lt;&lt;;&gt;&gt;</code></p>
+
+<p>I’m gonna check the source files for mainloop.js, to see if there’s a solution I can borrow.  Apparently, uglify doesn’t support classes/ES6 yet?  Oh,  I installed a different branch of grunt uglify (harmony) and its working perfectly now :)<br />
+Except now I need to change the project name since mini-engine is already taken.  What exactly is the project?  It’s a small game engine for developing games on a single HTML5 Canvas, using a similar workflow from Unity.<br />
+Keywords:</p>
+<ul>
+  <li>game</li>
+  <li>game engine</li>
+  <li>html5 canvas</li>
+  <li>unity</li>
+  <li>javascript</li>
+</ul>
+
+<p>Canvas-engine? Mini5-engine?  I like mini5-engine.  We’re gonna go with that! :)  I can’t believe I almost used ‘mengine’ as a name.</p>
+
+<p>AND WE’RE DONE! ‘Done’.  But I have my first node module published and working :)
+To Do (for the node module):</p>
+
+<ol>
+  <li>Write documentation</li>
+  <li>Add examples</li>
+  <li>Add networking</li>
+</ol>
+
+<p>To Do (for etc. stuff):</p>
+
+<ol>
+  <li>Write up Sprint</li>
+  <li>Start next Sprint</li>
+  <li>Tetris 2P</li>
+  <li>Tetris AI/ML Agent</li>
+</ol>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
-<h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>only two more aflkjasdlkfja</li>
 </ul>
 
   </div>

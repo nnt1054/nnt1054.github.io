@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Sprint #2 - Daily Scrum #05</title>
-  <meta name="description" content="Product: CMS APISprint Summary">
+  <meta name="description" content="Product: Tetris2P AISprint Summary">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -31,49 +31,83 @@
   <a id="back-id" class="rect-btn center-container height32 back-btn" href=/blog/scrum> <span>&#8592Back</span> </a>
 
   <div class="post-content" itemprop="articleBody">
-    <p><b>Product:</b> CMS API<br />
-<a href="/blog/projects/cms-sprint-1">Sprint Summary</a></p>
+    <p><b>Product:</b> Tetris2P AI<br />
+<a href="/blog/projects/tetris-ai-sprint-2">Sprint Summary</a></p>
 
 <h4 id="daily-objectives">Daily Objectives</h4>
 
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Get ‘TetrisInstance’ Script working</li>
+  <li>Make an outline of the project/game engine structure</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
+<p>The scope of the project has somehow branched into a mini game ‘engine’</p>
+<ul>
+  <li>Need a system for scenes</li>
+  <li>Need a system for ‘game objects’, prefabs</li>
+  <li>Think in terms of Unity, objects and components</li>
+  <li>Objects need a way to:
+    <ul>
+      <li>Render</li>
+      <li>Update</li>
+    </ul>
+  </li>
+  <li>Mainly concerned with how to manage ‘animations’ that take non negligible times to display
+    <ul>
+      <li>Every moving object needs a timer, change to the next frame of an animation everytime delta amount of time</li>
+    </ul>
+  </li>
+  <li>Global way of referencing scripts?</li>
+  <li>Lmao need to split everything between:
+    <ul>
+      <li>Game Engine</li>
+      <li>Game Development Interface</li>
+      <li>Actual HECKING Game</li>
+    </ul>
+  </li>
+</ul>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>What does the Game Engine need to know and do?</p>
+<ul>
+  <li>Update the correct objects</li>
+  <li>Render the correct objects</li>
+  <li>Need to establish a current Scene
+    <ul>
+      <li>Within the scene there’s a list of active objects
+        <ul>
+          <li>Active objects could have a list of active objects</li>
+        </ul>
+      </li>
+      <li>Scene updates and draws all the active objects in specific orders</li>
+    </ul>
+  </li>
+  <li>What information needs to be passed between Engine → Scene → Objects
+    <ul>
+      <li>Mostly just time, and timers? The scene shouldn’t have to keep track of the uh global timer/clock</li>
+      <li>The scene should calculate everything based off ‘update ticks’</li>
+      <li>The engine should only update the current scene when there’s an ‘update tick’</li>
+      <li>This is mostly kinda explained already, but I want to create a bit of abstraction between entities.</li>
+      <li>So other objects within the game can update based off the current update tick instead of having to worry about the entire ‘time delta’ mumbo jumbo</li>
+      <li>Ok ^^ that statement made things make sense for me</li>
+      <li>GAME OBJECTS ASSUME THEIR UPDATE FUNCTIONS ARE CALLED AT DISCRETE TIME PERIODS</li>
+      <li>THE GAME ENGINE MAKES SURE THE GAME OBJECTS CAN MAKE THAT ASSUMPTION</li>
+      <li>I MEANT TO SAY ‘GAME FRAMEWORK’ instead of ‘GAME ENGINE’</li>
+    </ul>
+  </li>
+  <li>How do I write sufficient documentation for this</li>
+  <li>BTW SPRINT IS EXTENDED ALONG WITH THE PROJECT SCOPE</li>
+</ul>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
-
-<h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>
+    <p>Determined a change of project scope to creating a game engine</p>
+  </li>
+  <li>
+    <p>Detailed necessary functions of a basic game engine</p>
+  </li>
 </ul>
 
   </div>

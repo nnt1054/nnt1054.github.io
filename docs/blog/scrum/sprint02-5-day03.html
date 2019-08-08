@@ -35,45 +35,119 @@
 <a href="/blog/projects/tetris-ai-sprint-2-5">Sprint Summary</a></p>
 
 <h4 id="daily-objectives">Daily Objectives</h4>
-
 <ul>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
-  <li>
-    <p>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</p>
-  </li>
   <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
   <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>Hello hey :)<br />
-This project is still in the planning stage of the planning stage, so this page will be nowhere near its final draft.  I want to somehow capture the thought process and all my considerations somewhere, so this page will be full of rambling text about how I reach the design rather than an outline of the design itself first.</p>
+<p>hey aha, let’s jump straight into the tetris + game framework thing</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Game Engine Files:<br />
+Scene Files:<br />
+Game Object Files:</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>I should code up intended usage for the engine and then pop off from there.<br />
+I’m not really focusing haha heck<br />
+OK does the engine do anything different between games? No it shouldn’t I think.  So I can move all the code interfacing with MainLoop into that module.</p>
+
+<p>First issue!<br />
+We’re passing class methods into MainLoop to be called later! This doesn’t work cause they exist in different spaces so ‘this’ isn’t defined in the methods!<br />
+THIS variable is set by the context its invoked<br />
+Wow that’s actually super stupid<br />
+Wait nvm this is where the bind function comes in handy, i learned this in React lmao
+<code class="highlighter-rouge">this.draw = this.draw.bind(this);</code></p>
+
+<p>Heck me what do i do next now<br />
+What do I have now again.</p>
+
+<p>I have an object class that runs the MainLoop program.  What else does is it do besides run the MainLoop?  It’s supposed to draw and update a scene.  Also its supposed to handle scene transitions.<br />
+Alright let’s make a scene now to draw!  Just make it a blank scene with a colored background.</p>
+
+<p>Before that though:</p>
+
+<ol>
+  <li>Color the current background (using engine draw method)</li>
+  <li>Make it a fixed smaller size</li>
+  <li>Center it in the screen
+Just as a reminder: (0,0) of the canvas refers to the TOP LEFT<br />
+But kk I did that.  Now time to make first example scene. Gonna reference yesterday’s notes on what to make<br />
+But first I’m gonna make another scene that just draws a background, and maybe a moving ball
+Or maybe make the background color a component?</li>
+</ol>
+
+<p>What differentiates scenes from each other?  I’m having trouble picturing how everything interacts with each other.  In Unity you don’t code anything into the Scene object.  What do you do with it then?  Scene’s just hold an ordered hierarchy of objects.</p>
+
+<p>So Scene’s are just gameObject containers.  The scene renders them in the order they’re provided.  Kk that makes sense SO how does the developer add objects to it?  You can instantiate it with a set objects.  But the objects might need references to each other, so when do they get instantiated?</p>
+
+<p>Make another loop in scene constructor to add object relationships?</p>
+
+<p>Also separate prefab things dude!  There objects that need to be instantiated when the scene opens up.  I only need to instantiate objects that are present at the beginning of the scene!!!  The only thing you need to write for a new scene, is the instantiation function.  What happens in the instantiation function?  You create your initial objects and add initial game references.</p>
+
+<p>How does Unity do it again?<br />
+Prefabs vs GameObjects<br />
+GameObjects are instantiated at the start.  Prefabs are used later after instantiation to create additional GameObjects.<br />
+When GameObjects are gonna be created from Prefabs during runtime, you can pass in all the object references during/right after instantiation.  Example, when you make a new tetromino, you can pass in the grid as a parameter to the construction function, so it has a reference of it.</p>
+
+<p>Can I get an example for tetris at least?<br />
+If we have a scene for multiplayer, we can instantiate a match object, then a player object, then add that player object to the match object.  Yes, nice, very cool sounds like a plan.  SO, the only unique thing about each Scene is the function you use when the scene loads in.  Note that this occurs separately from instantiation, unless I’m want to change how scene switches work.  I want to instantiate/create all the scene objects, and then pass in the list to the game engine.  OR, should I pass a list of the scene classes instead and have everything run during construction?</p>
+
+<p>Let’s discuss advantages and disadvantages of both?  First why would I want to have the scene objects instantiated first?<br />
+Btw Scenes can determine to which scene they want to transition into, but not really what transitions into them.  I can implement something like that, but maybe for once I get there.  I’m basically creating a state machine? OH, ok yeah I think it’s better to just, not have them instantiated initially. Why?  If you want to make a game based on levels, you don’t want to instantiate all the levels from the beginning right?  It’s more of just a memory concern.</p>
+
+<p>Its crazy how little code I’m actually writing haha<br />
+Ok, how does scene switching work?  There needs to be some sort of reference/callable function.  I think we can have all gameObjects have a reference to the actual scene, and the scene calls a switchScene function using its reference to the engine.</p>
+
+<p>First example I’m gonna do is make a background game object and a bouncing ball game object.
+I’m not trying to do anything physics based but it doesn’t hurt to accommodate for it.</p>
+
+<p>Ok I also have to figure out the relationship and components.  GameObjects generally have several components.  I feel like I can leave it up to the developer to write their own components.</p>
+
+<p>Ay nice i have a working prototype!  Apparently the way you check for clicks is by:</p>
+
+<ol>
+  <li>Adding onclick and dbclick event triggers to the canvas</li>
+  <li>The canvas knows where the coordinates of the click</li>
+  <li>Check the position of clickable objects in game code
+    <ul>
+      <li>Sounds kinda inefficient, but it works if you don’t have too many elements?</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The issue with this however, is incorporating it into a draw loop?
+Hmm, I guess we can set an onclick/dbclick function to the canvas object and have it set variables in the engine.  The clickable objects can check by themselves whether there’s a click or not and perform action. The ‘click’ variable will reset to false at the end of an update loop.  I think I can leave mouse clicks out for a different time though.  For now we focus on keyboard inputs!<br />
+The main idea issue I want to make sure I have down first is separating short and long presses.
+I’ll just write some pseudo code?</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">hold</span> <span class="o">==</span> <span class="n">false</span> <span class="ow">and</span> <span class="n">keydown</span><span class="p">:</span>  
+	<span class="n">shortpressaction</span><span class="p">()</span>  
+	<span class="n">Hold</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>  
+	<span class="n">startholdTimer</span><span class="p">;</span> 
+<span class="k">if</span> <span class="n">hold</span> <span class="o">==</span> <span class="n">true</span> <span class="ow">and</span> <span class="n">keyup</span><span class="p">:</span>  
+	<span class="o">//</span> <span class="n">end</span> <span class="n">short</span> <span class="n">press</span>  
+	<span class="n">Hold</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>  
+<span class="k">if</span> <span class="n">hold</span> <span class="o">==</span> <span class="n">true</span> <span class="ow">and</span> <span class="n">keydown</span><span class="p">:</span>  
+	<span class="k">if</span> <span class="n">startholdtimer</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="n">s</span><span class="p">;</span>  
+		<span class="n">performholdAction</span><span class="p">()</span>  
+	<span class="n">Else</span><span class="p">:</span>  
+		<span class="n">Holdtimer</span> <span class="o">+=</span> <span class="n">delta</span><span class="p">;</span></code></pre></figure>
+
+<p>Ok, cool sounds fine.  Also you can use two different time variables, one time variable to represent how long you need to hold a key down for it to become a long press, and another variable to determine at what interval to perform a holdaction once you’ve determined the key is being held down.</p>
+
+<p>For most double click key presses, you can set a timer to determine the interval from when you last pressed the same key.  Wow it feels like I did a good amount of work today :)</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
-<ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-</ul>
 
-<h4 id="lessons-learned">Lessons Learned</h4>
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
   <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
 </ul>
 
 <h4 id="plans-for-tomorrow">Plans for Tomorrow</h4>
+
 <ul>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-  <li>Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+  <li>Add code for keyboard inputs (short and long presses);</li>
+  <li>Starting adding Tetris game objects lmao</li>
 </ul>
 
   </div>

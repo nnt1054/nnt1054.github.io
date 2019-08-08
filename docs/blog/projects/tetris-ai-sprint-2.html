@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Sprint #2 - Creating the Tetris Game</title>
-  <meta name="description" content="Product: Tetris2P AISprint #1: June 10 - June 14 June 28Scrum Board: LinkGoals:  Develop a Tetris2P Game Client  Add Multiplayer and Deploy the Game OnlineMe...">
+  <meta name="description" content="Product: Tetris2P AISprint #1: July 15 - June 19Scrum Board: LinkGoals:  Develop a Tetris2P Game Client  Add Multiplayer and Deploy the Game OnlineMethod/Met...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -32,9 +32,8 @@
 
   <div class="post-content" itemprop="articleBody">
     <p><b>Product:</b> <a href="/blog/projects/tetris-overview">Tetris2P AI</a><br />
-<b>Sprint #1:</b> June 10 - <s>June 14</s> June 28<br />
+<b>Sprint #1:</b> July 15 - June 19<br />
 <b>Scrum Board:</b> <a href="/portfolio#project">Link</a><br />
-<!-- <b>Deliverable:</b> [Software Design Document](https://docs.google.com/document/d/15So3mJYzwRt1NcaGKYQ02hbT8H5q1-BIRR6tCzCnggM/edit?usp=sharing) -->
 <b>Goals:</b></p>
 
 <ol>
@@ -44,6 +43,9 @@
 
 <p><b>Method/Metrics:</b><br />
 The goal has been met once the game client is deployed for the public to play.</p>
+
+<p><b>Summary:</b><br />
+This sprint has been <b style="color:red">postponed</b>, due to a branch of the project roadmap.  The original plan was to set up a basic draw update loop for the tetris game, as I’ve done for a different project before.  However, I wanted to make the game robust and consistency across all computers.  An issue I ran into for an old project was the ‘ingame timer’ slowing down when the update loop takes too long to compute.  For a networked game, this would introduce several vulnerabilities and synchronization issues.  To mend this, I found and decided to use <a href="https://github.com/IceCreamYou/MainLoop.js">mainloop.js</a>.  While figuring out how to detect clicks and and keyboard inputs, I decided to turn my progress into a mini game engine, that sort of follows Unity’s scripting and gameObject development flow.  With the scope and goals changed, I decided to start a new separate sprint.</p>
 
 <h4 id="daily-scrums">Daily Scrums</h4>
 
@@ -98,11 +100,9 @@ The goal has been met once the game client is deployed for the public to play.</
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Got a better understanding of client server code and update loops</li>
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Got a better understanding of tetris physics and mechanics</li>
 		  
 		</ul>
 	</div>
@@ -117,11 +117,9 @@ The goal has been met once the game client is deployed for the public to play.</
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Figured out and detailed most of the Tetris mechanics</li>
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Gained a better understanding of javascript game loops and maintaining consistent fps and timing</li>
 		  
 		</ul>
 	</div>
@@ -136,11 +134,11 @@ The goal has been met once the game client is deployed for the public to play.</
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">read through documentation and use guide for MainLoop.js</li>
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Listed out necessary gameObjects and scenes for the Tetris game</li>
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">set up example javascript class for creating gameObjects with MainLoop.js</li>
 		  
 		</ul>
 	</div>
@@ -155,11 +153,11 @@ The goal has been met once the game client is deployed for the public to play.</
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Mapped out the game navigation and corresponding buttons for each scene</li>
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Fleshed out necessary gameObjects again</li>
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Created and detailed pseudocode for the actual game logic</li>
 		  
 		</ul>
 	</div>
@@ -174,11 +172,9 @@ The goal has been met once the game client is deployed for the public to play.</
 		<h5> Objectives Completed: </h5>
 		<ul style="padding-right:6px;">
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Determined a change of project scope to creating a game engine</li>
 		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
-		  
-		  <li style="line-height: 24px">Lorem ipsum dolor sit amet, id modo summo tibique nam, ei dolorem vituperata elaboraret quo, pro blandit appareat perfecto eu.</li>
+		  <li style="line-height: 24px">Detailed necessary functions of a basic game engine</li>
 		  
 		</ul>
 	</div>
@@ -218,9 +214,17 @@ The goal has been met once the game client is deployed for the public to play.</
   
 	
   
-	
-  
 </div>
+
+<h3 id="sprint-review">Sprint Review</h3>
+
+<h4 id="what-went-well">What went well?</h4>
+<p>I did a decent job of documentating notes and thought processes.</p>
+
+<h4 id="what-didnt-go-well">What didn’t go well?</h4>
+<p>Once again, I didn’t set reasonable goals.</p>
+
+<h4 id="what-to-do-next-time">What to do next time?</h4>
 
   </div>
 
