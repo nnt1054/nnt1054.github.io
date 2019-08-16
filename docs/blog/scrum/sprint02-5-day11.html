@@ -50,34 +50,24 @@
 I might also need to ensure that aabb1.min.x &lt; aabb2.min.x?  Else, aabb1 might just be inside aabb2’s x boundary.<br />
 Maybe for efficiency, we can make separate functions for checking?  I can add .isLeft and .isRight functions for checking collisions.  The functions will assume that there already exists a collision.  I just need to figure out what common assumptions you can make so I don’t have to recheck anything.</p>
 
-<p>True Assumptions if collision exists:</p>
-<blockquote>
-  <p>aabb1.max.x &gt; aabb2.min.x<br />
-aabb1.min.x &lt; aabb2.max.x<br />
-yCollision</p>
-</blockquote>
+<p>True Assumptions if collision exists:
+&gt; aabb1.max.x &gt; aabb2.min.x<br />
+&gt; aabb1.min.x &lt; aabb2.max.x<br />
+&gt; yCollision</p>
 
-<p>ifLeftCollision:</p>
-<blockquote>
-  <p>min1 &lt; min2</p>
-</blockquote>
+<p>ifLeftCollision:
+&gt; min1 &lt; min2</p>
 
-<p>ifLeftCollisionOnly:</p>
-<blockquote>
-  <p>min1 &lt; min2
-max1 &lt; max2</p>
-</blockquote>
+<p>ifLeftCollisionOnly:
+&gt; min1 &lt; min2
+&gt; max1 &lt; max2</p>
 
-<p>ifRightCollision:</p>
-<blockquote>
-  <p>max1 &gt; max2</p>
-</blockquote>
+<p>ifRightCollision:
+&gt; max1 &gt; max2</p>
 
-<p>ifRightCollisionOnly:</p>
-<blockquote>
-  <p>max1 &gt; max2
-min1 &gt; min2</p>
-</blockquote>
+<p>ifRightCollisionOnly:
+&gt; max1 &gt; max2
+&gt; min1 &gt; min2</p>
 
 <p>Assumption for all of the above: collision exists<br />
 Ok!  I’ve implemented the direction collision stuff.  I had a minor run in with having all the values flipped, cause y values on html5 canvas go from top to bottom.<br />

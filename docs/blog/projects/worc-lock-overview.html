@@ -36,16 +36,21 @@
 <h4 id="overview">Overview</h4>
 <p>A personal virtual work clock that allows the user to ‘clock in’ and ‘clock out’ of their own productivity hours.  The local server logs and stores each work period entry into a SQLite database.  The user interface displays a stopwatch for starting and stopping work, a timesheet table of working entries, a summary time series chart and the amount of hours worked this week.</p>
 
+<p class="column"><a href="/assets/images/worc_lock_pictures/worc_1.png"><img src="/assets/images/worc_lock_pictures/worc_1.png" alt="worc_1" class="column post-image" /></a></p>
+
 <p>The project features a:</p>
+
 <ul>
   <li>CRUD API for the SQLite database using node and express.js with proper API endpoints and methods.</li>
   <li>Responsive React.js user interface using <strong>material-ui</strong> and the <strong>recharts</strong> library.</li>
   <li>custom EditableTableRow component for creating and editing displayed database entries.</li>
 </ul>
 
-<p>Some Design Notes:  There are two ‘node packages’ within the project, the parent package being the node/express.js API server, which serves the build of the second package, the react application.</p>
+<h5 id="editable-rows">Editable Rows:</h5>
 
-<p class="column"><a href="/assets/images/ulab_pictures/ulab_10.png"><img src="/assets/images/ulab_pictures/ulab_10.png" alt="ulab_10" class="column post-image" /></a></p>
+<p class="column"><a href="/assets/images/worc_lock_pictures/worc_2.png"><img src="/assets/images/worc_lock_pictures/worc_2.png" alt="worc_2" class="column post-image" /></a></p>
+
+<p>Some Design Notes:  There are two ‘node packages’ within the project, the parent package being the node/express.js API server, which serves the build of the second package, the react application.</p>
 
   </div>
 

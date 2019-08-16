@@ -52,8 +52,6 @@
   <li>Anchored to a Parent
     <ul>
       <li>Which is anchored to a Parent</li>
-    </ul>
-    <ul>
       <li>Which is eventually anchored to the Canvas</li>
     </ul>
   </li>
@@ -122,11 +120,9 @@ Oh, I forgot to account for offsets!</p>
 
 <p>I’m back from my coffee break, about to go on another coffee break.  Where did I leave off from?  I’m preemptively assuming the click and drag functions will fall apart, since it depends on a mouseup function to stop.  Switching windows or tabs prevents the mouseup function from happening, so what can I do to prevent the issue?  If mouseenter occurs without mouseleave occuring?  We can test and see if mouseleave happens when you alt tab.</p>
 
-<p>Before I forget there’s two different possibly desired behaviors for mousemove:</p>
-<ul>
-  <li>Executing a function every time the position moves</li>
-  <li>Or executing a function at the mouse pointer each at update</li>
-</ul>
+<p>Before I forget there’s two different possibly desired behaviors for mousemove:
+* Executing a function every time the position moves
+* Or executing a function at the mouse pointer each at update</p>
 
 <p>I think we should assume the former, and let the developer execute the second one only if they want (keep a prevPosition variable in the gameObject code rather than engine code)</p>
 
@@ -138,13 +134,11 @@ Oh, I forgot to account for offsets!</p>
 So when you switch scene, you want to make sure the sceneSwitch happens at the end of the update loop, cause the current scene’s update loop might mess with the new scene’s variables or loose track of pointers with the this.scene.engine switch.
 This was actually the easiest part, its working fine already cool :thumbs_up:</p>
 
-<p>What’s next (for the game engine)?</p>
-<ul>
-  <li>Create physics 2d engine</li>
-  <li>Clean up code</li>
-  <li>Sprite Rendering</li>
-  <li>Networking Events</li>
-</ul>
+<p>What’s next (for the game engine)?
+* Create physics 2d engine
+* Clean up code
+* Sprite Rendering
+* Networking Events</p>
 
 <p>Btw add a mutable global variable space within the engine object.</p>
 
@@ -179,15 +173,11 @@ So what needs to happen <span style="text-decoration:underline">provided an obje
 </ol>
 
 <p>Hmm, how/where do I include code to process the events for objects?  Normally, every object would have a ‘begin’ function.  Also I haven’t figured out how child objects should be updated.  My original assumption was that the developers include a for loop to update their children within their own for loop, but I’m not sure if that’s good practice?  Wait oh, I think it’s a fair assumption to have them call their own children update functions, since some of the will attach the child variables using object specific references.<br />
-Example:  a tetrisGridObject will have a reference to its active piece using:</p>
-<ul>
-  <li>tetrisGridObject.activePiece = new tetromino();</li>
-</ul>
+Example:  a tetrisGridObject will have a reference to its active piece using:
+* tetrisGridObject.activePiece = new tetromino();</p>
 
-<p>Rather than creating a new tetromino object and appending it to a:</p>
-<ul>
-  <li>tetrisGridObject.chilldren = [new tetromino()];</li>
-</ul>
+<p>Rather than creating a new tetromino object and appending it to a:
+* tetrisGridObject.chilldren = [new tetromino()];</p>
 
 <p>Going off this logic, I’d like to avoid adding ancestry related code that developers might forget to include.  Meaning, I don’t want to make the the developer create a chain for ‘begin’ and ‘end’ functions.  The only script that always runs for all objects will be the update and maybe draw function.</p>
 

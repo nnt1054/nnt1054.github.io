@@ -53,41 +53,21 @@ Where did I leave off from yesterday?  I finished adding in the position anchors
 
 <p>Notes from: <a href="https://youtu.be/23HEMKfMKKk">video</a>:</p>
 
-<p>Required Components:</p>
-<ul>
-  <li>Transform Rect
-    <ul>
-      <li>Position of object</li>
-    </ul>
-  </li>
-  <li>Sprite Renderer
-    <ul>
-      <li>The ‘draw’ function</li>
-    </ul>
-  </li>
-  <li>Circle Collider 2D
-    <ul>
-      <li>Physics material (defines friction and bounciness; aka: physics properties?)
-        <ul>
-          <li>Defines physics properties</li>
-        </ul>
-      </li>
-      <li>Allows component to ‘participate’ in physics events but can’t ‘initiate’ them
-        <ul>
-          <li>Doesn’t react to physics forces or gravity</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>Rigidbody 2D
-    <ul>
-      <li>Allows object to be affected by physical forces</li>
-      <li>Forces include gravity</li>
-      <li>Allows object to participate in physical events, like collision and triggers</li>
-      <li>Unnecessary for static nonmoving items\</li>
-    </ul>
-  </li>
-</ul>
+<p>Required Components:
+* Transform Rect
+	* Position of object
+* Sprite Renderer
+	* The ‘draw’ function
+* Circle Collider 2D
+	* Physics material (defines friction and bounciness; aka: physics properties?)
+		* Defines physics properties
+	* Allows component to ‘participate’ in physics events but can’t ‘initiate’ them
+		* Doesn’t react to physics forces or gravity
+* Rigidbody 2D
+	* Allows object to be affected by physical forces
+	* Forces include gravity
+	* Allows object to participate in physical events, like collision and triggers
+	* Unnecessary for static nonmoving items\</p>
 
 <p>Colliders interact with other colliders!  Having a collider lets you check for collisions with other colliders.<br />
 A rigid body adds ‘physics’ forces and updates to an object.<br />
@@ -117,18 +97,13 @@ So colliders determine what happens on collision, but rigid bodies determine wha
   </li>
 </ul>
 
-<p>Misc videos: <a href="https://youtu.be/UbPiCgCkHTE">brackeys</a></p>
-<ul>
-  <li>Create ground check and ceiling check, to check if standing or under a ceiling</li>
-  <li>Rigidbody objects DON’T OVERLAP as per the physics engine</li>
-  <li>Collider objects CAN OVERLAP, and trigger collision functions</li>
-  <li>Layers have a rendering order, maybe I should introduce a similar concept.
-    <ul>
-      <li>Have to add objects to a layer in order to have their draw function called! :D</li>
-    </ul>
-  </li>
-  <li>Collider also prevents other objects from passing though?</li>
-</ul>
+<p>Misc videos: <a href="https://youtu.be/UbPiCgCkHTE">brackeys</a>
+* Create ground check and ceiling check, to check if standing or under a ceiling
+* Rigidbody objects DON’T OVERLAP as per the physics engine
+* Collider objects CAN OVERLAP, and trigger collision functions
+* Layers have a rendering order, maybe I should introduce a similar concept.
+	* Have to add objects to a layer in order to have their draw function called! :D
+* Collider also prevents other objects from passing though?</p>
 
 <p><a href="https://answers.unity.com/questions/42558/whats-the-difference-between-a-rigid-body-and-a-co.html">https://answers.unity.com/questions/42558/whats-the-difference-between-a-rigid-body-and-a-co.html
 </a></p>
@@ -142,14 +117,9 @@ So colliders determine what happens on collision, but rigid bodies determine wha
 
 <p>Having a boxCollider with the ‘isTrigger’ checkmarked, will have OnTriggerEnter, Stay, Exit.  If you have the ‘isTrigger’ set to true, the collider will no longer behave as a physics object.  sIC cOoL, mAkeS sEnSE.</p>
 
-<p>So what’s on the to do now that I’ve figured it out at 3:08 am.</p>
-<ul>
-  <li>Create a dictionary of Layers; with a Layer Collision Matrix
-    <ul>
-      <li>The developer adds AABB objects to the layer</li>
-    </ul>
-  </li>
-</ul>
+<p>So what’s on the to do now that I’ve figured it out at 3:08 am.
+* Create a dictionary of Layers; with a Layer Collision Matrix
+	* The developer adds AABB objects to the layer</p>
 
 <p>I have to decide whether or not to check for collisions before or after the update loop.  Should I just add collision to an event list?  Or should I actually have them trigger ‘onCollisionEnter’ and ‘onCollisionExit’ functions when they’re detected?</p>
 
@@ -170,7 +140,7 @@ Let’s redo the example.  Player A checks if moving towards a monster will coll
 BUT, for ColliderTriggers, I should figure out if I want them checked before the update loop or during the update loop.<br />
 Example:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="k">this</span><span class="p">.</span><span class="nx">floorCollider</span><span class="p">.</span><span class="nx">checkCollisions</span><span class="p">(</span> <span class="p">[</span> <span class="nx">list</span> <span class="k">of</span> <span class="nx">objects</span> <span class="nx">to</span> <span class="nx">check</span> <span class="kd">with</span> <span class="nx">or</span> <span class="nx">layer</span> <span class="p">]</span> <span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="k">this</span><span class="p">.</span><span class="nx">floorCollider</span><span class="p">.</span><span class="nx">checkCollisions</span><span class="p">(</span> <span class="p">[</span> <span class="nx">list</span> <span class="nx">of</span> <span class="nx">objects</span> <span class="nx">to</span> <span class="nx">check</span> <span class="kd">with</span> <span class="nx">or</span> <span class="nx">layer</span> <span class="p">]</span> <span class="p">)</span> <span class="p">{</span>
 	<span class="k">this</span><span class="p">.</span><span class="nx">grounded</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 	<span class="nx">This</span><span class="p">.</span><span class="nx">grounded</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>

@@ -163,18 +163,13 @@ Pages, Collections, Entries, EntryItems, MediaUploads</p>
 
 <p>Let’s start with the Design Document now!  First the TOC/Outline</p>
 
-<p>“SDD usually contains the following information”</p>
-<ol>
-  <li>Data Design</li>
-  <li>Architecture Design</li>
-  <li>Interface Design</li>
-  <li>Procedural Design
-    <ul>
-      <li>Which is now commonly replaced by Object Oriented Programming and Design Patterns</li>
-      <li>Is there anything specific I should talk about here?</li>
-    </ul>
-  </li>
-</ol>
+<p>“SDD usually contains the following information”
+1. Data Design
+2. Architecture Design
+3. Interface Design
+4. Procedural Design
+	* Which is now commonly replaced by Object Oriented Programming and Design Patterns
+	* Is there anything specific I should talk about here?</p>
 
 <p>I think I want to briefly discuss how ‘authentication’ with the database will work?  I’ve decided to use the REST API to modify data on the database from the Admin WebUI.  This stays a little more true to the whole microservices paradigm, since the Admin WebUI will be accessing both the Content Management and User Roles Management services separately.<br />
 A big concern is where authentication will take place:</p>
