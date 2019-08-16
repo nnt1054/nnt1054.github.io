@@ -91,9 +91,11 @@ Next:</p>
 </ol>
 
 <p>Let’s talk more about the ‘Physics2D Engine’.  The engine is basically a way to detect collisions between rigid body objects.  The biggest difference between games is how you resolve collisions between objects, and what objects can collide with.<br />
-Examples:
-* Player colliding with floors or walls: player’s position is halted and stopped at collision area
-* Sword hit box against an enemy: enemy takes damage, collision is allowed.</p>
+Examples:</p>
+<ul>
+  <li>Player colliding with floors or walls: player’s position is halted and stopped at collision area</li>
+  <li>Sword hit box against an enemy: enemy takes damage, collision is allowed.</li>
+</ul>
 
 <p>Information regarding collisions:</p>
 
@@ -106,18 +108,24 @@ Examples:
   <li>Direction of a collision
     <ul>
       <li>only four directions with AABB</li>
-      <li>Consider combined collisions</li>
-      <li>Also resolve what happens when AABB inside another AABB</li>
+    </ul>
+    <ul>
+      <li>Consider combined collisions
+    * Also resolve what happens when AABB inside another AABB</li>
     </ul>
   </li>
 </ol>
 
-<p>What does the developer have to do?
-* Write resolver functions for collisions</p>
+<p>What does the developer have to do?</p>
+<ul>
+  <li>Write resolver functions for collisions</li>
+</ul>
 
-<p>Premade collision functions?
-* spreventOverlap/pushOut
-* bounce/reflect? (flipping velocities and stuff)</p>
+<p>Premade collision functions?</p>
+<ul>
+  <li>spreventOverlap/pushOut</li>
+  <li>bounce/reflect? (flipping velocities and stuff)</li>
+</ul>
 
 <p>Let’s add the other click stuff now before anything else.  Btw, I changed the target for the mouseup function to be the document, instead of the canvas.  It was awkward moving the mouse outside of the canvas, and still having the drag in place.</p>
 

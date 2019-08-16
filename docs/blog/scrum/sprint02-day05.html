@@ -42,40 +42,62 @@
 </ul>
 
 <h4 id="notes">Notes</h4>
-<p>The scope of the project has somehow branched into a mini game ‘engine’
-* Need a system for scenes
-* Need a system for ‘game objects’, prefabs
-* Think in terms of Unity, objects and components
-* Objects need a way to:
-	* Render
-	* Update
-* Mainly concerned with how to manage ‘animations’ that take non negligible times to display
-	* Every moving object needs a timer, change to the next frame of an animation everytime delta amount of time
-* Global way of referencing scripts?
-* Lmao need to split everything between:
-	* Game Engine
-	* Game Development Interface
-	* Actual HECKING Game</p>
+<p>The scope of the project has somehow branched into a mini game ‘engine’</p>
+<ul>
+  <li>Need a system for scenes</li>
+  <li>Need a system for ‘game objects’, prefabs</li>
+  <li>Think in terms of Unity, objects and components</li>
+  <li>Objects need a way to:
+    <ul>
+      <li>Render</li>
+      <li>Update</li>
+    </ul>
+  </li>
+  <li>Mainly concerned with how to manage ‘animations’ that take non negligible times to display
+    <ul>
+      <li>Every moving object needs a timer, change to the next frame of an animation everytime delta amount of time</li>
+    </ul>
+  </li>
+  <li>Global way of referencing scripts?</li>
+  <li>Lmao need to split everything between:
+    <ul>
+      <li>Game Engine</li>
+      <li>Game Development Interface</li>
+      <li>Actual HECKING Game</li>
+    </ul>
+  </li>
+</ul>
 
-<p>What does the Game Engine need to know and do?
-* Update the correct objects
-* Render the correct objects
-* Need to establish a current Scene
-	* Within the scene there’s a list of active objects
-		* Active objects could have a list of active objects
-	* Scene updates and draws all the active objects in specific orders
-* What information needs to be passed between Engine → Scene → Objects
-	* Mostly just time, and timers? The scene shouldn’t have to keep track of the uh global timer/clock
-	* The scene should calculate everything based off ‘update ticks’
-	* The engine should only update the current scene when there’s an ‘update tick’
-	* This is mostly kinda explained already, but I want to create a bit of abstraction between entities.
-	* So other objects within the game can update based off the current update tick instead of having to worry about the entire ‘time delta’ mumbo jumbo
-	* Ok ^^ that statement made things make sense for me
-	* GAME OBJECTS ASSUME THEIR UPDATE FUNCTIONS ARE CALLED AT DISCRETE TIME PERIODS
-	* THE GAME ENGINE MAKES SURE THE GAME OBJECTS CAN MAKE THAT ASSUMPTION
-	* I MEANT TO SAY ‘GAME FRAMEWORK’ instead of ‘GAME ENGINE’
-* How do I write sufficient documentation for this
-* BTW SPRINT IS EXTENDED ALONG WITH THE PROJECT SCOPE</p>
+<p>What does the Game Engine need to know and do?</p>
+<ul>
+  <li>Update the correct objects</li>
+  <li>Render the correct objects</li>
+  <li>Need to establish a current Scene
+    <ul>
+      <li>Within the scene there’s a list of active objects
+        <ul>
+          <li>Active objects could have a list of active objects</li>
+        </ul>
+      </li>
+      <li>Scene updates and draws all the active objects in specific orders</li>
+    </ul>
+  </li>
+  <li>What information needs to be passed between Engine → Scene → Objects
+    <ul>
+      <li>Mostly just time, and timers? The scene shouldn’t have to keep track of the uh global timer/clock</li>
+      <li>The scene should calculate everything based off ‘update ticks’</li>
+      <li>The engine should only update the current scene when there’s an ‘update tick’</li>
+      <li>This is mostly kinda explained already, but I want to create a bit of abstraction between entities.</li>
+      <li>So other objects within the game can update based off the current update tick instead of having to worry about the entire ‘time delta’ mumbo jumbo</li>
+      <li>Ok ^^ that statement made things make sense for me</li>
+      <li>GAME OBJECTS ASSUME THEIR UPDATE FUNCTIONS ARE CALLED AT DISCRETE TIME PERIODS</li>
+      <li>THE GAME ENGINE MAKES SURE THE GAME OBJECTS CAN MAKE THAT ASSUMPTION</li>
+      <li>I MEANT TO SAY ‘GAME FRAMEWORK’ instead of ‘GAME ENGINE’</li>
+    </ul>
+  </li>
+  <li>How do I write sufficient documentation for this</li>
+  <li>BTW SPRINT IS EXTENDED ALONG WITH THE PROJECT SCOPE</li>
+</ul>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
 

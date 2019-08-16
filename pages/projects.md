@@ -5,13 +5,14 @@ permalink: /blog/projects/
 categoryName: projects
 back: /
 tagList:
-    - cms_api
+    - worc_lock
     - tetris_ai
+    - cms_api
+    - infinite_uptime
+    - 2days
     - anibook
     - ulab
-    - 2days
     - personal_website
-    - infinite_uptime
 ---
 
 lmao hey hope you're having a good day
