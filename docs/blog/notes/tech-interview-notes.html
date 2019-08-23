@@ -53,34 +53,115 @@
     <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">child</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
             <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
                 <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">visited</span></code></pre></figure>
 
+<ul>
+  <li>Queues are FIFO</li>
+</ul>
+
 <h5 id="depth-first-search">Depth First Search</h5>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
-    <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
-    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">cur</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">child</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
             <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
-                <span class="n">queue</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">visited</span></code></pre></figure>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">cur</span><span class="o">.</span><span class="n">children</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">child</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">visited</span>
 
+<span class="k">def</span> <span class="nf">dfsRecursive</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="n">visit</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">start</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+        <span class="n">bfsRecursive</span><span class="p">(</span><span class="n">start</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>Stacks are LIFO</li>
+  <li>iterating through children backwards, so ‘left-most’ children are visited first</li>
+  <li>bfsRecursive assumes no cycles, since it doesn’t reference a ‘visited’ set</li>
+</ul>
+
+<h4 id="dijkstras-algorithm-and-a-star">Dijkstra’s Algorithm and A-Star</h4>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">dijkstras</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">prioQueue</span><span class="p">()</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">prev</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+        <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'inf'</span><span class="p">)</span>
+        <span class="n">prev</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">dist</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="err">!</span><span class="n">queue</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c">#Gets node with smallest dist[n]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">neighbors</span><span class="p">():</span>
+            <span class="n">alt</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">alt</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+                <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">alt</span>
+                <span class="n">prev</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">prev</span></code></pre></figure>
+
+<ul>
+  <li>Both Dijkstra’s and A-Star are algorithms for finding shortest paths and not just traversal algorithms.</li>
+  <li>We assume we have a PriorityQueue class that returns the value with the SMALLEST dist[n]</li>
+  <li>dijkstras returns the distance of all nodes from their source node and their paths</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">aStar</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">prioQueue</span><span class="p">()</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">prev</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+        <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s">'inf'</span><span class="p">)</span>
+        <span class="n">prev</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">dist</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="err">!</span><span class="n">queue</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c">#Gets node with smallest fCost = dist[n] + h(node)</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">neighbors</span><span class="p">():</span>
+            <span class="n">alt</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">alt</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
+                <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">alt</span>
+                <span class="n">prev</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">dist</span><span class="p">,</span> <span class="n">prev</span></code></pre></figure>
+
+<ul>
+  <li>A Star is an ‘informed search algorithm’ and requires a ‘heuristic’ function that returns an estimated cost of the cheapest path from the current node to the end node.</li>
+  <li>In other implementations, gScore(n) denotes the known cost from the start to n, and fScore(n) is equal to the gScore(n) + h(n)
+    <ul>
+      <li>fScore is only used to determine which node to expand next from the prioQueue.</li>
+    </ul>
+  </li>
+  <li>The heuristic function must satisfy: h(x) ≤ dist(x, y) + h(y) to be monotone or consistent.
+    <ul>
+      <li>Intuitively, this means the heuristic cannot overestimate the cost of x (to the goal) compared to the estimated cost of y + the actual distance between x and y.</li>
+      <li>When a heuristic is consistent, you’re guaranteed to find the optimal path and no node will be processed more than once.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="greedy-algorithms">Greedy Algorithms</h4>
+<ul>
+  <li>Greedy algorithms build up a solution piece by piece, always choosing the next
+piece that offers the most obvious and immediate benefit</li>
+  <li>Applicable Problems:
+    <ul>
+      <li>Minimum Spanning Trees</li>
+    </ul>
+  </li>
+</ul>
 
   </div>
 
