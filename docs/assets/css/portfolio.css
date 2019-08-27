@@ -174,7 +174,12 @@ header > * {
   	margin-bottom: 32px;
   	border: 2px solid black;
   	box-shadow: 7px 7px rgb(0,0,0,1);
-  	overflow: hidden;
+  }
+
+  .project-entry:hover {
+    /*transform: matrix(0.866,0.5,-0.5, 1, 0, 0);*/
+    transition: 0.2s;
+    transform: rotate(-1deg) translateX(3px);
   }
 
   .project-entry > a > img {
@@ -305,7 +310,7 @@ header > * {
   	}
 
   	#resume-btn {
-  		animation:flashing 1.5s infinite;
+  		animation: flashing 1.5s infinite;
   	}
 
   	#resume-btn:hover {
@@ -324,4 +329,16 @@ transform: translateY(-5px) translateX(-5px);*/
 	79%{  box-shadow: 5px 5px; border: 2px solid black; }
 	80%{  box-shadow: 4px 4px 0px 4px #82DFA1; border: 2px solid #82DFA1; }
 	100%{  box-shadow: 5px 5px; border: 2px solid black; }
+}
+
+.rolling-animation {
+    animation: rolling 3s linear infinite;
+}
+
+@keyframes rolling {
+    0% {    transform: translateX(0px) rotate(0deg); }
+    25%{    transform: translateX(-15px) rotate(-8deg); }
+    50%{    transform: translateX(0px) rotate(0deg); }
+    75%{    transform: translateX(15px) rotate(8deg); }
+    100%{   transform: translateX(0px) rotate(0deg); }
 }
