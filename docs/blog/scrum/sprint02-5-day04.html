@@ -83,12 +83,14 @@ When a keypress is detected, reset that counter to 0.  Before adding a delta to 
 <p>What’s next now! :D<br />
 I should reiterate what I have now? I think I have this written down somewhere else already. Nvm guess I don’t</p>
 
-<p>Here’s a backlog/to do list:
-1. Decide on/if we want to include premade components
-2. Clickable elements
-3. Moveable elements
-4. Timer element
-5. networking (client server code?)</p>
+<p>Here’s a backlog/to do list:</p>
+<ol>
+  <li>Decide on/if we want to include premade components</li>
+  <li>Clickable elements</li>
+  <li>Moveable elements</li>
+  <li>Timer element</li>
+  <li>networking (client server code?)</li>
+</ol>
 
 <p>What features am I missing to implement my tetris game?  Shit its gonna be weird when I wanna deploy this for client/server.
 Should I discuss what steps I have to do for that?  I think the server just needs to run the update loop, while the clients run their update+draw loops.  Or mostly just preemptive draw loops.  I wonder if there’s an easy way of doing this without changing the game code.  Usually the server contains code that some client’s don’t know about.  But we can outline the main parts of a networked game:</p>
@@ -109,14 +111,19 @@ Should I discuss what steps I have to do for that?  I think the server just need
   </li>
 </ol>
 
-<p>I think we should make some set components though?  What are some good example/necessary components for game dev?  I can check unity real quick lmao, sec:
-1. physics2d area
-2. sprite + sprite animations
-3. clickable area
-4. ‘rect transform’
-* determines position of the element
-* can probably combine with a different component?
-5. audio component</p>
+<p>I think we should make some set components though?  What are some good example/necessary components for game dev?  I can check unity real quick lmao, sec:</p>
+<ol>
+  <li>physics2d area</li>
+  <li>sprite + sprite animations</li>
+  <li>clickable area</li>
+  <li>‘rect transform’
+    <ul>
+      <li>determines position of the element</li>
+      <li>can probably combine with a different component?</li>
+    </ul>
+  </li>
+  <li>audio component</li>
+</ol>
 
 <p>I’m not doing everything above I think?  But its good to keep them in the back of my mind.  I’m concerned whether or not I want to include a world space, making the canvas the ‘camera’.  Each scene would then have multiple cameras, that you can switch between.  How would I implement walking around a world space, with a minimap showing in the bottom corner?
 The minimap would be a ‘fixed UI’ gameElement, with reference to the scene, and a list of gameObjects to reference.  The minimap has access to pointers to other objects, and the details of how to render them on itself.  I think the world map itself should be a gameElement of the scene rather than the scene itself.  For now we can assume we render every existing object in the scene.</p>
@@ -133,8 +140,10 @@ The minimap would be a ‘fixed UI’ gameElement, with reference to the scene, 
 
 <p class="column"><img src="/assets/scrum/sprint2-5day4image2.png" alt="physics loop2" class="column post-image" /></p>
 
-<p>Collision Detection
-* Axis Aligned Bounding Boxes</p>
+<p>Collision Detection</p>
+<ul>
+  <li>Axis Aligned Bounding Boxes</li>
+</ul>
 
 <p>Impulse Resolution<br />
 Simple Manifold Generation</p>

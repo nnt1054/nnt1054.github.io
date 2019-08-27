@@ -50,23 +50,33 @@
 <p>What’s my deliverable?
 A useable game engine, with a library of template objects for example.</p>
 
-<p>What’s the default behavior for the ColliderPhysics update loop?
-* apply gravity.</p>
+<p>What’s the default behavior for the ColliderPhysics update loop?</p>
+<ul>
+  <li>apply gravity.</li>
+</ul>
 
 <p>How does user input interact with the Collider Physics?<br />
-Example Case: user holds down right button to move a player object forward (to the right)
-* Need to determine what happens in the update loop and what happens in the physics loop.
-* Let’s discuss what happens when there’s no user input:
-	* Apply gravity
-		* Gravity affects velocity
-		* Velocity affects position
-	* Prevent Overlap</p>
+Example Case: user holds down right button to move a player object forward (to the right)</p>
+<ul>
+  <li>Need to determine what happens in the update loop and what happens in the physics loop.</li>
+  <li>Let’s discuss what happens when there’s no user input:
+    <ul>
+      <li>Apply gravity
+        <ul>
+          <li>Gravity affects velocity</li>
+          <li>Velocity affects position</li>
+        </ul>
+      </li>
+      <li>Prevent Overlap</li>
+    </ul>
+  </li>
+</ul>
 
 <p>Physics engine will only apply to super flat 2d?  Like a sidescroller.  Won’t be relevant to any other game?  Maybe we should let the player determine what happens at each update.  To clarify, the physics engine will only apply to a flat 2d space, but it can still be drawn to a different look.  In how many types of games would creating this physics space do anything?  Mostly just side scroller and platforms.  (side 2d perspective action games).  BUT, we still want to do some allocations for these games.  We can add a rigidbody check to the end?
 Maybe it’ll help if we write some sample code.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Player</span> <span class="kr">extends</span> <span class="nx">gameObject</span> <span class="p">{</span>
-	<span class="nx">constructor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Player</span> <span class="kd">extends</span> <span class="nx">gameObject</span> <span class="p">{</span>
+	<span class="kd">constructor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span> <span class="p">{</span>
 		<span class="k">this</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createAABB</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span>
 		<span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">setAnchor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span>
 	<span class="p">}</span>
@@ -84,13 +94,17 @@ Maybe it’ll help if we write some sample code.</p>
 <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>So some issues I’m having is when should I check collisions?  Physics should be checked preemptively before setting new positions.  Triggers should be checked onCall.  If I wanted to check if I’ve been hit by an enemy:
-&gt; We can have a checkCollisions(aabb) function call at the top of the update.  The function will check for collisions between that aabb and objects on respective layers.  When a collision is detected with another aabb, the caller aabb, can add itself to a collision list to the other aabb’s list.  checkCollisions will add newfound collisions to collisions already detected, and return that list.</p>
+<p>So some issues I’m having is when should I check collisions?  Physics should be checked preemptively before setting new positions.  Triggers should be checked onCall.  If I wanted to check if I’ve been hit by an enemy:</p>
+<blockquote>
+  <p>We can have a checkCollisions(aabb) function call at the top of the update.  The function will check for collisions between that aabb and objects on respective layers.  When a collision is detected with another aabb, the caller aabb, can add itself to a collision list to the other aabb’s list.  checkCollisions will add newfound collisions to collisions already detected, and return that list.</p>
+</blockquote>
 
 <p>when/where do we check gravity and collisions?  How are most character controllers scripted?
 They have colliders for ‘isGrounded’ and ‘isTouchingCeiling’ which are checked at the BEGINNING.
-If you want a colliderTrigger to trigger, we let the objects move towards each so you can actually trigger them.  We don’t want colliderPhysics to trigger, so we want to PREVENT them from triggering.  This can be done either by casting and checking before moving in that direction OR detecting the collision and resolving it after moving.  WHICH ONE IS BETTER OR DO I DO BOTH?  Let’s create a default, physicsCastAndMove object? What does it do:
-&gt; Tell an object to move in a direction, if the new position collides with another physics object, then handle the collision accordingly.  How do you handle bounce vs no bounce?  Are we still assuming that the developer will write their own code for gravity? YES. So the user can write their own ‘applyGravity’ function for each object.  The applyGravity or applyPhysics will be called at the end of the update function, and it’ll CastAndMove towards the appropriate direction</p>
+If you want a colliderTrigger to trigger, we let the objects move towards each so you can actually trigger them.  We don’t want colliderPhysics to trigger, so we want to PREVENT them from triggering.  This can be done either by casting and checking before moving in that direction OR detecting the collision and resolving it after moving.  WHICH ONE IS BETTER OR DO I DO BOTH?  Let’s create a default, physicsCastAndMove object? What does it do:</p>
+<blockquote>
+  <p>Tell an object to move in a direction, if the new position collides with another physics object, then handle the collision accordingly.  How do you handle bounce vs no bounce?  Are we still assuming that the developer will write their own code for gravity? YES. So the user can write their own ‘applyGravity’ function for each object.  The applyGravity or applyPhysics will be called at the end of the update function, and it’ll CastAndMove towards the appropriate direction</p>
+</blockquote>
 
 <p>Let’s code the CastAndMove the function:</p>
 

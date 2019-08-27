@@ -49,24 +49,44 @@
 <p>For periodic events, use delta to make sure everything runs appropriately fine<br />
 Pulling from this <a href="https://github.com/IceCreamYou/MainLoop.js/blob/gh-pages/demo/index.html">example</a></p>
 
-<p>Game Objects/Scenes(?):
-* Game Server
-* Game Client Instance
-	* Scenes: Main Menu, Game Interface, Settings
-* Game Interface/Scene
-	* Tetris Match Instance
-		* Score
-		* Lines Sent
-		* Piece Held
-		* [Essentially Match Instance Variables are held here]
-		* What about 1v1 game’s though?
-			* Differentiate Match and Tetris Instance
-	* Game Grid
-		* Grid of colors
-	* Pieces Queue
-	* Current Piece
-		* Anchor
-		* Piece Grid</p>
+<p>Game Objects/Scenes(?):</p>
+<ul>
+  <li>Game Server</li>
+  <li>Game Client Instance
+    <ul>
+      <li>Scenes: Main Menu, Game Interface, Settings</li>
+    </ul>
+  </li>
+  <li>Game Interface/Scene
+    <ul>
+      <li>Tetris Match Instance
+        <ul>
+          <li>Score</li>
+          <li>Lines Sent</li>
+          <li>Piece Held</li>
+          <li>[Essentially Match Instance Variables are held here]</li>
+          <li>What about 1v1 game’s though?
+            <ul>
+              <li>Differentiate Match and Tetris Instance</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Game Grid
+        <ul>
+          <li>Grid of colors</li>
+        </ul>
+      </li>
+      <li>Pieces Queue</li>
+      <li>Current Piece
+        <ul>
+          <li>Anchor</li>
+          <li>Piece Grid</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 <p>I need a refresher for how ‘Prototype’ works in javascript</p>
 
