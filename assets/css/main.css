@@ -222,3 +222,21 @@ p, li {
     90% { transform: translateX(-150px); }
     100% { transform: translateX(150px); opacity: 0;}
 }
+
+
+
+#about:hover {
+    box-shadow: 5px 5px red;
+    color: red;
+    transform: translateY(-5px) translateX(-5px);
+    cursor: not-allowed;
+}
+
+#about:hover > span {
+    display: none;
+}
+
+#about:hover::before {
+    content:"in progress!";
+    margin: auto;
+}
