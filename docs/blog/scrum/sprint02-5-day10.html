@@ -78,35 +78,23 @@ What’s the most convenient way to check for collisions?<br />
 We can make a dictionary list of all the collisions like:</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
-	<span class="s1">'all'</span><span class="p">:</span> <span class="p">[</span><span class="nx">aabb1</span><span class="p">,</span> <span class="nx">aabb2</span><span class="p">],</span>
-	<span class="s1">'left'</span><span class="p">:</span> <span class="p">[</span><span class="nx">aabb1</span><span class="p">],</span>
-	<span class="s1">'top'</span><span class="p">:</span> <span class="p">[</span><span class="nx">aabb2</span><span class="p">],</span>
+	<span class="s1">'all'</span><span class="err">:</span> <span class="p">[</span><span class="nx">aabb1</span><span class="p">,</span> <span class="nx">aabb2</span><span class="p">],</span>
+	<span class="s1">'left'</span><span class="err">:</span> <span class="p">[</span><span class="nx">aabb1</span><span class="p">],</span>
+	<span class="s1">'top'</span><span class="err">:</span> <span class="p">[</span><span class="nx">aabb2</span><span class="p">],</span>
 <span class="p">}</span></code></pre></figure>
 
 <p>BUT, what about corner collisions?  How would I want to resolve this issue for this game?
 Depending on whether xDisp is greater than yDisp?
-How many different collision orientations are there?</p>
-<ul>
-  <li>top</li>
-  <li>left</li>
-  <li>right</li>
-  <li>bottom</li>
-  <li>
-    <s> top right </s>
-  </li>
-  <li>
-    <s> bottom right </s>
-  </li>
-  <li>
-    <s> bottom left </s>
-  </li>
-  <li>
-    <s> top left </s>
-  </li>
-  <li>
-    <s> inside </s>
-  </li>
-</ul>
+How many different collision orientations are there?
+* top
+* left 
+* right 
+* bottom 
+* <s> top right </s>
+* <s> bottom right </s>
+* <s> bottom left </s>
+* <s> top left </s>
+* <s> inside </s></p>
 
 <p>Is there ever a difference with resolving seperate top → right, or right → top, collisions instead of a ‘top right’ collision?  It’s better to pre-label all the collisions, so the developer can just choose what order to resolve them. chainlinks omega</p>
 

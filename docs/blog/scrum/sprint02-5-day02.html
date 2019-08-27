@@ -65,17 +65,12 @@ The idea is to abstract scenes from each other.  BUT we still need a way to incl
 <p>Unrelated but I wanna buy a system design book and read it.</p>
 
 <p>So NOW, we discuss the main details of the scene.<br />
-The scene’s variables/functions:</p>
-<ul>
-  <li>timeElapsed</li>
-  <li>activeObjects</li>
-  <li>Update</li>
-  <li>Draw
-    <ul>
-      <li>Draws all the objects</li>
-    </ul>
-  </li>
-</ul>
+The scene’s variables/functions:<br />
+* timeElapsed
+* activeObjects
+* Update
+* Draw
+	* Draws all the objects</p>
 
 <p class="column"><img src="/assets/scrum/sprint2-5day2image1.png" alt="client server" class="column post-image" /></p>
 
@@ -84,21 +79,17 @@ Ok so there’s ‘GameObjects’ and you can see everything about the object in
 Quick Question: does the scene call the render function for descendants?  I think its probably better if we have parent objects call them instead.<br />
 So the only job of the Scene is to hold variables and call update/draw functions of its immediate list of GameObjects.<br />
 Next thing to consider is how GameObjects interact with other game objects.  I think the best way is to build references to the other objects on initiation.<br />
-Scene’s need an initiation function! What happens here?</p>
-<ul>
-  <li>Initiates all of its objects</li>
-  <li>Runs Update and Draw on all of its objects</li>
-</ul>
+Scene’s need an initiation function! What happens here?<br />
+* Initiates all of its objects
+* Runs Update and Draw on all of its objects</p>
 
 <p>Btw we can use a global namespace as recommended by another site using: window.game = {}, 
 Which is accessible by all files :)</p>
 
 <p>So am I supposed to make javascript library? Oh im supposed to make templates objects :question_mark:</p>
 
-<p>I figured out how to use javascript ‘modules’ in client side browser settings :)</p>
-<ul>
-  <li>I wanted to make sure I figure this out, I’m assuming I’m moving to node.js later anyway but I felt this was important to know :)</li>
-</ul>
+<p>I figured out how to use javascript ‘modules’ in client side browser settings :)
+* I wanted to make sure I figure this out, I’m assuming I’m moving to node.js later anyway but I felt this was important to know :)</p>
 
 <p>I’m having big issues figuring out how/where to put everything for the engine code,and the actual user game code.</p>
 
@@ -152,8 +143,6 @@ All the scenes don’t need to be created right at the beginning, can be instant
   <li>update
     <ul>
       <li>The actual game logic goes here (goes through active objects and calls their update functions or whatever functions they need to operate?)</li>
-    </ul>
-    <ul>
       <li>Actually just calls the update functions, the objects themselves can check if they need to update anything based on time delta</li>
     </ul>
   </li>

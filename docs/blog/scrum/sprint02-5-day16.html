@@ -51,13 +51,11 @@
 <p>Where did I leave off?  Slow progress last few days.  Oh, I realized it was difficult getting sudo permissions within crouton to execute a lot of npm commands, so I need to recreate the project on my desktop.  Need to add mainloop to the dependencies.  Where I left off was figuring out how to make node modules that use other node modules in their dependency list.  Am I supposed to require the mainloop object from the node modules?  Does this mean the node module isn’t meant to be used within its own project? Oh, I also need to learn how to use uh node modules installed locally</p>
 
 <p>Ok so I need to use grunt now I think for uglify.<br />
-A Gruntfile is comprised of the following parts:</p>
-<ul>
-  <li>The “wrapper” function</li>
-  <li>Project and task configuration</li>
-  <li>Loading Grunt plugins and tasks</li>
-  <li>Custom tasks</li>
-</ul>
+A Gruntfile is comprised of the following parts:
+* The “wrapper” function
+* Project and task configuration
+* Loading Grunt plugins and tasks
+* Custom tasks</p>
 
 <p>poggers, I got uglify kinda working now :)<br />
 So I figured out how to add grunt tasks and use uglify.  BUT, I’m having an issue with exporting javascript class objects, saying:<br />
@@ -65,14 +63,12 @@ So I figured out how to add grunt tasks and use uglify.  BUT, I’m having an is
 
 <p>I’m gonna check the source files for mainloop.js, to see if there’s a solution I can borrow.  Apparently, uglify doesn’t support classes/ES6 yet?  Oh,  I installed a different branch of grunt uglify (harmony) and its working perfectly now :)<br />
 Except now I need to change the project name since mini-engine is already taken.  What exactly is the project?  It’s a small game engine for developing games on a single HTML5 Canvas, using a similar workflow from Unity.<br />
-Keywords:</p>
-<ul>
-  <li>game</li>
-  <li>game engine</li>
-  <li>html5 canvas</li>
-  <li>unity</li>
-  <li>javascript</li>
-</ul>
+Keywords:
+* game 
+* game engine
+* html5 canvas
+* unity 
+* javascript</p>
 
 <p>Canvas-engine? Mini5-engine?  I like mini5-engine.  We’re gonna go with that! :)  I can’t believe I almost used ‘mengine’ as a name.</p>
 

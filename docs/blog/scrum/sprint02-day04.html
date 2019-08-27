@@ -49,221 +49,124 @@
 <p class="column">First things first, lets draw a mockup or the game client
 <img src="/assets/scrum/sprint2day4image1.png" alt="client server" class="column post-image" /></p>
 
-<p>What VIew’s/Game Modes/Screens do we need (in the context of adding buttons to the screen/UI)</p>
-<ul>
-  <li>Sprint Mode</li>
-  <li>VS Random Opponent</li>
-  <li>VS AI</li>
-  <li>Create Lobby(?)</li>
-  <li>Join Lobby</li>
-  <li>Settings</li>
-</ul>
+<p>What VIew’s/Game Modes/Screens do we need (in the context of adding buttons to the screen/UI)
+* Sprint Mode
+* VS Random Opponent
+* VS AI
+* Create Lobby(?)
+* Join Lobby
+* Settings</p>
 
-<p>THIS IS IMPORTANT UI WORK OK; Main Menu Buttons:</p>
-<ul>
-  <li>Marathon/Practice
-    <ul>
-      <li>Secondary game menu(?)
-        <ul>
-          <li>restart</li>
-          <li>Exit to main menu</li>
-          <li>Play AI</li>
-          <li>settings</li>
-        </ul>
-      </li>
-      <li>Quickplay
-        <ul>
-          <li>Random matchmaking</li>
-          <li>Eventually can include account and mmr if i wanted to
-            <ul>
-              <li>Save mmr using cookies or something</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>Create Lobby
-        <ul>
-          <li>join lobby using url</li>
-        </ul>
-      </li>
-      <li>Settings
-        <ul>
-          <li>controls/speed/ui customization/etc</li>
-          <li>control global setting variables</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+<p>THIS IS IMPORTANT UI WORK OK; Main Menu Buttons:
+* Marathon/Practice
+	* Secondary game menu(?)
+		* restart 
+		* Exit to main menu
+		* Play AI
+		* settings
+	* Quickplay
+		* Random matchmaking
+		* Eventually can include account and mmr if i wanted to
+			* Save mmr using cookies or something
+	* Create Lobby
+		* join lobby using url
+	* Settings
+		* controls/speed/ui customization/etc
+		* control global setting variables</p>
 
-<p>UI SHOULD NOT BE AN ISSUE RN</p>
-<ul>
-  <li>Issue is having similar menus for different UI’s</li>
-  <li>I’m really into Top-Down approach apparently</li>
-</ul>
+<p>UI SHOULD NOT BE AN ISSUE RN
+* Issue is having similar menus for different UI’s
+* I’m really into Top-Down approach apparently</p>
 
-<p>Ok we’re going to uh:</p>
-<ul>
-  <li>During gameplay always show the two tetris ‘instances’</li>
-  <li>Leave second one blank, if single player mode</li>
-  <li>If lobby and no second player yet:
-    <ul>
-      <li>Display invite code on empty tetris instance</li>
-    </ul>
-  </li>
-  <li>In lobby with second player:
-    <ul>
-      <li>Display name on second tetris instance, also maybe ready status</li>
-    </ul>
-  </li>
-  <li>In lobby:
-    <ul>
-      <li>Ready Up button/status</li>
-      <li>Spectate or Join game button</li>
-    </ul>
-  </li>
-  <li>During Game/In Lobby: Press ESCAPE to show menu:
-    <ul>
-      <li>Leave to Main Menu Button</li>
-      <li>Settings button or button settings</li>
-    </ul>
-  </li>
-</ul>
+<p>Ok we’re going to uh:
+* During gameplay always show the two tetris ‘instances’
+* Leave second one blank, if single player mode
+* If lobby and no second player yet:
+	* Display invite code on empty tetris instance
+* In lobby with second player:
+	* Display name on second tetris instance, also maybe ready status
+* In lobby:
+	* Ready Up button/status
+	* Spectate or Join game button
+* During Game/In Lobby: Press ESCAPE to show menu:
+	* Leave to Main Menu Button
+	* Settings button or button settings</p>
 
 <p>OK ENOUGH WITH THE HECKING UI AND BUTTON WORK:
-Let’s talk game and game Pieces</p>
-<ul>
-  <li>Tetris Game Instance (2x)
-    <ul>
-      <li>Held Piece</li>
-      <li>Piece Queue
-        <ul>
-          <li>Will be moved to match instance object instead later</li>
-        </ul>
-      </li>
-      <li>Game Grid</li>
-      <li>Current Tetriminos</li>
-      <li>Lines Sent</li>
-      <li>KO’s</li>
-      <li>Game Timer</li>
-    </ul>
-  </li>
-  <li>Tetrominos (parent class for all tetrominos, make subclass for each type)
-    <ul>
-      <li>Anchor Position</li>
-      <li>Tetromino Type/Shape</li>
-      <li>Current Orientation</li>
-      <li>Orientation Number</li>
-      <li>Orientation Dictionary</li>
-    </ul>
-  </li>
-  <li>Tetris Match Instance
-    <ul>
-      <li>Tetris Game Instance (2x)</li>
-      <li>Piece Queue
-        <ul>
-          <li>This is to make sure both instances have the same queues</li>
-        </ul>
-      </li>
-      <li>Match Timer</li>
-    </ul>
-  </li>
-</ul>
+Let’s talk game and game Pieces
+* Tetris Game Instance (2x)
+	* Held Piece
+	* Piece Queue
+		* Will be moved to match instance object instead later
+	* Game Grid
+	* Current Tetriminos
+	* Lines Sent
+	* KO’s
+	* Game Timer
+* Tetrominos (parent class for all tetrominos, make subclass for each type)
+	* Anchor Position
+	* Tetromino Type/Shape
+	* Current Orientation
+	* Orientation Number
+	* Orientation Dictionary
+* Tetris Match Instance
+	* Tetris Game Instance (2x)
+	* Piece Queue
+		* This is to make sure both instances have the same queues
+	* Match Timer</p>
 
 <p>So App Instance &gt; Tetris Match Instance &gt; Tetris Game Instance &gt; Tetrimono Instance
-Game Instance update function (delta passed as parameter):</p>
-<ul>
-  <li>Check if time to drop piece in this update
-    <ul>
-      <li>If piece, can’t drop further:
-        <ul>
-          <li>Lock piece to stack</li>
-          <li>UpdateGameState() // defined below</li>
-          <li>break()</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>If update function continues:
-    <ul>
-      <li>Process input(s):
-        <ul>
-          <li>need to check for short presses and long presses</li>
-          <li>Perform action on short press</li>
-          <li>Perform long press action on set intervals
-            <ul>
-              <li>Applies to both rotating and moving pieces</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>If hold piece:
-        <ul>
-          <li>Update held tetromino piece</li>
-          <li>spawnNewTetromino()</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+Game Instance update function (delta passed as parameter):
+* Check if time to drop piece in this update
+	* If piece, can’t drop further:
+		* Lock piece to stack
+		* UpdateGameState() // defined below
+		* break()
+* If update function continues:
+	* Process input(s):
+		* need to check for short presses and long presses
+		* Perform action on short press
+		* Perform long press action on set intervals
+			* Applies to both rotating and moving pieces
+	* If hold piece:
+		* Update held tetromino piece
+		* spawnNewTetromino()</p>
 
-<p>UpdateGameState() //occurs after a piece is locked</p>
-<ul>
-  <li>Update cells in game grid based on locked piece</li>
-  <li>If line cleared:
-    <ul>
-      <li>Clear row(s) in grid</li>
-      <li>Shift other rows downward</li>
-      <li>Calculate combo streak</li>
-    </ul>
-  </li>
-  <li>If no line cleared:
-    <ul>
-      <li>Add Trash Lines</li>
-      <li>Check if ToppedOut
-        <ul>
-          <li>Either EndGame() or addKO(), removeTrash()</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>spawnNewTetromino():
-    <ul>
-      <li>If unable to:
-        <ul>
-          <li>Either EndGame() or addKO(), removeTrash()</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+<p>UpdateGameState() //occurs after a piece is locked
+* Update cells in game grid based on locked piece
+* If line cleared:
+	* Clear row(s) in grid
+	* Shift other rows downward
+	* Calculate combo streak
+* If no line cleared:
+	* Add Trash Lines
+	* Check if ToppedOut
+		* Either EndGame() or addKO(), removeTrash()
+* spawnNewTetromino():
+	* If unable to:
+		* Either EndGame() or addKO(), removeTrash()</p>
 
 <p>oh HECK how do you do animations with html5 canvas<br />
 Should I process input first or not; probably do drop first<br />
 Uh make sure to remember, to check game stuff based on the Match Timer and not a time elapsed function<br />
-Make general purpose function for checking if a piece is touching a floor</p>
-<ul>
-  <li>Can use same function for creating ghost<br />
-Only need to check game state when game state changes:</li>
-  <li>GameState only changes when a piece is dropped</li>
-  <li>Trash Lines will only appear if a piece has dropped
-Incorporate ‘Scenes’ and ‘GameStates’</li>
-  <li>Scenes:
-    <ul>
-      <li>MainMenu
+Make general purpose function for checking if a piece is touching a floor
+* Can use same function for creating ghost<br />
+Only need to check game state when game state changes:<br />
+* GameState only changes when a piece is dropped
+* Trash Lines will only appear if a piece has dropped
+Incorporate ‘Scenes’ and ‘GameStates’
+* Scenes:
+	* MainMenu
 heck im already stressed again
-Create separate files for scenes and objects</li>
-    </ul>
-  </li>
-  <li>MainMenuScene</li>
-  <li>SinglePlayerScene</li>
-  <li>LobbyScene
-Main.js starts the actual game, creates the actual game and canvas</li>
-  <li>Main.js handles the update loop and is the object for the actual game/screen</li>
-  <li>Main.js handles switching between Scene Objects</li>
-  <li>Main.js handles all the global variables and settings</li>
-  <li>MAIN.JS IS THE GAME CLIENT</li>
-</ul>
+Create separate files for scenes and objects
+* MainMenuScene
+* SinglePlayerScene
+* LobbyScene
+Main.js starts the actual game, creates the actual game and canvas
+* Main.js handles the update loop and is the object for the actual game/screen
+* Main.js handles switching between Scene Objects
+* Main.js handles all the global variables and settings
+* MAIN.JS IS THE GAME CLIENT</p>
 
 <h4 id="objectives-completed">Objectives Completed</h4>
 
