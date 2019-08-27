@@ -1,7 +1,9 @@
 .post {
- 	width: 70vw;
+ 	/*width: 60vw;*/
+ 	width: 90vw;
+ 	max-width: 656px;
 	margin: 128px auto;
-	font-size: 16pt;
+	font-size: 14pt;
 }
 
 .highlight {
@@ -41,12 +43,13 @@
 }
 
 .category-desc {
-	width: 60%;
+	/*width: 80%;*/
 	min-width: 256px;
 }
 
 .post-image {
-	max-width: 70vw;
+	/*max-width: 70vw;*/
+	max-width: 100%;
 	border: 1px solid black;
 }
 

@@ -18,7 +18,7 @@ github_username:  nnt1054
 
 # Serving
 detach              : false
-port                : 8000
+port                : 5000
 host                : 127.0.0.1
 baseurl             : "" # does not include hostname
 show_dir_listing    : false

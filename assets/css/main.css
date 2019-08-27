@@ -1,7 +1,7 @@
 html, body {
+	font-family: 'Comfortaa';
 	margin: 0px;
 	padding: 0px;
-	font-family: 'Comfortaa';
 }
 
 a {
@@ -9,7 +9,12 @@ a {
 	text-decoration: none;
 }
 
-p {
+b, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Comfortaa';
+}
+
+p, li {
+	font-family: 'Montserrat';
 	line-height: 24px;
 }
 
@@ -80,6 +85,12 @@ p {
 	transform: translateY(-2px) translateX(-2px);
 }
 
+.rect-btn:active:hover {
+	transition: 0.05s;
+	box-shadow: 0px 0px;
+	transform: translateY(0px) translateX(0px);
+}
+
 .sm-link {
 	font-size: 10pt;
 	padding: 6px 8px;
@@ -110,6 +121,11 @@ p {
 	visibility: hidden;
 }
 
+.nav-container:active:hover {
+  	box-shadow: 5px 5px;
+  	transform: translateY(-5px) translateX(-5px) scale(1.025);
+}
+
 .nav-container:hover {
   	box-shadow: 5px 5px;
   	transform: translateY(-5px) translateX(-5px) scale(1.025);
@@ -132,11 +148,19 @@ p {
 	transform: translateY(-5px) translateX(5px);
 }
 
+.nav-list > *:active:hover {
+	transform: translateY(-5px) translateX(5px);
+}
+
 .back-btn {
 	position: fixed;
 	top: 32px;
 	left: 32px;
 	z-index: 1000;
+}
+
+#home-links {
+    margin-top: 0px;
 }
 
 #index-img {

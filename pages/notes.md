@@ -14,5 +14,5 @@ tagList:
     - misc
 ---
 
-hello hey lol, thanks for making it here  
+hello hey lol, thanks for making it here!  
 im putting school notes and other reference material here xd
