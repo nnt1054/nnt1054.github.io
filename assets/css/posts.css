@@ -73,14 +73,14 @@ pre > code {
 
 
 .daily-scrum-container {
-  width: 80vw;
+  width: 110%;
   flex-wrap: wrap;
   overflow: hidden;
 }
 
 .daily-scrum-entry {
   /*width: 25vw;*/
-  width: 35vw;
+  width: 45%;
   max-width: 720px;
   margin-bottom: 32px;
   margin-right: 32px;
@@ -109,5 +109,5 @@ pre > code {
 }
 
 .entry-content > ul > li {
-  font-size: 14pt;
+  font-size: 12pt;
 }

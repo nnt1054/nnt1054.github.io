@@ -173,6 +173,7 @@ header > * {
   margin-bottom: 32px;
   border: 2px solid black;
   box-shadow: 7px 7px rgb(0,0,0,1);
+  overflow: hidden;
 }
 
 .project-entry > a > img {
@@ -182,7 +183,13 @@ header > * {
   border-bottom: 2px solid black;
 }
 
+/*.project-entry > a > img:hover {*/
+/*  transition: 0.5s;*/
+/*  opacity: 0.2;*/
+/*}*/
+
 .project-entry > a {
+  height: 25vw;
 }
 
 .anchor-left {
