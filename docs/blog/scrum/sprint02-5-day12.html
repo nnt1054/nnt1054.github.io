@@ -46,8 +46,10 @@
 
 <h4 id="notes">Notes</h4>
 
-<p>I think a ‘bottomOnly’ collision needs to ensure both left and right sides are both included or excluded 
-* Same with rightOnly collision needing topandbottom?</p>
+<p>I think a ‘bottomOnly’ collision needs to ensure both left and right sides are both included or excluded</p>
+<ul>
+  <li>Same with rightOnly collision needing topandbottom?</li>
+</ul>
 
 <p>Nevermind, I think I need to add some sort of partial resolution instead of just hard setting the position.  How should I implement this so its efficient?  First I need to get the expected x and y displacement.  I don’t want to keep iterating until I find a proper position resolution, since that would be too much work for just a resting object.  Maybe we should return how the x and y distance of the overlap with the collision, or add a checking function for it.  Take the bigger displacement value and scale back the x and y displacement of the player object so the displacement would be 0.  Let’s iterate/draw out the edge cases.  I think what’s actually more important is what direction the collision happens first.  What determines which direction the collision happens first?</p>
 
@@ -71,11 +73,16 @@
 
 <p>btw, you can implement sweeping aabb collisions later on if you want, but for now I want to deem it unnecessary overhead calculations. I wanna make it a completely separate function later anyway, but I’d like to actually start my tetris game as soon as possible. :)</p>
 
-<p>What’s the process for implementation:<br />
-1. move position, check for collisions
-2. pick larger displacement value and check if collision still exists without it
-* if collision disappears, then assume collision in that direction
-* If collision is still there, then assume collision in perpendicular direction</p>
+<p>What’s the process for implementation:</p>
+<ol>
+  <li>move position, check for collisions</li>
+  <li>pick larger displacement value and check if collision still exists without it
+    <ul>
+      <li>if collision disappears, then assume collision in that direction</li>
+      <li>If collision is still there, then assume collision in perpendicular direction</li>
+    </ul>
+  </li>
+</ol>
 
 <p>Currently facing a bug where setting the AABB’s max height to the ground’s min height causes a bug, but setting it to the ground’s min height minus one will work properly.  I fixed the issue but changing the collision function to less than or equal to’s rather than less than’s (and greater than’s).</p>
 
@@ -91,9 +98,11 @@ Cool I also got a mini state machine for drawing different colors onto the canva
 </ol>
 
 <p>Let’s do the exporting as npm module part first<br />
-For that I think I should make a new git repo?  Also let’s make sure I still have npm and node installed.
-* npm version 6.9.0 :sunglasses_emoji:
-* node version 12.3.1</p>
+For that I think I should make a new git repo?  Also let’s make sure I still have npm and node installed.</p>
+<ul>
+  <li>npm version 6.9.0 :sunglasses_emoji:</li>
+  <li>node version 12.3.1</li>
+</ul>
 
 <p><a href="https://docs.npmjs.com/creating-node-js-modules">https://docs.npmjs.com/creating-node-js-modules</a>
 What’s the goal here?  I want th developer to be able to install the package using npm install, but also be able to download the package and using for client side code.  There’s really only three (potentially four) important files that needs to be minified down to one file:</p>
