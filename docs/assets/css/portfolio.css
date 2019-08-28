@@ -357,11 +357,15 @@ header > * {
 
    .project-entry > a > img {
        width: 100%;
-       height: 80vw;
+       height: 40vw;
    }
 
    .project-empty {
        display: none;
+   }
+
+   .proj-cont-lg {
+        width: 90vw;
    }
 
 }
@@ -405,6 +409,10 @@ transform: translateY(-5px) translateX(-5px);*/
 
 .rolling-animation {
     animation: rolling 3s linear infinite;
+}
+
+.rolling-animation:hover {
+    animation: rolling 1s linear infinite;
 }
 
 @keyframes rolling {
