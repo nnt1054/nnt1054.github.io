@@ -1,0 +1,91 @@
+@media (max-width: 700px) {
+	#home-btns {
+		flex-direction: column;
+		padding-bottom: 8px;
+	}
+
+	#home-btns > * {
+		margin: 8px auto;
+	}
+
+	#home-links {
+		flex-direction: column;
+	}
+
+	#home-links > * {
+		padding: 2px;
+		margin: 0px auto;
+	}
+
+	p, li {
+		font-size: 12pt;
+	}
+
+	ul, blockquote {
+		margin-left: 0px;
+		padding-left: 18px;
+	}
+
+	.highlight {
+		margin: 0px;
+		font-size: 10pt;
+		overflow-x: scroll;
+	}
+
+	.back-btn {
+		left: 12px;
+	}
+
+	.post {
+		width: 90vw;
+	}
+
+	.post-image {
+	  max-width: 85vw;
+	}
+
+/*DROP DOWN STYLING*/
+	/* Remove Normal Hover Effects */
+	.nav-container:hover {
+	  	box-shadow: 5px 5px;
+	  	transform: translateY(-5px) translateX(-5px);
+	}
+	.nav-container:hover > .nav-list > * {
+		visibility: hidden;
+		opacity: 0;
+		height: 0px;
+		box-shadow: 5px 0px;
+		transition: 0.2s;
+	}
+	.nav-list > *:hover {
+		transform: translateY(-5px) translateX(-5px);
+	}
+
+	/* Add Effects if 'show' Class is Added */
+	.nav-container.show {
+	  	box-shadow: 5px 5px;
+	  	transform: translateY(-5px) translateX(-5px) scale(1.025);
+	}
+	.nav-container.show > .nav-list > * {
+		visibility: visible;
+		opacity: 1;
+		height: 32px;
+		box-shadow: 5px 5px;
+		border: 2px solid black;
+	}
+	.nav-container.show > .nav-list > * > * {
+		visibility: visible;
+	}
+
+	.entry-content {
+		display: none;
+	}
+
+  
+}
+
+@media (max-width: 1000px) {
+	.daily-scrum-entry {
+		width: 90vw;
+	}
+}

@@ -1,0 +1,242 @@
+html, body {
+	font-family: 'Comfortaa';
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+b, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Comfortaa';
+}
+
+p, li {
+	font-family: 'Montserrat';
+	line-height: 24px;
+}
+
+.fullpage {
+	width: 100vw;
+	height: 100vh;
+	margin: 0px;
+	padding: 0px;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.row, .center-container > * {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.column > * {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.circle-img {
+  border-radius: 50%;
+  height: 128px;
+  width: 128px;
+  border: 2px solid black;
+}
+
+.rect-btn {
+  width: 128px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid black;
+  background: white;
+  box-shadow: 5px 5px;
+  transform: translateY(-5px) translateX(-5px);
+  cursor: pointer;
+}
+
+.rect-btn > * {
+	pointer-events: none;
+	cursor: none;
+}
+
+.height32 {
+	height: 32px;
+}
+
+.rect-btn:hover {
+	transition: 0.1s;
+	box-shadow: 2px 2px;
+	transform: translateY(-2px) translateX(-2px);
+}
+
+.rect-btn:active:hover {
+	transition: 0.05s;
+	box-shadow: 0px 0px;
+	transform: translateY(0px) translateX(0px);
+}
+
+.sm-link {
+	font-size: 10pt;
+	padding: 6px 8px;
+}
+
+.nav-container {
+	position: relative;
+}
+
+.nav-list {
+	position: absolute;
+	display: block;
+	margin-top: 38px;
+	margin-left: 5px;
+}
+
+.nav-list > * {
+	visibility: hidden;
+	opacity: 0;
+	height: 0px;
+	box-shadow: 5px 0px;
+	transition: 0.2s;
+	pointer-events: none;
+	border: none;
+}
+
+.nav-list > * > * {
+	visibility: hidden;
+}
+
+.nav-container:active:hover {
+  	box-shadow: 5px 5px;
+  	transform: translateY(-5px) translateX(-5px) scale(1.025);
+}
+
+.nav-container:hover {
+  	box-shadow: 5px 5px;
+  	transform: translateY(-5px) translateX(-5px) scale(1.025);
+}
+
+.nav-container:hover > .nav-list > * {
+	visibility: visible;
+	opacity: 1;
+	height: 32px;
+	box-shadow: 5px 5px;
+	border: 2px solid black;
+	pointer-events: auto;
+}
+
+.nav-container:hover > .nav-list > *  > * {
+	visibility: visible;
+}
+
+.nav-list > *:hover {
+	transform: translateY(-5px) translateX(5px);
+}
+
+.nav-list > *:active:hover {
+	transform: translateY(-5px) translateX(5px);
+}
+
+.back-btn {
+	position: fixed;
+	top: 32px;
+	left: 32px;
+	z-index: 1000;
+}
+
+#home-links {
+    margin-top: 0px;
+}
+
+#index-img {
+	cursor: pointer;
+}
+
+#animation-trigger:hover > .hover-animation {
+	/*animation: side-step 0.5s normal forwards;*/
+}
+
+.hover-animation {
+	animation: float 2.5s linear infinite;
+}
+
+.hover-animation:hover {
+  animation: shake 0.5s linear infinite;
+}
+
+.grow-animation:hover {
+  transition: 0.1s;
+  transform: scale(0.975) translateY(5px) translateX(5px);
+}
+
+.rotate-animation:hover {
+  transition: 0.5s;
+  transform: rotate(15deg);
+}
+
+@keyframes float {
+	0% {transform: translatey(0px);}
+	50% {transform: translatey(-6px);}
+	100% {transform: translatey(0px);}
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, 1px) rotate(0deg); }
+}
+
+@keyframes side-step {
+    0% { transform: translateX(30px); }
+    10% { transform: translateX(-30px); }
+    20% { transform: translateX(75px); }
+    30% { transform: translateX(-75px); }
+    40% { transform: translateX(100px); }
+    50% { transform: translateX(-100px); }
+    60% { transform: translateX(100px);}
+    70% { transform: translateX(-150px); }
+    80% { transform: translateX(150px); opacity: 1;}
+    90% { transform: translateX(-150px); }
+    100% { transform: translateX(150px); opacity: 0;}
+}
+
+
+
+#about:hover {
+    box-shadow: 5px 5px red;
+    color: red;
+    transform: translateY(-5px) translateX(-5px);
+    cursor: not-allowed;
+}
+
+#about:hover > span {
+    display: none;
+}
+
+#about:hover::before {
+    content:"in progress!";
+    margin: auto;
+}

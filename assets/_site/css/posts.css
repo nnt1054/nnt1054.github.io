@@ -1,0 +1,113 @@
+.post {
+ 	/*width: 60vw;*/
+ 	width: 90vw;
+ 	max-width: 656px;
+	margin: 128px auto;
+	font-size: 14pt;
+}
+
+.highlight {
+	background: #2b2b2b;
+	padding: 2px 16px;
+	border-radius: 12px;
+	/*color: white;*/
+	font-size: 12pt;
+	overflow-x: auto;
+}
+
+.tagName {
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.post-title {
+}
+
+.postList {
+	margin: 0px;
+	padding-top: 8px;
+	padding-left: 16px;
+ 	list-style-type: none;
+}
+
+.postList > li {
+	padding: 4px 16px;
+	transition: 0.1s;
+	display:inline-block
+}
+
+.postList > li:hover {
+	/*transform: translateX(15px);*/
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.category-desc {
+	/*width: 80%;*/
+	min-width: 256px;
+}
+
+.post-image {
+	/*max-width: 70vw;*/
+	max-width: 100%;
+	border: 1px solid black;
+}
+
+.post-content a {
+	color: blue;
+}
+
+.post-content a:hover {
+	text-decoration: underline;
+}
+
+.post-content * {
+	line-height: 32px;
+}
+
+pre > code {
+	padding-right: 24px;
+}
+
+
+
+
+.daily-scrum-container {
+  width: 110%;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.daily-scrum-entry {
+  /*width: 25vw;*/
+  width: 45%;
+  max-width: 720px;
+  margin-bottom: 32px;
+  margin-right: 32px;
+  border: 2px solid black;
+  box-shadow: 7px 7px rgb(0,0,0,1);
+}
+
+.daily-scrum-entry > .card-title {
+  margin-left: 16px;
+}
+
+.entry-content {
+  height: 256px;
+  border-bottom: 2px solid black;
+  overflow-y: scroll;
+}
+
+.entry-content > * {
+  margin-left: 16px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.entry-content:first-child {
+  margin-top: 16px;
+}
+
+.entry-content > ul > li {
+  font-size: 12pt;
+}
