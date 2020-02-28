@@ -59,16 +59,16 @@ $("#project-btn").click(function() {
     }, 500);
 });
 
-$("#contact-btn").click(function() {
-    var offset = 20; //Offset of 20px
-    $('html, body').animate({
-        scrollTop: $("#contact").offset().top + offset
-    }, 500);
-});
+// $("#contact-btn").click(function() {
+//     var offset = 20; //Offset of 20px
+//     $('html, body').animate({
+//         scrollTop: $("#contact").offset().top + offset
+//     }, 500);
+// });
 
-$("#contact-btn").click(function() {
-    var offset = 20; //Offset of 20px
-    $('html, body').animate({
-        scrollTop: $("#contact").offset().top + offset
-    }, 500);
-});
+// $("#contact-btn").click(function() {
+//     var offset = 20; //Offset of 20px
+//     $('html, body').animate({
+//         scrollTop: $("#contact").offset().top + offset
+//     }, 500);
+// });

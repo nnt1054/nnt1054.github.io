@@ -64,6 +64,7 @@ p, li {
   margin-left: 10px;
   margin-right: 10px;
   border: 2px solid black;
+  border-radius: 6px;
   background: white;
   box-shadow: 5px 5px;
   transform: translateY(-5px) translateX(-5px);
