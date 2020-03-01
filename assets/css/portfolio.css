@@ -94,6 +94,7 @@ header > * {
 
 .section-image > img {
 	margin: 0px auto auto auto;
+  margin-left: 12px;
 	height: 296px;
 	border: 2px solid black;
 	border-radius: 50%;
