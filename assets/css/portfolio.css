@@ -376,7 +376,7 @@ header > * {
    .section-content {
        width: 100%;
        margin: auto;
-       margin-top: 12px;
+       margin-top: 32px;
    }
 
    .section-content > h1 {
