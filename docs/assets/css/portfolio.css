@@ -3,8 +3,9 @@ p {
 }
 
 body {
-    /*background-image: linear-gradient(to bottom, white, #F2FBF5);*/
-    background: #cdf2d9;  
+    background-image: linear-gradient(to bottom, white, #cdf2d9);
+    /*background: #cdf2d9;  */
+    min-height: 100vh;
 }
 
 .page-container {
@@ -465,4 +466,15 @@ transform: translateY(-5px) translateX(-5px);*/
     50%{    transform: translateX(0px) rotate(0deg); }
     75%{    transform: translateX(15px) rotate(8deg); }
     100%{   transform: translateX(0px) rotate(0deg); }
+}
+
+.career-img {
+    width: 80%;
+	border: 2px solid black;
+	border-radius: 6px;
+}
+
+.zume-img {
+    padding: 32px 24px;
+    background: white;
 }
