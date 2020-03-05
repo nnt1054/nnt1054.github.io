@@ -52,10 +52,17 @@ $("#scrum-btn").click(function() {
     }, 500);
 });
 
+// $("#project-btn").click(function() {
+//     var offset = 20; //Offset of 20px
+//     $('html, body').animate({
+//         scrollTop: $("#project").offset().top + offset
+//     }, 500);
+// });
+
 $("#project-btn").click(function() {
     var offset = 20; //Offset of 20px
     $('html, body').animate({
-        scrollTop: $("#project").offset().top + offset
+        scrollTop: $("#career").offset().top + offset
     }, 500);
 });
 

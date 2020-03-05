@@ -75,8 +75,8 @@ Example Case: user holds down right button to move a player object forward (to t
 <p>Physics engine will only apply to super flat 2d?  Like a sidescroller.  Won’t be relevant to any other game?  Maybe we should let the player determine what happens at each update.  To clarify, the physics engine will only apply to a flat 2d space, but it can still be drawn to a different look.  In how many types of games would creating this physics space do anything?  Mostly just side scroller and platforms.  (side 2d perspective action games).  BUT, we still want to do some allocations for these games.  We can add a rigidbody check to the end?
 Maybe it’ll help if we write some sample code.</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">Player</span> <span class="kr">extends</span> <span class="nx">gameObject</span> <span class="p">{</span>
-	<span class="nx">constructor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Player</span> <span class="kd">extends</span> <span class="nx">gameObject</span> <span class="p">{</span>
+	<span class="kd">constructor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span> <span class="p">{</span>
 		<span class="k">this</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">createAABB</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">)</span>
 		<span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">setAnchor</span><span class="p">(</span><span class="nx">world</span><span class="p">)</span>
 	<span class="p">}</span>
