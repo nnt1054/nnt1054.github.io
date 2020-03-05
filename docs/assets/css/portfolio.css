@@ -416,6 +416,7 @@ transform: translateY(-5px) translateX(-5px);*/
   border: 2px solid black;
   border-radius: 6px;
   padding: 12px 6px;
+  background: white;
 }
 
 @media (max-width: 1020px) {
