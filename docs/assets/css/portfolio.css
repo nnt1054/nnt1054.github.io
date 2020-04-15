@@ -413,6 +413,7 @@ transform: translateY(-5px) translateX(-5px);*/
 
 #eecs-image {
   width: 50vw;
+  max-width: 800px;
   border: 2px solid black;
   border-radius: 6px;
   padding: 12px 6px;
