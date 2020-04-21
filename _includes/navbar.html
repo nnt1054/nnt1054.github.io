@@ -1,0 +1,95 @@
+<div id='top-nav-container'>
+
+	<div id='nav-left'>
+		<a href='/' class='img-container'> <img id="home-img" src="/assets/images/me.jpg"> </a>
+		<h1> 2DMMORPG Documentation </h1>
+	</div> 
+
+	<div id='nav-right'>
+		<a class="rect-btn" href="/portfolio"> <span>portfolio</span> </a>
+		<a class="rect-btn" href="/blog/projects"> <span>blog</span> </a>
+		<a class="rect-btn" href="/assets/images/resume.pdf"> <span>resume</span> </a>
+	</div>
+
+</div>
+
+<style>
+
+	#top-nav-container {
+		display: flex;
+		flex-direction: row;
+
+		justify-content: space-between;
+
+	 	max-width: 1280px;
+		width: 80vw;
+
+		position: absolute;
+		margin: 0px auto;
+		top: 32px;
+		left: 0px;
+		right: 0px;
+	}
+
+	#home-img {
+		height: 64px;
+		width: 64px;
+		border-radius: 50%;
+		border: 2px black solid;
+	}
+
+	#nav-left, #nav-right {
+		display: flex;
+		flex-direction: row;
+	}
+
+	#nav-left > * {
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+
+	#nav-right > * {
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+
+	#nav-left > h1 {
+		margin-left: 12px;
+		cursor: default;
+	}
+
+	.sm-link {
+		font-size: 10pt;
+		padding: 6px 8px;
+	}
+
+	.img-container {
+		display: flex;
+	}
+
+	.rect-btn {
+		width: 128px;
+		margin-left: 10px;
+		margin-right: 10px;
+		border: 2px solid black;
+		border-radius: 6px;
+		background: white;
+		box-shadow: 5px 5px;
+		transform: translateY(-5px) translateX(-5px);
+		cursor: pointer;
+		height: 32px;
+		display: flex;
+		z-index: 10;
+	}
+
+	.rect-btn:hover {
+		transition: 0.1s;
+		box-shadow: 2px 2px;
+		transform: translateY(-2px) translateX(-2px);
+	}
+	
+	.rect-btn > * {
+		margin: auto;
+	}
+
+</style>
