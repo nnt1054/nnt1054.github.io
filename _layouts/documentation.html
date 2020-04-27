@@ -1,8 +1,9 @@
 ---
 layout: default
 tagList:
-    - Software Architecture
-    - Notes
+ - Software Architecture
+ - CI/CD and Infrastructure
+
 ---
 
 
@@ -13,83 +14,79 @@ tagList:
     <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
   </header> -->
 
- 	<link rel="stylesheet" href="{{ "/assets/css/documentation.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ '/assets/css/documentation.css' | prepend: site.baseurl }}">
 
-	{% include navbar.html %}
+    {% include navbar.html %}
 
-	<div id="page-container">
+    <div id="page-container">
 
- 		<div id="nav-container">
- 			<span> Pages </span>
- 			<ul class='nav-page-list'>
-<!--  				<a href="#"> • Project Overview </a>
- 				<a href="#"> • Process Documentation </a>
-  				<a href="#"> • CI/CD and Infrastructure </a>
- 				<span> Software Architecture </span>
- 				<ul class='nav-page-list'>
-  					<a href="#"> • C4 Models </a>
- 					<a href="#"> • Architecture Diagrams </a>
-   					<a href="#"> • Flowchart Descriptions </a>
- 					<a href="#"> • Game Engine Overview </a>
- 				</ul>
- 				<span> Notes </span>
- 				<ul class='nav-page-list'>
-  					<a href="#"> • C4 Models for Software Architecture </a>
- 					<a href="#"> • Helm Charts </a>
- 				</ul> -->
+        <div id="nav-container">
+            <span> Pages </span>
+            <ul class='nav-page-list'>
+<!--                <a href="#"> • Project Overview </a>
+                <a href="#"> • Process Documentation </a>
+                <a href="#"> • CI/CD and Infrastructure </a>
+                <span> Software Architecture </span>
+                <ul class='nav-page-list'>
+                    <a href="#"> • C4 Models </a>
+                    <a href="#"> • Architecture Diagrams </a>
+                    <a href="#"> • Flowchart Descriptions </a>
+                    <a href="#"> • Game Engine Overview </a>
+                </ul>
+                <span> Notes </span>
+                <ul class='nav-page-list'>
+                    <a href="#"> • C4 Models for Software Architecture </a>
+                    <a href="#"> • Helm Charts </a>
+                </ul> -->
 
-			 	{% assign posts = site.categories[page.category] %}
+                {% assign posts = site.categories[page.category] %}
 
-				{% assign allTags = '' | split: '' %}
-				{% for tag in site.tags %}
-					{% assign tagName = tag | first %}
-					{% assign allTags = allTags | push: tagName %}
-				{% endfor %}
+                {% assign allTags = '' | split: '' %}
 
-				{% assign pageTags = page.tagList | default: allTags %}
+                {% assign pageTags = layout.tagList | default: allTags %}
 
-				<!-- get posts without parent -->
-				{% for post in posts %}
-					{% if post.tags == empty %}
-	 					<a href="{{ post.url }}"> • {{ post.title }} </a>
-					{% endif %}
-				{% endfor %}
+                <!-- get posts without parent -->
+                {% for post in posts %}
+                    {% if post.tags == empty %}
+                        <a href="{{ post.url }}"> • {{ post.title }} </a>
+                    {% endif %}
+                {% endfor %}
 
-				<!-- get posts with parent tag -->
-				{% for tag in pageTags %}
-					{% assign t = tag %}
-					{% assign numPosts = 0 %}
+                <!-- get posts with parent tag -->
+                {% for tag in pageTags %}
+                    {% assign t = tag %}
+                    {% assign numPosts = 0 %}
 
-					{% for post in posts %}
-						{% if post.tags contains t %}
-							{% assign numPosts = numPosts | plus: 1 %}
-						{% endif %}
-					{% endfor %}
+                    {% for post in posts %}
+                        {% if post.tags contains t %}
+                            {% assign numPosts = numPosts | plus: 1 %}
+                        {% endif %}
+                    {% endfor %}
 
-					{% if numPosts > 0 %}
-	 				<span> Software Architecture </span>
-					<ul class='nav-page-list'>
-					{% for post in posts %}
-					 	{% if post.tags contains t %}
-	 						<a href="{{ post.url }}"> • {{ post.title }} </a>
-						{% endif %}
-					{% endfor %}
-					</ul>
-					{% endif %}
+                    {% if numPosts > 0 %}
+                    <span> {{ tag }} </span>
+                    <ul class='nav-page-list'>
+                    {% for post in posts %}
+                        {% if post.tags contains t %}
+                            <a href="{{ post.url }}"> • {{ post.title }} </a>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                    {% endif %}
 
-				{% endfor %}
+                {% endfor %}
 
 
- 			</ul>
- 		</div>
+            </ul>
+        </div>
 
-		<div id="page-content" itemprop="articleBody">
-			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-				<p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-			</header>
-			{{ content }}
-		</div>
+        <div id="page-content" itemprop="articleBody">
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+                <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+            </header>
+            {{ content }}
+        </div>
 
-	</div>
+    </div>
 </article>

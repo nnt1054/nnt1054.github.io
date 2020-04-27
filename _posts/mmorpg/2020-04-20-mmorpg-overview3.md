@@ -1,8 +1,8 @@
 ---
 layout: documentation
-title: MMORPG test file
+title: TEST FILE 2
 category: mmorpg
-tags: cs170
+tag: Software Architecture
 ---
 
 For now, I’m writing just descriptions of what the diagrams will look like, before I draw and render the actual diagrams.

@@ -1,3 +1,7 @@
+body {
+	overflow-x: hidden;
+}
+
 #page-container {
  	max-width: 1280px;
 	width: 80vw;
@@ -9,7 +13,9 @@
 
 #nav-container {
 	min-height: 256px;
-	width: 512px;
+	width: 256px;
+	min-width: 256px;
+	max-width: 256px;
 
 	display: flex;
 	flex-direction: column;
@@ -27,6 +33,7 @@
 
 #page-content {
 	height: calc(100vh - 128px);
+	flex-grow: 1;
 	overflow-y: scroll;
 	z-index: 1;
 	/*scrollbar-width: none;*/
@@ -85,10 +92,18 @@ ul > li {
 	#page-content {
 		height: auto;
 		overflow-y: auto;
+		margin-left: 0px;
+		margin-top: 32px;
 	}
 
 	#nav-container {
 		margin-left: 0px;
 		width: auto;
 	}
+
+	#nav-right {
+		visibility: hidden;
+		max-height: 0px;
+	}
+
 }
