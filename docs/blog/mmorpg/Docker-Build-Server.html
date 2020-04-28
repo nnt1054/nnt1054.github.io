@@ -116,6 +116,7 @@
 		height: 32px;
 		display: flex;
 		z-index: 10;
+		color: black;
 	}
 
 	.rect-btn:hover {
@@ -182,9 +183,9 @@
                         
                     
                         
-                            <a href="/blog/mmorpg/mmorpg-overview3"> • TEST FILE 2 </a>
-                        
                     
+                        
+                            <a href="/blog/mmorpg/C4-Model-Descriptions"> • C4 Model Descriptions </a>
                         
                     
                     </ul>
@@ -203,9 +204,9 @@
                         
                     
                         
-                    
-                        
                             <a href="/blog/mmorpg/Docker-Build-Server"> • Docker Build Server </a>
+                        
+                    
                         
                     
                     </ul>
@@ -227,25 +228,28 @@
 
 <p>In ius adhuc ancillae, usu ad populo voluptua. Mel cu veritus iudicabit, eum te viderer suscipit, ex nam quas singulis suscipiantur. Eam at vidisse consectetuer. Usu at integre incorrupte interesset, atqui impedit ut est, cu per elitr dolorem neglegentur. Labores veritus in eum, at discere equidem incorrupte per.</p>
 
-<h4 id="hey-lmao-1">Hey Lmao</h4>
-<p>Lorem ipsum dolor sit amet, reque definitionem sed eu. At nam quod laoreet impedit, et nam diam utroque ocurreret. Ex eius erat persius eum. Dicam inermis ponderum eos id, prima ubique cu sea. Erant possim pertinax usu ei.</p>
+<h4 id="in-process-notes">In Process Notes</h4>
+<p>so the bottom line here is that I’m just creating a running function that keeps pinging the github events api until we find a new PushEvent</p>
 
-<p>In ius adhuc ancillae, usu ad populo voluptua. Mel cu veritus iudicabit, eum te viderer suscipit, ex nam quas singulis suscipiantur. Eam at vidisse consectetuer. Usu at integre incorrupte interesset, atqui impedit ut est, cu per elitr dolorem neglegentur. Labores veritus in eum, at discere equidem incorrupte per.</p>
+<p>oh maybe i can break down the steps into functions and expose those functions via API endpoints, so i can test the middle steps without creating a new pushevent every time</p>
 
-<h4 id="hey-lmao-2">Hey Lmao</h4>
-<p>Lorem ipsum dolor sit amet, reque definitionem sed eu. At nam quod laoreet impedit, et nam diam utroque ocurreret. Ex eius erat persius eum. Dicam inermis ponderum eos id, prima ubique cu sea. Erant possim pertinax usu ei.</p>
+<h4 id="steps">Steps</h4>
+<ol>
+  <li>Poll Github Events and find new PushEvent
+    <ul>
+      <li>assuming there will be intermediate events to confirm new push event</li>
+    </ul>
+  </li>
+  <li>git clone repo into a tmp/staging directory</li>
+  <li>npm install in the directory</li>
+  <li>docker build on the tmp directory</li>
+  <li>run unit test on built docker image</li>
+  <li>tag docker image</li>
+  <li>push docker image to repository</li>
+  <li>save console output to file</li>
+</ol>
 
-<p>In ius adhuc ancillae, usu ad populo voluptua. Mel cu veritus iudicabit, eum te viderer suscipit, ex nam quas singulis suscipiantur. Eam at vidisse consectetuer. Usu at integre incorrupte interesset, atqui impedit ut est, cu per elitr dolorem neglegentur. Labores veritus in eum, at discere equidem incorrupte per.</p>
-
-<h4 id="hey-lmao-3">Hey Lmao</h4>
-<p>Lorem ipsum dolor sit amet, reque definitionem sed eu. At nam quod laoreet impedit, et nam diam utroque ocurreret. Ex eius erat persius eum. Dicam inermis ponderum eos id, prima ubique cu sea. Erant possim pertinax usu ei.</p>
-
-<p>In ius adhuc ancillae, usu ad populo voluptua. Mel cu veritus iudicabit, eum te viderer suscipit, ex nam quas singulis suscipiantur. Eam at vidisse consectetuer. Usu at integre incorrupte interesset, atqui impedit ut est, cu per elitr dolorem neglegentur. Labores veritus in eum, at discere equidem incorrupte per.</p>
-
-<h4 id="hey-lmao-4">Hey Lmao</h4>
-<p>Lorem ipsum dolor sit amet, reque definitionem sed eu. At nam quod laoreet impedit, et nam diam utroque ocurreret. Ex eius erat persius eum. Dicam inermis ponderum eos id, prima ubique cu sea. Erant possim pertinax usu ei.</p>
-
-<p>In ius adhuc ancillae, usu ad populo voluptua. Mel cu veritus iudicabit, eum te viderer suscipit, ex nam quas singulis suscipiantur. Eam at vidisse consectetuer. Usu at integre incorrupte interesset, atqui impedit ut est, cu per elitr dolorem neglegentur. Labores veritus in eum, at discere equidem incorrupte per.</p>
+<p>Instead of writing a javascript function for each command, is it better to just write a full automation script for the process?</p>
 
         </div>
 

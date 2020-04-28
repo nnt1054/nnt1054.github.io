@@ -2,6 +2,16 @@ body {
 	overflow-x: hidden;
 }
 
+a {
+	color: blue;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+
 #page-container {
  	max-width: 1280px;
 	width: 80vw;
@@ -61,6 +71,7 @@ body {
 
 .nav-page-list > a,span {
 	margin-top: 16px;
+	color: black;
 }
 
 .nav-page-list > a:hover {

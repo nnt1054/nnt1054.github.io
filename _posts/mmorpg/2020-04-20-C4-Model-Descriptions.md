@@ -1,11 +1,12 @@
 ---
 layout: documentation
-title: TEST FILE 2
+title: C4 Model Descriptions
 category: mmorpg
 tag: Software Architecture
 ---
 
-For now, I’m writing just descriptions of what the diagrams will look like, before I draw and render the actual diagrams.
+For now, I’m writing just descriptions of what the diagrams will look like, before I draw and render the actual diagrams.  
+[C4 Model Software Architecture Reference](https://c4model.com/)
 
 #### Level 1: System Context
 
