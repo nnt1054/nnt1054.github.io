@@ -38,6 +38,8 @@
 
 	.post {
 		width: 90vw;
+		position: relative;
+
 	}
 
 	.post-image {
