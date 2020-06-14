@@ -1,6 +1,6 @@
 ---
 layout: documentation
-title: Docker Build Server
+title: Polling Server
 category: mmorpg
 tag: CI/CD and Infrastructure
 ---

@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - CD Overview</title>
-  <meta name="description" content="Update/Rollout Overview:">
+  <meta name="description" content="page still under construction :)">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -225,7 +225,7 @@
                         
                     
                         
-                            <a href="/blog/mmorpg/Docker-Build-Server"> • Docker Build Server </a>
+                            <a href="/blog/mmorpg/Polling-Server"> • Polling Server </a>
                         
                     
                         
@@ -244,12 +244,33 @@
                 <h1 class="post-title" itemprop="name headline">CD Overview</h1>
                 <p class="post-meta"><time datetime="2020-04-29T00:00:00-07:00" itemprop="datePublished">Apr 29, 2020</time></p>
             </header>
-            <h3 id="updaterollout-overview">Update/Rollout Overview:</h3>
+            <h3 id="page-still-under-construction-">page still under construction :)</h3>
+
+<h3 id="introduction">Introduction:</h3>
+
+<p>hi aha this is a custom cicd system that I put together to allow for continous delivery while I develop my mmorpg project.  A general goal/theme of the project was to have it be incredibly “portable”, where the entire system is self hosted and all the necessary configuration happens within the system.  Also, the system will be really easy to tear down and redeploy through the use of helmsman.</p>
+
+<ul>
+  <li>this entire project was mostly a big learning experience for me</li>
+  <li>theme was portability and ease of deployment and configuration (without a ui tho)</li>
+  <li>since I’m using minikube and developing everything locally, I wanted to be able to quickly tear down and rebuild everything from scratch.</li>
+  <li>with the theme of using helmsman to deploy all the resources, I wanted to stick with mostly services on the helm/stable repository.
+    <ul>
+      <li>on this note, I wanted to use spinnaker, but their stable chart was not yet compatible with the most recent version of kubernetes.</li>
+      <li>I didn’t really want to use jenkins, since I haven’t had the best experience with it. It also felt overkill for what I was trying to go for.  All I needed was to detect github changes and call docker build and push when new changes have been committed.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="overview">Overview:</h3>
+<p class="column"><a href="/assets/images/mmorpg_pictures/cicd-overview-01.png"><img src="/assets/images/mmorpg_pictures/cicd-overview-01.png" alt="cicd-overview" style="width: 100%" /></a></p>
+
+<h4 id="docker-image-updates">Docker Image Updates</h4>
 
 <ol>
   <li>code is working in the local dev environment and I’m ready to push updates</li>
   <li>make a git pull request to merge into the master branch</li>
-  <li>on a new PushEvent, the <a href="/blog/mmorpg/Docker-Build-Server">docker build server</a> creates a new docker image for the production environment.  we’ll just call it ImageName:staging and keep overwriting the staging environment
+  <li>on a new PushEvent, the <a href="/blog/mmorpg/polling-server">polling server</a> creates a new docker image for the production environment.  we’ll just call it ImageName:staging and keep overwriting the staging environment
     <ul>
       <li>keel.sh with force policy and match-tag true will update the staging environment in the cluster</li>
     </ul>
@@ -285,6 +306,32 @@
 or push an old commit as the most updated commit again</li>
     </ul>
   </li>
+</ul>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>Here’s a quick list of everything that needs configuring:</p>
+<ul>
+  <li>github repo pipelines</li>
+  <li>helm chart pipelines</li>
+  <li>dss files</li>
+  <li>host names(?)</li>
+</ul>
+
+<h4 id="toc">TOC</h4>
+
+<p>This page is the <em>entire</em> general overview, so include everything needed to understand what the system does</p>
+
+<ul>
+  <li>Introduction/Overview</li>
+  <li>diagram/flowchart of what exactly is going on</li>
+  <li>outlining general role of each component (polling-server, helm-api, keel)</li>
+  <li>explanation of helmsman and the corresponding dss files
+    <ul>
+      <li>explanation of all the other necessary “cluster resources”</li>
+    </ul>
+  </li>
+  <li>configuration</li>
 </ul>
 
 <p><br /></p>
