@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - CD Overview</title>
-  <meta name="description" content="page still under construction :)">
+  <meta name="description" content="Introduction:">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -244,95 +244,145 @@
                 <h1 class="post-title" itemprop="name headline">CD Overview</h1>
                 <p class="post-meta"><time datetime="2020-04-29T00:00:00-07:00" itemprop="datePublished">Apr 29, 2020</time></p>
             </header>
-            <h3 id="page-still-under-construction-">page still under construction :)</h3>
+            <h3 id="introduction">Introduction:</h3>
 
-<h3 id="introduction">Introduction:</h3>
-
-<p>hi aha this is a custom cicd system that I put together to allow for continous delivery while I develop my mmorpg project.  A general goal/theme of the project was to have it be incredibly “portable”, where the entire system is self hosted and all the necessary configuration happens within the system.  Also, the system will be really easy to tear down and redeploy through the use of helmsman.</p>
-
-<ul>
-  <li>this entire project was mostly a big learning experience for me</li>
-  <li>theme was portability and ease of deployment and configuration (without a ui tho)</li>
-  <li>since I’m using minikube and developing everything locally, I wanted to be able to quickly tear down and rebuild everything from scratch.</li>
-  <li>with the theme of using helmsman to deploy all the resources, I wanted to stick with mostly services on the helm/stable repository.
-    <ul>
-      <li>on this note, I wanted to use spinnaker, but their stable chart was not yet compatible with the most recent version of kubernetes.</li>
-      <li>I didn’t really want to use jenkins, since I haven’t had the best experience with it. It also felt overkill for what I was trying to go for.  All I needed was to detect github changes and call docker build and push when new changes have been committed.</li>
-    </ul>
-  </li>
-</ul>
+<p>This is a custom CI/CD system (sub-)project put together as a learning experience as well as tool for developing this mmorpg.  The system is primarily focused on continous delivery and automatically upgrades both docker images and helm chart deployments upon new available semver or staging versions.
+A general theme/goal of the project was to create a “portable” CICD that can be quickly torn down and rebuilt.  The system is entirely self hosted and all the necessary configuration exists within the project.  This is primarily faciliated through the use of <a href="https://github.com/Praqma/helmsman">helmsman</a>, an “Application as Code” tool, that allows for deploying and maintaining several helm charts.</p>
 
 <h3 id="overview">Overview:</h3>
 <p class="column"><a href="/assets/images/mmorpg_pictures/cicd-overview-01.png"><img src="/assets/images/mmorpg_pictures/cicd-overview-01.png" alt="cicd-overview" style="width: 100%" /></a></p>
 
-<h4 id="docker-image-updates">Docker Image Updates</h4>
+<h3 id="how-it-works">How it Works:</h3>
 
+<h4 id="docker-image-updates">Docker Image Updates</h4>
 <ol>
-  <li>code is working in the local dev environment and I’m ready to push updates</li>
-  <li>make a git pull request to merge into the master branch</li>
-  <li>on a new PushEvent, the <a href="/blog/mmorpg/polling-server">polling server</a> creates a new docker image for the production environment.  we’ll just call it ImageName:staging and keep overwriting the staging environment
+  <li>Once the developers have ensured their updates are working in their local environment, they can make a PR and merge their changes to their master/prod github branch.</li>
+  <li>The Polling Server will detect the new PR merge, call <code class="highlighter-rouge">docker build</code> on the github repo with a ‘staging’ tag and <code class="highlighter-rouge">docker push</code> the built image to the docker registry.</li>
+  <li>Keel.sh will detect the new available ‘staging’ image, and automatically upgrade the corresponding (staging) helm chart deployment on the cluster</li>
+  <li>Once the developers have verified there are no issues with the staging deployemnt, they can add a new semver tag to the github repository.
     <ul>
-      <li>keel.sh with force policy and match-tag true will update the staging environment in the cluster</li>
-    </ul>
-  </li>
-  <li>after running whatever e2e and user tests on the staging application, we can decide to make a new release and roll out to the production environment.
-    <ul>
-      <li>tag the latest commit with proper SemVer</li>
-    </ul>
-  </li>
-  <li>upon making a new tag, the build server will poll the update, verify the updated semver number, and push the new docker image to the docker registry
-    <ul>
-      <li>keel.sh with MAJOR policy will detect the new docker image and deploy onto the production servers</li>
+      <li>(eventually we’ll have tests to automatically check staging/prod deployments)</li>
+      <li>the same cycle will repeat with the polling server and keel.sh, except using the new semver tag and will upgrade the production deployment.</li>
     </ul>
   </li>
 </ol>
 
-<h3 id="rollbacks">Rollbacks:</h3>
-
-<h4 id="production">Production</h4>
-<ul>
-  <li>tag a previous commit that you want to rollback to with an updated SemVer
+<h4 id="helm-chart-updates">Helm Chart Updates</h4>
+<ol>
+  <li>Once the developerse have ensured their updates are working in their local environment, they can make a PR and merge their helm chart updates to the master/prod github branch.
     <ul>
-      <li>the build server and keel.sh will detect the new tag and rollback the update</li>
+      <li>(more on github repo structure later)</li>
+    </ul>
+  </li>
+  <li>After merging, the developers can run <code class="highlighter-rouge">helm push &lt;github-repo&gt; --version staging</code>, which will package and push the new helm chart to the chartmuseum repository.</li>
+  <li>The Polling Server will detect the helm chart version, and will ping the <code class="highlighter-rouge">/apply</code> endpoint of the running Helm API.</li>
+  <li>The Helm API searches for the <code class="highlighter-rouge">helmsman-cronjob</code> resource on the cluster, and manually create a kuberenetes job from its job template.</li>
+  <li>The kubernetes job will run a <code class="highlighter-rouge">helmsman --apply -f &lt;dss&gt;.yaml</code> command, which will apply new helm chart upgrades to the cluster.</li>
+  <li>Once the developers have verified there are no issues with the staging deployment, they can make another <code class="highlighter-rouge">helm push</code> call with <code class="highlighter-rouge">--version &lt;semver tag&gt;</code>, and the process will repeat with the updated version.
+    <ul>
+      <li>Note: major semver updates will have to be approved by the SRE/DevOps team, and must be updated in the helmsman dss files.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="tool-descriptions">Tool Descriptions</h3>
+
+<h4 id="polling-server">Polling Server</h4>
+<ul>
+  <li>polls the github events api for provided repositories until either new changes or new tags are detected
+    <ul>
+      <li>after detecting new events, will call docker build and docker push on the provided repository</li>
+      <li>will tag the docker image as staging for repo changes or use a semver tag for new tag events</li>
+    </ul>
+  </li>
+  <li>polls the helm chart repository for new chart updates
+    <ul>
+      <li>after detecting new helm chart verseions, will send a request to the <code class="highlighter-rouge">/apply</code> endpoint of the helm-api</li>
     </ul>
   </li>
 </ul>
 
-<h4 id="staging">Staging</h4>
+<h4 id="helm-api">Helm API</h4>
 <ul>
-  <li>reset to a previous commit
+  <li>when the <code class="highlighter-rouge">/apply</code> endpoint is pingged, will create a kubernetes job using an existing cronjob as a template
     <ul>
-      <li>need to figure out how github events api handles commit resets and configure the docker build server accordingly
-or push an old commit as the most updated commit again</li>
+      <li>the job created will make a <code class="highlighter-rouge">helmsman --apply -f &lt; dss &gt;.yaml</code> call and apply helm chart updates to the cluster</li>
     </ul>
   </li>
+  <li>(name subject to change)</li>
 </ul>
 
-<h3 id="configuration">Configuration</h3>
-
-<p>Here’s a quick list of everything that needs configuring:</p>
+<h4 id="keelsh">Keel.sh</h4>
 <ul>
-  <li>github repo pipelines</li>
-  <li>helm chart pipelines</li>
-  <li>dss files</li>
-  <li>host names(?)</li>
+  <li><a href="https://keel.sh/">Keel.sh</a> is an open source “Kubernetes Operator” that detects new available docker image versions and automatically updates the deployment based on provided configuration.</li>
+  <li>I contributed to the open source project by adding Helm v3 support :)</li>
 </ul>
 
-<h4 id="toc">TOC</h4>
-
-<p>This page is the <em>entire</em> general overview, so include everything needed to understand what the system does</p>
-
+<h4 id="docker-registry">Docker Registry</h4>
 <ul>
-  <li>Introduction/Overview</li>
-  <li>diagram/flowchart of what exactly is going on</li>
-  <li>outlining general role of each component (polling-server, helm-api, keel)</li>
-  <li>explanation of helmsman and the corresponding dss files
-    <ul>
-      <li>explanation of all the other necessary “cluster resources”</li>
-    </ul>
-  </li>
-  <li>configuration</li>
+  <li>a basic docker registry for holding docker images deployed from the <code class="highlighter-rouge">stable/docker-registry</code> chart.</li>
+  <li>uses minio s3 buckets for storage</li>
 </ul>
+
+<h4 id="chartmuseum">ChartMuseum</h4>
+<ul>
+  <li>a basic helm chart repository for holding packaged helm chart files deployed from the <code class="highlighter-rouge">stable/chartmuseum</code> chart.</li>
+  <li>uses minio s3 buckets for storage</li>
+</ul>
+
+<h4 id="helm-push">Helm Push</h4>
+<ul>
+  <li><a href="https://github.com/nnt1054/helm-push">Helm Push</a> is a helm plugin that packages and pushes helm charts to provided helm chart repository</li>
+  <li>forked the original plugin and made changes to allow for pushing helm charts via github repo url</li>
+</ul>
+
+<!-- #### Docker Image Updates
+
+1. code is working in the local dev environment and I’m ready to push updates
+2. make a git pull request to merge into the master branch
+3. on a new PushEvent, the [polling server](/blog/mmorpg/polling-server) creates a new docker image for the production environment.  we’ll just call it ImageName:staging and keep overwriting the staging environment
+* keel.sh with force policy and match-tag true will update the staging environment in the cluster
+4. after running whatever e2e and user tests on the staging application, we can decide to make a new release and roll out to the production environment.
+* tag the latest commit with proper SemVer
+5. upon making a new tag, the build server will poll the update, verify the updated semver number, and push the new docker image to the docker registry
+* keel.sh with MAJOR policy will detect the new docker image and deploy onto the production servers
+
+### Rollbacks:
+
+#### Production
+* tag a previous commit that you want to rollback to with an updated SemVer
+	* the build server and keel.sh will detect the new tag and rollback the update
+
+#### Staging
+* reset to a previous commit
+	* need to figure out how github events api handles commit resets and configure the docker build server accordingly
+or push an old commit as the most updated commit again
+
+### Configuration and Setup
+
+Here's a quick list of everything that needs configuring:
+* github repo pipelines
+* helm chart pipelines
+* dss files
+* host names(?)
+
+#### TOC
+
+This page is the *entire* general overview, so include everything needed to understand what the system does
+
+* Introduction/Overview
+* diagram/flowchart of what exactly is going on
+* outlining general role of each component (polling-server, helm-api, keel)
+* explanation of helmsman and the corresponding dss files
+	* explanation of all the other necessary "cluster resources"
+* configuration
+
+* configuration
+	* organization of files
+	* snapshot of the kuberentes cluster
+
+
+-->
 
 <p><br /></p>
 
