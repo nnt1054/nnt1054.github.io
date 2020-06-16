@@ -7,9 +7,10 @@ category: mmorpg
 ### Project Goal:
 * The goal of this project is to build a scalable 2D MMORPG game and server
 
-### Project Spec:
-* Built using node.js, Socket.io, Express.js, MINI5.js (TBD)
-* Deployed using Kubernetes and Docker
+### Roadmap(?):
+* [CI/CD System](/blog/mmorpg/CICD-Overview) - DONE
+* Backend Game Server/Client
+* Implement and code the actual game
 
 ### Technical Challenge(s):
 * Creating a scalable game server where in-game regions/chunks are divided among several (horizontally scaling) server instances

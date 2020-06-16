@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google" content="notranslate" />
 
-  <title>Neil Toledo - Polling Server</title>
+  <title>Neil Toledo - Helm API</title>
   <meta name="description" content="Github">
 
   <link rel="icon" href="/assets/images/me.jpg">
@@ -28,7 +28,7 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 <!--   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Polling Server</h1>
+    <h1 class="post-title" itemprop="name headline">Helm API</h1>
     <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
   </header> -->
 
@@ -265,18 +265,17 @@
 
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
-                <h1 class="post-title" itemprop="name headline">Polling Server</h1>
+                <h1 class="post-title" itemprop="name headline">Helm API</h1>
                 <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
             </header>
-            <p><a href="https://github.com/nnt1054/mmorpg-polling-server">Github</a></p>
+            <p><a href="https://github.com/nnt1054/mmorpg-helm-api">Github</a></p>
 
 <h4 id="description">Description:</h4>
-<p>A small express application that polls the Github Events API for new events and builds Docker images accordingly.
-PushRequest events will tag the docker image as staging, and CreateEvents for new SemVer Tags will tag the docker with the SemVer Tag.  Afterwards the server pushes the image to the corresponding Docker Registry.
-A the application also polls specified helm chart repositories for listed helm charts.  The server only checks for the most updated semver version and the latest staging version in the repository. If a new semver version or staging version is found, the polling server will ping the Helm API to upgrade the helm charts running on the cluster.</p>
+<p>A small express application running in the server that updates the helmsman deployment went triggered.
+When the <code class="highlighter-rouge">/apply</code> endpoint of the server is pinged, the API searches for a <code class="highlighter-rouge">helmsman-cronjob</code> object on the server and creates a new kubernetes job using the cronjob’s stored job template.  The kubernetes job will make a <code class="highlighter-rouge">helmsman --apply -f &lt; dss &gt;.yaml</code> call and apply helm chart updates to the cluster.</p>
 
 <h4 id="purpose">Purpose:</h4>
-<p>The purpose of this server is to help with Continous Delivery.  After changes are pushed/merged on Github, this server polls and builds the new source.  After pushing the image to the docker registry, I’ll be using <a href="https://keel.sh/">Keel.sh</a> to automatically detect new Docker images in the registry and deploy them onto the cluster.</p>
+<p>The purpose of this server is to help with Continous Delivery, specifically with reflecting updates to helm charts in the cluster deployment.</p>
 
 <p><br /></p>
 

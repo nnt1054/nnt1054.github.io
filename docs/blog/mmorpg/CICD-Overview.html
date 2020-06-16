@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google" content="notranslate" />
 
-  <title>Neil Toledo - CD Overview</title>
-  <meta name="description" content="Introduction:">
+  <title>Neil Toledo - Overview</title>
+  <meta name="description" content="Github">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -28,7 +28,7 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 <!--   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">CD Overview</h1>
+    <h1 class="post-title" itemprop="name headline">Overview</h1>
     <p class="post-meta"><time datetime="2020-04-29T00:00:00-07:00" itemprop="datePublished">Apr 29, 2020</time></p>
   </header> -->
 
@@ -176,7 +176,13 @@
                     
                 
                     
+                
+                    
                         <a href="/blog/mmorpg/mmorpg-project-overview"> • Project Overview </a>
+                    
+                
+                    
+                
                     
                 
                     
@@ -202,7 +208,15 @@
                         
                     
                         
-                            <a href="/blog/mmorpg/C4-Model-Descriptions"> • C4 Model Descriptions </a>
+                    
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/C4-Architecture-Models"> • C4 Architecture Models </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Process-Flowcharts"> • Process Flowcharts (Draft) </a>
                         
                     
                     </ul>
@@ -219,13 +233,23 @@
                     <ul class='nav-page-list'>
                     
                         
-                            <a href="/blog/mmorpg/CICD-Overview"> • CD Overview </a>
+                            <a href="/blog/mmorpg/CICD-Overview"> • Overview </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Configuration-and-Setup"> • Configuration/Setup </a>
                         
                     
                         
                     
                         
                             <a href="/blog/mmorpg/Polling-Server"> • Polling Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Helm-API"> • Helm API </a>
+                        
+                    
                         
                     
                         
@@ -241,16 +265,20 @@
 
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
-                <h1 class="post-title" itemprop="name headline">CD Overview</h1>
+                <h1 class="post-title" itemprop="name headline">Overview</h1>
                 <p class="post-meta"><time datetime="2020-04-29T00:00:00-07:00" itemprop="datePublished">Apr 29, 2020</time></p>
             </header>
-            <h3 id="introduction">Introduction:</h3>
+            <p><a href="https://github.com/nnt1054/mmorpg-cicd">Github</a></p>
+
+<h3 id="introduction">Introduction:</h3>
 
 <p>This is a custom CI/CD system (sub-)project put together as a learning experience as well as tool for developing this mmorpg.  The system is primarily focused on continous delivery and automatically upgrades both docker images and helm chart deployments upon new available semver or staging versions.
-A general theme/goal of the project was to create a “portable” CICD that can be quickly torn down and rebuilt.  The system is entirely self hosted and all the necessary configuration exists within the project.  This is primarily faciliated through the use of <a href="https://github.com/Praqma/helmsman">helmsman</a>, an “Application as Code” tool, that allows for deploying and maintaining several helm charts.</p>
+A general theme/goal of the project was to create a “portable” CI/CD system that can be quickly torn down and rebuilt.  The system is entirely self hosted and all the necessary configuration exists within the project.  This is primarily faciliated through the use of <a href="https://github.com/Praqma/helmsman">helmsman</a>, an “Application as Code” tool, that allows for deploying and maintaining several helm charts.</p>
 
 <h3 id="overview">Overview:</h3>
 <p class="column"><a href="/assets/images/mmorpg_pictures/cicd-overview-01.png"><img src="/assets/images/mmorpg_pictures/cicd-overview-01.png" alt="cicd-overview" style="width: 100%" /></a></p>
+
+<p><br /></p>
 
 <h3 id="how-it-works">How it Works:</h3>
 
@@ -284,6 +312,24 @@ A general theme/goal of the project was to create a “portable” CICD that can
     </ul>
   </li>
 </ol>
+
+<h4 id="rollbacks">Rollbacks:</h4>
+
+<h5 id="production">Production</h5>
+<ul>
+  <li>tag a previous commit that you want to rollback to with an updated semver
+    <ul>
+      <li>the polling server and keel.sh will detect the new tag and rollback the update</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="staging">Staging</h5>
+<ul>
+  <li>TBD</li>
+</ul>
+
+<p><br /></p>
 
 <h3 id="tool-descriptions">Tool Descriptions</h3>
 
@@ -336,27 +382,7 @@ A general theme/goal of the project was to create a “portable” CICD that can
   <li>forked the original plugin and made changes to allow for pushing helm charts via github repo url</li>
 </ul>
 
-<!-- #### Docker Image Updates
-
-1. code is working in the local dev environment and I’m ready to push updates
-2. make a git pull request to merge into the master branch
-3. on a new PushEvent, the [polling server](/blog/mmorpg/polling-server) creates a new docker image for the production environment.  we’ll just call it ImageName:staging and keep overwriting the staging environment
-* keel.sh with force policy and match-tag true will update the staging environment in the cluster
-4. after running whatever e2e and user tests on the staging application, we can decide to make a new release and roll out to the production environment.
-* tag the latest commit with proper SemVer
-5. upon making a new tag, the build server will poll the update, verify the updated semver number, and push the new docker image to the docker registry
-* keel.sh with MAJOR policy will detect the new docker image and deploy onto the production servers
-
-### Rollbacks:
-
-#### Production
-* tag a previous commit that you want to rollback to with an updated SemVer
-	* the build server and keel.sh will detect the new tag and rollback the update
-
-#### Staging
-* reset to a previous commit
-	* need to figure out how github events api handles commit resets and configure the docker build server accordingly
-or push an old commit as the most updated commit again
+<!--
 
 ### Configuration and Setup
 

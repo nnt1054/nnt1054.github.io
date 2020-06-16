@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google" content="notranslate" />
 
-  <title>Neil Toledo - C4 Model Descriptions</title>
-  <meta name="description" content="For now, I’m writing just descriptions of what the diagrams will look like, before I draw and render the actual diagrams.C4 Model Software Architecture Refer...">
+  <title>Neil Toledo - Process Flowcharts (Draft)</title>
+  <meta name="description" content="For each feature of the game I’m gonna be sort of brainstorming and jotting down logistics of how features will be implemented.">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -28,8 +28,8 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 <!--   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">C4 Model Descriptions</h1>
-    <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
+    <h1 class="post-title" itemprop="name headline">Process Flowcharts (Draft)</h1>
+    <p class="post-meta"><time datetime="2020-04-19T00:00:00-07:00" itemprop="datePublished">Apr 19, 2020</time></p>
   </header> -->
 
     <link rel="stylesheet" href="/assets/css/documentation.css">
@@ -176,7 +176,13 @@
                     
                 
                     
+                
+                    
                         <a href="/blog/mmorpg/mmorpg-project-overview"> • Project Overview </a>
+                    
+                
+                    
+                
                     
                 
                     
@@ -202,7 +208,15 @@
                         
                     
                         
-                            <a href="/blog/mmorpg/C4-Model-Descriptions"> • C4 Model Descriptions </a>
+                    
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/C4-Architecture-Models"> • C4 Architecture Models </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Process-Flowcharts"> • Process Flowcharts (Draft) </a>
                         
                     
                     </ul>
@@ -219,13 +233,23 @@
                     <ul class='nav-page-list'>
                     
                         
-                            <a href="/blog/mmorpg/CICD-Overview"> • CD Overview </a>
+                            <a href="/blog/mmorpg/CICD-Overview"> • Overview </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Configuration-and-Setup"> • Configuration/Setup </a>
                         
                     
                         
                     
                         
                             <a href="/blog/mmorpg/Polling-Server"> • Polling Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Helm-API"> • Helm API </a>
+                        
+                    
                         
                     
                         
@@ -241,116 +265,53 @@
 
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
-                <h1 class="post-title" itemprop="name headline">C4 Model Descriptions</h1>
-                <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
+                <h1 class="post-title" itemprop="name headline">Process Flowcharts (Draft)</h1>
+                <p class="post-meta"><time datetime="2020-04-19T00:00:00-07:00" itemprop="datePublished">Apr 19, 2020</time></p>
             </header>
-            <p>For now, I’m writing just descriptions of what the diagrams will look like, before I draw and render the actual diagrams.<br />
-<a href="https://c4model.com/">C4 Model Software Architecture Reference</a></p>
+            <p>For each feature of the game I’m gonna be sort of brainstorming and jotting down logistics of how features will be implemented.</p>
 
-<h4 id="level-1-system-context">Level 1: System Context</h4>
+<p class="column"><a href="/assets/images/mmorpg_pictures/l2-diagram.png"><img src="/assets/images/mmorpg_pictures/l2-diagram.png" alt="l2_diagram" style="width: 100%" /></a></p>
 
-<ul>
-  <li>first we have the public end users that we can call the g a m e r s</li>
-  <li>I’ll be using the Google Identity Platform for login and authentication</li>
-  <li>For now we can separate the client side and server side as separate Software Systems</li>
-  <li>Client Side Role:
+<h4 id="login-process">Login Process:</h4>
+<ol>
+  <li>the front end client opens a google auth login link</li>
+  <li>front end client saves a session/login token into local cache</li>
+  <li>client sends session token with websocket connection request to the master server</li>
+  <li>master server verifies session token using google identity platform</li>
+  <li>master server adds user to ‘logged in users’ redis table</li>
+  <li>master server requests player data and last known location from player data service</li>
+  <li>master server sends api call to server manager requesting ip address for corresponding game server</li>
+  <li>server manager checks if there exists active game server for location, if not creates a new pod and sends configuration details and then responds to master server with ip address</li>
+  <li>master server responds to client with game server address as well as social service api</li>
+  <li>client establishes websocket connection with both IP addresses
     <ul>
-      <li>sends user input and signals to the server</li>
-      <li>runs game logic and client-side predictions</li>
-      <li>draws and renders the game onto the g a m e r ‘ s screen</li>
-      <li>re-synchronizes the client side game state based off messages from the server</li>
+      <li>can possibly include a verification token to ensure misc. clients can’t establish connections with random game servers</li>
     </ul>
   </li>
-  <li>Server Side Role:
-    <ul>
-      <li>for system context I’ll leave out the infrastructure related content</li>
-      <li>or maybe I should split the infrastructure and client side server code?</li>
-      <li>or include the kube-api as its separate software system?</li>
-    </ul>
-  </li>
-</ul>
+</ol>
 
-<h4 id="level-2-container-context">Level 2: Container Context</h4>
-<ul>
-  <li>Client Side
+<h4 id="character-moves-to-a-different-area-process">Character Moves to a Different Area Process:</h4>
+<ol>
+  <li>client sends user input to exit area</li>
+  <li>game server receives user input and verifies attempt to exit area</li>
+  <li>game server sends message to master game server that player is moving areas</li>
+  <li>master game server sends request to server manager for new game server</li>
+  <li>server manager checks for requested game server
     <ul>
-      <li>this isn’t technically packaged in its own container, but is a bundle of code served by the master server</li>
-      <li>runs phaser.io game loop to render the game onto the web browser</li>
-      <li>handles user input and sends events to game instance server</li>
-      <li>does client side prediction and server synchronization during update loop</li>
-    </ul>
-  </li>
-  <li>Master Game Server
-    <ul>
-      <li>serves client side application to the user</li>
-      <li>redirects user to game instance server IP, and sets up connection between the two</li>
-    </ul>
-  </li>
-  <li>Player Data Service
-    <ul>
-      <li>only receives events from the game instance servers</li>
-      <li>stores and updates all relevant player data</li>
-      <li>might be accessible through a leader boards website or something</li>
-      <li>CAN be scaled independently depending on necessity</li>
-    </ul>
-  </li>
-  <li>Server Manager
-    <ul>
-      <li>takes requests from the main master server and is in charge of using the kube-api and spawning game instance servers</li>
-    </ul>
-  </li>
-  <li>Game Instance Server(s)
-    <ul>
-      <li>is spawned by the server manager</li>
-      <li>runs an express.js and phaser.io game loop (except for the draw function)</li>
-      <li>takes connected user input, calculates updates and responds with updated game state</li>
-      <li>sends and receives updates from the player data service</li>
-      <li>is only responsible for events happening within respective map/geography</li>
-    </ul>
-  </li>
-</ul>
-
-<p>some of this information probably belongs in the L3 component diagram, but it’s important to first know what the containers are and how they interact :)</p>
-
-<p>Other Things to Consider:</p>
-
-<ul>
-  <li>chat messages</li>
-  <li>party, guild and quest data</li>
-</ul>
-
-<h4 id="level-3-component-context">Level 3: Component Context</h4>
-<p>some of this will probably just be a rehash of L2, but can probably specify more of the libraries/database technologies that facilitate each components functionality :)</p>
-
-<ul>
-  <li>Master Game Server
-    <ul>
-      <li>redis queue maybe to keep track of all logged in/active users</li>
-      <li>yeah, in case master game server needs to be scaled as well, we can sync logged in users to a redis db</li>
-    </ul>
-  </li>
-  <li>Server Manager
-    <ul>
-      <li>if need to uh scale the server manager, then can probably use redis to keep track of all the game instance servers</li>
-    </ul>
-  </li>
-  <li>Game Instance Server
-    <ul>
-      <li>actually not sure if it needs a redis instance if it can handle everything in memory?  I mean, redis is already in memory, but thats beside the point.  Since game servers are temporary, it could probably handle everything going on in its own memory stack</li>
-      <li>Unrelated, but this brings up the point of managing global events if necessary? (something like a chat box; maybe make a chat microservice lmao should be PLENTY of tutorials for that one)
+      <li>if game server exists send ip to master game server</li>
+      <li>else if previous game server now has zero players, reconfig existing connection and update redis
         <ul>
-          <li>also unrelated but I like how you had to pay for global chat messages</li>
+          <li>can maybe skip some of the next steps since no new websocket needs to be created</li>
         </ul>
       </li>
+      <li>else create/find inactive game server and respond with its IP address</li>
     </ul>
   </li>
-</ul>
+  <li>master game server receives IP address, saves the players new location, and sends back to game server
+game server sends IP address back to client and closes the websocket connection</li>
+</ol>
 
-<h4 id="level-4-code-context">Level 4: Code Context</h4>
-<ul>
-  <li>haha might skip this for now</li>
-  <li>seems unnecessary until further notice</li>
-</ul>
+<p><br /></p>
 
         </div>
 

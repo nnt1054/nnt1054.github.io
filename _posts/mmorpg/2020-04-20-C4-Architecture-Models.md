@@ -1,12 +1,12 @@
 ---
 layout: documentation
-title: C4 Model Descriptions
+title: C4 Architecture Models
 category: mmorpg
 tag: Software Architecture
 ---
 
-For now, I’m writing just descriptions of what the diagrams will look like, before I draw and render the actual diagrams.  
-[C4 Model Software Architecture Reference](https://c4model.com/)
+For now, these will mostly be descriptions of what the diagrams will look like/include, before I draw and render the actual diagrams.  
+Reference: [C4 Model for Visualising Software Architecture](https://c4model.com/)
 
 #### Level 1: System Context
 
@@ -24,6 +24,10 @@ For now, I’m writing just descriptions of what the diagrams will look like, be
 	* or include the kube-api as its separate software system?
 
 #### Level 2: Container Context
+
+[![l2_diagram](/assets/images/mmorpg_pictures/l2-diagram.png){: style="width: 100%"}](/assets/images/mmorpg_pictures/l2-diagram.png)
+{: class="column"}
+
 * Client Side
 	* this isn’t technically packaged in its own container, but is a bundle of code served by the master server
 	* runs phaser.io game loop to render the game onto the web browser

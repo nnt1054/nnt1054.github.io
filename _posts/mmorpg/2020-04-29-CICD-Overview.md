@@ -1,18 +1,22 @@
 ---
 layout: documentation
-title: CD Overview
+title: Overview
 category: mmorpg
 tag: CI/CD and Infrastructure
 ---
 
+[Github](https://github.com/nnt1054/mmorpg-cicd)
+
 ### Introduction:
 
 This is a custom CI/CD system (sub-)project put together as a learning experience as well as tool for developing this mmorpg.  The system is primarily focused on continous delivery and automatically upgrades both docker images and helm chart deployments upon new available semver or staging versions.
-A general theme/goal of the project was to create a "portable" CICD that can be quickly torn down and rebuilt.  The system is entirely self hosted and all the necessary configuration exists within the project.  This is primarily faciliated through the use of [helmsman](https://github.com/Praqma/helmsman), an "Application as Code" tool, that allows for deploying and maintaining several helm charts.
+A general theme/goal of the project was to create a "portable" CI/CD system that can be quickly torn down and rebuilt.  The system is entirely self hosted and all the necessary configuration exists within the project.  This is primarily faciliated through the use of [helmsman](https://github.com/Praqma/helmsman), an "Application as Code" tool, that allows for deploying and maintaining several helm charts.
 
 ### Overview:
 [![cicd-overview](/assets/images/mmorpg_pictures/cicd-overview-01.png){: style="width: 100%"}](/assets/images/mmorpg_pictures/cicd-overview-01.png)
 {: class="column"}
+
+<br>
 
 ### How it Works:
 
@@ -33,6 +37,17 @@ A general theme/goal of the project was to create a "portable" CICD that can be 
 5. The kubernetes job will run a `helmsman --apply -f <dss>.yaml` command, which will apply new helm chart upgrades to the cluster.
 6. Once the developers have verified there are no issues with the staging deployment, they can make another `helm push` call with `--version <semver tag>`, and the process will repeat with the updated version.
 	* Note: major semver updates will have to be approved by the SRE/DevOps team, and must be updated in the helmsman dss files.
+
+#### Rollbacks:
+
+##### Production
+* tag a previous commit that you want to rollback to with an updated semver
+	* the polling server and keel.sh will detect the new tag and rollback the update
+
+##### Staging
+* TBD
+
+<br>
 
 ### Tool Descriptions
 
@@ -64,27 +79,7 @@ A general theme/goal of the project was to create a "portable" CICD that can be 
 * [Helm Push](https://github.com/nnt1054/helm-push) is a helm plugin that packages and pushes helm charts to provided helm chart repository
 * forked the original plugin and made changes to allow for pushing helm charts via github repo url
 
-<!-- #### Docker Image Updates
-
-1. code is working in the local dev environment and I’m ready to push updates
-2. make a git pull request to merge into the master branch
-3. on a new PushEvent, the [polling server](/blog/mmorpg/polling-server) creates a new docker image for the production environment.  we’ll just call it ImageName:staging and keep overwriting the staging environment
-* keel.sh with force policy and match-tag true will update the staging environment in the cluster
-4. after running whatever e2e and user tests on the staging application, we can decide to make a new release and roll out to the production environment.
-* tag the latest commit with proper SemVer
-5. upon making a new tag, the build server will poll the update, verify the updated semver number, and push the new docker image to the docker registry
-* keel.sh with MAJOR policy will detect the new docker image and deploy onto the production servers
-
-### Rollbacks:
-
-#### Production
-* tag a previous commit that you want to rollback to with an updated SemVer
-	* the build server and keel.sh will detect the new tag and rollback the update
-
-#### Staging
-* reset to a previous commit
-	* need to figure out how github events api handles commit resets and configure the docker build server accordingly
-or push an old commit as the most updated commit again
+<!--
 
 ### Configuration and Setup
 
