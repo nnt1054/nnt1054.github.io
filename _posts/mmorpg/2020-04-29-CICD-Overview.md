@@ -49,7 +49,7 @@ A general theme/goal of the project was to create a "portable" CI/CD system that
 
 <br>
 
-### Tool Descriptions
+### Component Descriptions
 
 #### Polling Server
 * polls the github events api for provided repositories until either new changes or new tags are detected

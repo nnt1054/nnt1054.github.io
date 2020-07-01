@@ -225,19 +225,29 @@ p, li {
 }
 
 
+.unavailable {
+  	pointer-events: stroke;
+}
 
-#about:hover {
+.unavailable:hover {
     box-shadow: 5px 5px red;
     color: red;
     transform: translateY(-5px) translateX(-5px);
     cursor: not-allowed;
 }
 
-#about:hover > span {
+.unavailable:hover > span {
     display: none;
 }
 
-#about:hover::before {
+.unavailable:hover::before {
     content:"in progress!";
     margin: auto;
+}
+
+.unavailable:active:hover {
+    box-shadow: 5px 5px red;
+    color: red;
+    transform: translateY(-5px) translateX(-5px);
+    cursor: not-allowed;
 }
