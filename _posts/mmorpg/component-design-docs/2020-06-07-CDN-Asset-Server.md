@@ -5,12 +5,8 @@ category: mmorpg
 tag: Component Design Documents
 ---
 
-[Github](https://github.com/nnt1054/mmorpg-helm-api)
-
 #### Description:
-The server manager 
+The CDN Asset Server will be used to deliver game assets and sprite sheets to the Client.  For now the "CDN" won't really be any different in the backend and will just be used as an endpoint for where to query game assets.  The plan is to use some sort of library for sending several assets and creating a loading/progress bar for the client side.
 
-#### Purpose:
-The purpose of this server is to help with Continous Delivery, specifically with reflecting updates to helm charts in the cluster deployment.
 
 <br/>

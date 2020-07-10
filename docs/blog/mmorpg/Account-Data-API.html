@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Account Data API</title>
-  <meta name="description" content="Description:The Account Data API is just used to store Account information.What’s the difference between a service account and a user account?Data Design:  G...">
+  <meta name="description" content="Description:The Account Data API is used to store the general Account information of the user, using their Google Sign-In ID as their unique primary key.Feat...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -222,59 +222,6 @@
                     
 
                     
-                    <span> Software Architecture </span>
-                    <ul class='nav-page-list'>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/C4-Architecture-Models"> • C4 Architecture Models </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Process-Flowcharts"> • Process Flowcharts (Draft) </a>
-                        
-                    
-                        
-                    
-                    </ul>
-                    
-
-                
-                    
-                    
-
-                    
-
-                    
                     <span> Component Design Documents </span>
                     <ul class='nav-page-list'>
                     
@@ -447,6 +394,7 @@
 
 
             </ul>
+            
         </div>
 
         <div id="page-content" itemprop="articleBody">
@@ -455,21 +403,58 @@
                 <p class="post-meta"><time datetime="2020-06-10T00:00:00-07:00" itemprop="datePublished">Jun 10, 2020</time></p>
             </header>
             <h4 id="description">Description:</h4>
-<p>The Account Data API is just used to store Account information.
-What’s the difference between a service account and a user account?</p>
+<p>The Account Data API is used to store the general Account information of the user, using their Google Sign-In ID as their unique primary key.</p>
 
-<h4 id="data-design">Data Design:</h4>
+<h4 id="features">Features:</h4>
 <ul>
-  <li>Google Auth ID</li>
-  <li>List of Characters attached to Account</li>
-  <li>Account Creation Date</li>
-  <li>???</li>
+  <li>stores account information in a database table with Google Sign-In ID as the primary key</li>
+  <li>logs all database events/transactions to a logging service (TBD)
+    <ul>
+      <li>account creation and deletion, character creation and deletion, account status upgrades, etc.</li>
+    </ul>
+  </li>
+  <li>stores each Accounts’ list of Characters</li>
+  <li>stores Account status
+    <ul>
+      <li>assumes we have some sort of “premium member” type subscription (TBD)</li>
+    </ul>
+  </li>
 </ul>
 
 <h4 id="tools">Tools:</h4>
 <ul>
   <li>Express.js</li>
   <li>PostgreSQL</li>
+</ul>
+
+<h4 id="design-considerations">Design Considerations:</h4>
+<ul>
+  <li>I used this [reference] from Epic Games as help for designing this API</li>
+  <li>We have an option of storing Auth Session data in a Redis table attached to the Account Data API, BUT I decided it seemed more appropriate to store Auth Session data with the Primary Gateway Server instead.  Since the Primary Gateway Server will be delivering the main ‘web’ content to the users anyway, it seemed appropriate to it handle Auth Sessions.  In addition, it will also save extra HTTP calls between the Primary Gateway Server and the Account Data API everytime we’d like to authenticate a request.</li>
+  <li>I’ve decided to stick with Google Sign-In for the main form of authentication mostly as a quality-of-life upgrade for both the users and the developers
+    <ul>
+      <li>Users will have a much easier to creating their account and getting straight into the game</li>
+      <li>The application will also feel much more secure since the mmorpg backend does not need to actually store and encrypt user passwords and put the user’s information at risk.</li>
+      <li>Developers will have less to worry about in terms of creating a secure authentication process.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="process-flowcharts">Process Flowcharts</h4>
+
+<h5 id="logging-inauthenticating-a-user">Logging In/Authenticating a User</h5>
+<ul>
+  <li>Client logs in using Google Sign-In</li>
+  <li>Client stores their ID token in local cache</li>
+  <li>Client sends a login request to the Primary Gateway Server</li>
+  <li>Primary Gateway Server authenticates the User’s ID token using a Google API Client library</li>
+  <li>Primary Gateway Server then creates a sticky session for the user</li>
+  <li>Primary Gateway Server makes request to the Account Data API for the user’s information
+    <ul>
+      <li>If the account does not exist in the Account Data API (means first time user), then create a new Account for the user</li>
+    </ul>
+  </li>
+  <li>Primary Gateway Server responds back to the Client and Client proceeds to the Character Select screen</li>
 </ul>
 
 <p><br /></p>

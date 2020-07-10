@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Character Data API</title>
-  <meta name="description" content="Description:TheData Design:">
+  <meta name="description" content="Description:The Character Data API is used for storing and updating in-game Character information.  Character Data will consist of all character specific dat...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -222,59 +222,6 @@
                     
 
                     
-                    <span> Software Architecture </span>
-                    <ul class='nav-page-list'>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/C4-Architecture-Models"> • C4 Architecture Models </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Process-Flowcharts"> • Process Flowcharts (Draft) </a>
-                        
-                    
-                        
-                    
-                    </ul>
-                    
-
-                
-                    
-                    
-
-                    
-
-                    
                     <span> Component Design Documents </span>
                     <ul class='nav-page-list'>
                     
@@ -447,6 +394,7 @@
 
 
             </ul>
+            
         </div>
 
         <div id="page-content" itemprop="articleBody">
@@ -455,9 +403,58 @@
                 <p class="post-meta"><time datetime="2020-06-09T00:00:00-07:00" itemprop="datePublished">Jun 9, 2020</time></p>
             </header>
             <h4 id="description">Description:</h4>
-<p>The</p>
+<p>The Character Data API is used for storing and updating in-game Character information.  Character Data will consist of all character specific data that is required by the game client and game server in order to play.  Examples of Character Data fields will include stats and fields such as Max HP, Attribute Stats, Inventory, Equipment, Class Levels and ongoing Quests.  The actual fields will be updated and changed as development goes on (since the actual game design planning is still in progress.)</p>
 
-<h4 id="data-design">Data Design:</h4>
+<h4 id="features">Features:</h4>
+<ul>
+  <li>will include an API endpoint that retrieves all Character Data provided a character id/name.</li>
+</ul>
+
+<h4 id="tools">Tools:</h4>
+<ul>
+  <li>Express.js</li>
+  <li>NoSQL Document Database</li>
+</ul>
+
+<h4 id="design-considerations">Design Considerations:</h4>
+<ul>
+  <li>since one User Account can have multiple Characters, I decided to split the Account and Character Data API’s in favor of separating management and in-game related data.  Character Data is also meant to be constantly updating/changing.</li>
+  <li>I’ve decided on using a Document-oriented NoSQL database for a few reasons:
+    <ul>
+      <li>I believe it’d be easier to organize character data in a way that’s easier for the game servers to consume and use.</li>
+      <li>I don’t believe we’re going to need to aggregate data between Character documents (a feature that NoSQL documents generally struggle in)</li>
+      <li>NoSQL databases are more easily horizontally scalable since it’s designed with partitioning and sharding in mind.</li>
+      <li>Character Data doesn’t really require all the features that a tradition RDBMS SQL database provides, since mainly only the character’s current Game Server Instance will be interacting with or updating the character’s NoSQL information at any given time.</li>
+      <li>Since NoSQL is unstructured, it may help with general game development since the actual game design planning isn’t completely finished at the time of this writing.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="process-flowcharts">Process Flowcharts:</h4>
+
+<h5 id="updating-characters-information">Updating Character’s Information</h5>
+<ul>
+  <li>a Game Server Instance will query a Character’s Data when creating their “pending connection” entry.
+    <ul>
+      <li>at this point the Game Server Instance is assumed to have the most updated version of the Character’s Data</li>
+    </ul>
+  </li>
+  <li>after the Client connects to the Game Server Instance, the game server will handles all updates/changes to the Character’s data locally/in memory.
+    <ul>
+      <li>these include events such as obtaining new items</li>
+      <li>gathering experience and leveling up</li>
+      <li>at this point the Game Server Instance’s copy is ahead of the data in the NoSQL database</li>
+    </ul>
+  </li>
+  <li>the Game Server Instance then sends an update request to the Character Data API:
+    <ul>
+      <li>at set intervals (every X amount of seconds)</li>
+      <li>on Client Log Out or Client Disconnect</li>
+      <li>when the Character moves to a new area (and connects to a different Game Server Instance)</li>
+      <li>when a Character trades items with another Character (TBD)</li>
+    </ul>
+  </li>
+</ul>
 
 <p><br /></p>
 

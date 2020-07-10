@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Questing API</title>
-  <meta name="description" content="GithubDescription:The server managerPurpose:The purpose of this server is to help with Continous Delivery, specifically with reflecting updates to helm chart...">
+  <meta name="description" content="Description:The Questing API is used to manage and store quest data, progress and completion for each Character.  We will be dividing different types of ques...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -222,59 +222,6 @@
                     
 
                     
-                    <span> Software Architecture </span>
-                    <ul class='nav-page-list'>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/C4-Architecture-Models"> • C4 Architecture Models </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Process-Flowcharts"> • Process Flowcharts (Draft) </a>
-                        
-                    
-                        
-                    
-                    </ul>
-                    
-
-                
-                    
-                    
-
-                    
-
-                    
                     <span> Component Design Documents </span>
                     <ul class='nav-page-list'>
                     
@@ -447,6 +394,7 @@
 
 
             </ul>
+            
         </div>
 
         <div id="page-content" itemprop="articleBody">
@@ -454,13 +402,79 @@
                 <h1 class="post-title" itemprop="name headline">Questing API</h1>
                 <p class="post-meta"><time datetime="2020-06-08T00:00:00-07:00" itemprop="datePublished">Jun 8, 2020</time></p>
             </header>
-            <p><a href="https://github.com/nnt1054/mmorpg-helm-api">Github</a></p>
+            <h4 id="description">Description:</h4>
+<p>The Questing API is used to manage and store quest data, progress and completion for each Character.  We will be dividing different types of quests into Main Story Quests(MSQ) and Side Quests.  MSQ will be a linear series of quests that denote either the ‘Main Story’ or ‘Class Story’ while Side Quests are generally nonlinear one-off quests.  Since MSQ is linear in terms of quest orders we only need to store the “current/next quest” and have each quest refernce the next one in a linked list sort of fashion.  Each Character needs to store a limited amount of MSQ progress (one for main story and one for each available class).  Since Side Quests will be optional to complete, we need to store an entry for a character and each of their completed side quests.  since we only need to store the “current” quest for each MSQ as opposed to a list/entry of all completed side quests, I’m currently planning on separting the two types into different databases accordingly.
+The actual scripting and coding of actual Quest objects are however still TBD</p>
 
-<h4 id="description">Description:</h4>
-<p>The server manager</p>
+<h4 id="features">Features:</h4>
+<ul>
+  <li>responds to queries of a Character’s current MSQ progress for both the Main Story and all subsequent Class Stories</li>
+  <li>responds to queries of all of a Character’s completed Side Quests in a specified area</li>
+</ul>
 
-<h4 id="purpose">Purpose:</h4>
-<p>The purpose of this server is to help with Continous Delivery, specifically with reflecting updates to helm charts in the cluster deployment.</p>
+<h4 id="tools">Tools:</h4>
+<ul>
+  <li>Express.js</li>
+  <li>NoSQL (TBD)
+    <ul>
+      <li>was originally asssuming MySQL for side quests, but now I’m backtracking on that decision</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="design-considerations">Design Considerations:</h4>
+<ul>
+  <li>I felt that creating this as a separate API was necessary since unlike the data stored in the Character Data API, the list of each Character’s completed quests should seldomly change and could grow to be an overly large list.  For these reasons, I would like to avoid storing run-on lists of completed quests in the Character’s NoSQL database and will store it separately in tentatively a normal SQL database.</li>
+  <li>On-Going quest data however will be stored in the Character Data since those are necessary to track quest progress and are subject to changes more often.</li>
+  <li>The main queries that the Questing API will be receiving are for a list of all quests completed by a Character given out in a specific area.
+    <ul>
+      <li>assuming this will be stored using NoSQL again, the query would look similar to: <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"characterID"</span><span class="p">:</span><span class="w"> </span><span class="err">lambseel</span><span class="s2">", "</span><span class="err">area</span><span class="s2">": "</span><span class="err">area</span><span class="mi">01</span><span class="err">"</span><span class="p">}</span></code></li>
+    </ul>
+  </li>
+  <li>The MSQ and Side Quests differentiation was necessary since we need to be able to track MSQ quests from anywhere in the in-game world, while Side Quests are only relevant to the area they’re assigned.  This way:
+    <ul>
+      <li>we can query only the necessary Side Quest completion entries as necessary (when a character enters a new area)</li>
+      <li>and MSQ progress can be queried separately without requesting any overhead of unnecessary quest data.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="process-flowcharts">Process Flowcharts:</h4>
+
+<h5 id="accepting-a-quest">Accepting a Quest:</h5>
+<ul>
+  <li>when a Game Server Instance is started, it requests all relevant Quest metadata from the Questing API</li>
+  <li>when a Character connects to a Game Server Instance, the GSI requests the Character’s:
+    <ul>
+      <li>Player Data (which includes On-Going Quest Data)</li>
+      <li>Story Quest Progress for Main Story and Class Stories
+        <ul>
+          <li>This is only done if the Character has just Logged In (and not just moving to a new area)</li>
+        </ul>
+      </li>
+      <li>List of Character’s completed Side Quests in the current Area</li>
+    </ul>
+  </li>
+  <li>The Game Server Instance sends all relevant Game Data to the Client</li>
+  <li>When the Client loads in the map and NPC’s
+    <ul>
+      <li>each NPC will contain information for all of their available quests</li>
+      <li>The Client will iterate through the NPC’s quests and check with their Side Quest progress to check if the NPC is offering any available/acceptable quests</li>
+    </ul>
+  </li>
+  <li>In the Client Side:
+    <ul>
+      <li>The Character can walk up to the NPC or click on the NPC to open up the quest dialogue</li>
+      <li>Clicking the “Accept Quest” button at the end of the dialogue sends an “Accept Quest” message to the Game Server Instance</li>
+    </ul>
+  </li>
+  <li>The Game Server Instance sends an API request to the Questing API to update and verify that the character can accept the quest.</li>
+  <li>The Game Server Instance responds back to the Client with an OK on accepting the quest
+    <ul>
+      <li>both the Game Server Instance and Client can then update their Character’s “On-Going Quests” Data field and recalculate the Status of NPC’s in the area.</li>
+    </ul>
+  </li>
+</ul>
 
 <p><br /></p>
 
