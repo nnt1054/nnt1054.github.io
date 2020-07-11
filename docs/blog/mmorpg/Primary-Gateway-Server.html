@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google" content="notranslate" />
 
-  <title>Neil Toledo - Project Overview</title>
-  <meta name="description" content="Project Goal:  The goal of this project is to build a scalable 2D MMORPG game and server">
+  <title>Neil Toledo - Primary Gateway Server</title>
+  <meta name="description" content="Description:The Primary Gateway Server is the main point that the client connects to first and is responsible for managing authenticated and logged in client...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -28,8 +28,8 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 <!--   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Project Overview</h1>
-    <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
+    <h1 class="post-title" itemprop="name headline">Primary Gateway Server</h1>
+    <p class="post-meta"><time datetime="2020-06-14T00:00:00-07:00" itemprop="datePublished">Jun 14, 2020</time></p>
   </header> -->
 
     <link rel="stylesheet" href="/assets/css/documentation.css">
@@ -451,36 +451,92 @@
 
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
-                <h1 class="post-title" itemprop="name headline">Project Overview</h1>
-                <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
+                <h1 class="post-title" itemprop="name headline">Primary Gateway Server</h1>
+                <p class="post-meta"><time datetime="2020-06-14T00:00:00-07:00" itemprop="datePublished">Jun 14, 2020</time></p>
             </header>
-            <h3 id="project-goal">Project Goal:</h3>
+            <h4 id="description">Description:</h4>
+<p>The Primary Gateway Server is the main point that the client connects to first and is responsible for managing authenticated and logged in clients.  The primary server is also resposnsible for redirecting the client to the proper game server instances.</p>
+
+<h4 id="features">Features:</h4>
 <ul>
-  <li>The goal of this project is to build a scalable 2D MMORPG game and server</li>
+  <li>Web Server that serves the landing page and client side code</li>
+  <li>Authenticates the Client using Google Identity Platform</li>
+  <li>Maintains list of logged in Accounts (via Redis instance)
+    <ul>
+      <li>also includes information for logged in Character and Character’s current location</li>
+      <li>also handles Session Management for authenticated users</li>
+    </ul>
+  </li>
+  <li>Connects Client to the proper Game Server Instance on Log In</li>
 </ul>
 
-<h3 id="roadmap">Roadmap(?):</h3>
+<h4 id="tools">Tools</h4>
 <ul>
-  <li><a href="/blog/mmorpg/CICD-Overview">CI/CD System</a> - DONE</li>
-  <li>Backend Game Server/Client</li>
-  <li>Implement and code the actual game</li>
+  <li>Express.js</li>
+  <li>Socket.io
+    <ul>
+      <li>primarily used to relay game server instance entry points to the Client</li>
+    </ul>
+  </li>
+  <li>Redis
+    <ul>
+      <li>for Session Management</li>
+      <li>for keeping track of logged in Accounts and Characters</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="technical-challenges">Technical Challenge(s):</h3>
+<h4 id="process-flowcharts">Process Flowcharts</h4>
+
+<p class="column"><a href="/assets/images/mmorpg_pictures/low-spec-diagram.jpg"><img src="/assets/images/mmorpg_pictures/low-spec-diagram.jpg" alt="low_spec_diagram" style="width: 100%" /></a></p>
+
+<h5 id="logging-in-a-user">Logging in a User:</h5>
 <ul>
-  <li>Creating a scalable game server where in-game regions/chunks are divided among several (horizontally scaling) server instances</li>
-  <li>Creating portable code for both the application and its CICD/Infrastructure Services</li>
+  <li>Primary Gateway Server serves website to the User/Client</li>
+  <li>User logs in via a Google Auth Link
+    <ul>
+      <li>User stores the session token in Cache</li>
+      <li>Sends a login request to the Primary Gateway Server</li>
+    </ul>
+  </li>
+  <li>Primary Gateway Server authenticates the User and creates a sticky session
+    <ul>
+      <li>Server makes request to the Account API for a list of the User’s Characters</li>
+    </ul>
+  </li>
+  <li>User sends a request oh which Character they’d like to login as
+    <ul>
+      <li>User is redirected to the <code class="highlighter-rouge">/game</code> subpath and establishes a websocket connection with the Primary Game Server</li>
+    </ul>
+  </li>
+  <li>Primary Server sends an API request to the Character Data API for selected Character’s last known in game location.
+    <ul>
+      <li>Primary Server sends a request to the Server Manager for entry point to the specified in-game location’s Game Server Instance</li>
+      <li>Primary Server adds an entry/row to the <code class="highlighter-rouge">Logged In Users/Characters</code> Redis database.</li>
+      <li>Primary Server pings the Game Server and instructs it to ‘prepare a connection’ with the current Client logging in</li>
+      <li>Primary Server responds to the Client with the entry point</li>
+    </ul>
+  </li>
+  <li>Client establishes a websocket connection with the Game Server Instance with a “Logging In” tag
+    <ul>
+      <li>Client creates a websocket connection with the Social Services Server</li>
+      <li>Client requests required game assets from the CDN Assets Server</li>
+    </ul>
+  </li>
+  <li>Game Server adds the Client’s Character Object to the game</li>
 </ul>
 
-<h3 id="personal-objectives-for-me-neil-toledo">Personal Objectives (for me, Neil Toledo):</h3>
+<h5 id="logging-out-a-user">Logging out a User:</h5>
 <ul>
-  <li>gain a better understanding of networking architecture and implementation with emphasis on newer modern technologies (Kubernetes)</li>
-  <li>become more proficient in writing technical documentation</li>
-  <li>become more proficient in full stack engineering by improving my skills in</li>
-  <li>networking technologies and client/server communication</li>
-  <li>infrastructure orchestration</li>
-  <li>game design and development</li>
+  <li>Client sends logout request to the Game Server Instance, Primary Server and Social Services Server
+    <ul>
+      <li>OR be signaled on websocket connection disconnect/close</li>
+    </ul>
+  </li>
+  <li>Primary Server removes the User’s <code class="highlighter-rouge">Logged In</code> entry from its Redis database.</li>
 </ul>
+
+<p><br /></p>
 
         </div>
 

@@ -29,7 +29,7 @@
 
 <!--   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Game Server Instance</h1>
-    <p class="post-meta"><time datetime="2020-06-30T00:00:00-07:00" itemprop="datePublished">Jun 30, 2020</time></p>
+    <p class="post-meta"><time datetime="2020-06-12T00:00:00-07:00" itemprop="datePublished">Jun 12, 2020</time></p>
   </header> -->
 
     <link rel="stylesheet" href="/assets/css/documentation.css">
@@ -186,6 +186,18 @@
                     
                 
                     
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
                         <a href="/blog/mmorpg/mmorpg-project-overview"> • Project Overview </a>
                     
                 
@@ -210,53 +222,20 @@
                     
 
                     
-                    <span> Component Documents </span>
-                    <ul class='nav-page-list'>
-                    
-                        
-                            <a href="/blog/mmorpg/Server-Manager"> • Server Manager </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Gateway-Server"> • Gateway Server </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Game-Server-Instance"> • Game Server Instance </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Game-Client"> • Game Client </a>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    </ul>
-                    
-
-                
-                    
-                    
-
-                    
-
-                    
                     <span> Software Architecture </span>
                     <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -296,8 +275,138 @@
                     
 
                     
+                    <span> Component Design Documents </span>
+                    <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Client"> • Game Client </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Primary-Gateway-Server"> • Primary Gateway Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Server-Manager"> • Server Manager </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Server-Instance"> • Game Server Instance </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Social-Services-Server"> • Social API Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Account-Data-API"> • Account Data API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Character-Data-API"> • Character Data API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Questing-API"> • Questing API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/CDN-Asset-Server"> • CDN Asset Server </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    </ul>
+                    
+
+                
+                    
+                    
+
+                    
+
+                    
+                    <span> Game Design Documents </span>
+                    <ul class='nav-page-list'>
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Design-Overview"> • Game Design Overview </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    </ul>
+                    
+
+                
+                    
+                    
+
+                    
+
+                    
                     <span> CI/CD and Infrastructure </span>
                     <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -343,16 +452,13 @@
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
                 <h1 class="post-title" itemprop="name headline">Game Server Instance</h1>
-                <p class="post-meta"><time datetime="2020-06-30T00:00:00-07:00" itemprop="datePublished">Jun 30, 2020</time></p>
+                <p class="post-meta"><time datetime="2020-06-12T00:00:00-07:00" itemprop="datePublished">Jun 12, 2020</time></p>
             </header>
             <p><a href="https://github.com/nnt1054/mmorpg-helm-api">Github</a></p>
 
 <h4 id="description">Description:</h4>
 <p>A small express application running in the server that updates the helmsman deployment went triggered.
 When the <code class="highlighter-rouge">/apply</code> endpoint of the server is pinged, the API searches for a <code class="highlighter-rouge">helmsman-cronjob</code> object on the server and creates a new kubernetes job using the cronjob’s stored job template.  The kubernetes job will make a <code class="highlighter-rouge">helmsman --apply -f &lt; dss &gt;.yaml</code> call and apply helm chart updates to the cluster.</p>
-
-<h4 id="purpose">Purpose:</h4>
-<p>The purpose of this server is to help with Continous Delivery, specifically with reflecting updates to helm charts in the cluster deployment.</p>
 
 <p><br /></p>
 

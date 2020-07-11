@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google" content="notranslate" />
 
-  <title>Neil Toledo - Project Overview</title>
-  <meta name="description" content="Project Goal:  The goal of this project is to build a scalable 2D MMORPG game and server">
+  <title>Neil Toledo - Social API Server</title>
+  <meta name="description" content="GithubDescription:The Social API Server is in charge of faciliating all inter-character communication and interaction.Features:  Maintains Character Search R...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -28,8 +28,8 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 <!--   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Project Overview</h1>
-    <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
+    <h1 class="post-title" itemprop="name headline">Social API Server</h1>
+    <p class="post-meta"><time datetime="2020-06-11T00:00:00-07:00" itemprop="datePublished">Jun 11, 2020</time></p>
   </header> -->
 
     <link rel="stylesheet" href="/assets/css/documentation.css">
@@ -451,36 +451,99 @@
 
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
-                <h1 class="post-title" itemprop="name headline">Project Overview</h1>
-                <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
+                <h1 class="post-title" itemprop="name headline">Social API Server</h1>
+                <p class="post-meta"><time datetime="2020-06-11T00:00:00-07:00" itemprop="datePublished">Jun 11, 2020</time></p>
             </header>
-            <h3 id="project-goal">Project Goal:</h3>
+            <p><a href="https://github.com/nnt1054/mmorpg-helm-api">Github</a></p>
+
+<h4 id="description">Description:</h4>
+<p>The Social API Server is in charge of faciliating all inter-character communication and interaction.</p>
+
+<h4 id="features">Features:</h4>
 <ul>
-  <li>The goal of this project is to build a scalable 2D MMORPG game and server</li>
+  <li>Maintains Character Search Records for currently Logged In Characters
+    <ul>
+      <li>Name, Log In Status, Current Location, Current Class/Job, Guild/Company</li>
+      <li>Note: There is a difference between Character Search Records and Charcter Data.  Search Records only include a sparse amount of information about the Character but does include their current location.</li>
+    </ul>
+  </li>
+  <li>Handles Non-Proximity based Chatting
+    <ul>
+      <li>Includes Direct Messages, Party Chat, Guild Chat, Linkshells</li>
+      <li>Does NOT include Local Chat</li>
+    </ul>
+  </li>
+  <li>Handles Party System and Guild System</li>
 </ul>
 
-<h3 id="roadmap">Roadmap(?):</h3>
+<h4 id="tools">Tools:</h4>
 <ul>
-  <li><a href="/blog/mmorpg/CICD-Overview">CI/CD System</a> - DONE</li>
-  <li>Backend Game Server/Client</li>
-  <li>Implement and code the actual game</li>
+  <li>Express.js</li>
+  <li>Socket.io
+    <ul>
+      <li>Redis-Adapter</li>
+    </ul>
+  </li>
+  <li>Redis</li>
 </ul>
 
-<h3 id="technical-challenges">Technical Challenge(s):</h3>
+<h4 id="process-flowcharts">Process Flowcharts:</h4>
+
+<h5 id="sending-a-direct-message">Sending a Direct Message</h5>
 <ul>
-  <li>Creating a scalable game server where in-game regions/chunks are divided among several (horizontally scaling) server instances</li>
-  <li>Creating portable code for both the application and its CICD/Infrastructure Services</li>
+  <li>When a Character logs in and connects to the Game Server, the Client also creates a websocket connection with the Social API Server</li>
+  <li>On Client connect, the client joins a Socket.io room name “DM:@charactername”
+    <ul>
+      <li>The Client also joins additional Socket.io room: “guild:@guildname”, “linkshell:@linkshellID”</li>
+      <li>On forming a party, the Client will also subscribe to a room; “party:@partyID”</li>
+    </ul>
+  </li>
+  <li>Client sends a Socket.io message to the Social API Service with the string: “/dm @lambseel here is my message”</li>
+  <li>The Social API Service will parse the message to: “/dm”, “@lambseel”, “here is my message”</li>
+  <li>Social API Server will check if the room “dm:lambseel” exists
+    <ul>
+      <li>If the room does not exist, respond back to the Client that the user is offline</li>
+    </ul>
+  </li>
+  <li>Social API Server will make a call: <code class="highlighter-rouge">socket.to(dm:lambseel, "here is my message")</code>
+    <ul>
+      <li>redis-adapter publishes message events to all Social API Server pods</li>
+      <li>If a Social API Server Pod has a socket connection thats subscribed to a “dm:lambseel” room, then that Pod sends a message through that socket to User lambseel’s chat Client.</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="personal-objectives-for-me-neil-toledo">Personal Objectives (for me, Neil Toledo):</h3>
+<h4 id="proximity-chat-game-server-instance">Proximity Chat (Game Server Instance):</h4>
 <ul>
-  <li>gain a better understanding of networking architecture and implementation with emphasis on newer modern technologies (Kubernetes)</li>
-  <li>become more proficient in writing technical documentation</li>
-  <li>become more proficient in full stack engineering by improving my skills in</li>
-  <li>networking technologies and client/server communication</li>
-  <li>infrastructure orchestration</li>
-  <li>game design and development</li>
+  <li>Client sends a chat message to the Game Server Instance</li>
+  <li>Game Server Instance emits that message to all of its active websocket connections</li>
 </ul>
+
+<h4 id="getting-character-search-record">Getting Character Search Record</h4>
+<ul>
+  <li>on Client connect, the Social API Server will make an API request to the Character Data API</li>
+  <li>the Social API Server will then create a Search Record Entry of the Character’s Data</li>
+</ul>
+
+<h4 id="udpating-location-in-character-search-record">Udpating Location in Character Search Record</h4>
+<ul>
+  <li>on Client connect to a Game Server Instance, the Game Server Instance will send an API request to the Social API Server with the Character’s new location</li>
+  <li>the Social API Server updates the Search Record’s Location field for that Character in the Redis database</li>
+</ul>
+
+<h4 id="getting-status-of-characters-on-friends-list">Getting Status of Characters on Friends List</h4>
+<ul>
+  <li>the Client should have their Friends List cache/stored locally</li>
+  <li>the Client sends a GET API request to the Social API Server with a list of Characters on their Friends List</li>
+  <li>the Social API Server just grabs the Search Records for each Character in the list
+    <ul>
+      <li>If the Character is not in the Search Recrods, then they are assumed to be offline</li>
+    </ul>
+  </li>
+  <li>the Social API Server responds back to the client with the results</li>
+</ul>
+
+<p><br /></p>
 
         </div>
 

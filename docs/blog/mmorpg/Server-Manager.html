@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Server Manager</title>
-  <meta name="description" content="GithubDescription:A small express application running in the server that updates the helmsman deployment went triggered.When the /apply endpoint of the serve...">
+  <meta name="description" content="Description:The Server Manager keeps track of the fleet of Game Server Instances and actively maintains a map of in-game locations to its corresponding Game ...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -29,7 +29,7 @@
 
 <!--   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Server Manager</h1>
-    <p class="post-meta"><time datetime="2020-06-30T00:00:00-07:00" itemprop="datePublished">Jun 30, 2020</time></p>
+    <p class="post-meta"><time datetime="2020-06-13T00:00:00-07:00" itemprop="datePublished">Jun 13, 2020</time></p>
   </header> -->
 
     <link rel="stylesheet" href="/assets/css/documentation.css">
@@ -186,6 +186,18 @@
                     
                 
                     
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
                         <a href="/blog/mmorpg/mmorpg-project-overview"> • Project Overview </a>
                     
                 
@@ -210,53 +222,20 @@
                     
 
                     
-                    <span> Component Documents </span>
-                    <ul class='nav-page-list'>
-                    
-                        
-                            <a href="/blog/mmorpg/Server-Manager"> • Server Manager </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Gateway-Server"> • Gateway Server </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Game-Server-Instance"> • Game Server Instance </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Game-Client"> • Game Client </a>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    </ul>
-                    
-
-                
-                    
-                    
-
-                    
-
-                    
                     <span> Software Architecture </span>
                     <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -296,8 +275,138 @@
                     
 
                     
+                    <span> Component Design Documents </span>
+                    <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Client"> • Game Client </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Primary-Gateway-Server"> • Primary Gateway Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Server-Manager"> • Server Manager </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Server-Instance"> • Game Server Instance </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Social-Services-Server"> • Social API Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Account-Data-API"> • Account Data API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Character-Data-API"> • Character Data API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Questing-API"> • Questing API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/CDN-Asset-Server"> • CDN Asset Server </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    </ul>
+                    
+
+                
+                    
+                    
+
+                    
+
+                    
+                    <span> Game Design Documents </span>
+                    <ul class='nav-page-list'>
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Design-Overview"> • Game Design Overview </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    </ul>
+                    
+
+                
+                    
+                    
+
+                    
+
+                    
                     <span> CI/CD and Infrastructure </span>
                     <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -343,16 +452,92 @@
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
                 <h1 class="post-title" itemprop="name headline">Server Manager</h1>
-                <p class="post-meta"><time datetime="2020-06-30T00:00:00-07:00" itemprop="datePublished">Jun 30, 2020</time></p>
+                <p class="post-meta"><time datetime="2020-06-13T00:00:00-07:00" itemprop="datePublished">Jun 13, 2020</time></p>
             </header>
-            <p><a href="https://github.com/nnt1054/mmorpg-helm-api">Github</a></p>
+            <h4 id="description">Description:</h4>
+<p>The Server Manager keeps track of the fleet of Game Server Instances and actively maintains a map of in-game locations to its corresponding Game Server Instance.  The Server Manager is also in charge of manually scaling the number of Game Server Instances up and down as needed.
+The Server Manager is important since Game Server Instances are ephemeral are responsible for only their specified in-game location, so a controller/manager service is necessary in order to respond to requests for entry points to the Game Server Instances for specified in-game locations.</p>
 
-<h4 id="description">Description:</h4>
-<p>A small express application running in the server that updates the helmsman deployment went triggered.
-When the <code class="highlighter-rouge">/apply</code> endpoint of the server is pinged, the API searches for a <code class="highlighter-rouge">helmsman-cronjob</code> object on the server and creates a new kubernetes job using the cronjob’s stored job template.  The kubernetes job will make a <code class="highlighter-rouge">helmsman --apply -f &lt; dss &gt;.yaml</code> call and apply helm chart updates to the cluster.</p>
+<h4 id="features">Features:</h4>
+<ul>
+  <li>responds to requests for the entrypoint/websocket subpath for a Game Server Instance given an in-game location</li>
+  <li>creates/adds new Game Server Instances when necessary and instructs them of which in-game area they’re responsible for</li>
+  <li>receives messages from Game Server Instances when the instances want to shutdown due to inactive activity</li>
+  <li>periodically pings each Game Server Instance for health checks</li>
+</ul>
 
-<h4 id="purpose">Purpose:</h4>
-<p>The purpose of this server is to help with Continous Delivery, specifically with reflecting updates to helm charts in the cluster deployment.</p>
+<h4 id="tools">Tools</h4>
+<ul>
+  <li>Express.js
+    <ul>
+      <li>respond to game server instance entry point requests</li>
+      <li>listen for game server instance shutdowns</li>
+    </ul>
+  </li>
+  <li>Redis
+    <ul>
+      <li>for mapping in-game locations to Game Server Instance entry points</li>
+    </ul>
+  </li>
+  <li>Kubernetes API
+    <ul>
+      <li>used to scale the number of replicas in the Game Servers’ StatefulSet</li>
+    </ul>
+  </li>
+  <li><a href="https://metacontroller.app/">MetaController</a>
+    <ul>
+      <li>used for creating Service and Ingress objects to expose each Game Server Instances created from the StatefulSet</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="process-flowcharts">Process Flowcharts</h4>
+
+<h5 id="responding-to-request-for-a-game-server-instance">Responding to Request for a Game Server Instance</h5>
+<ul>
+  <li>Receives request for an instance given an in-game map location</li>
+  <li>Checks Redis database to see if an instance for the in-game location already exists</li>
+  <li>If the instances does not already exist:
+    <ul>
+      <li>Check if any Game Server Instances are on <code class="highlighter-rouge">standby</code> status
+        <ul>
+          <li>If none exists, increase the number of replicas for the Game Servers’ StatefulSet</li>
+        </ul>
+      </li>
+      <li>Ping the <code class="highlighter-rouge">standby</code> Game Server Instance and allocate it to the requested in-game location</li>
+      <li>The Game Server Instance responds with an OK once they’ve properly configured themselves</li>
+      <li>The Server Manger then udpates the mapping in the Redis database</li>
+    </ul>
+  </li>
+  <li>Respond to request with the Game Server Instance’s entry point</li>
+</ul>
+
+<h5 id="creating-new-game-server-instance">Creating new Game Server Instance</h5>
+<ul>
+  <li>Using the Kubernetes API, we increase the number of replicas in the Game Servers’ Stateful Set</li>
+  <li>Increasing the replica count will create additional pods with the Game Server Instance Docker Image</li>
+  <li>Once the Pod has been created, the Metacontroller DecoratorController will create a corresponding Service and Ingress object for each new Pod</li>
+</ul>
+
+<h5 id="responding-to-game-server-instance-shutdown">Responding to Game Server Instance Shutdown</h5>
+<ul>
+  <li>The Server Manager is informed of a instance shutdown when:
+    <ul>
+      <li>a Game Server Instances sends a message to the Server Manager of its pending shutdown</li>
+      <li>when a Game Server Instances fails to respond to a ping/health check</li>
+    </ul>
+  </li>
+  <li>[TBD] Use Kuberentes API to shutdown the Pod and have the StatefulSet remake the Pod
+    <ul>
+      <li>When the Pod is restarted, it will restart into a <code class="highlighter-rouge">standby</code> status</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="downscaling-the-number-of-game-server-instances">Downscaling the Number of Game Server Instances</h5>
+<ul>
+  <li>[TBD] Need to figure out a way to transfer active connections from a high indexed Pod to a lower indexed pod when I want to prune inactive Game Server Instances</li>
+</ul>
 
 <p><br /></p>
 

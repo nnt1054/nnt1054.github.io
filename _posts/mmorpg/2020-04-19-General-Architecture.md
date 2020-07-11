@@ -33,27 +33,32 @@ This document describes the mmorpg's high-level architecture.
 
 * a primary server will handle the initial user authentication and keep record of active user sessions, since game servers are going to be somewhat "ephemeral"
 
-#### Components and Interfaces
-
-* frontend/client
-
-* primary server
-
-* server manager
-
-* game servers
-
-* social services
-	* party, guild, private messages
-
-* player data service(s)
-	* tbd
-	* this is used for storage individual player/character relevant data such as levels/stats
-	* might make a separate inventory service
-
-
+##### Revision 1
 [![l2_diagram](/assets/images/mmorpg_pictures/l2-diagram.png){: style="width: 100%"}](/assets/images/mmorpg_pictures/l2-diagram.png)
 {: class="column"}
 
+##### Revision 2
+[![low_spec_diagram](/assets/images/mmorpg_pictures/low-spec-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/low-spec-diagram.jpg)
+{: class="column"}
+
+
+#### Components and Interfaces
+
+* client
+
+* primary gateway server
+
+* server manager
+
+* account data API
+
+* game server instnaces
+
+* social services server
+	* party, guild, private messages
+
+* player data API
+
+* questing API
 
 <br/>

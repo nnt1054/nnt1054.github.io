@@ -186,6 +186,18 @@
                     
                 
                     
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
                         <a href="/blog/mmorpg/mmorpg-project-overview"> • Project Overview </a>
                     
                 
@@ -210,53 +222,20 @@
                     
 
                     
-                    <span> Component Documents </span>
-                    <ul class='nav-page-list'>
-                    
-                        
-                            <a href="/blog/mmorpg/Server-Manager"> • Server Manager </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Gateway-Server"> • Gateway Server </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Game-Server-Instance"> • Game Server Instance </a>
-                        
-                    
-                        
-                            <a href="/blog/mmorpg/Game-Client"> • Game Client </a>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    </ul>
-                    
-
-                
-                    
-                    
-
-                    
-
-                    
                     <span> Software Architecture </span>
                     <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -296,8 +275,138 @@
                     
 
                     
+                    <span> Component Design Documents </span>
+                    <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Client"> • Game Client </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Primary-Gateway-Server"> • Primary Gateway Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Server-Manager"> • Server Manager </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Server-Instance"> • Game Server Instance </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Social-Services-Server"> • Social API Server </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Account-Data-API"> • Account Data API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Character-Data-API"> • Character Data API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/Questing-API"> • Questing API </a>
+                        
+                    
+                        
+                            <a href="/blog/mmorpg/CDN-Asset-Server"> • CDN Asset Server </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    </ul>
+                    
+
+                
+                    
+                    
+
+                    
+
+                    
+                    <span> Game Design Documents </span>
+                    <ul class='nav-page-list'>
+                    
+                        
+                            <a href="/blog/mmorpg/Game-Design-Overview"> • Game Design Overview </a>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    </ul>
+                    
+
+                
+                    
+                    
+
+                    
+
+                    
                     <span> CI/CD and Infrastructure </span>
                     <ul class='nav-page-list'>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -398,36 +507,40 @@
   </li>
 </ul>
 
+<h5 id="revision-1">Revision 1</h5>
+<p class="column"><a href="/assets/images/mmorpg_pictures/l2-diagram.png"><img src="/assets/images/mmorpg_pictures/l2-diagram.png" alt="l2_diagram" style="width: 100%" /></a></p>
+
+<h5 id="revision-2">Revision 2</h5>
+<p class="column"><a href="/assets/images/mmorpg_pictures/low-spec-diagram.jpg"><img src="/assets/images/mmorpg_pictures/low-spec-diagram.jpg" alt="low_spec_diagram" style="width: 100%" /></a></p>
+
 <h4 id="components-and-interfaces">Components and Interfaces</h4>
 
 <ul>
   <li>
-    <p>frontend/client</p>
+    <p>client</p>
   </li>
   <li>
-    <p>primary server</p>
+    <p>primary gateway server</p>
   </li>
   <li>
     <p>server manager</p>
   </li>
   <li>
-    <p>game servers</p>
+    <p>account data API</p>
   </li>
-  <li>social services
+  <li>
+    <p>game server instnaces</p>
+  </li>
+  <li>social services server
     <ul>
       <li>party, guild, private messages</li>
     </ul>
   </li>
-  <li>player data service(s)
-    <ul>
-      <li>tbd</li>
-      <li>this is used for storage individual player/character relevant data such as levels/stats</li>
-      <li>might make a separate inventory service</li>
-    </ul>
+  <li>
+    <p>player data API</p>
   </li>
+  <li>questing API</li>
 </ul>
-
-<p class="column"><a href="/assets/images/mmorpg_pictures/l2-diagram.png"><img src="/assets/images/mmorpg_pictures/l2-diagram.png" alt="l2_diagram" style="width: 100%" /></a></p>
 
 <p><br /></p>
 
