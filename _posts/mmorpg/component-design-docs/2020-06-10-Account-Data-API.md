@@ -5,9 +5,9 @@ category: mmorpg
 tag: Component Design Documents
 ---
 
-
 #### Description:
 The Account Data API is just used to store Account information.
+What's the difference between a service account and a user account?
 
 #### Data Design:
 * Google Auth ID
@@ -18,6 +18,5 @@ The Account Data API is just used to store Account information.
 #### Tools:
 * Express.js
 * PostgreSQL
-
 
 <br/>

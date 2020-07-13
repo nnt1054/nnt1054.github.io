@@ -5,13 +5,12 @@ category: mmorpg
 tag: Component Design Documents
 ---
 
-[Github](https://github.com/nnt1054/mmorpg-helm-api)
-
 #### Description:
-A small express application running in the server that updates the helmsman deployment went triggered.
-When the `/apply` endpoint of the server is pinged, the API searches for a `helmsman-cronjob` object on the server and creates a new kubernetes job using the cronjob's stored job template.  The kubernetes job will make a `helmsman --apply -f < dss >.yaml` call and apply helm chart updates to the cluster.
-
-
-
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 <br/>

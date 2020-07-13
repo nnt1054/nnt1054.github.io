@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Social API Server</title>
-  <meta name="description" content="GithubDescription:The Social API Server is in charge of faciliating all inter-character communication and interaction.Features:  Maintains Character Search R...">
+  <meta name="description" content="Description:The Social API Server is in charge of faciliating all inter-character communication and interaction.Features:  Maintains Character Search Records...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -454,9 +454,7 @@
                 <h1 class="post-title" itemprop="name headline">Social API Server</h1>
                 <p class="post-meta"><time datetime="2020-06-11T00:00:00-07:00" itemprop="datePublished">Jun 11, 2020</time></p>
             </header>
-            <p><a href="https://github.com/nnt1054/mmorpg-helm-api">Github</a></p>
-
-<h4 id="description">Description:</h4>
+            <h4 id="description">Description:</h4>
 <p>The Social API Server is in charge of faciliating all inter-character communication and interaction.</p>
 
 <h4 id="features">Features:</h4>
@@ -513,25 +511,25 @@
   </li>
 </ul>
 
-<h4 id="proximity-chat-game-server-instance">Proximity Chat (Game Server Instance):</h4>
+<h5 id="proximity-chat-game-server-instance">Proximity Chat (Game Server Instance):</h5>
 <ul>
   <li>Client sends a chat message to the Game Server Instance</li>
   <li>Game Server Instance emits that message to all of its active websocket connections</li>
 </ul>
 
-<h4 id="getting-character-search-record">Getting Character Search Record</h4>
+<h5 id="getting-character-search-record">Getting Character Search Record</h5>
 <ul>
   <li>on Client connect, the Social API Server will make an API request to the Character Data API</li>
   <li>the Social API Server will then create a Search Record Entry of the Character’s Data</li>
 </ul>
 
-<h4 id="udpating-location-in-character-search-record">Udpating Location in Character Search Record</h4>
+<h5 id="udpating-location-in-character-search-record">Udpating Location in Character Search Record</h5>
 <ul>
   <li>on Client connect to a Game Server Instance, the Game Server Instance will send an API request to the Social API Server with the Character’s new location</li>
   <li>the Social API Server updates the Search Record’s Location field for that Character in the Redis database</li>
 </ul>
 
-<h4 id="getting-status-of-characters-on-friends-list">Getting Status of Characters on Friends List</h4>
+<h5 id="getting-status-of-characters-on-friends-list">Getting Status of Characters on Friends List</h5>
 <ul>
   <li>the Client should have their Friends List cache/stored locally</li>
   <li>the Client sends a GET API request to the Social API Server with a list of Characters on their Friends List</li>
