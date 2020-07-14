@@ -428,7 +428,7 @@ The actual scripting and coding of actual Quest objects are however still TBD</p
   <li>On-Going quest data however will be stored in the Character Data since those are necessary to track quest progress and are subject to changes more often.</li>
   <li>The main queries that the Questing API will be receiving are for a list of all quests completed by a Character given out in a specific area.
     <ul>
-      <li>assuming this will be stored using NoSQL again, the query would look similar to: <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"characterID"</span><span class="p">:</span><span class="w"> </span><span class="err">lambseel</span><span class="s2">", "</span><span class="err">area</span><span class="s2">": "</span><span class="err">area</span><span class="mi">01</span><span class="err">"</span><span class="p">}</span></code></li>
+      <li>assuming this will be stored using NoSQL again, the query would look similar to: <code class="highlighter-rouge">{"characterID": lambseel", "area": "area01"}</code></li>
     </ul>
   </li>
   <li>The MSQ and Side Quests differentiation was necessary since we need to be able to track MSQ quests from anywhere in the in-game world, while Side Quests are only relevant to the area they’re assigned.  This way:

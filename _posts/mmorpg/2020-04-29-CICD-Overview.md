@@ -29,7 +29,7 @@ A general theme/goal of the project was to create a "portable" CI/CD system that
 	* the same cycle will repeat with the polling server and keel.sh, except using the new semver tag and will upgrade the production deployment.
 
 #### Helm Chart Updates
-1. Once the developerse have ensured their updates are working in their local environment, they can make a PR and merge their helm chart updates to the master/prod github branch.
+1. Once the developers have ensured their updates are working in their local environment, they can make a PR and merge their helm chart updates to the master/prod github branch.
 	* (more on github repo structure later)
 2. After merging, the developers can run `helm push <github-repo> --version staging`, which will package and push the new helm chart to the chartmuseum repository.
 3. The Polling Server will detect the helm chart version, and will ping the `/apply` endpoint of the running Helm API.
