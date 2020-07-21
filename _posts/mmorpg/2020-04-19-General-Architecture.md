@@ -6,7 +6,7 @@ category: mmorpg
 
 This document describes the mmorpg's high-level architecture.
 
-[![architecture_diagram](/assets/images/mmorpg_pictures/architecture-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/l2-diagram.png)
+[![architecture_diagram](/assets/images/mmorpg_pictures/architecture-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/architecture-diagram.jpg)
 {: class="column"}
 
 #### Architectural Overview
