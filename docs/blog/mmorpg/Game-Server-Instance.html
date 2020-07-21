@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - Game Server Instance</title>
-  <meta name="description" content="GithubDescription:A small express application running in the server that updates the helmsman deployment went triggered.When the /apply endpoint of the serve...">
+  <meta name="description" content="Description:The Game Server is the actual application that clients connect to and it runs the actual game engine and logic.  The Game Server receives input f...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -402,11 +402,54 @@
                 <h1 class="post-title" itemprop="name headline">Game Server Instance</h1>
                 <p class="post-meta"><time datetime="2020-06-12T00:00:00-07:00" itemprop="datePublished">Jun 12, 2020</time></p>
             </header>
-            <p><a href="https://github.com/nnt1054/mmorpg-helm-api">Github</a></p>
+            <h4 id="description">Description:</h4>
 
-<h4 id="description">Description:</h4>
-<p>A small express application running in the server that updates the helmsman deployment went triggered.
-When the <code class="highlighter-rouge">/apply</code> endpoint of the server is pinged, the API searches for a <code class="highlighter-rouge">helmsman-cronjob</code> object on the server and creates a new kubernetes job using the cronjob’s stored job template.  The kubernetes job will make a <code class="highlighter-rouge">helmsman --apply -f &lt; dss &gt;.yaml</code> call and apply helm chart updates to the cluster.</p>
+<p>The Game Server is the actual application that clients connect to and it runs the actual game engine and logic.  The Game Server receives input from its connected clients and runs and update/draw loop without the “draw” portion and sends game updates back to each user.  The server is also responsible for applying physics, collisions and running Mobs/NPC AI’s.  Each Game Server Instance is in charge of one geological area in the in-game world.</p>
+
+<h4 id="features">Features:</h4>
+
+<ul>
+  <li>handles websocket connections with the User
+    <ul>
+      <li>Either the server manager or another game server instance must inform the game server beforehand of any upcoming client connections</li>
+      <li>prepares for a pending client connection by querying the user’s relevant data
+        <ul>
+          <li>makes a request to the Character Data API and Quest Data API</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>receives and processes client inputs and sends game state updates back to the user</li>
+  <li>maintains an IDLE state on startup until the server manager allocates the server to run a specific in-game area</li>
+  <li>informs adjacent game server instances of clients moving out of the current area to theirs</li>
+  <li>can transfer game state and all connected clients to another copy of the game server</li>
+</ul>
+
+<h4 id="tools">Tools:</h4>
+<ul>
+  <li>mini5-engine
+    <ul>
+      <li>javascript “game engine” update/draw loop</li>
+    </ul>
+  </li>
+  <li>Socket.io
+    <ul>
+      <li>handles connections with the User</li>
+      <li>CAN be replaced with the WebRTC data pipeline later down the road</li>
+    </ul>
+  </li>
+  <li>Express.js
+    <ul>
+      <li>for providing endpoints for the server manager and other game server instances</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="process-flowcharts">Process Flowcharts:</h4>
+
+<h5 id="receiving-input-from-users">Receiving Input from Users:</h5>
+
+<p>So this description is still going to be a WIP since the game engine itself is still unfinished.  The socket.onmessage() function will append any messages to an event stack attached to the game server.  The event stack will be ingested and cleared afterwards by the game server for every update loop.  The formatting of messages will be decided during implementation.</p>
 
 <p><br /></p>
 

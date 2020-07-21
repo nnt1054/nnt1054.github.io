@@ -8,7 +8,7 @@
   <meta name="google" content="notranslate" />
 
   <title>Neil Toledo - General Architecture</title>
-  <meta name="description" content="This document describes the mmorpg’s high-level architecture.Problem  I wanted the architecture to follow a microservices pattern for serveral reasons       ...">
+  <meta name="description" content="This document describes the mmorpg’s high-level architecture.Architectural Overview  the server manager handles creating and deleting game server instances a...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -404,8 +404,35 @@
             </header>
             <p>This document describes the mmorpg’s high-level architecture.</p>
 
-<h4 id="problem">Problem</h4>
+<p class="column"><a href="/assets/images/mmorpg_pictures/l2-diagram.png"><img src="/assets/images/mmorpg_pictures/architecture-diagram.jpg" alt="architecture_diagram" style="width: 100%" /></a></p>
 
+<h4 id="architectural-overview">Architectural Overview</h4>
+
+<ul>
+  <li>the server manager handles creating and deleting game server instances and assigning them to handle respective in-game map areas as needed in order to distribute the mmorpg over several pods</li>
+  <li>all the supplementary features such as chat api, social services, etc. will be handled as microservices</li>
+  <li>a primary gateway server will handle the user authentication using the Google Idenity Platform and keep record of active user sessions</li>
+</ul>
+
+<h4 id="components-and-interfaces">Components and Interfaces</h4>
+
+<ul>
+  <li>Game Client</li>
+  <li>Primary Gateway Server</li>
+  <li>Server Manager</li>
+  <li>Game Server Instances</li>
+  <li>Social API Service</li>
+  <li>Account Data API</li>
+  <li>Character Data API</li>
+  <li>Questing API
+    <ul>
+      <li>stores all Quest information</li>
+    </ul>
+  </li>
+  <li>CDN Asset-Server</li>
+</ul>
+
+<h4 id="design-considerations">Design Considerations:</h4>
 <ul>
   <li>I wanted the architecture to follow a microservices pattern for serveral reasons
     <ul>
@@ -416,44 +443,18 @@
           <li>ex: displaying character data and leaderboards on the landing page website outside of a running game server</li>
         </ul>
       </li>
-      <li>will be easier to add newer features to the project in the long term
-        <ul>
-          <li>monetization schemes maybe and what not</li>
-        </ul>
-      </li>
-      <li>transforms the game from being just a game to a “company infrstructure”</li>
-      <li>“it decouples the game’s components from each other, increasing versatility and maintanability” - moscowwbish
-        <ul>
-          <li>“and allows various components to be re-used for different purposes”</li>
-        </ul>
-      </li>
+      <li>will be easier to add newer features to the project in the long term</li>
     </ul>
   </li>
   <li>allows for instancing individual areas of the in-game world by separating them into different pods so the entire world is handled by one running process/CPU
     <ul>
       <li>resource optimization vs performance optimization vs network/bandwidth optimiztion</li>
-    </ul>
-  </li>
-  <li>list of alternatives:
-    <ul>
-      <li>layering</li>
+      <li>will also make it easier to create instanced areas and dungeons as a feature to the mmo</li>
     </ul>
   </li>
 </ul>
 
-<h4 id="architectural-overview">Architectural Overview</h4>
-
-<ul>
-  <li>
-    <p>the server manager handles and manages the actual game server instances, assigning instances to map areas, spinning up more instances and deleting some, and routes the players to their respective game server instances</p>
-  </li>
-  <li>
-    <p>all the supplementary features such as chat api, social services, etc. will be handled as microservices</p>
-  </li>
-  <li>
-    <p>a primary server will handle the initial user authentication and keep record of active user sessions, since game servers are going to be somewhat “ephemeral”</p>
-  </li>
-</ul>
+<h4 id="revisions">Revisions</h4>
 
 <h5 id="revision-1">Revision 1</h5>
 <p class="column"><a href="/assets/images/mmorpg_pictures/l2-diagram.png"><img src="/assets/images/mmorpg_pictures/l2-diagram.png" alt="l2_diagram" style="width: 100%" /></a></p>
@@ -461,33 +462,12 @@
 <h5 id="revision-2">Revision 2</h5>
 <p class="column"><a href="/assets/images/mmorpg_pictures/low-spec-diagram.jpg"><img src="/assets/images/mmorpg_pictures/low-spec-diagram.jpg" alt="low_spec_diagram" style="width: 100%" /></a></p>
 
-<h4 id="components-and-interfaces">Components and Interfaces</h4>
+<h5 id="revision-3">Revision 3</h5>
+<p class="column"><a href="/assets/images/mmorpg_pictures/architecture-diagram.jpg"><img src="/assets/images/mmorpg_pictures/architecture-diagram.jpg" alt="architecture_diagram" style="width: 100%" /></a></p>
 
+<h4 id="notesthoughts">Notes/Thoughts:</h4>
 <ul>
-  <li>
-    <p>client</p>
-  </li>
-  <li>
-    <p>primary gateway server</p>
-  </li>
-  <li>
-    <p>server manager</p>
-  </li>
-  <li>
-    <p>account data API</p>
-  </li>
-  <li>
-    <p>game server instnaces</p>
-  </li>
-  <li>social services server
-    <ul>
-      <li>party, guild, private messages</li>
-    </ul>
-  </li>
-  <li>
-    <p>player data API</p>
-  </li>
-  <li>questing API</li>
+  <li>I’m thinking of adding a Map Data API, so Game Server Instances don’t need to have a copy of ALL other Map details despite only being charge of one Map area.  The Server Manager would just send a Map ID to an idle Game Server, and then the Game Server would send a request to the Map Data API and set itself up based on the response.</li>
 </ul>
 
 <p><br /></p>

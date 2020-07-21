@@ -8,6 +8,9 @@ tag: Component Design Documents
 #### Description:
 The Social API Server is in charge of faciliating all inter-character communication and interaction.
 
+[![architecture_diagram](/assets/images/mmorpg_pictures/architecture-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/architecture-diagram.jpg)
+{: class="column"}
+
 #### Features:
 * Maintains Character Search Records for currently Logged In Characters
 	* Name, Log In Status, Current Location, Current Class/Job, Guild/Company
@@ -22,6 +25,10 @@ The Social API Server is in charge of faciliating all inter-character communicat
 * Socket.io
 	* Redis-Adapter
 * Redis
+
+[![redis-adapter](https://miro.medium.com/max/5352/1*eorR6ciIzJ_juxugxAfksQ.png){: style="width: 100%"}](https://miro.medium.com/max/5352/1*eorR6ciIzJ_juxugxAfksQ.png)
+{: class="column"}
+The diagram above is an example of how the Socket.io [redis-adapter](https://github.com/socketio/socket.io-redis) will function and broadcast messages between different running instances.
 
 #### Process Flowcharts:
 

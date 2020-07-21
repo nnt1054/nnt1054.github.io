@@ -6,32 +6,41 @@ category: mmorpg
 
 This document describes the mmorpg's high-level architecture.
 
-#### Problem
+[![architecture_diagram](/assets/images/mmorpg_pictures/architecture-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/l2-diagram.png)
+{: class="column"}
 
+#### Architectural Overview
+
+* the server manager handles creating and deleting game server instances and assigning them to handle respective in-game map areas as needed in order to distribute the mmorpg over several pods
+* all the supplementary features such as chat api, social services, etc. will be handled as microservices
+* a primary gateway server will handle the user authentication using the Google Idenity Platform and keep record of active user sessions
+
+#### Components and Interfaces
+
+* Game Client
+* Primary Gateway Server
+* Server Manager
+* Game Server Instances
+* Social API Service
+* Account Data API
+* Character Data API
+* Questing API
+	* stores all Quest information
+* CDN Asset-Server
+
+
+#### Design Considerations:
 * I wanted the architecture to follow a microservices pattern for serveral reasons
 	* easy for horizonatlly scaling individual features/aspects of the overall project
 	* easier to understand and read higher level/complicated architecture if its actually broken down into smaller microservices
 	* we might want separate services to be accessible outside of the context of the actual game
 		* ex: displaying character data and leaderboards on the landing page website outside of a running game server
 	* will be easier to add newer features to the project in the long term
-		* monetization schemes maybe and what not
-	* transforms the game from being just a game to a "company infrstructure"
-	* "it decouples the game's components from each other, increasing versatility and maintanability" - moscowwbish
-		* "and allows various components to be re-used for different purposes"
-
 * allows for instancing individual areas of the in-game world by separating them into different pods so the entire world is handled by one running process/CPU
 	* resource optimization vs performance optimization vs network/bandwidth optimiztion
+	* will also make it easier to create instanced areas and dungeons as a feature to the mmo
 
-* list of alternatives:
-	* layering
-
-#### Architectural Overview
-
-* the server manager handles and manages the actual game server instances, assigning instances to map areas, spinning up more instances and deleting some, and routes the players to their respective game server instances
-
-* all the supplementary features such as chat api, social services, etc. will be handled as microservices
-
-* a primary server will handle the initial user authentication and keep record of active user sessions, since game servers are going to be somewhat "ephemeral"
+#### Revisions
 
 ##### Revision 1
 [![l2_diagram](/assets/images/mmorpg_pictures/l2-diagram.png){: style="width: 100%"}](/assets/images/mmorpg_pictures/l2-diagram.png)
@@ -41,24 +50,11 @@ This document describes the mmorpg's high-level architecture.
 [![low_spec_diagram](/assets/images/mmorpg_pictures/low-spec-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/low-spec-diagram.jpg)
 {: class="column"}
 
+##### Revision 3
+[![architecture_diagram](/assets/images/mmorpg_pictures/architecture-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/architecture-diagram.jpg)
+{: class="column"}
 
-#### Components and Interfaces
-
-* client
-
-* primary gateway server
-
-* server manager
-
-* account data API
-
-* game server instnaces
-
-* social services server
-	* party, guild, private messages
-
-* player data API
-
-* questing API
+#### Notes/Thoughts:
+* I'm thinking of adding a Map Data API, so Game Server Instances don't need to have a copy of ALL other Map details despite only being charge of one Map area.  The Server Manager would just send a Map ID to an idle Game Server, and then the Game Server would send a request to the Map Data API and set itself up based on the response.
 
 <br/>

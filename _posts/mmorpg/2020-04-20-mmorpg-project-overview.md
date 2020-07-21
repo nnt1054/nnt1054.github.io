@@ -4,22 +4,24 @@ title: Project Overview
 category: mmorpg
 ---
 
-### Project Goal:
-* The goal of this project is to build a scalable 2D MMORPG game and server
+#### Introduction:
+Hello!  This is a passion project of developing a 2D Web Browser MMORPG with a scaling, microservice-based, distributed-system backend which will be deployed on Kuberenetes and make use of its features.  The MMO game will take inspiration from traditional MMO's such as Maplestory and Final Fantasy 14 with the gameplay of Metroidvania games and platformers such as Hollow Knight.
 
-### Roadmap(?):
+#### Roadmap(?):
 * [CI/CD System](/blog/mmorpg/CICD-Overview) - DONE
-* Backend Game Server/Client
-* Implement and code the actual game
+* [Software Architecture Design Documents](/blog/mmorpg/General-Architecture) - DONE
+* Implementing the Design Documents
+	* will break the order of components later
 
-### Technical Challenge(s):
-* Creating a scalable game server where in-game regions/chunks are divided among several (horizontally scaling) server instances
-* Creating portable code for both the application and its CICD/Infrastructure Services
-
-### Personal Objectives (for me, Neil Toledo):
+#### Personal Objectives (for me, Neil Toledo):
 * gain a better understanding of networking architecture and implementation with emphasis on newer modern technologies (Kubernetes)
 * become more proficient in writing technical documentation
 * become more proficient in full stack engineering by improving my skills in
-* networking technologies and client/server communication
-* infrastructure orchestration
-* game design and development
+	* networking technologies and client/server communication
+	* infrastructure orchestration
+	* game design and development
+
+
+#### Additional Notes:
+One of the large objectives (or points I'm trying to make) is that with adequate enough emphasis on the design and preplanning stage, aka making a comprehensive design document, actual development can and will go by faster and more efficiently, with less roadbugs and issues, and will result in a more robust end product that can easily be upgraded and improved in the future.  In addition, development will run more smoothly ESPECIALLY when working with a larger team, since less issues will arrise as development goes on which will impeded others' progress.
+TLDR: I like to place a lot of emphasis on the pre-planning and design stage as I believe them the most important.

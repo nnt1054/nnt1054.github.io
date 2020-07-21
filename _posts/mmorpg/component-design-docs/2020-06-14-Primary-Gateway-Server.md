@@ -8,6 +8,9 @@ tag: Component Design Documents
 #### Description:
 The Primary Gateway Server is the main point that the client connects to first and is responsible for managing authenticated and logged in clients.  The primary server is also resposnsible for redirecting the client to the proper game server instances.
 
+[![primary_gateway_diagram](/assets/images/mmorpg_pictures/primary-gateway-server-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/primary-gateway-server-diagram.jpg)
+{: class="column"}
+
 #### Features:
 * Web Server that serves the landing page and client side code
 * Authenticates the Client using Google Identity Platform
@@ -26,8 +29,12 @@ The Primary Gateway Server is the main point that the client connects to first a
 
 #### Process Flowcharts
 
-[![low_spec_diagram](/assets/images/mmorpg_pictures/low-spec-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/low-spec-diagram.jpg)
+[![architecture_diagram](/assets/images/mmorpg_pictures/architecture-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/architecture-diagram.jpg)
 {: class="column"}
+
+[![login_flow_diagram](https://developers.google.com/identity/protocols/images/oauth2/device/flow.png){: style="width: 100%"}](https://developers.google.com/identity/protocols/images/oauth2/device/flow.png)
+{: class="column"}
+The above diagram is the standard process of using Google Idenity Platform to authenticate and log users into an application.
 
 ##### Logging in a User:
 * Primary Gateway Server serves website to the User/Client

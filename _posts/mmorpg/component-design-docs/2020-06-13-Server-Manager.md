@@ -9,6 +9,12 @@ tag: Component Design Documents
 The Server Manager keeps track of the fleet of Game Server Instances and actively maintains a map of in-game locations to its corresponding Game Server Instance.  The Server Manager is also in charge of manually scaling the number of Game Server Instances up and down as needed.
 The Server Manager is important since Game Server Instances are ephemeral are responsible for only their specified in-game location, so a controller/manager service is necessary in order to respond to requests for entry points to the Game Server Instances for specified in-game locations.
 
+[![server_manager_diagram](/assets/images/mmorpg_pictures/server-manager-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/server-manager-diagram.jpg)
+{: class="column"}
+
+[![game_fleet_diagram](/assets/images/mmorpg_pictures/game-fleet-diagram.jpg){: style="width: 100%"}](/assets/images/mmorpg_pictures/game-fleet-diagram.jpg)
+{: class="column"}
+
 #### Features:
 * responds to requests for the entrypoint/websocket subpath for a Game Server Instance given an in-game location
 * creates/adds new Game Server Instances when necessary and instructs them of which in-game area they're responsible for
