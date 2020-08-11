@@ -433,6 +433,38 @@
 <p>One of the large objectives (or points I’m trying to make) is that with adequate enough emphasis on the design and preplanning stage, aka making a comprehensive design document, actual development can and will go by faster and more efficiently, with less roadbugs and issues, and will result in a more robust end product that can easily be upgraded and improved in the future.  In addition, development will run more smoothly ESPECIALLY when working with a larger team, since less issues will arrise as development goes on which will impeded others’ progress.
 TLDR: I like to place a lot of emphasis on the pre-planning and design stage as I believe them the most important.</p>
 
+<h4 id="latest-updates">Latest Updates:</h4>
+<ul>
+  <li><b>[2020-08-10] Starting Work on Server Manager</b>
+    <ul>
+      <li>To Do:
+        <ul>
+          <li>deploy game server stateful set on minikube w/docker and helm</li>
+          <li>add endpoints to the gameServer for the serverManager ping</li>
+          <li>build server manager express server and play with kubeapi</li>
+        </ul>
+      </li>
+      <li>For now I’m sticking with saving the area-to-server mapping in an in-memory dictionary, and later I’ll transfer that to a redis-db so I can scale the server manager up (assuming necessary).</li>
+    </ul>
+  </li>
+  <li><b>[2020-08-09] Basic Socket.io Networking</b>
+    <ul>
+      <li><a href="https://twitter.com/LambSeel/status/1292460430263119873">Networking Demo</a></li>
+      <li>the client can now send basic inputStates to the server when an action occurs or inputState changes</li>
+      <li>the client can now receive gameState updates from the server and propogate object gameState information to their relevant gameobjects</li>
+      <li>the server can now send/broadcast their current gameState on a specified interval
+        <ul>
+          <li>gameObjects are able to read and update their portion of the server gameState object</li>
+        </ul>
+      </li>
+      <li>the server can now recieve inputState from clients and propogate the input state to the appropriate gameObjects on the server and update accordingly</li>
+      <li>still need to implement Lag Compensation and Client/Server syncing. <a href="https://twitter.com/LambSeel/status/1293044370602565632">Video Example</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /><br /><br /><br /></p>
+
         </div>
 
     </div>

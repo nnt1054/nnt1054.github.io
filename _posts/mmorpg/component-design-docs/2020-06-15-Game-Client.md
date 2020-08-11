@@ -5,6 +5,10 @@ category: mmorpg
 tag: Component Design Documents
 ---
 
+ 
+#### Updates:
+* [2020-07-28] No longer need to create an event queue for the game engine, the gameObjects themselves can subscribe to the relevant store and process updates
+
 #### Description:
 
 The Game Client is the client code running in the User’s browser and will be in charge of maintaining connections with the appropriate services, rendering the game and user interface onto the screen and running some game logic with client side prediction.
