@@ -28,6 +28,7 @@ TLDR: I like to place a lot of emphasis on the pre-planning and design stage as 
 #### Latest Updates:
 * <b>[2020-08-10] Starting Work on Server Manager</b>
 	* To Do:
+		* deploy fleet of websocket servers using a stateful set and k8's metacontroller
 		* deploy game server stateful set on minikube w/docker and helm
 		* add endpoints to the gameServer for the serverManager ping
 		* build server manager express server and play with kubeapi

@@ -451,6 +451,52 @@
 
 <p>So this description is still going to be a WIP since the game engine itself is still unfinished.  The socket.onmessage() function will append any messages to an event stack attached to the game server.  The event stack will be ingested and cleared afterwards by the game server for every update loop.  The formatting of messages will be decided during implementation.</p>
 
+<h5 id="character-moves-to-a-different-area-process">Character Moves to a Different Area Process:</h5>
+<ul>
+  <li>character tells game server it wants to move to a different area
+    <ul>
+      <li>character sends an ‘input command’ to the game server while standing next to the door
+        <ul>
+          <li>game server receives the input, checks collision between character and door</li>
+          <li>game server knows which area that door leads to and accepts request to move to adjacent area</li>
+        </ul>
+      </li>
+      <li>client sends TP command to game server using a UI
+        <ul>
+          <li>the websocket message specifies tc event request and location request</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>game server sends request to server manager for the requested game server
+    <ul>
+      <li>server manager checks for game server, if it doesn’t exist, starts it up*</li>
+      <li>server manager responds to the current server with the new server entrypoint</li>
+    </ul>
+  </li>
+  <li>game server sends a update request to the Player API service to updates the player’s stored data</li>
+  <li>game server 1:
+    <ul>
+      <li>pings game server 2 to make sure its up and running</li>
+      <li>tells game server to prepare a client connection with the specified client</li>
+      <li>sends player document data to game server 2
+        <ul>
+          <li>game server 2 sets last known client location to point to itself</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>game server responds back to the client with game server 2’s entrypoint</li>
+  <li>client establishes connection with game server 2
+    <ul>
+      <li>game server checks connection request with ‘pending requests’ list</li>
+      <li>establishes connection and adds character to the game area</li>
+      <li>sends update to the Social Services Server of the Client’s current location</li>
+    </ul>
+  </li>
+  <li>client disconnects from gamer server 1</li>
+</ul>
+
 <p><br /></p>
 
         </div>

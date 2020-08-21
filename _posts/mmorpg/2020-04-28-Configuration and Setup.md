@@ -82,7 +82,7 @@ This section of the documentation outlines the directory structure of the cicd r
 
 #### Setting up CICD Cluster
 1. `git clone https://github.com/nnt1054/mmorpg_cicd.git && cd mmorpg_cicd`
-2. `minikube --profile cicd && minikube profile cicd`
+2. `minikube start --profile cicd && minikube profile cicd`
 3. create helmsman service account
 	* `kubectl create sa helmsman`
 	* `kubectl create clusterrolebinding helmsman-cluster-admin --clusterrole=cluster-admin --serviceaccount=default:helmsman`

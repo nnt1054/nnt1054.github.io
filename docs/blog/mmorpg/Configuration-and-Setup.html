@@ -480,7 +480,7 @@
 <h4 id="setting-up-cicd-cluster">Setting up CICD Cluster</h4>
 <ol>
   <li><code class="highlighter-rouge">git clone https://github.com/nnt1054/mmorpg_cicd.git &amp;&amp; cd mmorpg_cicd</code></li>
-  <li><code class="highlighter-rouge">minikube --profile cicd &amp;&amp; minikube profile cicd</code></li>
+  <li><code class="highlighter-rouge">minikube start --profile cicd &amp;&amp; minikube profile cicd</code></li>
   <li>create helmsman service account
     <ul>
       <li><code class="highlighter-rouge">kubectl create sa helmsman</code></li>
