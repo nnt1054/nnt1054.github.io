@@ -5,7 +5,7 @@ category: mmorpg
 ---
 
 #### Introduction:
-Hello!  This is a passion project of developing a 2D Web Browser MMORPG with a scaling, microservice-based, distributed-system backend which will be deployed on Kuberenetes and make use of its features.  The MMO game will take inspiration from traditional MMO's such as Maplestory and Final Fantasy 14 with the gameplay of Metroidvania games and platformers such as Hollow Knight.
+Hello!  This is a passion project of developing a 2D Web Browser MMORPG with a scaling, microservice-based, distributed-system backend which will be deployed on Kubernetes and make use of its features.  The MMO game will take inspiration from traditional MMO's such as Maplestory and Final Fantasy 14 with the gameplay of Metroidvania games and platformers such as Hollow Knight.
 
 #### Roadmap(?):
 * [CI/CD System](/blog/mmorpg/CICD-Overview) - DONE
