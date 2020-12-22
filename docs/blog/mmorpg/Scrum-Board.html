@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google" content="notranslate" />
 
-  <title>Neil Toledo - Polling Server</title>
-  <meta name="description" content="Github">
+  <title>Neil Toledo - Scrum Board [WIP]</title>
+  <meta name="description" content="Introduction:Not actually much of a Scrum Board but I needed a place to document and breakdown tasks in a way similar to Jira tickets and stories.In Progress...">
 
   <link rel="icon" href="/assets/images/me.jpg">
   <link rel="shortcut icon" href="/assets/images/me.jpg">
@@ -389,20 +389,28 @@
 
         <div id="page-content" itemprop="articleBody">
             <header class="post-header">
-                <h1 class="post-title" itemprop="name headline">Polling Server</h1>
-                <p class="post-meta"><time datetime="2020-04-20T00:00:00-07:00" itemprop="datePublished">Apr 20, 2020</time></p>
+                <h1 class="post-title" itemprop="name headline">Scrum Board [WIP]</h1>
+                <p class="post-meta"><time datetime="2020-01-01T00:00:00-08:00" itemprop="datePublished">Jan 1, 2020</time></p>
             </header>
-            <p><a href="https://github.com/nnt1054/mmorpg-polling-server">Github</a></p>
+            <h4 id="introduction">Introduction:</h4>
+<p>Not actually much of a Scrum Board but I needed a place to document and breakdown tasks in a way similar to Jira tickets and stories.</p>
 
-<h4 id="description">Description:</h4>
-<p>A small express application that polls the Github Events API for new events and builds Docker images accordingly.
-PushRequest events will tag the docker image as staging, and CreateEvents for new SemVer Tags will tag the docker with the SemVer Tag.  Afterwards the server pushes the image to the corresponding Docker Registry.
-A the application also polls specified helm chart repositories for listed helm charts.  The server only checks for the most updated semver version and the latest staging version in the repository. If a new semver version or staging version is found, the polling server will ping the Helm API to upgrade the helm charts running on the cluster.</p>
+<h4 id="in-progressto-do">In Progress/To Do:</h4>
+<ul>
+  <li>…</li>
+</ul>
 
-<h4 id="purpose">Purpose:</h4>
-<p>The purpose of this server is to help with Continous Delivery.  After changes are pushed/merged on Github, this server polls and builds the new source.  After pushing the image to the docker registry, I’ll be using <a href="https://keel.sh/">Keel.sh</a> to automatically detect new Docker images in the registry and deploy them onto the cluster.</p>
+<h4 id="backlog">Backlog:</h4>
+<ul>
+  <li>…</li>
+</ul>
 
-<p><br /></p>
+<h4 id="completed">Completed:</h4>
+<ul>
+  <li>…</li>
+</ul>
+
+<p><br /><br /><br /><br /></p>
 
         </div>
 

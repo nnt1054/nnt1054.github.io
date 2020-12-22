@@ -21,13 +21,15 @@ Hello!  This is a passion project of developing a 2D Web Browser MMORPG with a s
 	* infrastructure orchestration
 	* game design and development
 
-#### Additional Notes:
-One of the large objectives (or points I'm trying to make) is that with adequate enough emphasis on the design and preplanning stage, aka making a comprehensive design document, actual development can and will go by faster and more efficiently, with less roadbugs and issues, and will result in a more robust end product that can easily be upgraded and improved in the future.  In addition, development will run more smoothly ESPECIALLY when working with a larger team, since less issues will arrise as development goes on which will impeded others' progress.
-TLDR: I like to place a lot of emphasis on the pre-planning and design stage as I believe them the most important.
-
 #### Latest Updates:
-* <b>[2020-08-10] Starting Work on Server Manager</b>
+* <b>[2020-12-22] Project Reorganization and Websockets
+	* Clients can now connect to and be routed by the Server Manager to a corresponding Game Server
+	* Since Kubernetes/Helm proof of concept has been finished, Reorganized project to primarily be developed using localhost in order to streamline the development process.
 	* To Do:
+		* enable passing of websocket connections from one Game Server to another
+		* reorganizing project structure and files 
+* <b>[2020-08-10] Starting Work on Server Manager</b>
+	* To Do: [INFRA STUFF DELAYED]
 		* deploy fleet of websocket servers using a stateful set and k8's metacontroller
 		* deploy game server stateful set on minikube w/docker and helm
 		* add endpoints to the gameServer for the serverManager ping
