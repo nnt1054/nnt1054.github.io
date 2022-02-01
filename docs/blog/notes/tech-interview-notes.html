@@ -45,8 +45,8 @@
 
 <h5 id="fibbonaci-w-dynamic-programming">Fibbonaci w/ Dynamic Programming</h5>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># DP w/ memoization (starts from 0 to n rather than n to 0)</span>
-<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># DP w/ memoization (starts from 0 to n rather than n to 0)
+</span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
    <span class="n">fibValues</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
       <span class="n">fibValues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fibValues</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibValues</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
@@ -111,8 +111,8 @@
         <span class="n">prev</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">dist</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="err">!</span><span class="n">queue</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c">#Gets node with smallest dist[n]</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">neighbors</span><span class="p">():</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1">#Gets node with smallest dist[n]
+</span>        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">neighbors</span><span class="p">():</span>
             <span class="n">alt</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">alt</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
                 <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">alt</span>
@@ -134,8 +134,8 @@
         <span class="n">prev</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">dist</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="err">!</span><span class="n">queue</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c">#Gets node with smallest fCost = dist[n] + h(node)</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">neighbors</span><span class="p">():</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1">#Gets node with smallest fCost = dist[n] + h(node)
+</span>        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">neighbors</span><span class="p">():</span>
             <span class="n">alt</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">alt</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]:</span>
                 <span class="n">dist</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">alt</span>

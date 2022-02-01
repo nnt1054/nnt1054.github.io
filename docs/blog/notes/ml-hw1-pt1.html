@@ -48,9 +48,9 @@
 <span class="n">rand_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dataLength</span><span class="p">))</span>
 <span class="n">samples</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_data"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">],</span> <span class="n">dataFile</span><span class="p">[</span><span class="s">"training_labels"</span><span class="p">][</span><span class="n">rand_idx</span><span class="p">]</span>
 
-<span class="c">#Partition Samples into Training and Validation</span>
-<span class="n">part</span> <span class="o">=</span> <span class="mi">500</span> <span class="c">#Number of Samples for Validation</span>
-<span class="n">validX</span><span class="p">,</span> <span class="n">validY</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:</span><span class="n">part</span><span class="p">],</span> <span class="n">labels</span><span class="p">[:</span><span class="n">part</span><span class="p">]</span>
+<span class="c1">#Partition Samples into Training and Validation
+</span><span class="n">part</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">#Number of Samples for Validation
+</span><span class="n">validX</span><span class="p">,</span> <span class="n">validY</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:</span><span class="n">part</span><span class="p">],</span> <span class="n">labels</span><span class="p">[:</span><span class="n">part</span><span class="p">]</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">part</span><span class="p">:</span><span class="n">part</span><span class="o">+</span><span class="n">size</span><span class="p">],</span> <span class="n">labels</span><span class="p">[</span><span class="n">part</span><span class="p">:</span><span class="n">part</span><span class="o">+</span><span class="n">size</span><span class="p">]</span></code></pre></figure>
 
 <ul>
@@ -71,8 +71,8 @@ note: the samples at X[index] belongs to the class Y[index]</p>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">mnist_svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">validX</span><span class="p">)</span>
 <span class="n">accuracy_score</span><span class="p">(</span><span class="n">validY</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#Training w/ K-Fold Validation</span>
-<span class="n">results</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">5</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1">#Training w/ K-Fold Validation
+</span><span class="n">results</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
     <span class="n">part_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span><span class="o">//</span><span class="n">k</span>
     <span class="n">part</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">part_size</span>

@@ -41,9 +41,9 @@
 React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COMPONENTS.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
-  <span class="s1">'type'</span><span class="p">,</span>
-  <span class="p">{</span><span class="na">property1</span><span class="p">:</span> <span class="s1">'property1'</span><span class="p">,</span> <span class="na">property2</span><span class="p">:</span> <span class="s1">'property2'</span><span class="p">},</span>
-  <span class="p">[</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'child1'</span><span class="p">,</span> <span class="p">...),</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'child2'</span><span class="p">,</span> <span class="p">...),</span> <span class="p">...]</span>
+  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">{</span><span class="na">property1</span><span class="p">:</span> <span class="dl">'</span><span class="s1">property1</span><span class="dl">'</span><span class="p">,</span> <span class="na">property2</span><span class="p">:</span> <span class="dl">'</span><span class="s1">property2</span><span class="dl">'</span><span class="p">},</span>
+  <span class="p">[</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">child1</span><span class="dl">'</span><span class="p">,</span> <span class="p">...),</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">child2</span><span class="dl">'</span><span class="p">,</span> <span class="p">...),</span> <span class="p">...]</span>
 <span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Game</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
@@ -81,7 +81,7 @@ React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COM
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Game</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"root"</span><span class="p">));</span></code></pre></figure>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Game</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">root</span><span class="dl">"</span><span class="p">));</span></code></pre></figure>
 
 <p>Sidenote: <code class="highlighter-rouge">const</code> variables can’t be reassigned and are consistent within the block its declared in.  You can change properties of a const variable (like changing entries in a dictionary), but you can’t reassign the actual variable.</p>
 
@@ -159,7 +159,7 @@ React is a JAVASCRIPT LIBRARY used for building USER INTERFACES based around COM
 <p>After going through the tutorial and skimming through the docs, the next step is to now figure out how to connect a backend and/or make components from API calls.
 The most common way to make API calls is to use the native fetch API in JavaScript:</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">API_URL</span> <span class="o">=</span> <span class="s1">'https://ntoledo.api/'</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">API_URL</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://ntoledo.api/</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">Example</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="p">...</span>
